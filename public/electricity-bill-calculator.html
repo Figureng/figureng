@@ -1,0 +1,1761 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nigeria Electricity Bill Calculator 2026 | FigureNG</title>
+
+<meta name="description" content="Free Nigeria electricity bill calculator. Estimate your electricity cost from units consumed and your tariff per kWh. Calculate daily, weekly and monthly electricity costs.">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://figureng.figureng247.workers.dev/electricity-bill-calculator.html">
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+html{
+overflow-x:hidden;
+}
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#f8fafc;
+color:#1e293b;
+line-height:1.65;
+overflow-x:hidden;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+.container{
+width:92%;
+max-width:1050px;
+margin:0 auto;
+}
+
+/* HEADER */
+
+header{
+background:#fff;
+border-bottom:1px solid #e2e8f0;
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.nav{
+min-height:64px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+}
+
+.logo{
+font-size:24px;
+font-weight:900;
+color:#0f172a;
+}
+
+.logo span{
+color:#16a34a;
+}
+
+.nav-links{
+display:flex;
+gap:18px;
+font-size:13px;
+font-weight:700;
+}
+
+.nav-links a{
+color:#64748b;
+}
+
+.nav-links a:hover{
+color:#16a34a;
+}
+
+/* HERO */
+
+.hero{
+background:#0f172a;
+color:#fff;
+padding:55px 0;
+}
+
+.hero-content{
+max-width:800px;
+}
+
+.badge{
+display:inline-block;
+padding:7px 11px;
+border-radius:30px;
+background:rgba(22,163,74,.15);
+border:1px solid rgba(134,239,172,.25);
+color:#86efac;
+font-size:11px;
+font-weight:800;
+margin-bottom:18px;
+}
+
+.hero h1{
+margin:0 0 18px;
+font-size:clamp(35px,6vw,52px);
+line-height:1.08;
+letter-spacing:-1px;
+}
+
+.hero h1 span{
+color:#4ade80;
+}
+
+.hero p{
+max-width:720px;
+margin:0;
+color:#cbd5e1;
+font-size:17px;
+}
+
+/* MAIN */
+
+main{
+padding:50px 0 70px;
+}
+
+.section{
+margin-bottom:48px;
+}
+
+.section h2{
+margin:0 0 14px;
+font-size:30px;
+line-height:1.2;
+color:#0f172a;
+}
+
+.section h3{
+margin:0 0 8px;
+color:#0f172a;
+}
+
+.section p{
+color:#475569;
+}
+
+.card{
+background:#fff;
+border:1px solid #e2e8f0;
+border-radius:16px;
+padding:25px;
+}
+
+.highlight{
+background:#f0fdf4;
+border:1px solid #bbf7d0;
+border-radius:14px;
+padding:20px;
+}
+
+.highlight strong{
+color:#15803d;
+}
+
+/* CALCULATOR */
+
+.calculator{
+background:#0f172a;
+border-radius:18px;
+padding:25px;
+color:#fff;
+}
+
+.calculator h2{
+color:#fff;
+margin-top:0;
+}
+
+.calculator-intro{
+color:#cbd5e1;
+font-size:14px;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+margin-top:20px;
+}
+
+.field label{
+display:block;
+font-size:12px;
+font-weight:800;
+color:#e2e8f0;
+margin-bottom:7px;
+}
+
+input,
+select{
+width:100%;
+height:48px;
+border:1px solid #cbd5e1;
+border-radius:9px;
+padding:0 13px;
+font-size:15px;
+background:#fff;
+color:#0f172a;
+outline:none;
+}
+
+input:focus,
+select:focus{
+border-color:#4ade80;
+}
+
+.helper{
+font-size:11px;
+color:#94a3b8;
+margin-top:5px;
+}
+
+.calculator button{
+width:100%;
+height:50px;
+margin-top:20px;
+border:0;
+border-radius:9px;
+background:#16a34a;
+color:#fff;
+font-size:15px;
+font-weight:900;
+cursor:pointer;
+}
+
+.calculator button:hover{
+background:#15803d;
+}
+
+/* RESULTS */
+
+.results{
+display:none;
+margin-top:22px;
+}
+
+.results.show{
+display:block;
+}
+
+.result-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.result{
+background:#fff;
+border-radius:10px;
+padding:15px;
+color:#0f172a;
+}
+
+.result span{
+display:block;
+font-size:10px;
+font-weight:700;
+color:#64748b;
+}
+
+.result strong{
+display:block;
+font-size:19px;
+margin-top:4px;
+overflow-wrap:anywhere;
+}
+
+.result.main{
+grid-column:1 / -1;
+background:#f0fdf4;
+}
+
+.result.main strong{
+font-size:28px;
+color:#15803d;
+}
+
+.result-note{
+margin-top:14px;
+padding:14px;
+background:#ecfdf5;
+border-radius:10px;
+color:#065f46;
+font-size:13px;
+}
+
+/* QUICK CALCULATIONS */
+
+.quick-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+}
+
+.quick-card{
+background:#fff;
+border:1px solid #e2e8f0;
+border-radius:14px;
+padding:20px;
+}
+
+.quick-card span{
+display:block;
+font-size:11px;
+color:#64748b;
+}
+
+.quick-card strong{
+display:block;
+font-size:22px;
+color:#15803d;
+margin-top:5px;
+}
+
+/* BANDS */
+
+.bands{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:10px;
+}
+
+.band{
+background:#fff;
+border:1px solid #e2e8f0;
+border-radius:12px;
+padding:16px 10px;
+text-align:center;
+}
+
+.band strong{
+display:block;
+font-size:21px;
+color:#15803d;
+}
+
+.band span{
+font-size:11px;
+color:#64748b;
+}
+
+/* TABLE */
+
+.table-wrap{
+overflow-x:auto;
+background:#fff;
+border:1px solid #e2e8f0;
+border-radius:14px;
+}
+
+table{
+width:100%;
+min-width:560px;
+border-collapse:collapse;
+}
+
+th,
+td{
+padding:14px;
+border-bottom:1px solid #e2e8f0;
+text-align:left;
+font-size:14px;
+}
+
+th{
+background:#f8fafc;
+font-weight:900;
+color:#0f172a;
+}
+
+td{
+color:#475569;
+}
+
+tr:last-child td{
+border-bottom:0;
+}
+
+/* FAQ */
+
+.faq{
+display:grid;
+gap:12px;
+}
+
+.faq-item{
+background:#fff;
+border:1px solid #e2e8f0;
+border-radius:12px;
+padding:18px;
+}
+
+.faq-item h3{
+font-size:16px;
+margin:0 0 7px;
+}
+
+.faq-item p{
+margin:0;
+font-size:14px;
+color:#64748b;
+}
+
+/* CTA */
+
+.cta{
+background:#f0fdf4;
+border:1px solid #bbf7d0;
+border-radius:16px;
+padding:25px;
+}
+
+.cta h2{
+margin-top:0;
+}
+
+.cta-button{
+display:inline-block;
+margin-top:10px;
+padding:12px 17px;
+background:#16a34a;
+color:#fff;
+border-radius:9px;
+font-weight:900;
+}
+
+.cta-button:hover{
+background:#15803d;
+}
+
+/* FOOTER */
+
+footer{
+background:#0f172a;
+color:#cbd5e1;
+padding:38px 0;
+}
+
+.footer-top{
+display:flex;
+justify-content:space-between;
+gap:30px;
+}
+
+.footer-brand{
+max-width:430px;
+}
+
+.footer-brand .logo{
+display:inline-block;
+margin-bottom:8px;
+color:#fff;
+}
+
+.footer-brand p{
+margin:0;
+font-size:13px;
+color:#94a3b8;
+}
+
+.footer-links{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+font-size:13px;
+}
+
+.copyright{
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #334155;
+font-size:12px;
+color:#94a3b8;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.container{
+width:94%;
+}
+
+.nav{
+min-height:60px;
+}
+
+.logo{
+font-size:22px;
+}
+
+.nav-links{
+gap:10px;
+font-size:11px;
+}
+
+.nav-links a:nth-child(n+3){
+display:none;
+}
+
+.hero{
+padding:40px 0;
+}
+
+.hero h1{
+font-size:38px;
+}
+
+.hero p{
+font-size:15px;
+}
+
+main{
+padding-top:38px;
+}
+
+.section h2{
+font-size:27px;
+}
+
+.form-grid{
+grid-template-columns:1fr;
+}
+
+.result-grid{
+grid-template-columns:1fr;
+}
+
+.result.main{
+grid-column:auto;
+}
+
+.quick-grid{
+grid-template-columns:1fr;
+}
+
+.bands{
+grid-template-columns:1fr 1fr;
+}
+
+.footer-top{
+flex-direction:column;
+}
+
+}
+
+@media(max-width:360px){
+
+.hero h1{
+font-size:33px;
+}
+
+.bands{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="container nav">
+
+<a href="/" class="logo">
+Figure<span>NG</span>
+</a>
+
+<nav class="nav-links">
+
+<a href="/">
+Salary Calculator
+</a>
+
+<a href="/loan-calculator.html">
+Loan Calculator
+</a>
+
+<a href="/vat-calculator.html">
+VAT Calculator
+</a>
+
+<a href="/about.html">
+About
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<section class="hero">
+
+<div class="container hero-content">
+
+<span class="badge">
+NIGERIA ELECTRICITY CALCULATOR 2026
+</span>
+
+<h1>
+Nigeria <span>Electricity Bill Calculator</span>
+</h1>
+
+<p>
+Estimate your electricity cost from the number of units you
+use and the tariff shown on your electricity bill or prepaid
+meter receipt.
+</p>
+
+</div>
+
+</section>
+
+
+<main>
+
+<div class="container">
+
+
+<section class="section">
+
+<div class="calculator">
+
+<h2>
+Calculate Your Electricity Cost
+</h2>
+
+<p class="calculator-intro">
+Enter the number of electricity units consumed and your
+tariff per kWh. If you are unsure of your tariff, check your
+latest electricity bill or prepaid vending receipt.
+</p>
+
+
+<div class="form-grid">
+
+
+<div class="field">
+
+<label for="units">
+Electricity Units Used (kWh)
+</label>
+
+<input
+id="units"
+type="number"
+inputmode="decimal"
+min="0"
+step="0.01"
+value="100"
+>
+
+<div class="helper">
+Example: 100 units
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label for="tariff">
+Your Tariff (₦ per kWh)
+</label>
+
+<input
+id="tariff"
+type="number"
+inputmode="decimal"
+min="0"
+step="0.01"
+value="100"
+>
+
+<div class="helper">
+Enter the rate shown on your bill or receipt.
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label for="disco">
+Electricity Provider
+</label>
+
+<select id="disco">
+
+<option value="not-specified">
+Not specified
+</option>
+
+<option value="AEDC">
+AEDC
+</option>
+
+<option value="BEDC">
+BEDC
+</option>
+
+<option value="EEDC">
+EEDC
+</option>
+
+<option value="EKEDC">
+EKEDC
+</option>
+
+<option value="IBEDC">
+IBEDC
+</option>
+
+<option value="IE">
+Ikeja Electric
+</option>
+
+<option value="KAEDC">
+KAEDC
+</option>
+
+<option value="KEDCO">
+KEDCO
+</option>
+
+<option value="JED">
+Jos Electricity Distribution
+</option>
+
+<option value="PHED">
+PHED
+</option>
+
+<option value="YEDC">
+YEDC
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label for="band">
+Tariff Band
+</label>
+
+<select id="band">
+
+<option value="not-specified">
+Not specified
+</option>
+
+<option value="A">
+Band A
+</option>
+
+<option value="B">
+Band B
+</option>
+
+<option value="C">
+Band C
+</option>
+
+<option value="D">
+Band D
+</option>
+
+<option value="E">
+Band E
+</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+
+<button
+type="button"
+onclick="calculateBill()"
+>
+Calculate Electricity Cost
+</button>
+
+
+<div
+class="results"
+id="results"
+>
+
+<div class="result-grid">
+
+
+<div class="result main">
+
+<span>
+Estimated Electricity Cost
+</span>
+
+<strong id="monthlyCost">
+₦0
+</strong>
+
+</div>
+
+
+<div class="result">
+
+<span>
+Cost per Unit
+</span>
+
+<strong id="costPerUnit">
+₦0
+</strong>
+
+</div>
+
+
+<div class="result">
+
+<span>
+Units Used
+</span>
+
+<strong id="unitsUsed">
+0 kWh
+</strong>
+
+</div>
+
+
+</div>
+
+
+<div class="quick-grid" style="margin-top:10px;">
+
+<div class="quick-card">
+
+<span>
+Estimated Daily Cost
+</span>
+
+<strong id="dailyCost">
+₦0
+</strong>
+
+</div>
+
+
+<div class="quick-card">
+
+<span>
+Estimated Weekly Cost
+</span>
+
+<strong id="weeklyCost">
+₦0
+</strong>
+
+</div>
+
+
+<div class="quick-card">
+
+<span>
+Estimated Monthly Cost
+</span>
+
+<strong id="monthlyCost2">
+₦0
+</strong>
+
+</div>
+
+</div>
+
+
+<div
+class="result-note"
+id="resultNote"
+>
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>
+How the electricity bill calculator works
+</h2>
+
+<div class="card">
+
+<p>
+The basic calculation is simple:
+</p>
+
+<div class="highlight">
+
+<strong>
+Estimated electricity cost = Units consumed × Tariff per kWh
+</strong>
+
+</div>
+
+<p>
+For example, if you use 100 kWh and your applicable tariff is
+₦100 per kWh, the basic energy charge is approximately
+₦10,000.
+</p>
+
+<p>
+Your actual bill or vending cost can differ because other
+charges, taxes, adjustments, outstanding balances, credits,
+fees or the specific billing arrangement may apply.
+</p>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>
+Nigeria electricity service bands
+</h2>
+
+<p>
+NERC's Service-Based Tariff framework classifies customers
+into Bands A to E based on minimum expected hours of supply.
+</p>
+
+
+<div class="bands">
+
+<div class="band">
+
+<strong>A</strong>
+
+<span>
+20+ hours
+</span>
+
+</div>
+
+
+<div class="band">
+
+<strong>B</strong>
+
+<span>
+16+ hours
+</span>
+
+</div>
+
+
+<div class="band">
+
+<strong>C</strong>
+
+<span>
+12+ hours
+</span>
+
+</div>
+
+
+<div class="band">
+
+<strong>D</strong>
+
+<span>
+8+ hours
+</span>
+
+</div>
+
+
+<div class="band">
+
+<strong>E</strong>
+
+<span>
+4+ hours
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>
+What is a unit of electricity?
+</h2>
+
+<div class="card">
+
+<p>
+On an electricity meter, a unit generally refers to one
+kilowatt-hour, written as kWh.
+</p>
+
+<p>
+One kWh means using 1 kilowatt of electrical power for one
+hour. For example, a 100-watt appliance running continuously
+for 10 hours uses approximately 1 kWh.
+</p>
+
+<p>
+Your meter measures electricity consumption in kWh. The
+number of units you receive when purchasing prepaid
+electricity therefore depends on the amount paid and the
+applicable tariff and charges.
+</p>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>
+How to find your electricity tariff
+</h2>
+
+<div class="card">
+
+<p>
+NERC states that your electricity tariff is indicated on your
+electricity bill issued by your DisCo or on your vending
+receipt if you use a prepaid meter.
+</p>
+
+<p>
+That is why FigureNG asks you to enter your actual tariff
+rather than assuming that everyone in Nigeria pays the same
+price per kWh.
+</p>
+
+<div class="highlight">
+
+<strong>
+Tip:
+</strong>
+
+If you bought prepaid electricity recently, look at the
+vending receipt and check the units received and the amount
+paid. Your applicable tariff information may also be shown
+there.
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>
+Example electricity calculations
+</h2>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Units
+</th>
+
+<th>
+Tariff
+</th>
+
+<th>
+Estimated Energy Cost
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>
+50 kWh
+</td>
+
+<td>
+₦100/kWh
+</td>
+
+<td>
+₦5,000
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+100 kWh
+</td>
+
+<td>
+₦100/kWh
+</td>
+
+<td>
+₦10,000
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+100 kWh
+</td>
+
+<td>
+₦200/kWh
+</td>
+
+<td>
+₦20,000
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+200 kWh
+</td>
+
+<td>
+₦100/kWh
+</td>
+
+<td>
+₦20,000
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+500 kWh
+</td>
+
+<td>
+₦100/kWh
+</td>
+
+<td>
+₦50,000
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>
+Important information about Nigerian electricity tariffs
+</h2>
+
+<div class="card">
+
+<p>
+Nigeria does not have one universal electricity tariff that
+applies to every customer. The applicable rate can depend on
+the Distribution Company, customer category, service band and
+other regulatory factors.
+</p>
+
+<p>
+NERC publishes tariff orders and reviews for electricity
+distribution companies. These rates can also change as
+regulatory orders are updated.
+</p>
+
+<p>
+For this reason, FigureNG does not claim that a particular
+tariff is the current rate for every Nigerian electricity
+customer. Enter the tariff shown on your own bill or vending
+receipt for a more relevant estimate.
+</p>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>
+Frequently asked questions
+</h2>
+
+
+<div class="faq">
+
+
+<div class="faq-item">
+
+<h3>
+How much does 100 units of electricity cost in Nigeria?
+</h3>
+
+<p>
+It depends on your applicable tariff. At ₦100 per kWh,
+100 units would have a basic energy cost of ₦10,000 before
+any applicable additional charges or adjustments.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+How much is one unit of electricity?
+</h3>
+
+<p>
+There is no single nationwide price that applies to every
+customer. Your applicable price per kWh depends on your
+electricity service and tariff. Check your bill or vending
+receipt.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+What are Band A, B, C, D and E?
+</h3>
+
+<p>
+They are service bands under NERC's Service-Based Tariff
+framework. Band A has a minimum expected supply level of
+20 hours, while Bands B, C, D and E have minimum levels of
+16, 12, 8 and 4 hours respectively.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+How do I calculate my electricity bill?
+</h3>
+
+<p>
+Multiply the electricity units consumed in kWh by the
+applicable tariff per kWh. Your actual bill may also contain
+other applicable charges, adjustments or taxes.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+How do I know my electricity tariff?
+</h3>
+
+<p>
+NERC says customers can find their electricity tariff on
+their DisCo bill or prepaid vending receipt.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+Can this calculator tell me exactly what my DisCo will charge?
+</h3>
+
+<p>
+No. It provides an estimate based on the units and tariff
+you enter. Your actual bill or vending transaction can
+include other charges and adjustments.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="cta">
+
+<h2>
+Calculate your other costs
+</h2>
+
+<p>
+FigureNG also provides free salary, loan and VAT calculators
+for everyday Nigerian financial calculations.
+</p>
+
+<a
+class="cta-button"
+href="/vat-calculator.html"
+>
+Open VAT Calculator →
+</a>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="card">
+
+<h3>
+Disclaimer
+</h3>
+
+<p>
+This electricity calculator provides mathematical estimates
+for general informational purposes. Electricity tariffs,
+charges and regulatory arrangements can change. The estimate
+does not constitute an official bill or quotation from an
+electricity distribution company or NERC. Always check your
+latest bill or vending receipt for your applicable tariff and
+charges.
+</p>
+
+</div>
+
+</section>
+
+
+</div>
+
+</main>
+
+
+<footer>
+
+<div class="container">
+
+<div class="footer-top">
+
+<div class="footer-brand">
+
+<a href="/" class="logo">
+Figure<span>NG</span>
+</a>
+
+<p>
+Free calculators and practical online tools for everyday
+needs.
+</p>
+
+</div>
+
+
+<div class="footer-links">
+
+<a href="/">
+Salary Calculator
+</a>
+
+<a href="/loan-calculator.html">
+Loan Calculator
+</a>
+
+<a href="/vat-calculator.html">
+VAT Calculator
+</a>
+
+<a href="/flat-vs-reducing.html">
+Loan Guide
+</a>
+
+<a href="/about.html">
+About
+</a>
+
+<a href="/contact.html">
+Contact
+</a>
+
+<a href="/privacy.html">
+Privacy Policy
+</a>
+
+<a href="/terms.html">
+Terms
+</a>
+
+<a href="/disclaimer.html">
+Disclaimer
+</a>
+
+</div>
+
+</div>
+
+
+<div class="copyright">
+© 2026 FigureNG. All rights reserved.
+</div>
+
+</div>
+
+</footer>
+
+
+<script>
+
+function money(value){
+
+if(!Number.isFinite(value)){
+value=0;
+}
+
+return "₦" +
+value.toLocaleString(
+"en-NG",
+{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+}
+);
+
+}
+
+
+function calculateBill(){
+
+const units=
+Number(
+document.getElementById(
+"units"
+).value
+);
+
+const tariff=
+Number(
+document.getElementById(
+"tariff"
+).value
+);
+
+const disco=
+document.getElementById(
+"disco"
+).value
+;
+
+const band=
+document.getElementById(
+"band"
+).value
+;
+
+
+if(
+!Number.isFinite(units) ||
+units<0 ||
+!Number.isFinite(tariff) ||
+tariff<0
+){
+
+alert(
+"Please enter valid units and tariff information."
+);
+
+return;
+
+}
+
+
+const monthly=
+units *
+tariff;
+
+
+const daily=
+monthly /
+30;
+
+
+const weekly=
+monthly /
+4.345;
+
+
+document.getElementById(
+"monthlyCost"
+).textContent=
+money(monthly);
+
+
+document.getElementById(
+"monthlyCost2"
+).textContent=
+money(monthly);
+
+
+document.getElementById(
+"dailyCost"
+).textContent=
+money(daily);
+
+
+document.getElementById(
+"weeklyCost"
+).textContent=
+money(weekly);
+
+
+document.getElementById(
+"costPerUnit"
+).textContent=
+money(tariff);
+
+
+document.getElementById(
+"unitsUsed"
+).textContent=
+units.toLocaleString(
+"en-NG",
+{
+maximumFractionDigits:2
+}
+)
++
+" kWh";
+
+
+let note=
+"Estimated energy cost: "
++
+money(monthly)
++
+".";
+
+
+if(
+disco!=="not-specified" &&
+band!=="not-specified"
+){
+
+note+=
+" You selected "
++
+disco
++
+", Band "
++
+band
++
+". Confirm that these details match your latest bill or vending receipt.";
+
+}else{
+
+note+=
+" For a more accurate estimate, make sure the tariff you entered matches your latest bill or vending receipt.";
+
+}
+
+
+document.getElementById(
+"resultNote"
+).textContent=
+note;
+
+
+document.getElementById(
+"results"
+).classList.add(
+"show"
+);
+
+
+setTimeout(
+function(){
+
+document.getElementById(
+"results"
+).scrollIntoView({
+
+behavior:"smooth",
+
+block:"nearest"
+
+});
+
+},
+50
+);
+
+}
+
+
+window.addEventListener(
+"DOMContentLoaded",
+function(){
+
+calculateBill();
+
+}
+);
+
+</script>
+
+
+<script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"FAQPage",
+"mainEntity":[
+
+{
+"@type":"Question",
+"name":"How much does 100 units of electricity cost in Nigeria?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"It depends on the applicable tariff. At ₦100 per kWh, 100 units would have a basic energy cost of ₦10,000 before any applicable additional charges or adjustments."
+}
+},
+
+{
+"@type":"Question",
+"name":"How much is one unit of electricity?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"There is no single nationwide price that applies to every customer. The applicable price per kWh depends on the customer's electricity service and tariff."
+}
+},
+
+{
+"@type":"Question",
+"name":"What are Band A, B, C, D and E?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"They are service bands under NERC's Service-Based Tariff framework. Band A has a minimum expected supply level of 20 hours, while Bands B, C, D and E have minimum levels of 16, 12, 8 and 4 hours respectively."
+}
+},
+
+{
+"@type":"Question",
+"name":"How do I calculate my electricity bill?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Multiply electricity units consumed in kWh by the applicable tariff per kWh. The actual bill may also contain other applicable charges, adjustments or taxes."
+}
+},
+
+{
+"@type":"Question",
+"name":"How do I know my electricity tariff?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"NERC says customers can find their electricity tariff on their DisCo bill or prepaid vending receipt."
+}
+},
+
+{
+"@type":"Question",
+"name":"Can this calculator tell me exactly what my DisCo will charge?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"No. It provides an estimate based on the units and tariff entered. The actual bill or vending transaction can include other charges and adjustments."
+}
+}
+
+]
+}
+
+</script>
+
+
+</body>
+</html>
+```
