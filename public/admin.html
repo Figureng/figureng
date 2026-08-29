@@ -1,1 +1,1165 @@
 
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>FigureNG Publisher</title>
+
+  <meta name="robots" content="noindex, nofollow">
+
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #68737d;
+      --green: #167447;
+      --green-dark: #105c37;
+      --paper: #ffffff;
+      --bg: #f4f5f3;
+      --line: #dfe3df;
+      --danger: #b42318;
+      --success-bg: #edf8f1;
+      --danger-bg: #fff1f0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .topbar {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .topbar-inner {
+      width: min(1180px, 94%);
+      min-height: 62px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .brand {
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 21px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+
+    .brand span {
+      color: var(--green);
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .view-site {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .page {
+      width: min(1180px, 94%);
+      margin: 28px auto 60px;
+    }
+
+    .page-header {
+      margin-bottom: 22px;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 11px;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .page-header h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(29px, 5vw, 42px);
+      line-height: 1.1;
+      letter-spacing: -0.7px;
+    }
+
+    .page-header p {
+      color: var(--muted);
+      margin: 8px 0 0;
+      font-size: 14px;
+    }
+
+    .editor-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .panel-body {
+      padding: 22px;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    .field:last-child {
+      margin-bottom: 0;
+    }
+
+    label {
+      display: block;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 7px;
+    }
+
+    .required {
+      color: var(--green);
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid #cfd5d1;
+      border-radius: 7px;
+      background: #fff;
+      color: var(--ink);
+      padding: 11px 12px;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 2px rgba(22, 116, 71, 0.08);
+    }
+
+    .title-input {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+      line-height: 1.25;
+      padding: 13px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .excerpt {
+      min-height: 110px;
+    }
+
+    .content {
+      min-height: 430px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .help {
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 5px;
+    }
+
+    .slug-row {
+      display: flex;
+      gap: 8px;
+      align-items: stretch;
+    }
+
+    .slug-row input {
+      flex: 1;
+    }
+
+    .small-button {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 7px;
+      padding: 0 12px;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .small-button:hover {
+      background: #f6f7f6;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .panel-heading {
+      border-bottom: 1px solid var(--line);
+      padding: 15px 18px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .side-panel {
+      position: sticky;
+      top: 84px;
+    }
+
+    .side-section {
+      padding: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .side-section:last-child {
+      border-bottom: 0;
+    }
+
+    .side-title {
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .preview {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .preview-image {
+      display: none;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #eee;
+    }
+
+    .preview-copy {
+      padding: 13px;
+    }
+
+    .preview-category {
+      color: var(--green);
+      text-transform: uppercase;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .8px;
+    }
+
+    .preview-title {
+      margin: 5px 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 19px;
+      line-height: 1.2;
+    }
+
+    .preview-excerpt {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .actions {
+      display: grid;
+      gap: 9px;
+    }
+
+    .action-button {
+      width: 100%;
+      min-height: 46px;
+      border-radius: 7px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      font-weight: 900;
+    }
+
+    .action-button.primary {
+      border-color: var(--green);
+      background: var(--green);
+      color: #fff;
+    }
+
+    .action-button.primary:hover {
+      background: var(--green-dark);
+    }
+
+    .action-button.secondary:hover {
+      background: #f5f7f5;
+    }
+
+    .status {
+      display: none;
+      padding: 12px 14px;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .status.show {
+      display: block;
+    }
+
+    .status.success {
+      background: var(--success-bg);
+      color: #126039;
+      border: 1px solid #b9dfc8;
+    }
+
+    .status.error {
+      background: var(--danger-bg);
+      color: var(--danger);
+      border: 1px solid #f0c3be;
+    }
+
+    .auth-box {
+      max-width: 440px;
+      margin: 50px auto;
+    }
+
+    .auth-box h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      margin: 0 0 6px;
+      font-size: 28px;
+    }
+
+    .auth-box p {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 0 0 22px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .logout {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      padding: 5px;
+    }
+
+    .logout:hover {
+      color: var(--danger);
+    }
+
+    @media (max-width: 850px) {
+      .editor-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .side-panel {
+        position: static;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        width: 94%;
+        margin-top: 20px;
+      }
+
+      .panel-body {
+        padding: 16px;
+      }
+
+      .two-column {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .content {
+        min-height: 360px;
+      }
+
+      .title-input {
+        font-size: 22px;
+      }
+
+      .topbar-inner {
+        width: 94%;
+      }
+
+      .view-site {
+        display: none;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+
+```
+  <a href="/" class="brand">
+    Figure<span>NG</span>
+  </a>
+
+  <div class="topbar-right">
+    <a href="/" class="view-site">
+      View site
+    </a>
+
+    <button
+      type="button"
+      class="logout hidden"
+      id="logoutButton"
+      onclick="logout()"
+    >
+      Log out
+    </button>
+  </div>
+
+</div>
+```
+
+  </header>
+
+  <main class="page">
+
+```
+<section id="loginView" class="panel auth-box">
+
+  <div class="panel-body">
+
+    <div class="eyebrow">
+      Private publisher
+    </div>
+
+    <h2>
+      FigureNG Publisher
+    </h2>
+
+    <p>
+      Sign in to create and manage FigureNG articles.
+    </p>
+
+    <div id="loginStatus" class="status"></div>
+
+    <div class="field">
+
+      <label for="password">
+        Admin password
+      </label>
+
+      <input
+        id="password"
+        type="password"
+        autocomplete="current-password"
+        placeholder="Enter your password"
+      >
+
+    </div>
+
+    <button
+      type="button"
+      class="action-button primary"
+      onclick="login()"
+    >
+      Continue
+    </button>
+
+  </div>
+
+</section>
+
+<section id="publisherView" class="hidden">
+
+  <div class="page-header">
+
+    <div class="eyebrow">
+      Publishing
+    </div>
+
+    <h1>
+      New article
+    </h1>
+
+    <p>
+      Write, prepare and publish a FigureNG guide.
+    </p>
+
+  </div>
+
+  <div id="editorStatus" class="status"></div>
+
+  <div class="editor-layout">
+
+    <section class="panel">
+
+      <div class="panel-body">
+
+        <div class="field">
+
+          <label for="title">
+            Article title <span class="required">*</span>
+          </label>
+
+          <input
+            id="title"
+            class="title-input"
+            type="text"
+            maxlength="200"
+            placeholder="Enter the article title"
+            oninput="updatePreview(); generateSlug()"
+          >
+
+        </div>
+
+        <div class="field">
+
+          <label for="slug">
+            URL slug
+          </label>
+
+          <div class="slug-row">
+
+            <input
+              id="slug"
+              type="text"
+              maxlength="200"
+              placeholder="article-url"
+            >
+
+            <button
+              type="button"
+              class="small-button"
+              onclick="generateSlug(true)"
+            >
+              Generate
+            </button>
+
+          </div>
+
+          <div class="help">
+            Example: /guides/how-to-calculate-paye
+          </div>
+
+        </div>
+
+        <div class="two-column">
+
+          <div class="field">
+
+            <label for="category">
+              Category
+            </label>
+
+            <select id="category">
+
+              <option value="Guides">
+                Guides
+              </option>
+
+              <option value="Finance">
+                Finance
+              </option>
+
+              <option value="Loans">
+                Loans
+              </option>
+
+              <option value="Salary">
+                Salary
+              </option>
+
+              <option value="Tax">
+                Tax
+              </option>
+
+              <option value="Tools">
+                Tools
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="field">
+
+            <label for="featuredImage">
+              Featured image URL
+            </label>
+
+            <input
+              id="featuredImage"
+              type="url"
+              placeholder="https://..."
+              oninput="updatePreview()"
+            >
+
+          </div>
+
+        </div>
+
+        <div class="field">
+
+          <label for="excerpt">
+            Article excerpt
+          </label>
+
+          <textarea
+            id="excerpt"
+            class="excerpt"
+            maxlength="500"
+            placeholder="A short introduction that explains what the reader will learn."
+            oninput="updatePreview()"
+          ></textarea>
+
+          <div class="help">
+            Keep this clear and useful. It may appear on article listings.
+          </div>
+
+        </div>
+
+        <div class="field">
+
+          <label for="content">
+            Article content <span class="required">*</span>
+          </label>
+
+          <textarea
+            id="content"
+            class="content"
+            placeholder="Write your article here..."
+          ></textarea>
+
+          <div class="help">
+            Plain text is supported in this first publisher version.
+          </div>
+
+        </div>
+
+        <div class="field">
+
+          <label for="seoTitle">
+            SEO title
+          </label>
+
+          <input
+            id="seoTitle"
+            type="text"
+            maxlength="200"
+            placeholder="Search-friendly title"
+          >
+
+        </div>
+
+        <div class="field">
+
+          <label for="metaDescription">
+            Meta description
+          </label>
+
+          <textarea
+            id="metaDescription"
+            maxlength="320"
+            rows="4"
+            placeholder="A concise description for search engines."
+          ></textarea>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <aside class="panel side-panel">
+
+      <div class="panel-heading">
+        Publish
+      </div>
+
+      <div class="side-section">
+
+        <div class="actions">
+
+          <button
+            type="button"
+            class="action-button secondary"
+            onclick="saveArticle('draft')"
+          >
+            Save draft
+          </button>
+
+          <button
+            type="button"
+            class="action-button primary"
+            onclick="saveArticle('published')"
+          >
+            Publish article
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="side-section">
+
+        <div class="side-title">
+          Article preview
+        </div>
+
+        <div class="preview">
+
+          <img
+            id="previewImage"
+            class="preview-image"
+            alt=""
+          >
+
+          <div class="preview-copy">
+
+            <div
+              id="previewCategory"
+              class="preview-category"
+            >
+              Guides
+            </div>
+
+            <div
+              id="previewTitle"
+              class="preview-title"
+            >
+              Your article title
+            </div>
+
+            <div
+              id="previewExcerpt"
+              class="preview-excerpt"
+            >
+              Your article excerpt will appear here.
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+</section>
+```
+
+  </main>
+
+  <script>
+    const API_BASE = "/api";
+
+    let adminPassword = "";
+
+    const loginView =
+      document.getElementById("loginView");
+
+    const publisherView =
+      document.getElementById("publisherView");
+
+    const logoutButton =
+      document.getElementById("logoutButton");
+
+    const passwordInput =
+      document.getElementById("password");
+
+    function showStatus(element, message, type) {
+      element.textContent = message;
+      element.className =
+        "status show " + type;
+    }
+
+    function hideStatus(element) {
+      element.className = "status";
+      element.textContent = "";
+    }
+
+    async function login() {
+      const password =
+        passwordInput.value.trim();
+
+      if (!password) {
+        showStatus(
+          document.getElementById("loginStatus"),
+          "Enter your admin password.",
+          "error"
+        );
+        return;
+      }
+
+      try {
+        const response = await fetch(
+          API_BASE + "/articles?status=all&limit=1",
+          {
+            method: "GET",
+            headers: {
+              "X-Admin-Password": password
+            }
+          }
+        );
+
+        if (response.status === 401) {
+          showStatus(
+            document.getElementById("loginStatus"),
+            "The password is incorrect.",
+            "error"
+          );
+          return;
+        }
+
+        if (!response.ok) {
+          showStatus(
+            document.getElementById("loginStatus"),
+            "Unable to connect to the publishing system.",
+            "error"
+          );
+          return;
+        }
+
+        adminPassword = password;
+
+        sessionStorage.setItem(
+          "figureng_admin_password",
+          password
+        );
+
+        loginView.classList.add("hidden");
+        publisherView.classList.remove("hidden");
+        logoutButton.classList.remove("hidden");
+
+      } catch (error) {
+        showStatus(
+          document.getElementById("loginStatus"),
+          "A connection error occurred.",
+          "error"
+        );
+      }
+    }
+
+    function logout() {
+      adminPassword = "";
+
+      sessionStorage.removeItem(
+        "figureng_admin_password"
+      );
+
+      publisherView.classList.add("hidden");
+      loginView.classList.remove("hidden");
+      logoutButton.classList.add("hidden");
+
+      passwordInput.value = "";
+
+      hideStatus(
+        document.getElementById("loginStatus")
+      );
+    }
+
+    function slugify(text) {
+      return text
+        .toString()
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, "")
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "");
+    }
+
+    function generateSlug(force = false) {
+      const title =
+        document.getElementById("title").value;
+
+      const slugInput =
+        document.getElementById("slug");
+
+      if (
+        force ||
+        !slugInput.value.trim()
+      ) {
+        slugInput.value = slugify(title);
+      }
+    }
+
+    function updatePreview() {
+      const title =
+        document.getElementById("title").value.trim();
+
+      const excerpt =
+        document.getElementById("excerpt").value.trim();
+
+      const category =
+        document.getElementById("category").value;
+
+      const image =
+        document.getElementById("featuredImage").value.trim();
+
+      document.getElementById(
+        "previewTitle"
+      ).textContent =
+        title || "Your article title";
+
+      document.getElementById(
+        "previewExcerpt"
+      ).textContent =
+        excerpt ||
+        "Your article excerpt will appear here.";
+
+      document.getElementById(
+        "previewCategory"
+      ).textContent =
+        category;
+
+      const previewImage =
+        document.getElementById("previewImage");
+
+      if (image) {
+        previewImage.src = image;
+        previewImage.style.display = "block";
+      } else {
+        previewImage.removeAttribute("src");
+        previewImage.style.display = "none";
+      }
+    }
+
+    async function saveArticle(status) {
+      const title =
+        document.getElementById("title").value.trim();
+
+      const slug =
+        document.getElementById("slug").value.trim();
+
+      const excerpt =
+        document.getElementById("excerpt").value.trim();
+
+      const content =
+        document.getElementById("content").value.trim();
+
+      const category =
+        document.getElementById("category").value;
+
+      const featuredImage =
+        document.getElementById(
+          "featuredImage"
+        ).value.trim();
+
+      const seoTitle =
+        document.getElementById(
+          "seoTitle"
+        ).value.trim();
+
+      const metaDescription =
+        document.getElementById(
+          "metaDescription"
+        ).value.trim();
+
+      const statusBox =
+        document.getElementById("editorStatus");
+
+      if (!title) {
+        showStatus(
+          statusBox,
+          "Please enter an article title.",
+          "error"
+        );
+        return;
+      }
+
+      if (!content) {
+        showStatus(
+          statusBox,
+          "Please enter the article content.",
+          "error"
+        );
+        return;
+      }
+
+      if (!adminPassword) {
+        showStatus(
+          statusBox,
+          "Your publishing session has expired. Please log in again.",
+          "error"
+        );
+        return;
+      }
+
+      const payload = {
+        title,
+        slug,
+        excerpt,
+        content,
+        category,
+        featured_image: featuredImage,
+        seo_title: seoTitle,
+        meta_description: metaDescription,
+        status
+      };
+
+      try {
+        const response = await fetch(
+          API_BASE + "/articles",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type":
+                "application/json",
+              "X-Admin-Password":
+                adminPassword
+            },
+            body: JSON.stringify(payload)
+          }
+        );
+
+        const data =
+          await response.json();
+
+        if (!response.ok || !data.success) {
+          showStatus(
+            statusBox,
+            data.error ||
+              "The article could not be saved.",
+            "error"
+          );
+          return;
+        }
+
+        const action =
+          status === "published"
+            ? "published"
+            : "saved as a draft";
+
+        showStatus(
+          statusBox,
+          "Article " +
+            action +
+            " successfully.",
+          "success"
+        );
+
+        if (status === "published") {
+          clearEditor();
+        }
+
+      } catch (error) {
+        showStatus(
+          statusBox,
+          "A connection error occurred while saving the article.",
+          "error"
+        );
+      }
+    }
+
+    function clearEditor() {
+      document.getElementById("title").value = "";
+      document.getElementById("slug").value = "";
+      document.getElementById("excerpt").value = "";
+      document.getElementById("content").value = "";
+      document.getElementById("featuredImage").value = "";
+      document.getElementById("seoTitle").value = "";
+      document.getElementById("metaDescription").value = "";
+
+      document.getElementById(
+        "category"
+      ).value = "Guides";
+
+      updatePreview();
+    }
+
+    /*
+     * Restore the session if the page is reopened
+     * during the same browser session.
+     */
+
+    const savedPassword =
+      sessionStorage.getItem(
+        "figureng_admin_password"
+      );
+
+    if (savedPassword) {
+      adminPassword = savedPassword;
+
+      loginView.classList.add("hidden");
+      publisherView.classList.remove("hidden");
+      logoutButton.classList.remove("hidden");
+    }
+
+    passwordInput.addEventListener(
+      "keydown",
+      function(event) {
+        if (event.key === "Enter") {
+          login();
+        }
+      }
+    );
+
+    document
+      .getElementById("category")
+      .addEventListener(
+        "change",
+        updatePreview
+      );
+
+    updatePreview();
+  </script>
+
+</body>
+</html>
