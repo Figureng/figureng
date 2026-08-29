@@ -1,13 +1,9 @@
-
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>FigureNG Publisher</title>
-
   <meta name="robots" content="noindex, nofollow">
 
   <style>
@@ -442,7 +438,6 @@
       }
     }
   </style>
-
 </head>
 
 <body>
@@ -450,359 +445,354 @@
   <header class="topbar">
     <div class="topbar-inner">
 
-```
-  <a href="/" class="brand">
-    Figure<span>NG</span>
-  </a>
+      <a href="/" class="brand">
+        Figure<span>NG</span>
+      </a>
 
-  <div class="topbar-right">
-    <a href="/" class="view-site">
-      View site
-    </a>
+      <div class="topbar-right">
+        <a href="/" class="view-site">
+          View site
+        </a>
 
-    <button
-      type="button"
-      class="logout hidden"
-      id="logoutButton"
-      onclick="logout()"
-    >
-      Log out
-    </button>
-  </div>
+        <button
+          type="button"
+          class="logout hidden"
+          id="logoutButton"
+          onclick="logout()"
+        >
+          Log out
+        </button>
+      </div>
 
-</div>
-```
-
+    </div>
   </header>
 
   <main class="page">
 
-```
-<section id="loginView" class="panel auth-box">
-
-  <div class="panel-body">
-
-    <div class="eyebrow">
-      Private publisher
-    </div>
-
-    <h2>
-      FigureNG Publisher
-    </h2>
-
-    <p>
-      Sign in to create and manage FigureNG articles.
-    </p>
-
-    <div id="loginStatus" class="status"></div>
-
-    <div class="field">
-
-      <label for="password">
-        Admin password
-      </label>
-
-      <input
-        id="password"
-        type="password"
-        autocomplete="current-password"
-        placeholder="Enter your password"
-      >
-
-    </div>
-
-    <button
-      type="button"
-      class="action-button primary"
-      onclick="login()"
-    >
-      Continue
-    </button>
-
-  </div>
-
-</section>
-
-<section id="publisherView" class="hidden">
-
-  <div class="page-header">
-
-    <div class="eyebrow">
-      Publishing
-    </div>
-
-    <h1>
-      New article
-    </h1>
-
-    <p>
-      Write, prepare and publish a FigureNG guide.
-    </p>
-
-  </div>
-
-  <div id="editorStatus" class="status"></div>
-
-  <div class="editor-layout">
-
-    <section class="panel">
+    <section id="loginView" class="panel auth-box">
 
       <div class="panel-body">
 
+        <div class="eyebrow">
+          Private publisher
+        </div>
+
+        <h2>
+          FigureNG Publisher
+        </h2>
+
+        <p>
+          Sign in to create and manage FigureNG articles.
+        </p>
+
+        <div id="loginStatus" class="status"></div>
+
         <div class="field">
 
-          <label for="title">
-            Article title <span class="required">*</span>
+          <label for="password">
+            Admin password
           </label>
 
           <input
-            id="title"
-            class="title-input"
-            type="text"
-            maxlength="200"
-            placeholder="Enter the article title"
-            oninput="updatePreview(); generateSlug()"
+            id="password"
+            type="password"
+            autocomplete="current-password"
+            placeholder="Enter your password"
           >
 
         </div>
 
-        <div class="field">
-
-          <label for="slug">
-            URL slug
-          </label>
-
-          <div class="slug-row">
-
-            <input
-              id="slug"
-              type="text"
-              maxlength="200"
-              placeholder="article-url"
-            >
-
-            <button
-              type="button"
-              class="small-button"
-              onclick="generateSlug(true)"
-            >
-              Generate
-            </button>
-
-          </div>
-
-          <div class="help">
-            Example: /guides/how-to-calculate-paye
-          </div>
-
-        </div>
-
-        <div class="two-column">
-
-          <div class="field">
-
-            <label for="category">
-              Category
-            </label>
-
-            <select id="category">
-
-              <option value="Guides">
-                Guides
-              </option>
-
-              <option value="Finance">
-                Finance
-              </option>
-
-              <option value="Loans">
-                Loans
-              </option>
-
-              <option value="Salary">
-                Salary
-              </option>
-
-              <option value="Tax">
-                Tax
-              </option>
-
-              <option value="Tools">
-                Tools
-              </option>
-
-            </select>
-
-          </div>
-
-          <div class="field">
-
-            <label for="featuredImage">
-              Featured image URL
-            </label>
-
-            <input
-              id="featuredImage"
-              type="url"
-              placeholder="https://..."
-              oninput="updatePreview()"
-            >
-
-          </div>
-
-        </div>
-
-        <div class="field">
-
-          <label for="excerpt">
-            Article excerpt
-          </label>
-
-          <textarea
-            id="excerpt"
-            class="excerpt"
-            maxlength="500"
-            placeholder="A short introduction that explains what the reader will learn."
-            oninput="updatePreview()"
-          ></textarea>
-
-          <div class="help">
-            Keep this clear and useful. It may appear on article listings.
-          </div>
-
-        </div>
-
-        <div class="field">
-
-          <label for="content">
-            Article content <span class="required">*</span>
-          </label>
-
-          <textarea
-            id="content"
-            class="content"
-            placeholder="Write your article here..."
-          ></textarea>
-
-          <div class="help">
-            Plain text is supported in this first publisher version.
-          </div>
-
-        </div>
-
-        <div class="field">
-
-          <label for="seoTitle">
-            SEO title
-          </label>
-
-          <input
-            id="seoTitle"
-            type="text"
-            maxlength="200"
-            placeholder="Search-friendly title"
-          >
-
-        </div>
-
-        <div class="field">
-
-          <label for="metaDescription">
-            Meta description
-          </label>
-
-          <textarea
-            id="metaDescription"
-            maxlength="320"
-            rows="4"
-            placeholder="A concise description for search engines."
-          ></textarea>
-
-        </div>
+        <button
+          type="button"
+          class="action-button primary"
+          onclick="login()"
+        >
+          Continue
+        </button>
 
       </div>
 
     </section>
 
-    <aside class="panel side-panel">
+    <section id="publisherView" class="hidden">
 
-      <div class="panel-heading">
-        Publish
-      </div>
+      <div class="page-header">
 
-      <div class="side-section">
-
-        <div class="actions">
-
-          <button
-            type="button"
-            class="action-button secondary"
-            onclick="saveArticle('draft')"
-          >
-            Save draft
-          </button>
-
-          <button
-            type="button"
-            class="action-button primary"
-            onclick="saveArticle('published')"
-          >
-            Publish article
-          </button>
-
+        <div class="eyebrow">
+          Publishing
         </div>
+
+        <h1>
+          New article
+        </h1>
+
+        <p>
+          Write, prepare and publish a FigureNG guide.
+        </p>
 
       </div>
 
-      <div class="side-section">
+      <div id="editorStatus" class="status"></div>
 
-        <div class="side-title">
-          Article preview
-        </div>
+      <div class="editor-layout">
 
-        <div class="preview">
+        <section class="panel">
 
-          <img
-            id="previewImage"
-            class="preview-image"
-            alt=""
-          >
+          <div class="panel-body">
 
-          <div class="preview-copy">
+            <div class="field">
 
-            <div
-              id="previewCategory"
-              class="preview-category"
-            >
-              Guides
+              <label for="title">
+                Article title <span class="required">*</span>
+              </label>
+
+              <input
+                id="title"
+                class="title-input"
+                type="text"
+                maxlength="200"
+                placeholder="Enter the article title"
+                oninput="updatePreview(); generateSlug()"
+              >
+
             </div>
 
-            <div
-              id="previewTitle"
-              class="preview-title"
-            >
-              Your article title
+            <div class="field">
+
+              <label for="slug">
+                URL slug
+              </label>
+
+              <div class="slug-row">
+
+                <input
+                  id="slug"
+                  type="text"
+                  maxlength="200"
+                  placeholder="article-url"
+                >
+
+                <button
+                  type="button"
+                  class="small-button"
+                  onclick="generateSlug(true)"
+                >
+                  Generate
+                </button>
+
+              </div>
+
+              <div class="help">
+                Example: /guides/how-to-calculate-paye
+              </div>
+
             </div>
 
-            <div
-              id="previewExcerpt"
-              class="preview-excerpt"
-            >
-              Your article excerpt will appear here.
+            <div class="two-column">
+
+              <div class="field">
+
+                <label for="category">
+                  Category
+                </label>
+
+                <select id="category">
+
+                  <option value="Guides">
+                    Guides
+                  </option>
+
+                  <option value="Finance">
+                    Finance
+                  </option>
+
+                  <option value="Loans">
+                    Loans
+                  </option>
+
+                  <option value="Salary">
+                    Salary
+                  </option>
+
+                  <option value="Tax">
+                    Tax
+                  </option>
+
+                  <option value="Tools">
+                    Tools
+                  </option>
+
+                </select>
+
+              </div>
+
+              <div class="field">
+
+                <label for="featuredImage">
+                  Featured image URL
+                </label>
+
+                <input
+                  id="featuredImage"
+                  type="url"
+                  placeholder="https://..."
+                  oninput="updatePreview()"
+                >
+
+              </div>
+
+            </div>
+
+            <div class="field">
+
+              <label for="excerpt">
+                Article excerpt
+              </label>
+
+              <textarea
+                id="excerpt"
+                class="excerpt"
+                maxlength="500"
+                placeholder="A short introduction that explains what the reader will learn."
+                oninput="updatePreview()"
+              ></textarea>
+
+              <div class="help">
+                Keep this clear and useful. It may appear on article listings.
+              </div>
+
+            </div>
+
+            <div class="field">
+
+              <label for="content">
+                Article content <span class="required">*</span>
+              </label>
+
+              <textarea
+                id="content"
+                class="content"
+                placeholder="Write your article here..."
+              ></textarea>
+
+              <div class="help">
+                Plain text is supported in this first publisher version.
+              </div>
+
+            </div>
+
+            <div class="field">
+
+              <label for="seoTitle">
+                SEO title
+              </label>
+
+              <input
+                id="seoTitle"
+                type="text"
+                maxlength="200"
+                placeholder="Search-friendly title"
+              >
+
+            </div>
+
+            <div class="field">
+
+              <label for="metaDescription">
+                Meta description
+              </label>
+
+              <textarea
+                id="metaDescription"
+                maxlength="320"
+                rows="4"
+                placeholder="A concise description for search engines."
+              ></textarea>
+
             </div>
 
           </div>
 
-        </div>
+        </section>
+
+        <aside class="panel side-panel">
+
+          <div class="panel-heading">
+            Publish
+          </div>
+
+          <div class="side-section">
+
+            <div class="actions">
+
+              <button
+                type="button"
+                class="action-button secondary"
+                onclick="saveArticle('draft')"
+              >
+                Save draft
+              </button>
+
+              <button
+                type="button"
+                class="action-button primary"
+                onclick="saveArticle('published')"
+              >
+                Publish article
+              </button>
+
+            </div>
+
+          </div>
+
+          <div class="side-section">
+
+            <div class="side-title">
+              Article preview
+            </div>
+
+            <div class="preview">
+
+              <img
+                id="previewImage"
+                class="preview-image"
+                alt=""
+              >
+
+              <div class="preview-copy">
+
+                <div
+                  id="previewCategory"
+                  class="preview-category"
+                >
+                  Guides
+                </div>
+
+                <div
+                  id="previewTitle"
+                  class="preview-title"
+                >
+                  Your article title
+                </div>
+
+                <div
+                  id="previewExcerpt"
+                  class="preview-excerpt"
+                >
+                  Your article excerpt will appear here.
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </aside>
 
       </div>
 
-    </aside>
-
-  </div>
-
-</section>
-```
+    </section>
 
   </main>
 
