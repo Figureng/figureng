@@ -8,16 +8,20 @@
 
   <meta
     name="description"
-    content="FigureNG provides free Nigerian calculators and practical digital tools for money, education, business, energy and everyday decisions."
+    content="Free Nigerian calculators and practical tools for salary, money, education, energy, business and everyday decisions."
   >
 
   <meta name="robots" content="index, follow">
 
   <meta name="theme-color" content="#0f172a">
 
-  <link rel="canonical" href="https://figureng.figureng247.workers.dev/">
+  <link
+    rel="canonical"
+    href="https://figureng.figureng247.workers.dev/"
+  >
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -76,7 +80,6 @@
     .logo {
       font-size: 24px;
       font-weight: 800;
-      letter-spacing: -0.5px;
       color: var(--navy);
     }
 
@@ -87,7 +90,7 @@
     nav {
       display: flex;
       align-items: center;
-      gap: 22px;
+      gap: 20px;
     }
 
     nav a {
@@ -107,14 +110,13 @@
     }
 
     .hero-content {
-      max-width: 760px;
+      max-width: 780px;
     }
 
     .badge {
       display: inline-block;
       padding: 7px 12px;
       margin-bottom: 20px;
-      border: 1px solid rgba(134, 239, 172, 0.3);
       border-radius: 999px;
       background: rgba(22, 163, 74, 0.18);
       color: #86efac;
@@ -134,7 +136,7 @@
     }
 
     .hero p {
-      max-width: 650px;
+      max-width: 680px;
       color: #cbd5e1;
       font-size: 18px;
       margin-bottom: 30px;
@@ -190,6 +192,59 @@
 
     .section-heading p {
       color: var(--muted);
+    }
+
+    .featured {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .featured-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .featured-label {
+      display: inline-block;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      margin-bottom: 8px;
+    }
+
+    .featured-card h3 {
+      color: var(--navy);
+      font-size: 25px;
+      margin-bottom: 8px;
+    }
+
+    .featured-card p {
+      color: var(--muted);
+      max-width: 650px;
+      font-size: 14px;
+    }
+
+    .tool-button {
+      flex-shrink: 0;
+      background: var(--green);
+      color: white;
+      padding: 13px 18px;
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .tool-button:hover {
+      background: var(--green-dark);
     }
 
     .categories {
@@ -271,6 +326,11 @@
       border-radius: 999px;
       font-size: 11px;
       font-weight: 700;
+    }
+
+    .tool-status.live {
+      background: var(--green-light);
+      color: #166534;
     }
 
     .about {
@@ -391,6 +451,7 @@
     }
 
     @media (max-width: 800px) {
+
       .categories {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -403,9 +464,16 @@
       .footer-grid {
         grid-template-columns: 1fr 1fr;
       }
+
+      .featured-card {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
     }
 
     @media (max-width: 560px) {
+
       .nav {
         min-height: 62px;
       }
@@ -449,31 +517,45 @@
       .tool {
         align-items: flex-start;
       }
+
     }
+
   </style>
 </head>
 
 <body>
 
 <header>
+
   <div class="container nav">
-    <a href="/" class="logo">Figure<span>NG</span></a>
+
+    <a href="/" class="logo">
+      Figure<span>NG</span>
+    </a>
 
     <nav>
       <a href="#tools">Tools</a>
       <a href="#categories">Categories</a>
       <a href="#about">About</a>
     </nav>
+
   </div>
+
 </header>
+
 
 <main>
 
+
 <section class="hero">
+
   <div class="container">
+
     <div class="hero-content">
 
-      <div class="badge">🇳🇬 Built for everyday Nigeria</div>
+      <div class="badge">
+        🇳🇬 Built for everyday Nigeria
+      </div>
 
       <h1>
         Calculate.<br>
@@ -487,199 +569,448 @@
       </p>
 
       <div class="hero-buttons">
-        <a href="#tools" class="button button-primary">
+
+        <a
+          href="/salary-calculator.html"
+          class="button button-primary"
+        >
+          Calculate Your Salary
+        </a>
+
+        <a
+          href="#tools"
+          class="button button-secondary"
+        >
           Explore Tools
         </a>
 
-        <a href="#categories" class="button button-secondary">
-          Browse Categories
-        </a>
       </div>
 
     </div>
+
   </div>
+
+</section>
+
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <h2>
+        Featured calculator
+      </h2>
+
+      <p>
+        Start with our first live tool.
+      </p>
+
+    </div>
+
+
+    <div class="featured">
+
+      <div class="featured-card">
+
+        <div>
+
+          <span class="featured-label">
+            Live now
+          </span>
+
+          <h3>
+            🇳🇬 Nigeria Salary Calculator 2026
+          </h3>
+
+          <p>
+            Estimate your gross salary, PAYE tax, rent relief,
+            deductions and monthly take-home pay using the
+            current 2026 Nigerian tax framework.
+          </p>
+
+        </div>
+
+        <a
+          href="/salary-calculator.html"
+          class="tool-button"
+        >
+          Use Calculator →
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
 
 
 <section class="section" id="categories">
+
   <div class="container">
 
     <div class="section-heading">
-      <h2>Tools for real-life problems</h2>
+
+      <h2>
+        Tools for real-life problems
+      </h2>
 
       <p>
         Find practical tools for money, education, energy,
         business and everyday decisions.
       </p>
+
     </div>
+
 
     <div class="categories">
 
-      <div class="category">
-        <div class="category-icon">💰</div>
-        <h3>Money</h3>
-        <p>
-          Salary, tax, budget, savings, profit and other money tools.
-        </p>
-        <a href="#tools" class="category-link">Explore Money →</a>
-      </div>
 
       <div class="category">
+
+        <div class="category-icon">💰</div>
+
+        <h3>Money</h3>
+
+        <p>
+          Salary, tax, budget, savings, profit and other
+          money tools.
+        </p>
+
+        <a href="#tools" class="category-link">
+          Explore Money →
+        </a>
+
+      </div>
+
+
+      <div class="category">
+
         <div class="category-icon">🎓</div>
+
         <h3>Education</h3>
+
         <p>
           JAMB, CGPA, GPA, WAEC and other student tools.
         </p>
-        <a href="#tools" class="category-link">Explore Education →</a>
+
+        <a href="#tools" class="category-link">
+          Explore Education →
+        </a>
+
       </div>
 
+
       <div class="category">
+
         <div class="category-icon">⚡</div>
+
         <h3>Energy</h3>
+
         <p>
           Electricity, fuel, generator, solar and battery tools.
         </p>
-        <a href="#tools" class="category-link">Explore Energy →</a>
+
+        <a href="#tools" class="category-link">
+          Explore Energy →
+        </a>
+
       </div>
 
+
       <div class="category">
+
         <div class="category-icon">🏪</div>
+
         <h3>Business</h3>
+
         <p>
           Profit, markup, ROI, break-even and business calculators.
         </p>
-        <a href="#tools" class="category-link">Explore Business →</a>
+
+        <a href="#tools" class="category-link">
+          Explore Business →
+        </a>
+
       </div>
 
+
       <div class="category">
+
         <div class="category-icon">🇳🇬</div>
+
         <h3>Everyday</h3>
+
         <p>
           Fuel, NYSC, dates, age and other everyday tools.
         </p>
-        <a href="#tools" class="category-link">Explore Everyday →</a>
+
+        <a href="#tools" class="category-link">
+          Explore Everyday →
+        </a>
+
       </div>
 
+
       <div class="category">
+
         <div class="category-icon">🧱</div>
+
         <h3>Construction</h3>
+
         <p>
           Useful calculators for building and renovation projects.
         </p>
-        <a href="#tools" class="category-link">Coming Soon →</a>
+
+        <a href="#tools" class="category-link">
+          Coming Soon →
+        </a>
+
       </div>
 
+
     </div>
+
   </div>
+
 </section>
 
 
 <section class="section" id="tools">
+
   <div class="container">
 
     <div class="section-heading">
-      <h2>Our first tools</h2>
+
+      <h2>
+        FigureNG tools
+      </h2>
 
       <p>
-        We're building a collection of simple tools that solve
-        specific Nigerian problems.
+        We're building practical tools that solve specific
+        Nigerian problems.
       </p>
+
     </div>
+
 
     <div class="tools">
 
-      <div class="tool">
-        <div>
-          <h3>🇳🇬 Nigeria Salary Calculator</h3>
-          <p>Estimate your take-home salary.</p>
-        </div>
-        <span class="tool-status">Coming Soon</span>
-      </div>
 
       <div class="tool">
+
         <div>
-          <h3>⚡ Electricity Bill Calculator</h3>
-          <p>Estimate appliance electricity costs.</p>
+
+          <h3>
+            🇳🇬 Nigeria Salary Calculator
+          </h3>
+
+          <p>
+            Estimate your 2026 take-home salary.
+          </p>
+
         </div>
-        <span class="tool-status">Coming Soon</span>
+
+        <a
+          href="/salary-calculator.html"
+          class="tool-status live"
+        >
+          Use Now
+        </a>
+
       </div>
 
-      <div class="tool">
-        <div>
-          <h3>🎓 JAMB Aggregate Calculator</h3>
-          <p>Calculate your admission aggregate.</p>
-        </div>
-        <span class="tool-status">Coming Soon</span>
-      </div>
 
       <div class="tool">
+
         <div>
-          <h3>🎓 CGPA Calculator</h3>
-          <p>Calculate GPA and cumulative CGPA.</p>
+
+          <h3>
+            ⚡ Electricity Bill Calculator
+          </h3>
+
+          <p>
+            Estimate appliance electricity costs.
+          </p>
+
         </div>
-        <span class="tool-status">Coming Soon</span>
+
+        <span class="tool-status">
+          Coming Soon
+        </span>
+
       </div>
 
-      <div class="tool">
-        <div>
-          <h3>📚 WAEC Credit Checker</h3>
-          <p>Check your WAEC subject credits.</p>
-        </div>
-        <span class="tool-status">Coming Soon</span>
-      </div>
 
       <div class="tool">
+
         <div>
-          <h3>⛽ Fuel Cost Calculator</h3>
-          <p>Estimate the cost of a trip.</p>
+
+          <h3>
+            🎓 JAMB Aggregate Calculator
+          </h3>
+
+          <p>
+            Calculate your admission aggregate.
+          </p>
+
         </div>
-        <span class="tool-status">Coming Soon</span>
+
+        <span class="tool-status">
+          Coming Soon
+        </span>
+
       </div>
 
-      <div class="tool">
-        <div>
-          <h3>💵 Profit Margin Calculator</h3>
-          <p>Calculate profit and profit margin.</p>
-        </div>
-        <span class="tool-status">Coming Soon</span>
-      </div>
 
       <div class="tool">
+
         <div>
-          <h3>🏪 Markup Calculator</h3>
-          <p>Calculate selling price and markup.</p>
+
+          <h3>
+            🎓 CGPA Calculator
+          </h3>
+
+          <p>
+            Calculate GPA and cumulative CGPA.
+          </p>
+
         </div>
-        <span class="tool-status">Coming Soon</span>
+
+        <span class="tool-status">
+          Coming Soon
+        </span>
+
       </div>
 
-      <div class="tool">
-        <div>
-          <h3>🇳🇬 NYSC Allowance Calculator</h3>
-          <p>Estimate NYSC income and expenses.</p>
-        </div>
-        <span class="tool-status">Coming Soon</span>
-      </div>
 
       <div class="tool">
+
         <div>
-          <h3>📊 Monthly Budget Calculator</h3>
-          <p>Plan income, expenses and savings.</p>
+
+          <h3>
+            ⛽ Fuel Cost Calculator
+          </h3>
+
+          <p>
+            Estimate the cost of a trip.
+          </p>
+
         </div>
-        <span class="tool-status">Coming Soon</span>
+
+        <span class="tool-status">
+          Coming Soon
+        </span>
+
       </div>
+
+
+      <div class="tool">
+
+        <div>
+
+          <h3>
+            💵 Profit Margin Calculator
+          </h3>
+
+          <p>
+            Calculate profit and profit margin.
+          </p>
+
+        </div>
+
+        <span class="tool-status">
+          Coming Soon
+        </span>
+
+      </div>
+
+
+      <div class="tool">
+
+        <div>
+
+          <h3>
+            🏪 Markup Calculator
+          </h3>
+
+          <p>
+            Calculate selling price and markup.
+          </p>
+
+        </div>
+
+        <span class="tool-status">
+          Coming Soon
+        </span>
+
+      </div>
+
+
+      <div class="tool">
+
+        <div>
+
+          <h3>
+            🇳🇬 NYSC Allowance Calculator
+          </h3>
+
+          <p>
+            Estimate NYSC income and expenses.
+          </p>
+
+        </div>
+
+        <span class="tool-status">
+          Coming Soon
+        </span>
+
+      </div>
+
+
+      <div class="tool">
+
+        <div>
+
+          <h3>
+            📊 Monthly Budget Calculator
+          </h3>
+
+          <p>
+            Plan income, expenses and savings.
+          </p>
+
+        </div>
+
+        <span class="tool-status">
+          Coming Soon
+        </span>
+
+      </div>
+
 
     </div>
+
   </div>
+
 </section>
 
 
 <section class="section about" id="about">
+
   <div class="container">
 
     <div class="about-grid">
 
+
       <div>
-        <h2>Why FigureNG?</h2>
+
+        <h2>
+          Why FigureNG?
+        </h2>
 
         <p>
           Everyday questions often need simple answers.
@@ -689,71 +1020,131 @@
 
         <p>
           Our tools are designed with Nigerian users in mind,
-          using familiar currencies, systems and real-life situations.
+          using familiar currencies, systems and real-life
+          situations.
         </p>
+
       </div>
+
 
       <div class="feature-list">
 
-        <div class="feature">
-          <div class="feature-icon">✓</div>
-          <div>
-            <strong>Free to use</strong>
-            <span>No payment required to use our core tools.</span>
-          </div>
-        </div>
 
         <div class="feature">
+
           <div class="feature-icon">✓</div>
+
           <div>
-            <strong>Built for mobile</strong>
-            <span>Designed to work comfortably on phones.</span>
+
+            <strong>
+              Free to use
+            </strong>
+
+            <span>
+              No payment required to use our core tools.
+            </span>
+
           </div>
+
         </div>
 
-        <div class="feature">
-          <div class="feature-icon">✓</div>
-          <div>
-            <strong>Nigerian-focused</strong>
-            <span>Tools designed around Nigerian needs.</span>
-          </div>
-        </div>
 
         <div class="feature">
+
           <div class="feature-icon">✓</div>
+
           <div>
-            <strong>Simple results</strong>
-            <span>Clear answers without unnecessary complexity.</span>
+
+            <strong>
+              Built for mobile
+            </strong>
+
+            <span>
+              Designed to work comfortably on phones.
+            </span>
+
           </div>
+
         </div>
+
+
+        <div class="feature">
+
+          <div class="feature-icon">✓</div>
+
+          <div>
+
+            <strong>
+              Nigerian-focused
+            </strong>
+
+            <span>
+              Tools designed around Nigerian needs.
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="feature">
+
+          <div class="feature-icon">✓</div>
+
+          <div>
+
+            <strong>
+              Simple results
+            </strong>
+
+            <span>
+              Clear answers without unnecessary complexity.
+            </span>
+
+          </div>
+
+        </div>
+
 
       </div>
 
     </div>
+
   </div>
+
 </section>
 
 
 <section class="cta">
+
   <div class="container">
-    <h2>Need to figure something out?</h2>
+
+    <h2>
+      Need to figure something out?
+    </h2>
 
     <p>
       We're building practical tools to help you calculate,
       check and plan everyday decisions.
     </p>
+
   </div>
+
 </section>
+
 
 </main>
 
 
 <footer>
+
   <div class="container">
 
     <div class="footer-grid">
 
+
       <div>
+
         <div class="footer-logo">
           Figure<span>NG</span>
         </div>
@@ -761,37 +1152,81 @@
         <p>
           Free digital tools designed around everyday Nigerian needs.
         </p>
+
       </div>
+
 
       <div>
-        <h4>Explore</h4>
+
+        <h4>
+          Explore
+        </h4>
 
         <div class="footer-links">
-          <a href="#tools">Tools</a>
-          <a href="#categories">Categories</a>
-          <a href="#about">About</a>
+
+          <a href="/salary-calculator.html">
+            Salary Calculator
+          </a>
+
+          <a href="#tools">
+            All Tools
+          </a>
+
+          <a href="#categories">
+            Categories
+          </a>
+
+          <a href="#about">
+            About
+          </a>
+
         </div>
+
       </div>
+
 
       <div>
-        <h4>Coming Soon</h4>
+
+        <h4>
+          Coming Soon
+        </h4>
 
         <div class="footer-links">
-          <span>Money</span>
-          <span>Education</span>
-          <span>Energy</span>
-          <span>Business</span>
+
+          <span>
+            Education
+          </span>
+
+          <span>
+            Energy
+          </span>
+
+          <span>
+            Business
+          </span>
+
+          <span>
+            Construction
+          </span>
+
         </div>
+
       </div>
+
 
     </div>
 
+
     <div class="copyright">
+
       © 2026 FigureNG. All rights reserved.
+
     </div>
 
   </div>
+
 </footer>
+
 
 </body>
 </html>
