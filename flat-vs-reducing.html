@@ -1,1 +1,1764 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Flat Rate vs Reducing Balance Loan in Nigeria 2026 | FigureNG</title>
+
+<meta name="description"
+content="Understand the difference between flat-rate and reducing-balance loans in Nigeria. Compare interest, monthly repayment and total repayment with the free FigureNG calculator.">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical"
+href="https://figureng.figureng247.workers.dev/flat-vs-reducing.html">
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+html{
+overflow-x:hidden;
+}
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#f8fafc;
+color:#1e293b;
+line-height:1.65;
+overflow-x:hidden;
+}
+
+a{
+color:inherit;
+text-decoration:none;
+}
+
+.container{
+width:92%;
+max-width:1050px;
+margin:0 auto;
+}
+
+/* HEADER */
+
+header{
+background:#fff;
+border-bottom:1px solid #e2e8f0;
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.nav{
+min-height:64px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+}
+
+.logo{
+font-size:24px;
+font-weight:900;
+color:#0f172a;
+}
+
+.logo span{
+color:#16a34a;
+}
+
+.nav-links{
+display:flex;
+gap:18px;
+font-size:13px;
+font-weight:700;
+}
+
+.nav-links a{
+color:#64748b;
+}
+
+.nav-links a:hover{
+color:#16a34a;
+}
+
+/* HERO */
+
+.hero{
+background:#0f172a;
+color:#fff;
+padding:55px 0;
+}
+
+.hero-content{
+max-width:800px;
+}
+
+.badge{
+display:inline-block;
+padding:7px 11px;
+border-radius:30px;
+background:rgba(22,163,74,.15);
+border:1px solid rgba(134,239,172,.25);
+color:#86efac;
+font-size:11px;
+font-weight:800;
+margin-bottom:18px;
+}
+
+.hero h1{
+margin:0 0 18px;
+font-size:clamp(35px,6vw,52px);
+line-height:1.08;
+letter-spacing:-1px;
+}
+
+.hero h1 span{
+color:#4ade80;
+}
+
+.hero p{
+max-width:720px;
+margin:0;
+color:#cbd5e1;
+font-size:17px;
+}
+
+/* CONTENT */
+
+main{
+padding:50px 0 70px;
+}
+
+.section{
+margin-bottom:48px;
+}
+
+.section h2{
+margin:0 0 14px;
+font-size:30px;
+line-height:1.2;
+color:#0f172a;
+}
+
+.section h3{
+margin:0 0 8px;
+color:#0f172a;
+}
+
+.section p{
+color:#475569;
+}
+
+.card{
+background:#fff;
+border:1px solid #e2e8f0;
+border-radius:16px;
+padding:25px;
+}
+
+.highlight{
+background:#f0fdf4;
+border:1px solid #bbf7d0;
+border-radius:14px;
+padding:20px;
+}
+
+.highlight strong{
+color:#15803d;
+}
+
+/* COMPARISON */
+
+.comparison{
+width:100%;
+overflow-x:auto;
+border:1px solid #e2e8f0;
+border-radius:14px;
+background:#fff;
+}
+
+table{
+width:100%;
+min-width:620px;
+border-collapse:collapse;
+}
+
+th,
+td{
+padding:14px;
+border-bottom:1px solid #e2e8f0;
+text-align:left;
+font-size:14px;
+}
+
+th{
+background:#f8fafc;
+color:#0f172a;
+font-weight:900;
+}
+
+td{
+color:#475569;
+}
+
+tr:last-child td{
+border-bottom:0;
+}
+
+/* EXAMPLE */
+
+.example{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:20px;
+}
+
+.example-card{
+background:#fff;
+border:1px solid #e2e8f0;
+border-radius:14px;
+padding:22px;
+}
+
+.example-card h3{
+font-size:19px;
+}
+
+.example-number{
+font-size:27px;
+font-weight:900;
+color:#15803d;
+margin:12px 0;
+}
+
+/* CALCULATOR */
+
+.tool{
+background:#0f172a;
+border-radius:18px;
+padding:25px;
+color:#fff;
+}
+
+.tool h2{
+color:#fff;
+margin-top:0;
+}
+
+.tool-description{
+color:#cbd5e1;
+font-size:14px;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
+margin-top:20px;
+}
+
+.field label{
+display:block;
+margin-bottom:6px;
+font-size:12px;
+font-weight:800;
+color:#e2e8f0;
+}
+
+.input-wrap{
+position:relative;
+}
+
+.currency{
+position:absolute;
+left:12px;
+top:50%;
+transform:translateY(-50%);
+color:#64748b;
+font-weight:800;
+}
+
+.percent{
+position:absolute;
+right:12px;
+top:50%;
+transform:translateY(-50%);
+color:#64748b;
+font-weight:800;
+}
+
+input,
+select{
+width:100%;
+height:46px;
+border:1px solid #cbd5e1;
+border-radius:8px;
+padding:0 12px;
+font-size:14px;
+background:#fff;
+color:#0f172a;
+outline:none;
+}
+
+input.currency-input{
+padding-left:30px;
+}
+
+input.percent-input{
+padding-right:30px;
+}
+
+input:focus,
+select:focus{
+border-color:#4ade80;
+}
+
+.tool button{
+width:100%;
+height:49px;
+margin-top:18px;
+border:0;
+border-radius:9px;
+background:#16a34a;
+color:#fff;
+font-weight:900;
+font-size:15px;
+cursor:pointer;
+}
+
+.tool button:hover{
+background:#15803d;
+}
+
+.tool-result{
+display:none;
+margin-top:22px;
+}
+
+.tool-result.show{
+display:block;
+}
+
+.result-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.result{
+background:#fff;
+border-radius:10px;
+padding:14px;
+color:#0f172a;
+}
+
+.result span{
+display:block;
+font-size:10px;
+color:#64748b;
+}
+
+.result strong{
+display:block;
+margin-top:4px;
+font-size:18px;
+overflow-wrap:anywhere;
+}
+
+.result.full{
+grid-column:1 / -1;
+background:#f0fdf4;
+}
+
+.result.full strong{
+color:#15803d;
+font-size:25px;
+}
+
+.message{
+margin-top:14px;
+padding:14px;
+border-radius:10px;
+background:#ecfdf5;
+color:#065f46;
+font-size:13px;
+}
+
+/* FAQ */
+
+.faq{
+display:grid;
+gap:12px;
+}
+
+.faq-item{
+background:#fff;
+border:1px solid #e2e8f0;
+border-radius:12px;
+padding:18px;
+}
+
+.faq-item h3{
+font-size:16px;
+margin:0 0 6px;
+}
+
+.faq-item p{
+font-size:14px;
+margin:0;
+color:#64748b;
+}
+
+/* CTA */
+
+.cta{
+background:#f0fdf4;
+border:1px solid #bbf7d0;
+border-radius:16px;
+padding:25px;
+}
+
+.cta h2{
+margin-top:0;
+}
+
+.cta-button{
+display:inline-block;
+margin-top:10px;
+padding:12px 17px;
+border-radius:9px;
+background:#16a34a;
+color:#fff;
+font-weight:900;
+}
+
+.cta-button:hover{
+background:#15803d;
+}
+
+/* FOOTER */
+
+footer{
+background:#0f172a;
+color:#cbd5e1;
+padding:38px 0;
+}
+
+.footer-top{
+display:flex;
+justify-content:space-between;
+gap:30px;
+}
+
+.footer-brand{
+max-width:430px;
+}
+
+.footer-brand .logo{
+display:inline-block;
+margin-bottom:8px;
+color:#fff;
+}
+
+.footer-brand p{
+margin:0;
+font-size:13px;
+color:#94a3b8;
+}
+
+.footer-links{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+font-size:13px;
+}
+
+.copyright{
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #334155;
+font-size:12px;
+color:#94a3b8;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.container{
+width:94%;
+}
+
+.nav{
+min-height:60px;
+}
+
+.logo{
+font-size:22px;
+}
+
+.nav-links{
+gap:10px;
+font-size:11px;
+}
+
+.nav-links a:nth-child(n+3){
+display:none;
+}
+
+.hero{
+padding:40px 0;
+}
+
+.hero h1{
+font-size:38px;
+}
+
+.hero p{
+font-size:15px;
+}
+
+main{
+padding-top:38px;
+}
+
+.section h2{
+font-size:27px;
+}
+
+.example{
+grid-template-columns:1fr;
+}
+
+.form-grid{
+grid-template-columns:1fr;
+}
+
+.footer-top{
+flex-direction:column;
+}
+
+}
+
+@media(max-width:360px){
+
+.hero h1{
+font-size:33px;
+}
+
+.result-grid{
+grid-template-columns:1fr;
+}
+
+.result.full{
+grid-column:auto;
+}
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="container nav">
+
+<a href="/" class="logo">
+Figure<span>NG</span>
+</a>
+
+<nav class="nav-links">
+
+<a href="/">
+Salary Calculator
+</a>
+
+<a href="/loan-calculator.html">
+Loan Calculator
+</a>
+
+<a href="/about.html">
+About
+</a>
+
+<a href="/contact.html">
+Contact
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<section class="hero">
+
+<div class="container hero-content">
+
+<span class="badge">
+NIGERIA LOAN GUIDE 2026
+</span>
+
+<h1>
+Flat Rate vs <span>Reducing Balance</span>
+</h1>
+
+<p>
+Learn how the two common loan interest methods work,
+understand the difference in total cost, and compare them
+using the free FigureNG calculator.
+</p>
+
+</div>
+
+</section>
+
+
+<main>
+
+<div class="container">
+
+
+<section class="section">
+
+<h2>
+What is a flat-rate loan?
+</h2>
+
+<div class="card">
+
+<p>
+With a flat-rate loan, interest is generally calculated
+using the original principal for the agreed loan period.
+The interest does not reduce simply because you have paid
+down part of the principal.
+</p>
+
+<p>
+For example, suppose you borrow ₦1,000,000 at a flat rate of
+20% per year for six months. The estimated interest would be
+₦100,000 because 20% is applied to ₦1,000,000 for half a
+year.
+</p>
+
+<div class="highlight">
+
+<strong>
+Important:
+</strong>
+
+A flat-rate percentage can look relatively low because the
+calculation is based on the original loan amount. The actual
+cost should therefore be considered together with the
+repayment schedule and any fees.
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>
+What is reducing-balance interest?
+</h2>
+
+<div class="card">
+
+<p>
+With reducing-balance interest, interest is calculated using
+the outstanding principal balance.
+</p>
+
+<p>
+As you make principal repayments, the outstanding balance
+generally falls. Future interest calculations therefore use
+a smaller balance.
+</p>
+
+<p>
+For an amortizing loan, this usually results in less total
+interest than applying the same nominal rate as a flat rate
+over the same period.
+</p>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>
+Flat rate vs reducing balance comparison
+</h2>
+
+<div class="comparison">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Feature
+</th>
+
+<th>
+Flat Rate
+</th>
+
+<th>
+Reducing Balance
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>
+Interest base
+</td>
+
+<td>
+Generally the original principal
+</td>
+
+<td>
+Outstanding principal
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+Interest as principal falls
+</td>
+
+<td>
+Does not normally fall because of principal repayment
+</td>
+
+<td>
+Generally falls as the balance falls
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+Monthly payment
+</td>
+
+<td>
+Often equal across the term
+</td>
+
+<td>
+Often equal for amortizing loans, although the principal
+and interest portions change
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+Total interest at same stated rate
+</td>
+
+<td>
+Usually higher
+</td>
+
+<td>
+Usually lower
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+Best way to compare
+</td>
+
+<td>
+Look at total repayment and fees
+</td>
+
+<td>
+Look at total repayment, interest and fees
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>
+Example: ₦1 million loan for six months
+</h2>
+
+<p>
+Consider a hypothetical ₦1,000,000 loan at 20% per year for
+six months, before adding any fees.
+</p>
+
+
+<div class="example">
+
+<div class="example-card">
+
+<h3>
+Flat Rate
+</h3>
+
+<div class="example-number">
+₦100,000
+</div>
+
+<p>
+Estimated interest over six months.
+</p>
+
+<p>
+Estimated total repayment:
+<strong>₦1,100,000</strong>
+</p>
+
+</div>
+
+
+<div class="example-card">
+
+<h3>
+Reducing Balance
+</h3>
+
+<div class="example-number">
+₦59,137
+</div>
+
+<p>
+Estimated interest using monthly amortization.
+</p>
+
+<p>
+Estimated total repayment:
+<strong>₦1,059,137</strong>
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="tool">
+
+<h2>
+Compare a Loan
+</h2>
+
+<p class="tool-description">
+Enter your loan details to compare an estimated flat-rate
+calculation with a reducing-balance calculation.
+</p>
+
+
+<div class="form-grid">
+
+
+<div class="field">
+
+<label for="amount">
+Loan Amount
+</label>
+
+<div class="input-wrap">
+
+<span class="currency">
+₦
+</span>
+
+<input
+id="amount"
+class="currency-input"
+type="number"
+inputmode="numeric"
+min="1"
+value="1000000"
+>
+
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label for="rate">
+Annual Interest Rate
+</label>
+
+<div class="input-wrap">
+
+<input
+id="rate"
+class="percent-input"
+type="number"
+inputmode="decimal"
+min="0"
+step="0.01"
+value="20"
+>
+
+<span class="percent">
+%
+</span>
+
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label for="months">
+Loan Duration
+</label>
+
+<select id="months">
+
+<option value="1">
+1 month
+</option>
+
+<option value="3">
+3 months
+</option>
+
+<option value="6" selected>
+6 months
+</option>
+
+<option value="9">
+9 months
+</option>
+
+<option value="12">
+12 months
+</option>
+
+<option value="18">
+18 months
+</option>
+
+<option value="24">
+24 months
+</option>
+
+<option value="36">
+36 months
+</option>
+
+<option value="48">
+48 months
+</option>
+
+<option value="60">
+60 months
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label for="fees">
+Additional Fees
+</label>
+
+<div class="input-wrap">
+
+<span class="currency">
+₦
+</span>
+
+<input
+id="fees"
+class="currency-input"
+type="number"
+inputmode="numeric"
+min="0"
+value="0"
+>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<button
+type="button"
+onclick="compareLoans()"
+>
+Compare Loan Methods
+</button>
+
+
+<div class="tool-result" id="toolResult">
+
+
+<div class="result-grid">
+
+
+<div class="result">
+
+<span>
+Flat-rate interest
+</span>
+
+<strong id="flatInterest">
+₦0
+</strong>
+
+</div>
+
+
+<div class="result">
+
+<span>
+Reducing-balance interest
+</span>
+
+<strong id="reducingInterest">
+₦0
+</strong>
+
+</div>
+
+
+<div class="result">
+
+<span>
+Flat-rate repayment
+</span>
+
+<strong id="flatTotal">
+₦0
+</strong>
+
+</div>
+
+
+<div class="result">
+
+<span>
+Reducing-balance repayment
+</span>
+
+<strong id="reducingTotal">
+₦0
+</strong>
+
+</div>
+
+
+<div class="result full">
+
+<span>
+Estimated difference in interest
+</span>
+
+<strong id="difference">
+₦0
+</strong>
+
+</div>
+
+
+</div>
+
+
+<div class="message" id="comparisonMessage">
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>
+Why the interest rate alone is not enough
+</h2>
+
+<div class="card">
+
+<p>
+Two lenders can advertise the same percentage but produce
+different repayment amounts if they use different interest
+methods or charge different fees.
+</p>
+
+<p>
+When comparing loans, check the interest calculation method,
+loan duration, processing fees, insurance, management fees,
+late-payment charges and the total amount you will repay.
+</p>
+
+<p>
+The amount you actually receive is also important if fees are
+deducted before the loan is disbursed.
+</p>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>
+Frequently asked questions
+</h2>
+
+
+<div class="faq">
+
+
+<div class="faq-item">
+
+<h3>
+Which is cheaper, flat rate or reducing balance?
+</h3>
+
+<p>
+At the same stated interest rate and loan term, a typical
+reducing-balance calculation produces less interest than a
+flat-rate calculation because the interest base falls as
+principal is repaid.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+Is a 20% flat rate the same as 20% reducing balance?
+</h3>
+
+<p>
+No. They use different interest bases. A 20% flat rate is
+generally calculated using the original principal, while a
+reducing-balance calculation uses the outstanding balance.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+Why is my lender's result different from FigureNG?
+</h3>
+
+<p>
+Lenders may use different formulas, payment frequencies,
+rounding rules, fees, insurance charges or other contractual
+terms. FigureNG provides estimates and should not be treated
+as an official lender quotation.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+Does a lower monthly payment always mean a cheaper loan?
+</h3>
+
+<p>
+No. A longer loan term can reduce the monthly payment while
+increasing the total interest or total repayment. Compare the
+total cost as well as the monthly payment.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+Does FigureNG provide loans?
+</h3>
+
+<p>
+No. FigureNG is an independent calculator and information
+website. It does not approve, arrange or provide loans.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="cta">
+
+<h2>
+Want a full loan calculation?
+</h2>
+
+<p>
+Use the FigureNG Loan Calculator to include processing fees,
+other charges, amount received, total interest and a complete
+repayment schedule.
+</p>
+
+<a
+class="cta-button"
+href="/loan-calculator.html"
+>
+Open Loan Calculator →
+</a>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="card">
+
+<h3>
+Disclaimer
+</h3>
+
+<p>
+The information and calculations on this page are provided
+for general educational purposes. They are estimates and may
+not match the exact calculations used by a particular lender.
+Always review the lender's official offer, fees, terms and
+repayment schedule before accepting a loan.
+</p>
+
+</div>
+
+</section>
+
+
+</div>
+
+</main>
+
+
+<footer>
+
+<div class="container">
+
+<div class="footer-top">
+
+<div class="footer-brand">
+
+<a href="/" class="logo">
+Figure<span>NG</span>
+</a>
+
+<p>
+Free calculators and practical online tools for everyday
+needs.
+</p>
+
+</div>
+
+
+<div class="footer-links">
+
+<a href="/">
+Salary Calculator
+</a>
+
+<a href="/loan-calculator.html">
+Loan Calculator
+</a>
+
+<a href="/about.html">
+About
+</a>
+
+<a href="/contact.html">
+Contact
+</a>
+
+<a href="/privacy.html">
+Privacy Policy
+</a>
+
+<a href="/terms.html">
+Terms
+</a>
+
+<a href="/disclaimer.html">
+Disclaimer
+</a>
+
+</div>
+
+</div>
+
+
+<div class="copyright">
+© 2026 FigureNG. All rights reserved.
+</div>
+
+</div>
+
+</footer>
+
+
+<script>
+
+function money(value){
+
+if(!Number.isFinite(value)){
+value=0;
+}
+
+return "₦" +
+value.toLocaleString(
+"en-NG",
+{
+maximumFractionDigits:0
+}
+);
+
+}
+
+
+function reducingBalance(
+principal,
+annualRate,
+months
+){
+
+const monthlyRate=
+annualRate / 100 / 12;
+
+
+let payment;
+
+if(monthlyRate===0){
+
+payment=
+principal / months;
+
+}else{
+
+const factor=
+Math.pow(
+1 + monthlyRate,
+months
+);
+
+payment=
+principal *
+monthlyRate *
+factor /
+(factor - 1);
+
+}
+
+
+let balance=
+principal;
+
+let interest=
+0;
+
+
+for(
+let month=1;
+month<=months;
+month++
+){
+
+const monthInterest=
+balance *
+monthlyRate;
+
+let principalPart=
+payment -
+monthInterest;
+
+
+if(month===months){
+
+principalPart=
+balance;
+
+}
+
+
+balance -=
+principalPart;
+
+if(balance<0){
+
+balance=0;
+
+}
+
+interest +=
+monthInterest;
+
+}
+
+
+return{
+
+interest:interest,
+
+total:
+principal + interest
+
+};
+
+}
+
+
+function flatRate(
+principal,
+annualRate,
+months
+){
+
+const interest=
+principal *
+(annualRate / 100) *
+(months / 12);
+
+
+return{
+
+interest:interest,
+
+total:
+principal + interest
+
+};
+
+}
+
+
+function compareLoans(){
+
+const amount=
+Number(
+document.getElementById(
+"amount"
+).value
+);
+
+
+const rate=
+Number(
+document.getElementById(
+"rate"
+).value
+);
+
+
+const months=
+Number(
+document.getElementById(
+"months"
+).value
+);
+
+
+const fees=
+Number(
+document.getElementById(
+"fees"
+).value
+);
+
+
+if(
+
+!Number.isFinite(amount) ||
+amount<=0 ||
+!Number.isFinite(rate) ||
+rate<0 ||
+!Number.isFinite(fees) ||
+fees<0
+
+){
+
+alert(
+"Please enter valid loan details."
+);
+
+return;
+
+}
+
+
+const flat=
+flatRate(
+amount,
+rate,
+months
+);
+
+
+const reducing=
+reducingBalance(
+amount,
+rate,
+months
+);
+
+
+const flatTotal=
+flat.total + fees;
+
+
+const reducingTotal=
+reducing.total + fees;
+
+
+const difference=
+flat.interest -
+reducing.interest;
+
+
+document.getElementById(
+"flatInterest"
+).textContent=
+money(flat.interest);
+
+
+document.getElementById(
+"reducingInterest"
+).textContent=
+money(reducing.interest);
+
+
+document.getElementById(
+"flatTotal"
+).textContent=
+money(flatTotal);
+
+
+document.getElementById(
+"reducingTotal"
+).textContent=
+money(reducingTotal);
+
+
+document.getElementById(
+"difference"
+).textContent=
+money(Math.abs(difference));
+
+
+const message=
+document.getElementById(
+"comparisonMessage"
+);
+
+
+if(difference>0){
+
+message.innerHTML=
+"At the same stated rate and duration, the reducing-balance "
++
+"method produces approximately "
++
+"<strong>"
++
+money(difference)
++
+"</strong>"
++
+" less interest than the flat-rate method.";
+
+}else if(difference<0){
+
+message.innerHTML=
+"At these inputs, the flat-rate calculation produces less "
++
+"interest by approximately "
++
+"<strong>"
++
+money(Math.abs(difference))
++
+"</strong>"
++
+".";
+
+}else{
+
+message.textContent=
+"Both methods produce the same estimated interest for these inputs.";
+
+}
+
+
+document.getElementById(
+"toolResult"
+).classList.add(
+"show"
+);
+
+
+setTimeout(
+function(){
+
+document.getElementById(
+"toolResult"
+).scrollIntoView({
+
+behavior:"smooth",
+
+block:"nearest"
+
+});
+
+},
+50
+);
+
+}
+
+
+/* Calculate the default example immediately */
+
+window.addEventListener(
+"DOMContentLoaded",
+function(){
+
+compareLoans();
+
+}
+);
+
+</script>
+
+
+<script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"FAQPage",
+"mainEntity":[
+
+{
+"@type":"Question",
+"name":"Which is cheaper, flat rate or reducing balance?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"At the same stated interest rate and loan term, a typical reducing-balance calculation produces less interest than a flat-rate calculation because the interest base falls as principal is repaid."
+}
+},
+
+{
+"@type":"Question",
+"name":"Is a 20% flat rate the same as 20% reducing balance?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"No. They use different interest bases. A flat rate is generally calculated using the original principal, while a reducing-balance calculation uses the outstanding balance."
+}
+},
+
+{
+"@type":"Question",
+"name":"Why is my lender's result different from FigureNG?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Lenders may use different formulas, payment frequencies, rounding rules, fees, insurance charges or other contractual terms. FigureNG provides estimates."
+}
+},
+
+{
+"@type":"Question",
+"name":"Does a lower monthly payment always mean a cheaper loan?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"No. A longer loan term can reduce the monthly payment while increasing total interest or total repayment."
+}
+},
+
+{
+"@type":"Question",
+"name":"Does FigureNG provide loans?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"No. FigureNG is an independent calculator and information website. It does not approve, arrange or provide loans."
+}
+}
+
+]
+}
+
+</script>
+
+</body>
+</html>
+```
+
