@@ -2,12 +2,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Nigeria Loan Calculator 2026 | Monthly Loan Repayment | FigureNG</title>
+<title>Nigeria Loan Calculator 2026 | Flat Rate vs Reducing Balance | FigureNG</title>
 
-<meta name="description" content="Use the free Nigeria Loan Calculator 2026 to estimate monthly loan repayment, total interest and total repayment for personal and other loans.">
+<meta name="description" content="Calculate Nigerian loan repayments using flat rate or reducing balance interest. Compare monthly payment, total interest, total repayment and view your repayment schedule.">
 
 <meta name="robots" content="index, follow">
 
@@ -15,541 +17,689 @@
 
 <style>
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
-:root {
-  --navy: #0f172a;
-  --navy2: #1e293b;
-  --green: #16a34a;
-  --green-dark: #15803d;
-  --green-light: #f0fdf4;
-  --white: #ffffff;
-  --bg: #f8fafc;
-  --text: #1e293b;
-  --muted: #64748b;
-  --border: #e2e8f0;
-  --yellow: #fef3c7;
-  --yellow-border: #f59e0b;
-  --red: #dc2626;
+:root{
+--navy:#0f172a;
+--navy2:#1e293b;
+--green:#16a34a;
+--green-dark:#15803d;
+--green-light:#f0fdf4;
+--white:#fff;
+--bg:#f8fafc;
+--text:#1e293b;
+--muted:#64748b;
+--border:#e2e8f0;
+--yellow:#fef3c7;
+--yellow-border:#f59e0b;
+--red:#dc2626;
 }
 
-html {
-  scroll-behavior: smooth;
+html{
+scroll-behavior:smooth;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:var(--bg);
+color:var(--text);
+line-height:1.6;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+a{
+text-decoration:none;
+color:inherit;
 }
 
-.container {
-  width: min(1100px, 92%);
-  margin: auto;
+.container{
+width:min(1100px,92%);
+margin:auto;
 }
 
 /* HEADER */
 
-header {
-  background: white;
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+header{
+background:#fff;
+border-bottom:1px solid var(--border);
+position:sticky;
+top:0;
+z-index:100;
 }
 
-.nav {
-  min-height: 68px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.nav{
+min-height:68px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
-.logo {
-  font-size: 25px;
-  font-weight: 900;
-  color: var(--navy);
+.logo{
+font-size:25px;
+font-weight:900;
+color:var(--navy);
 }
 
-.logo span {
-  color: var(--green);
+.logo span{
+color:var(--green);
 }
 
-.nav-links {
-  display: flex;
-  gap: 20px;
-  font-size: 14px;
-  font-weight: 700;
+.nav-links{
+display:flex;
+gap:20px;
+font-size:14px;
+font-weight:700;
 }
 
-.nav-links a {
-  color: var(--muted);
+.nav-links a{
+color:var(--muted);
 }
 
-.nav-links a:hover {
-  color: var(--green);
+.nav-links a:hover{
+color:var(--green);
 }
 
 /* HERO */
 
-.hero {
-  background: var(--navy);
-  color: white;
-  padding: 50px 0 60px;
+.hero{
+background:var(--navy);
+color:#fff;
+padding:50px 0 60px;
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: start;
+.hero-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:start;
 }
 
-.badge {
-  display: inline-block;
-  background: rgba(22,163,74,.15);
-  border: 1px solid rgba(134,239,172,.25);
-  color: #86efac;
-  padding: 7px 11px;
-  border-radius: 30px;
-  font-size: 12px;
-  font-weight: 800;
-  margin-bottom: 17px;
+.badge{
+display:inline-block;
+background:rgba(22,163,74,.15);
+border:1px solid rgba(134,239,172,.25);
+color:#86efac;
+padding:7px 11px;
+border-radius:30px;
+font-size:12px;
+font-weight:800;
+margin-bottom:17px;
 }
 
-.hero h1 {
-  font-size: clamp(36px, 7vw, 55px);
-  line-height: 1.05;
-  letter-spacing: -1.5px;
-  margin-bottom: 18px;
+.hero h1{
+font-size:clamp(36px,7vw,55px);
+line-height:1.05;
+letter-spacing:-1.5px;
+margin-bottom:18px;
 }
 
-.hero h1 span {
-  color: #4ade80;
+.hero h1 span{
+color:#4ade80;
 }
 
-.hero-text {
-  color: #cbd5e1;
-  font-size: 17px;
-  max-width: 580px;
-  margin-bottom: 20px;
+.hero-text{
+color:#cbd5e1;
+font-size:17px;
+max-width:580px;
+margin-bottom:20px;
 }
 
-.hero-points {
-  display: grid;
-  gap: 9px;
-  color: #e2e8f0;
-  font-size: 14px;
+.hero-points{
+display:grid;
+gap:9px;
+color:#e2e8f0;
+font-size:14px;
 }
 
-.hero-point {
-  display: flex;
-  gap: 9px;
+.hero-point{
+display:flex;
+gap:9px;
 }
 
-.check {
-  color: #4ade80;
-  font-weight: 900;
+.check{
+color:#4ade80;
+font-weight:900;
 }
 
 /* CALCULATOR */
 
-.calculator {
-  background: white;
-  color: var(--text);
-  border-radius: 20px;
-  padding: 25px;
-  box-shadow: 0 20px 45px rgba(0,0,0,.2);
+.calculator{
+background:#fff;
+color:var(--text);
+border-radius:20px;
+padding:25px;
+box-shadow:0 20px 45px rgba(0,0,0,.2);
 }
 
-.calculator h2 {
-  color: var(--navy);
-  font-size: 24px;
-  margin-bottom: 5px;
+.calculator h2{
+color:var(--navy);
+font-size:24px;
+margin-bottom:5px;
 }
 
-.intro {
-  color: var(--muted);
-  font-size: 13px;
-  margin-bottom: 22px;
+.intro{
+color:var(--muted);
+font-size:13px;
+margin-bottom:20px;
 }
 
-.field {
-  margin-bottom: 16px;
+.field{
+margin-bottom:16px;
 }
 
-.field label {
-  display: block;
-  color: var(--navy);
-  font-size: 13px;
-  font-weight: 800;
-  margin-bottom: 6px;
+.field label{
+display:block;
+color:var(--navy);
+font-size:13px;
+font-weight:800;
+margin-bottom:6px;
 }
 
-.input-wrap {
-  position: relative;
+.input-wrap{
+position:relative;
 }
 
-.currency {
-  position: absolute;
-  left: 13px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--muted);
-  font-weight: 800;
+.currency{
+position:absolute;
+left:13px;
+top:50%;
+transform:translateY(-50%);
+color:var(--muted);
+font-weight:800;
 }
 
-.percent {
-  position: absolute;
-  right: 13px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--muted);
-  font-weight: 800;
+.percent{
+position:absolute;
+right:13px;
+top:50%;
+transform:translateY(-50%);
+color:var(--muted);
+font-weight:800;
 }
 
 input,
-select {
-  width: 100%;
-  height: 47px;
-  border: 1px solid var(--border);
-  border-radius: 9px;
-  padding: 0 12px 0 32px;
-  outline: none;
-  color: var(--navy);
-  background: white;
-  font-size: 14px;
+select{
+width:100%;
+height:47px;
+border:1px solid var(--border);
+border-radius:9px;
+padding:0 12px 0 32px;
+outline:none;
+color:var(--navy);
+background:#fff;
+font-size:14px;
 }
 
-input.percent-input {
-  padding-right: 35px;
+input.percent-input{
+padding-right:35px;
 }
 
 input:focus,
-select:focus {
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(22,163,74,.1);
+select:focus{
+border-color:var(--green);
+box-shadow:0 0 0 3px rgba(22,163,74,.1);
 }
 
-select {
-  padding-left: 12px;
+select{
+padding-left:12px;
 }
 
-.calculate {
-  width: 100%;
-  min-height: 50px;
-  border: 0;
-  border-radius: 10px;
-  background: var(--green);
-  color: white;
-  font-size: 15px;
-  font-weight: 900;
-  cursor: pointer;
-  margin-top: 4px;
+.rate-help{
+font-size:11px;
+color:var(--muted);
+margin-top:4px;
 }
 
-.calculate:hover {
-  background: var(--green-dark);
+/* METHOD */
+
+.method-title{
+font-size:13px;
+font-weight:800;
+color:var(--navy);
+margin-bottom:8px;
 }
 
-.error {
-  display: none;
-  color: var(--red);
-  font-size: 13px;
-  font-weight: 700;
-  margin-top: 10px;
+.method-options{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px;
+margin-bottom:17px;
+}
+
+.method-option{
+border:1px solid var(--border);
+border-radius:9px;
+padding:11px;
+cursor:pointer;
+font-size:12px;
+font-weight:800;
+text-align:center;
+color:var(--muted);
+background:#fff;
+}
+
+.method-option.active{
+border-color:var(--green);
+background:var(--green-light);
+color:var(--green-dark);
+}
+
+.method-option input{
+display:none;
+}
+
+.calculate{
+width:100%;
+min-height:50px;
+border:0;
+border-radius:10px;
+background:var(--green);
+color:#fff;
+font-size:15px;
+font-weight:900;
+cursor:pointer;
+margin-top:4px;
+}
+
+.calculate:hover{
+background:var(--green-dark);
+}
+
+.error{
+display:none;
+color:var(--red);
+font-size:13px;
+font-weight:700;
+margin-top:10px;
 }
 
 /* RESULTS */
 
-.results {
-  display: none;
-  margin-top: 22px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
+.results{
+display:none;
+margin-top:22px;
+padding-top:20px;
+border-top:1px solid var(--border);
 }
 
-.results.show {
-  display: block;
+.results.show{
+display:block;
 }
 
-.main-result {
-  background: var(--green-light);
-  border: 1px solid #bbf7d0;
-  border-radius: 13px;
-  padding: 18px;
-  margin-bottom: 15px;
+.main-result{
+background:var(--green-light);
+border:1px solid #bbf7d0;
+border-radius:13px;
+padding:18px;
+margin-bottom:15px;
 }
 
-.main-result small {
-  color: #166534;
-  font-weight: 800;
-  font-size: 12px;
+.main-result small{
+color:#166534;
+font-weight:800;
+font-size:12px;
 }
 
-.main-result strong {
-  display: block;
-  color: var(--green-dark);
-  font-size: 30px;
-  line-height: 1.2;
-  margin-top: 3px;
+.main-result strong{
+display:block;
+color:var(--green-dark);
+font-size:30px;
+line-height:1.2;
+margin-top:3px;
 }
 
-.result-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 9px;
+.result-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:9px;
 }
 
-.result-item {
-  background: #f8fafc;
-  border: 1px solid var(--border);
-  border-radius: 9px;
-  padding: 11px;
+.result-item{
+background:#f8fafc;
+border:1px solid var(--border);
+border-radius:9px;
+padding:11px;
 }
 
-.result-item span {
-  display: block;
-  color: var(--muted);
-  font-size: 10px;
+.result-item span{
+display:block;
+color:var(--muted);
+font-size:10px;
 }
 
-.result-item strong {
-  color: var(--navy);
-  font-size: 13px;
+.result-item strong{
+color:var(--navy);
+font-size:13px;
+}
+
+.comparison{
+margin-top:15px;
+border:1px solid var(--border);
+border-radius:12px;
+overflow:hidden;
+}
+
+.comparison h3{
+padding:13px;
+background:#f8fafc;
+font-size:14px;
+color:var(--navy);
+}
+
+.compare-row{
+display:grid;
+grid-template-columns:1.3fr 1fr 1fr;
+border-top:1px solid var(--border);
+font-size:12px;
+}
+
+.compare-row div{
+padding:10px;
+}
+
+.compare-row div:not(:last-child){
+border-right:1px solid var(--border);
+}
+
+.compare-head{
+font-weight:800;
+background:#f8fafc;
+}
+
+.savings{
+margin-top:14px;
+background:#ecfdf5;
+border:1px solid #a7f3d0;
+border-radius:10px;
+padding:13px;
+font-size:13px;
+color:#065f46;
+}
+
+.warning{
+margin-top:12px;
+background:var(--yellow);
+border:1px solid var(--yellow-border);
+border-radius:10px;
+padding:13px;
+font-size:12px;
+color:#78350f;
+}
+
+/* SCHEDULE */
+
+.schedule-section{
+margin-top:20px;
+}
+
+.schedule-title{
+font-size:15px;
+font-weight:900;
+color:var(--navy);
+margin-bottom:10px;
+}
+
+.schedule-wrap{
+overflow-x:auto;
+border:1px solid var(--border);
+border-radius:10px;
+background:#fff;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+font-size:11px;
+min-width:600px;
+}
+
+th,
+td{
+padding:9px;
+text-align:right;
+border-bottom:1px solid var(--border);
+}
+
+th{
+background:#f8fafc;
+color:var(--navy);
+font-weight:800;
+}
+
+th:first-child,
+td:first-child{
+text-align:center;
 }
 
 /* CONTENT */
 
-main {
-  padding: 55px 0 70px;
+main{
+padding:55px 0 70px;
 }
 
-.section {
-  margin-bottom: 50px;
+.section{
+margin-bottom:50px;
 }
 
-.section-heading {
-  max-width: 760px;
-  margin-bottom: 22px;
+.section-heading{
+max-width:760px;
+margin-bottom:22px;
 }
 
-.section-heading h2 {
-  color: var(--navy);
-  font-size: clamp(27px,5vw,36px);
-  line-height: 1.15;
-  margin-bottom: 9px;
+.section-heading h2{
+color:var(--navy);
+font-size:clamp(27px,5vw,36px);
+line-height:1.15;
+margin-bottom:9px;
 }
 
-.section-heading p {
-  color: var(--muted);
+.section-heading p{
+color:var(--muted);
 }
 
-.card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 25px;
+.card{
+background:#fff;
+border:1px solid var(--border);
+border-radius:16px;
+padding:25px;
 }
 
-.card h3 {
-  color: var(--navy);
-  margin-bottom: 10px;
+.card h3{
+color:var(--navy);
+margin-bottom:10px;
 }
 
-.card p {
-  color: var(--muted);
-  margin-bottom: 13px;
+.card p{
+color:var(--muted);
+margin-bottom:13px;
 }
 
-.steps {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 17px;
+.steps{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:17px;
 }
 
-.step {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 15px;
-  padding: 22px;
+.step{
+background:#fff;
+border:1px solid var(--border);
+border-radius:15px;
+padding:22px;
 }
 
-.step-number {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: var(--green-light);
-  color: var(--green-dark);
-  font-weight: 900;
-  margin-bottom: 12px;
+.step-number{
+width:36px;
+height:36px;
+border-radius:50%;
+display:grid;
+place-items:center;
+background:var(--green-light);
+color:var(--green-dark);
+font-weight:900;
+margin-bottom:12px;
 }
 
-.step h3 {
-  color: var(--navy);
-  margin-bottom: 6px;
+.step h3{
+color:var(--navy);
+margin-bottom:6px;
 }
 
-.step p {
-  color: var(--muted);
-  font-size: 14px;
+.step p{
+color:var(--muted);
+font-size:14px;
 }
 
-.notice {
-  background: var(--yellow);
-  border: 1px solid var(--yellow-border);
-  border-radius: 14px;
-  padding: 20px;
-  color: #78350f;
+.notice{
+background:var(--yellow);
+border:1px solid var(--yellow-border);
+border-radius:14px;
+padding:20px;
+color:#78350f;
 }
 
-.notice strong {
-  display: block;
-  margin-bottom: 5px;
+.notice strong{
+display:block;
+margin-bottom:5px;
 }
 
-.formula {
-  background: #f1f5f9;
-  border-radius: 10px;
-  padding: 15px;
-  font-size: 14px;
-  color: var(--navy);
-  margin-top: 12px;
-  overflow-x: auto;
+.formula{
+background:#f1f5f9;
+border-radius:10px;
+padding:15px;
+font-size:14px;
+color:var(--navy);
+margin-top:12px;
+overflow-x:auto;
 }
 
-.faq {
-  display: grid;
-  gap: 12px;
+.faq{
+display:grid;
+gap:12px;
 }
 
-.faq-item {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 18px;
+.faq-item{
+background:#fff;
+border:1px solid var(--border);
+border-radius:12px;
+padding:18px;
 }
 
-.faq-item h3 {
-  color: var(--navy);
-  font-size: 16px;
-  margin-bottom: 6px;
+.faq-item h3{
+color:var(--navy);
+font-size:16px;
+margin-bottom:6px;
 }
 
-.faq-item p {
-  color: var(--muted);
-  font-size: 14px;
+.faq-item p{
+color:var(--muted);
+font-size:14px;
 }
 
 /* FOOTER */
 
-footer {
-  background: var(--navy);
-  color: #cbd5e1;
-  padding: 38px 0;
+footer{
+background:var(--navy);
+color:#cbd5e1;
+padding:38px 0;
 }
 
-.footer-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
+.footer-top{
+display:flex;
+justify-content:space-between;
+gap:30px;
 }
 
-.footer-brand {
-  max-width: 430px;
+.footer-brand{
+max-width:430px;
 }
 
-.footer-brand .logo {
-  color: white;
-  display: inline-block;
-  margin-bottom: 8px;
+.footer-brand .logo{
+color:#fff;
+display:inline-block;
+margin-bottom:8px;
 }
 
-.footer-brand p {
-  color: #94a3b8;
-  font-size: 13px;
+.footer-brand p{
+color:#94a3b8;
+font-size:13px;
 }
 
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  font-size: 13px;
-  align-content: flex-start;
+.footer-links{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+font-size:13px;
+align-content:flex-start;
 }
 
-.footer-links a:hover {
-  color: white;
+.footer-links a:hover{
+color:#fff;
 }
 
-.copyright {
-  border-top: 1px solid #334155;
-  margin-top: 25px;
-  padding-top: 20px;
-  color: #94a3b8;
-  font-size: 12px;
+.copyright{
+border-top:1px solid #334155;
+margin-top:25px;
+padding-top:20px;
+color:#94a3b8;
+font-size:12px;
 }
 
 /* MOBILE */
 
-@media(max-width:850px) {
+@media(max-width:850px){
 
-  .hero-grid {
-    grid-template-columns: 1fr;
-  }
+.hero-grid{
+grid-template-columns:1fr;
+}
 
-  .steps {
-    grid-template-columns: 1fr;
-  }
+.steps{
+grid-template-columns:1fr;
+}
 
-  .footer-top {
-    flex-direction: column;
-  }
+.footer-top{
+flex-direction:column;
+}
 
 }
 
-@media(max-width:600px) {
+@media(max-width:600px){
 
-  .nav-links {
-    gap: 10px;
-    font-size: 12px;
-  }
+.nav-links{
+gap:10px;
+font-size:12px;
+}
 
-  .nav-links a:nth-child(n+3) {
-    display: none;
-  }
+.nav-links a:nth-child(n+3){
+display:none;
+}
 
-  .hero {
-    padding: 42px 0 50px;
-  }
+.hero{
+padding:42px 0 50px;
+}
 
-  .hero h1 {
-    font-size: 39px;
-  }
+.hero h1{
+font-size:39px;
+}
 
-  .hero-text {
-    font-size: 15px;
-  }
+.hero-text{
+font-size:15px;
+}
 
-  .calculator {
-    padding: 20px;
-  }
+.calculator{
+padding:20px;
+}
+
+.compare-row{
+font-size:11px;
+}
 
 }
 
 </style>
+
 </head>
 
 <body>
@@ -566,11 +716,17 @@ Figure<span>NG</span>
 
 <a href="/">Salary Calculator</a>
 
-<a href="#calculator">Loan Calculator</a>
+<a href="/loan-calculator.html">
+Loan Calculator
+</a>
 
-<a href="/about.html">About</a>
+<a href="/about.html">
+About
+</a>
 
-<a href="/contact.html">Contact</a>
+<a href="/contact.html">
+Contact
+</a>
 
 </nav>
 
@@ -579,7 +735,7 @@ Figure<span>NG</span>
 </header>
 
 
-<section class="hero" id="calculator">
+<section class="hero">
 
 <div class="container hero-grid">
 
@@ -590,35 +746,35 @@ NIGERIA LOAN CALCULATOR 2026
 </span>
 
 <h1>
-Know your <span>loan repayment</span> before you borrow.
+Know the <span>true cost</span> of your loan.
 </h1>
 
 <p class="hero-text">
-Estimate your monthly loan repayment, total interest and
-total amount payable using the loan amount, interest rate
-and repayment period.
+Compare flat-rate and reducing-balance loans before you
+borrow. See your estimated monthly repayment, total
+interest and total repayment.
 </p>
 
 <div class="hero-points">
 
 <div class="hero-point">
 <span class="check">✓</span>
-<span>Free to use</span>
+<span>Compare two common interest methods</span>
 </div>
 
 <div class="hero-point">
 <span class="check">✓</span>
-<span>Works on mobile phones</span>
+<span>See your estimated monthly payment</span>
 </div>
 
 <div class="hero-point">
 <span class="check">✓</span>
-<span>Monthly repayment estimate</span>
+<span>See total interest and repayment</span>
 </div>
 
 <div class="hero-point">
 <span class="check">✓</span>
-<span>Total interest estimate</span>
+<span>View a complete repayment schedule</span>
 </div>
 
 </div>
@@ -633,8 +789,7 @@ Loan Calculator
 </h2>
 
 <p class="intro">
-Enter your loan details to calculate your estimated
-repayment.
+Enter the details from your lender's offer.
 </p>
 
 
@@ -664,7 +819,7 @@ placeholder="1,000,000"
 <div class="field">
 
 <label for="interestRate">
-Annual Interest Rate
+Interest Rate
 </label>
 
 <div class="input-wrap">
@@ -683,6 +838,31 @@ placeholder="20"
 
 </div>
 
+<div class="rate-help">
+Enter the rate for the period selected below.
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label for="ratePeriod">
+Interest Rate Period
+</label>
+
+<select id="ratePeriod">
+
+<option value="annual" selected>
+Annual rate
+</option>
+
+<option value="monthly">
+Monthly rate
+</option>
+
+</select>
+
 </div>
 
 
@@ -694,7 +874,33 @@ Loan Duration
 
 <select id="loanTerm">
 
-<option value="6">6 months</option>
+<option value="1">
+1 month
+</option>
+
+<option value="2">
+2 months
+</option>
+
+<option value="3">
+3 months
+</option>
+
+<option value="4">
+4 months
+</option>
+
+<option value="5">
+5 months
+</option>
+
+<option value="6">
+6 months
+</option>
+
+<option value="9">
+9 months
+</option>
 
 <option value="12" selected>
 12 months
@@ -733,6 +939,41 @@ Loan Duration
 </option>
 
 </select>
+
+</div>
+
+
+<div class="method-title">
+Primary calculation method
+</div>
+
+<div class="method-options">
+
+<label class="method-option active" id="reducingOption">
+
+<input
+type="radio"
+name="method"
+value="reducing"
+checked
+>
+
+Reducing Balance
+
+</label>
+
+
+<label class="method-option" id="flatOption">
+
+<input
+type="radio"
+name="method"
+value="flat"
+>
+
+Flat Rate
+
+</label>
 
 </div>
 
@@ -791,6 +1032,17 @@ Estimated monthly repayment
 
 <div class="result-item">
 
+<span>Calculation method</span>
+
+<strong id="displayMethod">
+Reducing balance
+</strong>
+
+</div>
+
+
+<div class="result-item">
+
 <span>Loan duration</span>
 
 <strong id="displayTerm">
@@ -821,18 +1073,146 @@ Estimated monthly repayment
 
 </div>
 
+</div>
 
-<div class="result-item">
 
-<span>Estimated yearly interest</span>
+<div class="comparison">
 
-<strong id="yearlyInterest">
+<h3>
+Flat Rate vs Reducing Balance
+</h3>
+
+<div class="compare-row compare-head">
+
+<div>
+Cost
+</div>
+
+<div>
+Reducing
+</div>
+
+<div>
+Flat
+</div>
+
+</div>
+
+
+<div class="compare-row">
+
+<div>
+Monthly payment
+</div>
+
+<div id="compareReducingPayment">
 ₦0
-</strong>
+</div>
+
+<div id="compareFlatPayment">
+₦0
+</div>
+
+</div>
+
+
+<div class="compare-row">
+
+<div>
+Total interest
+</div>
+
+<div id="compareReducingInterest">
+₦0
+</div>
+
+<div id="compareFlatInterest">
+₦0
+</div>
+
+</div>
+
+
+<div class="compare-row">
+
+<div>
+Total repayment
+</div>
+
+<div id="compareReducingTotal">
+₦0
+</div>
+
+<div id="compareFlatTotal">
+₦0
+</div>
+
+</div>
+
+</div>
+
+
+<div class="savings" id="comparisonMessage">
+</div>
+
+
+<div class="warning">
+
+<strong>Important:</strong>
+The comparison is an estimate. Actual lender calculations
+may include fees, insurance, taxes, penalties, rounding or
+other charges that are not included here.
+
+</div>
+
+
+<div class="schedule-section">
+
+<div class="schedule-title">
+Repayment Schedule
+</div>
+
+<div class="schedule-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Month
+</th>
+
+<th>
+Payment
+</th>
+
+<th>
+Principal
+</th>
+
+<th>
+Interest
+</th>
+
+<th>
+Balance
+</th>
+
+</tr>
+
+</thead>
+
+<tbody id="scheduleBody">
+</tbody>
+
+</table>
 
 </div>
 
 </div>
+
 
 </div>
 
@@ -853,12 +1233,13 @@ Estimated monthly repayment
 <div class="section-heading">
 
 <h2>
-What is a loan calculator?
+Why flat rate vs reducing balance matters
 </h2>
 
 <p>
-A loan calculator helps you estimate how much you may
-need to repay when borrowing money.
+The same advertised interest rate can result in very
+different repayment costs depending on how interest is
+calculated.
 </p>
 
 </div>
@@ -867,14 +1248,23 @@ need to repay when borrowing money.
 <div class="card">
 
 <p>
-Enter the amount you want to borrow, the annual interest
-rate and the length of the loan. FigureNG then estimates
-your monthly repayment and the total interest payable.
+With a <strong>reducing-balance loan</strong>, interest is
+calculated on the outstanding principal. As you repay the
+loan, the balance falls and the interest charged generally
+falls as well.
 </p>
 
 <p>
-This can help you compare different borrowing scenarios
-before making a financial decision.
+With a <strong>flat-rate loan</strong>, interest is calculated
+using the original principal throughout the stated term.
+The interest does not fall simply because you have already
+repaid part of the principal.
+</p>
+
+<p>
+Research on loan products has found both flat and declining
+balance methods in use, which makes knowing the method
+important when comparing loan offers.
 </p>
 
 </div>
@@ -887,12 +1277,8 @@ before making a financial decision.
 <div class="section-heading">
 
 <h2>
-How to use the calculator
+How to use FigureNG Loan Calculator
 </h2>
-
-<p>
-You only need three pieces of information.
-</p>
 
 </div>
 
@@ -906,11 +1292,11 @@ You only need three pieces of information.
 </div>
 
 <h3>
-Enter loan amount
+Enter the loan amount
 </h3>
 
 <p>
-Enter the amount you intend to borrow.
+Enter the amount you plan to borrow.
 </p>
 
 </div>
@@ -923,11 +1309,12 @@ Enter the amount you intend to borrow.
 </div>
 
 <h3>
-Enter interest rate
+Enter the interest rate
 </h3>
 
 <p>
-Enter the annual interest rate provided by the lender.
+Enter the rate quoted by your lender and choose whether
+it is annual or monthly.
 </p>
 
 </div>
@@ -940,12 +1327,12 @@ Enter the annual interest rate provided by the lender.
 </div>
 
 <h3>
-Choose duration
+Compare the results
 </h3>
 
 <p>
-Select how many months you expect to take to repay
-the loan.
+See how flat and reducing-balance calculations affect the
+total cost of the loan.
 </p>
 
 </div>
@@ -960,24 +1347,23 @@ the loan.
 <div class="section-heading">
 
 <h2>
-How the calculation works
+How the calculations work
 </h2>
-
-<p>
-This calculator uses the standard reducing-balance
-amortization formula.
-</p>
 
 </div>
 
 
 <div class="card">
 
+<h3>
+Reducing balance
+</h3>
+
 <p>
-The monthly interest rate is calculated from the annual
-interest rate. The calculator then estimates the fixed
-monthly payment required to repay the loan over the
-selected period.
+The monthly payment is calculated using an amortization
+formula. Each payment contains both interest and principal.
+As the outstanding balance falls, the interest component
+generally falls too.
 </p>
 
 <div class="formula">
@@ -988,10 +1374,23 @@ P × r × (1 + r)<sup>n</sup> ÷
 
 </div>
 
-<p style="margin-top:12px;">
-Where P is the principal loan amount, r is the monthly
-interest rate and n is the number of monthly payments.
+
+<h3 style="margin-top:22px;">
+Flat rate
+</h3>
+
+<p>
+The flat-rate calculation applies the stated rate to the
+original principal for the applicable loan period and then
+spreads the resulting interest across the repayment period.
 </p>
+
+<div class="formula">
+
+Total Interest =
+Loan Amount × Rate × Loan Period
+
+</div>
 
 </div>
 
@@ -1003,14 +1402,13 @@ interest rate and n is the number of monthly payments.
 <div class="notice">
 
 <strong>
-Important
+Do not compare loan rates by percentage alone.
 </strong>
 
-This calculator provides an estimate only. Actual loan
-repayments may differ because lenders can use different
-interest calculations, fees, insurance charges, taxes,
-penalties and other terms. Always check the lender's
-official repayment schedule before accepting a loan.
+Before accepting a loan, check whether the quoted rate is
+flat or reducing balance. Also check processing fees,
+insurance, documentation fees, late-payment charges and
+the total amount you will actually repay.
 
 </div>
 
@@ -1034,13 +1432,13 @@ Frequently asked questions
 <div class="faq-item">
 
 <h3>
-How is monthly loan repayment calculated?
+What is a reducing-balance loan?
 </h3>
 
 <p>
-For a reducing-balance loan, the calculator uses the
-loan amount, monthly interest rate and number of
-repayment periods to estimate a fixed monthly payment.
+Interest is calculated on the outstanding loan balance.
+As principal is repaid, the balance falls and future
+interest charges generally decrease.
 </p>
 
 </div>
@@ -1049,13 +1447,13 @@ repayment periods to estimate a fixed monthly payment.
 <div class="faq-item">
 
 <h3>
-Does a longer loan duration reduce monthly repayment?
+What is a flat-rate loan?
 </h3>
 
 <p>
-Usually, yes. Spreading the loan over more months can
-reduce the monthly payment, but it can also increase the
-total interest paid over the life of the loan.
+A flat rate calculates interest using the original loan
+amount for the stated period instead of reducing the
+interest base as principal is repaid.
 </p>
 
 </div>
@@ -1064,13 +1462,14 @@ total interest paid over the life of the loan.
 <div class="faq-item">
 
 <h3>
-Does this calculator include lender fees?
+Which is cheaper, flat rate or reducing balance?
 </h3>
 
 <p>
-No. The basic calculator estimates principal and interest.
-Processing fees, insurance, taxes and other lender charges
-may increase the actual cost of borrowing.
+For the same nominal rate and term, a flat-rate calculation
+will generally produce more interest than a reducing-balance
+calculation because interest continues to be based on the
+original principal.
 </p>
 
 </div>
@@ -1079,15 +1478,43 @@ may increase the actual cost of borrowing.
 <div class="faq-item">
 
 <h3>
-Can I use this calculator for Nigerian loans?
+Can I enter a monthly interest rate?
 </h3>
 
 <p>
-Yes. You can enter the loan amount and annual interest
-rate quoted by a Nigerian lender to estimate the
-repayment. However, always confirm whether the lender
-uses reducing-balance or flat-rate interest before relying
-on the result.
+Yes. Select "Monthly rate" when the lender quotes the
+interest rate per month. The calculator will use that rate
+for the loan calculation.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+Does the calculator include processing fees?
+</h3>
+
+<p>
+No. The calculator focuses on principal and interest.
+Always add lender fees, insurance and other compulsory
+charges when determining the real cost of borrowing.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+Is this calculator an official lender quotation?
+</h3>
+
+<p>
+No. FigureNG provides estimates for informational purposes.
+The lender's signed offer and repayment schedule should
+always be treated as the authoritative figures for a loan.
 </p>
 
 </div>
@@ -1107,7 +1534,7 @@ More FigureNG calculators
 </h3>
 
 <p>
-Looking for another calculation?
+Use our free calculators for everyday financial decisions.
 </p>
 
 <p>
@@ -1153,7 +1580,9 @@ everyday needs.
 
 <div class="footer-links">
 
-<a href="/">Salary Calculator</a>
+<a href="/">
+Salary Calculator
+</a>
 
 <a href="/loan-calculator.html">
 Loan Calculator
@@ -1197,42 +1626,420 @@ Disclaimer
 
 <script>
 
-function money(value) {
+function money(value){
 
-return "₦" + Number(value).toLocaleString("en-NG", {
-maximumFractionDigits: 0
+if(!Number.isFinite(value)){
+value=0;
+}
+
+return "₦" + Number(value).toLocaleString(
+"en-NG",
+{
+maximumFractionDigits:0
+}
+);
+
+}
+
+
+/* Method buttons */
+
+document.querySelectorAll(
+'input[name="method"]'
+).forEach(function(radio){
+
+radio.addEventListener(
+"change",
+function(){
+
+document.getElementById(
+"reducingOption"
+).classList.remove("active");
+
+document.getElementById(
+"flatOption"
+).classList.remove("active");
+
+
+if(this.value==="reducing"){
+
+document.getElementById(
+"reducingOption"
+).classList.add("active");
+
+}else{
+
+document.getElementById(
+"flatOption"
+).classList.add("active");
+
+}
+
+}
+);
+
+});
+
+
+/*
+Convert the entered rate to
+an effective monthly rate.
+
+Annual rate:
+annual / 12
+
+Monthly rate:
+entered rate
+*/
+
+function getMonthlyRate(rate,period){
+
+if(period==="monthly"){
+
+return rate/100;
+
+}
+
+return rate/100/12;
+
+}
+
+
+/*
+Reducing balance calculation.
+*/
+
+function calculateReducing(
+principal,
+monthlyRate,
+months
+){
+
+let payment;
+
+
+if(monthlyRate===0){
+
+payment=principal/months;
+
+}else{
+
+const factor=
+Math.pow(
+1+monthlyRate,
+months
+);
+
+payment=
+principal*
+monthlyRate*
+factor/
+(factor-1);
+
+}
+
+
+let balance=principal;
+
+let totalInterest=0;
+
+const schedule=[];
+
+
+for(
+let month=1;
+month<=months;
+month++
+){
+
+let interest=
+balance*monthlyRate;
+
+let principalPart=
+payment-interest;
+
+
+/*
+Prevent tiny rounding errors
+on the final payment.
+*/
+
+if(month===months){
+
+principalPart=balance;
+
+payment=principalPart+interest;
+
+}
+
+
+balance-=principalPart;
+
+if(balance<0.01){
+
+balance=0;
+
+}
+
+totalInterest+=interest;
+
+
+schedule.push({
+
+month:month,
+
+payment:payment,
+
+principal:principalPart,
+
+interest:interest,
+
+balance:balance
+
 });
 
 }
 
 
-function calculateLoan() {
+return {
 
-const loan =
-Number(document.getElementById("loanAmount").value);
+payment:payment,
 
-const annualRate =
-Number(document.getElementById("interestRate").value);
+totalInterest:totalInterest,
 
-const months =
-Number(document.getElementById("loanTerm").value);
+totalRepayment:
+principal+totalInterest,
 
+schedule:schedule
 
-const error =
-document.getElementById("error");
+};
 
-const results =
-document.getElementById("results");
+}
 
 
-if (
-loan <= 0 ||
-annualRate < 0 ||
+/*
+Flat rate calculation.
+
+The entered rate is applied
+to the original principal.
+
+The rate is interpreted according
+to the selected rate period.
+*/
+
+function calculateFlat(
+principal,
+rate,
+period,
+months
+){
+
+let totalInterest;
+
+
+if(period==="monthly"){
+
+totalInterest=
+principal*
+(rate/100)*
+months;
+
+}else{
+
+totalInterest=
+principal*
+(rate/100)*
+(months/12);
+
+}
+
+
+const totalRepayment=
+principal+totalInterest;
+
+
+const payment=
+totalRepayment/months;
+
+
+const principalPerMonth=
+principal/months;
+
+const interestPerMonth=
+totalInterest/months;
+
+
+const schedule=[];
+
+let balance=principal;
+
+
+for(
+let month=1;
+month<=months;
+month++
+){
+
+let principalPart=
+principalPerMonth;
+
+let interestPart=
+interestPerMonth;
+
+let paymentPart=
+payment;
+
+if(month===months){
+
+principalPart=balance;
+
+paymentPart=
+principalPart+interestPart;
+
+}
+
+
+balance-=principalPart;
+
+if(balance<0.01){
+
+balance=0;
+
+}
+
+
+schedule.push({
+
+month:month,
+
+payment:paymentPart,
+
+principal:principalPart,
+
+interest:interestPart,
+
+balance:balance
+
+});
+
+}
+
+
+return {
+
+payment:payment,
+
+totalInterest:totalInterest,
+
+totalRepayment:totalRepayment,
+
+schedule:schedule
+
+};
+
+}
+
+
+/*
+Display repayment schedule.
+*/
+
+function displaySchedule(schedule){
+
+const body=
+document.getElementById(
+"scheduleBody"
+);
+
+body.innerHTML="";
+
+
+schedule.forEach(function(row){
+
+const tr=
+document.createElement("tr");
+
+
+tr.innerHTML=
+
+"<td>"+row.month+"</td>"+
+
+"<td>"+money(row.payment)+"</td>"+
+
+"<td>"+money(row.principal)+"</td>"+
+
+"<td>"+money(row.interest)+"</td>"+
+
+"<td>"+money(row.balance)+"</td>";
+
+
+body.appendChild(tr);
+
+});
+
+}
+
+
+/*
+Main calculator.
+*/
+
+function calculateLoan(){
+
+const loan=
+Number(
+document.getElementById(
+"loanAmount"
+).value
+);
+
+const rate=
+Number(
+document.getElementById(
+"interestRate"
+).value
+);
+
+const period=
+document.getElementById(
+"ratePeriod"
+).value
+;
+
+const months=
+Number(
+document.getElementById(
+"loanTerm"
+).value
+);
+
+const method=
+document.querySelector(
+'input[name="method"]:checked'
+).value
+;
+
+
+const error=
+document.getElementById(
+"error"
+);
+
+const results=
+document.getElementById(
+"results"
+);
+
+
+if(
+loan<=0 ||
+rate<0 ||
 !Number.isFinite(loan) ||
-!Number.isFinite(annualRate)
-) {
+!Number.isFinite(rate) ||
+months<=0
+){
 
-error.style.display = "block";
+error.style.display="block";
 
 results.classList.remove("show");
 
@@ -1241,135 +2048,241 @@ return;
 }
 
 
-error.style.display = "none";
+error.style.display="none";
+
+
+const monthlyRate=
+getMonthlyRate(
+rate,
+period
+);
 
 
 /*
-Convert annual interest rate to
-monthly decimal interest rate.
+Calculate both methods so
+the comparison is always visible.
 */
 
-const monthlyRate =
-annualRate / 100 / 12;
-
-
-let monthlyPayment;
-
-
-/*
-If the interest rate is zero,
-the repayment is simply the loan
-divided by the number of months.
-*/
-
-if (monthlyRate === 0) {
-
-monthlyPayment =
-loan / months;
-
-} else {
-
-/*
-Standard reducing-balance
-amortization formula.
-*/
-
-const factor =
-Math.pow(
-1 + monthlyRate,
+const reducing=
+calculateReducing(
+loan,
+monthlyRate,
 months
 );
 
-monthlyPayment =
-loan *
-monthlyRate *
-factor /
-(factor - 1);
 
+const flat=
+calculateFlat(
+loan,
+rate,
+period,
+months
+);
+
+
+/*
+Choose primary method.
+*/
+
+const selected=
+method==="reducing"
+?reducing
+:flat;
+
+
+/*
+Rate display.
+*/
+
+const rateDisplay=
+rate.toLocaleString(
+"en-NG",
+{
+maximumFractionDigits:2
 }
+)
++
+(period==="monthly"
+?"% per month"
+:"% per year");
 
 
-const totalRepayment =
-monthlyPayment * months;
-
-
-const totalInterest =
-totalRepayment - loan;
-
-
-const yearlyInterest =
-totalInterest / (months / 12);
-
-
-/* Display */
+/*
+Main results.
+*/
 
 document.getElementById(
 "monthlyPayment"
-).textContent =
-money(monthlyPayment);
+).textContent=
+money(selected.payment);
 
 
 document.getElementById(
 "displayLoan"
-).textContent =
+).textContent=
 money(loan);
 
 
 document.getElementById(
 "displayRate"
-).textContent =
-annualRate.toLocaleString(
-"en-NG",
-{
-maximumFractionDigits: 2
-}
-) + "%";
+).textContent=
+rateDisplay;
+
+
+document.getElementById(
+"displayMethod"
+).textContent=
+method==="reducing"
+?"Reducing balance"
+:"Flat rate";
 
 
 document.getElementById(
 "displayTerm"
-).textContent =
-months + " months";
+).textContent=
+months+
+(months===1
+?" month"
+:" months");
 
 
 document.getElementById(
 "totalInterest"
-).textContent =
-money(totalInterest);
+).textContent=
+money(selected.totalInterest);
 
 
 document.getElementById(
 "totalRepayment"
-).textContent =
-money(totalRepayment);
+).textContent=
+money(selected.totalRepayment);
+
+
+/*
+Comparison table.
+*/
+
+document.getElementById(
+"compareReducingPayment"
+).textContent=
+money(reducing.payment);
 
 
 document.getElementById(
-"yearlyInterest"
-).textContent =
-money(yearlyInterest);
+"compareFlatPayment"
+).textContent=
+money(flat.payment);
+
+
+document.getElementById(
+"compareReducingInterest"
+).textContent=
+money(reducing.totalInterest);
+
+
+document.getElementById(
+"compareFlatInterest"
+).textContent=
+money(flat.totalInterest);
+
+
+document.getElementById(
+"compareReducingTotal"
+).textContent=
+money(reducing.totalRepayment);
+
+
+document.getElementById(
+"compareFlatTotal"
+).textContent=
+money(flat.totalRepayment);
+
+
+/*
+Comparison message.
+*/
+
+const difference=
+flat.totalInterest-
+reducing.totalInterest;
+
+
+const comparisonMessage=
+document.getElementById(
+"comparisonMessage"
+);
+
+
+if(difference>0){
+
+comparisonMessage.innerHTML=
+"Using these figures, the flat-rate method would cost approximately "
++
+"<strong>"
++
+money(difference)
++
+"</strong>"
++
+" more in total interest than the reducing-balance method.";
+
+}else if(difference<0){
+
+comparisonMessage.innerHTML=
+"Using these figures, the reducing-balance calculation produces approximately "
++
+"<strong>"
++
+money(Math.abs(difference))
++
+"</strong>"
++
+" more interest than the flat-rate calculation.";
+
+}else{
+
+comparisonMessage.innerHTML=
+"The two methods produce the same estimated interest for these inputs.";
+
+}
+
+
+/*
+Schedule for selected method.
+*/
+
+displaySchedule(
+selected.schedule
+);
 
 
 results.classList.add("show");
 
 
 results.scrollIntoView({
-behavior: "smooth",
-block: "nearest"
+
+behavior:"smooth",
+
+block:"nearest"
+
 });
 
 }
 
 
-/* Enter key */
+/*
+Enter key support.
+*/
 
-document.querySelectorAll("input").forEach(function(input) {
+document.querySelectorAll(
+"input"
+).forEach(function(input){
 
 input.addEventListener(
 "keydown",
-function(event) {
+function(event){
 
-if (event.key === "Enter") {
+if(event.key==="Enter"){
 
 calculateLoan();
 
@@ -1388,42 +2301,65 @@ calculateLoan();
 <script type="application/ld+json">
 
 {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How is monthly loan repayment calculated?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For a reducing-balance loan, the calculator uses the loan amount, monthly interest rate and number of repayment periods to estimate a fixed monthly payment."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does a longer loan duration reduce monthly repayment?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Usually, yes. Spreading a loan over more months can reduce the monthly payment, but it can also increase the total interest paid."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this calculator include lender fees?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. The basic calculator estimates principal and interest. Processing fees, insurance, taxes and other lender charges may increase the actual cost."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I use this calculator for Nigerian loans?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. You can enter the loan amount and annual interest rate quoted by a Nigerian lender. Always confirm whether the lender uses reducing-balance or flat-rate interest."
-      }
-    }
-  ]
+"@context":"https://schema.org",
+"@type":"FAQPage",
+"mainEntity":[
+
+{
+"@type":"Question",
+"name":"What is a reducing-balance loan?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Interest is calculated on the outstanding loan balance. As principal is repaid, the balance falls and future interest charges generally decrease."
+}
+},
+
+{
+"@type":"Question",
+"name":"What is a flat-rate loan?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"A flat rate calculates interest using the original loan amount for the stated period instead of reducing the interest base as principal is repaid."
+}
+},
+
+{
+"@type":"Question",
+"name":"Which is cheaper, flat rate or reducing balance?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"For the same nominal rate and term, a flat-rate calculation will generally produce more interest than a reducing-balance calculation."
+}
+},
+
+{
+"@type":"Question",
+"name":"Can I enter a monthly interest rate?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. Select Monthly rate when the lender quotes the interest rate per month."
+}
+},
+
+{
+"@type":"Question",
+"name":"Does the calculator include processing fees?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"No. The calculator focuses on principal and interest. Lender fees, insurance and other compulsory charges should be considered separately."
+}
+},
+
+{
+"@type":"Question",
+"name":"Is this calculator an official lender quotation?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"No. FigureNG provides estimates for informational purposes. The lender's signed offer and repayment schedule should be treated as authoritative."
+}
+}
+
+]
 }
 
 </script>
