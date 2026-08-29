@@ -1,0 +1,840 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>All Calculators | FigureNG</title>
+
+<meta name="description" content="Explore all free FigureNG calculators for salary, loans, VAT, electricity, fuel and everyday financial calculations in Nigeria.">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://figureng.figureng247.workers.dev/calculators.html">
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+html{
+overflow-x:hidden;
+}
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#f8fafc;
+color:#1e293b;
+line-height:1.6;
+overflow-x:hidden;
+}
+
+a{
+text-decoration:none;
+}
+
+.container{
+width:92%;
+max-width:1100px;
+margin:auto;
+}
+
+/* HEADER */
+
+header{
+background:#fff;
+border-bottom:1px solid #e2e8f0;
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.nav{
+min-height:64px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+}
+
+.logo{
+font-size:24px;
+font-weight:900;
+color:#0f172a;
+}
+
+.logo span{
+color:#16a34a;
+}
+
+.nav-links{
+display:flex;
+gap:18px;
+font-size:13px;
+font-weight:700;
+}
+
+.nav-links a{
+color:#64748b;
+}
+
+.nav-links a:hover{
+color:#16a34a;
+}
+
+/* HERO */
+
+.hero{
+background:#0f172a;
+color:#fff;
+padding:55px 0;
+}
+
+.hero-content{
+max-width:800px;
+}
+
+.badge{
+display:inline-block;
+padding:7px 11px;
+border-radius:30px;
+background:rgba(22,163,74,.15);
+border:1px solid rgba(134,239,172,.25);
+color:#86efac;
+font-size:11px;
+font-weight:800;
+margin-bottom:18px;
+}
+
+.hero h1{
+font-size:clamp(35px,6vw,52px);
+line-height:1.08;
+letter-spacing:-1px;
+margin:0 0 17px;
+}
+
+.hero h1 span{
+color:#4ade80;
+}
+
+.hero p{
+max-width:720px;
+margin:0;
+color:#cbd5e1;
+font-size:17px;
+}
+
+/* MAIN */
+
+main{
+padding:50px 0 70px;
+}
+
+.section{
+margin-bottom:45px;
+}
+
+.section h2{
+font-size:30px;
+line-height:1.2;
+margin:0 0 8px;
+color:#0f172a;
+}
+
+.section-intro{
+color:#64748b;
+margin:0 0 22px;
+}
+
+/* TOOL GRID */
+
+.tools-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:18px;
+}
+
+.tool-card{
+display:block;
+background:#fff;
+border:1px solid #e2e8f0;
+border-radius:16px;
+padding:23px;
+transition:.2s;
+}
+
+.tool-card:hover{
+transform:translateY(-2px);
+border-color:#86efac;
+box-shadow:0 8px 25px rgba(15,23,42,.07);
+}
+
+.tool-category{
+display:inline-block;
+font-size:10px;
+font-weight:900;
+letter-spacing:.5px;
+text-transform:uppercase;
+color:#15803d;
+background:#f0fdf4;
+padding:5px 8px;
+border-radius:20px;
+margin-bottom:12px;
+}
+
+.tool-card h3{
+margin:0 0 8px;
+font-size:21px;
+color:#0f172a;
+}
+
+.tool-card p{
+margin:0 0 16px;
+font-size:14px;
+color:#64748b;
+}
+
+.tool-link{
+font-size:13px;
+font-weight:900;
+color:#16a34a;
+}
+
+/* FEATURED */
+
+.featured{
+background:#f0fdf4;
+border:1px solid #bbf7d0;
+border-radius:16px;
+padding:25px;
+}
+
+.featured h2{
+margin-top:0;
+}
+
+.featured-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin-top:18px;
+}
+
+.featured a{
+background:#fff;
+border:1px solid #dcfce7;
+border-radius:12px;
+padding:17px;
+font-weight:800;
+color:#0f172a;
+}
+
+.featured a span{
+display:block;
+font-size:11px;
+font-weight:500;
+color:#64748b;
+margin-top:4px;
+}
+
+/* COMING SOON */
+
+.coming{
+background:#fff;
+border:1px dashed #cbd5e1;
+border-radius:16px;
+padding:25px;
+}
+
+.coming h2{
+margin-top:0;
+}
+
+.coming-list{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:18px;
+}
+
+.coming-item{
+padding:15px;
+background:#f8fafc;
+border-radius:10px;
+font-size:14px;
+font-weight:700;
+color:#475569;
+}
+
+/* CTA */
+
+.cta{
+background:#0f172a;
+color:#fff;
+border-radius:16px;
+padding:28px;
+}
+
+.cta h2{
+margin:0 0 8px;
+font-size:26px;
+}
+
+.cta p{
+margin:0 0 17px;
+color:#cbd5e1;
+}
+
+.cta-button{
+display:inline-block;
+background:#16a34a;
+color:#fff;
+padding:12px 17px;
+border-radius:9px;
+font-size:13px;
+font-weight:900;
+}
+
+/* FOOTER */
+
+footer{
+background:#0f172a;
+color:#cbd5e1;
+padding:38px 0;
+border-top:1px solid #1e293b;
+}
+
+.footer-top{
+display:flex;
+justify-content:space-between;
+gap:30px;
+}
+
+.footer-brand{
+max-width:430px;
+}
+
+.footer-brand .logo{
+color:#fff;
+display:inline-block;
+margin-bottom:8px;
+}
+
+.footer-brand p{
+margin:0;
+font-size:13px;
+color:#94a3b8;
+}
+
+.footer-links{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+font-size:13px;
+}
+
+.footer-links a:hover{
+color:#fff;
+}
+
+.copyright{
+border-top:1px solid #334155;
+margin-top:25px;
+padding-top:20px;
+font-size:12px;
+color:#94a3b8;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.container{
+width:94%;
+}
+
+.nav{
+min-height:60px;
+}
+
+.logo{
+font-size:22px;
+}
+
+.nav-links{
+gap:10px;
+font-size:11px;
+}
+
+.nav-links a:nth-child(n+3){
+display:none;
+}
+
+.hero{
+padding:42px 0;
+}
+
+.hero h1{
+font-size:38px;
+}
+
+.hero p{
+font-size:15px;
+}
+
+main{
+padding-top:38px;
+}
+
+.tools-grid{
+grid-template-columns:1fr;
+}
+
+.featured-grid{
+grid-template-columns:1fr;
+}
+
+.coming-list{
+grid-template-columns:1fr;
+}
+
+.footer-top{
+flex-direction:column;
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="container nav">
+
+<a href="/" class="logo">
+Figure<span>NG</span>
+</a>
+
+<nav class="nav-links">
+
+<a href="/">
+Home
+</a>
+
+<a href="/calculators.html">
+Calculators
+</a>
+
+<a href="/about.html">
+About
+</a>
+
+<a href="/contact.html">
+Contact
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<section class="hero">
+
+<div class="container hero-content">
+
+<span class="badge">
+FIGURENG CALCULATORS
+</span>
+
+<h1>
+Free <span>Nigeria Calculators</span>
+</h1>
+
+<p>
+Simple online calculators designed to help you understand
+salary, loans, taxes, household costs, fuel and other
+everyday calculations in Nigeria.
+</p>
+
+</div>
+
+</section>
+
+
+<main>
+
+<div class="container">
+
+
+<section class="section">
+
+<h2>
+All FigureNG Calculators
+</h2>
+
+<p class="section-intro">
+Choose a calculator below. All tools are free to use and
+work directly in your browser.
+</p>
+
+
+<div class="tools-grid">
+
+
+<a
+class="tool-card"
+href="/"
+>
+
+<span class="tool-category">
+Money
+</span>
+
+<h3>
+Nigeria Salary Calculator
+</h3>
+
+<p>
+Estimate your Nigerian PAYE tax, deductions, gross income
+and monthly take-home pay.
+</p>
+
+<span class="tool-link">
+Calculate salary →
+</span>
+
+</a>
+
+
+<a
+class="tool-card"
+href="/loan-calculator.html"
+>
+
+<span class="tool-category">
+Money
+</span>
+
+<h3>
+Loan Calculator
+</h3>
+
+<p>
+Estimate monthly loan repayments, total interest and total
+amount payable.
+</p>
+
+<span class="tool-link">
+Calculate loan →
+</span>
+
+</a>
+
+
+<a
+class="tool-card"
+href="/flat-vs-reducing.html"
+>
+
+<span class="tool-category">
+Loans
+</span>
+
+<h3>
+Flat vs Reducing Loan Calculator
+</h3>
+
+<p>
+Compare flat-rate and reducing-balance loan calculations
+and understand the difference in total interest.
+</p>
+
+<span class="tool-link">
+Compare loans →
+</span>
+
+</a>
+
+
+<a
+class="tool-card"
+href="/vat-calculator.html"
+>
+
+<span class="tool-category">
+Tax
+</span>
+
+<h3>
+Nigeria VAT Calculator
+</h3>
+
+<p>
+Calculate VAT amounts and work out VAT-inclusive or
+VAT-exclusive prices.
+</p>
+
+<span class="tool-link">
+Calculate VAT →
+</span>
+
+</a>
+
+
+<a
+class="tool-card"
+href="/electricity-bill-calculator.html"
+>
+
+<span class="tool-category">
+Household
+</span>
+
+<h3>
+Nigeria Electricity Bill Calculator
+</h3>
+
+<p>
+Estimate electricity costs based on your electricity
+consumption and applicable tariff.
+</p>
+
+<span class="tool-link">
+Calculate electricity bill →
+</span>
+
+</a>
+
+
+<a
+class="tool-card"
+href="/fuel-cost-calculator.html"
+>
+
+<span class="tool-category">
+Transport
+</span>
+
+<h3>
+Nigeria Fuel Cost Calculator
+</h3>
+
+<p>
+Estimate petrol required, trip fuel cost, cost per
+kilometre and monthly fuel expenses.
+</p>
+
+<span class="tool-link">
+Calculate fuel cost →
+</span>
+
+</a>
+
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="featured">
+
+<h2>
+Popular FigureNG Tools
+</h2>
+
+<p class="section-intro">
+Start with the calculators people are most likely to need
+for everyday financial decisions.
+</p>
+
+
+<div class="featured-grid">
+
+<a href="/">
+Salary Calculator
+<span>
+Estimate take-home pay
+</span>
+</a>
+
+<a href="/loan-calculator.html">
+Loan Calculator
+<span>
+Estimate loan repayments
+</span>
+</a>
+
+<a href="/fuel-cost-calculator.html">
+Fuel Cost Calculator
+<span>
+Estimate petrol expenses
+</span>
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="coming">
+
+<h2>
+More calculators coming soon
+</h2>
+
+<p class="section-intro">
+We are gradually expanding FigureNG with practical tools
+for Nigerians.
+</p>
+
+
+<div class="coming-list">
+
+<div class="coming-item">
+Fuel Consumption Calculator
+</div>
+
+<div class="coming-item">
+Trip Cost Calculator
+</div>
+
+<div class="coming-item">
+Savings Calculator
+</div>
+
+<div class="coming-item">
+Inflation Calculator
+</div>
+
+<div class="coming-item">
+Percentage Calculator
+</div>
+
+<div class="coming-item">
+Discount Calculator
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="cta">
+
+<h2>
+Need a calculation?
+</h2>
+
+<p>
+Explore FigureNG's growing collection of free Nigerian
+calculators.
+</p>
+
+<a
+href="/"
+class="cta-button"
+>
+Back to FigureNG Home
+</a>
+
+</div>
+
+</section>
+
+
+</div>
+
+</main>
+
+
+<footer>
+
+<div class="container">
+
+<div class="footer-top">
+
+<div class="footer-brand">
+
+<a href="/" class="logo">
+Figure<span>NG</span>
+</a>
+
+<p>
+Free calculators and practical online tools for everyday
+needs in Nigeria.
+</p>
+
+</div>
+
+
+<div class="footer-links">
+
+<a href="/">
+Home
+</a>
+
+<a href="/calculators.html">
+Calculators
+</a>
+
+<a href="/about.html">
+About
+</a>
+
+<a href="/contact.html">
+Contact
+</a>
+
+<a href="/privacy.html">
+Privacy Policy
+</a>
+
+<a href="/terms.html">
+Terms
+</a>
+
+<a href="/disclaimer.html">
+Disclaimer
+</a>
+
+</div>
+
+</div>
+
+
+<div class="copyright">
+
+© 2026 FigureNG. All rights reserved.
+
+</div>
+
+</div>
+
+</footer>
+
+
+</body>
+</html>
+```
