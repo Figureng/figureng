@@ -14,8 +14,7 @@ function json(data, status = 200, extraHeaders = {}) {
 }
 
 function slugify(text) {
-  return text
-    .toString()
+  return String(text || "")
     .trim()
     .toLowerCase()
     .replace(/[^a-z0-9\s-]/g, "")
@@ -40,12 +39,7 @@ async function getRequestBody(request) {
   }
 }
 
-/*
- * ADMIN AUTHENTICATION
- *
- * The password is stored as a Cloudflare Worker secret.
- * It is never placed inside the website JavaScript.
- */
+/* ADMIN AUTHENTICATION */
 
 async function authenticate(request, env) {
   const password = request.headers.get("X-Admin-Password");
@@ -67,9 +61,7 @@ function unauthorized() {
   );
 }
 
-/*
- * CREATE ARTICLE
- */
+/* CREATE ARTICLE */
 
 async function createArticle(request, env) {
   const body = await getRequestBody(request);
@@ -181,7 +173,7 @@ async function createArticle(request, env) {
   return json(
     {
       success: true,
-      message: "Article created successfully.",
+      message: "Article published successfully.",
       article: {
         id: result.meta.last_row_id,
         title,
@@ -193,55 +185,39 @@ async function createArticle(request, env) {
   );
 }
 
-/*
- * LIST ARTICLES
- */
+/* LIST ARTICLES */
 
 async function listArticles(request, env) {
   const url = new URL(request.url);
 
-  const status =
+  const requestedStatus =
     url.searchParams.get("status") || "published";
 
+  /*
+   * Public visitors are only allowed to see
+   * published articles.
+   */
+  const status =
+    requestedStatus === "all"
+      ? "published"
+      : requestedStatus;
+
   const limitValue = Number(
-    url.searchParams.get("limit") || 20
+    url.searchParams.get("limit") || 50
   );
 
   const limit = Math.min(
     Math.max(
-      Number.isFinite(limitValue) ? limitValue : 20,
+      Number.isFinite(limitValue)
+        ? limitValue
+        : 50,
       1
     ),
     100
   );
 
-  let query;
-  let bindings;
-
-  if (status === "all") {
-    query = `
-      SELECT
-        id,
-        title,
-        slug,
-        excerpt,
-        category,
-        featured_image,
-        seo_title,
-        meta_description,
-        status,
-        published_at,
-        created_at,
-        updated_at
-      FROM articles
-      ORDER BY
-        COALESCE(published_at, created_at) DESC
-      LIMIT ?
-    `;
-
-    bindings = [limit];
-  } else {
-    query = `
+  const result = await env.DB
+    .prepare(`
       SELECT
         id,
         title,
@@ -258,16 +234,11 @@ async function listArticles(request, env) {
       FROM articles
       WHERE status = ?
       ORDER BY
-        published_at DESC
+        published_at DESC,
+        id DESC
       LIMIT ?
-    `;
-
-    bindings = [status, limit];
-  }
-
-  const result = await env.DB
-    .prepare(query)
-    .bind(...bindings)
+    `)
+    .bind(status, limit)
     .all();
 
   return json({
@@ -277,9 +248,7 @@ async function listArticles(request, env) {
   });
 }
 
-/*
- * GET ARTICLE BY ID
- */
+/* GET ARTICLE BY ID */
 
 async function getArticleById(id, env) {
   const articleId = Number(id);
@@ -333,9 +302,7 @@ async function getArticleById(id, env) {
   });
 }
 
-/*
- * GET ARTICLE BY SLUG
- */
+/* GET ARTICLE BY SLUG */
 
 async function getArticleBySlug(slug, env) {
   const article = await env.DB
@@ -356,6 +323,7 @@ async function getArticleBySlug(slug, env) {
         updated_at
       FROM articles
       WHERE slug = ?
+      AND status = 'published'
       LIMIT 1
     `)
     .bind(slug)
@@ -377,9 +345,7 @@ async function getArticleBySlug(slug, env) {
   });
 }
 
-/*
- * UPDATE ARTICLE
- */
+/* UPDATE ARTICLE */
 
 async function updateArticle(id, request, env) {
   const articleId = Number(id);
@@ -530,9 +496,7 @@ async function updateArticle(id, request, env) {
   });
 }
 
-/*
- * DELETE ARTICLE
- */
+/* DELETE ARTICLE */
 
 async function deleteArticle(id, env) {
   const articleId = Number(id);
@@ -570,9 +534,7 @@ async function deleteArticle(id, env) {
   });
 }
 
-/*
- * API ROUTER
- */
+/* API ROUTER */
 
 async function handleApi(request, env) {
   const url = new URL(request.url);
@@ -597,9 +559,7 @@ async function handleApi(request, env) {
     );
   }
 
-  /*
-   * Public article reading.
-   */
+  /* PUBLIC ARTICLE LIST */
 
   if (
     path === "/api/articles" &&
@@ -607,6 +567,8 @@ async function handleApi(request, env) {
   ) {
     return listArticles(request, env);
   }
+
+  /* PUBLIC ARTICLE BY SLUG */
 
   const publicSlugMatch = path.match(
     /^\/api\/articles\/slug\/([^/]+)$/
@@ -622,18 +584,13 @@ async function handleApi(request, env) {
     );
   }
 
-  /*
-   * Everything below this point requires admin
-   * authentication.
-   */
+  /* ADMIN AUTHENTICATION */
 
   if (!(await authenticate(request, env))) {
     return unauthorized();
   }
 
-  /*
-   * Create article.
-   */
+  /* CREATE */
 
   if (
     path === "/api/articles" &&
@@ -642,9 +599,7 @@ async function handleApi(request, env) {
     return createArticle(request, env);
   }
 
-  /*
-   * Article by ID.
-   */
+  /* ARTICLE BY ID */
 
   const idMatch = path.match(
     /^\/api\/articles\/(\d+)$/
@@ -674,13 +629,6 @@ async function handleApi(request, env) {
     );
   }
 
-  /*
-   * Admin article listing.
-   *
-   * Example:
-   * /api/articles?status=all
-   */
-
   return json(
     {
       success: false,
@@ -690,13 +638,15 @@ async function handleApi(request, env) {
   );
 }
 
-/*
- * MAIN WORKER
- */
+/* MAIN WORKER */
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    /*
+     * API requests
+     */
 
     if (url.pathname.startsWith("/api/")) {
       try {
@@ -715,7 +665,50 @@ export default {
     }
 
     /*
-     * Continue serving the existing FigureNG website.
+     * Dynamic public article URLs.
+     *
+     * Example:
+     * /guides/how-nigerian-paye-tax-works-2026
+     *
+     * This loads the article template and passes
+     * the slug to it through the query string.
+     */
+
+    if (
+      url.pathname.startsWith("/guides/") &&
+      url.pathname !== "/guides/" &&
+      !url.pathname.endsWith(".html")
+    ) {
+      const slug = url.pathname
+        .replace(/^\/guides\//, "")
+        .replace(/\/+$/, "");
+
+      if (slug) {
+        const templateUrl = new URL(
+          "/guides/article.html",
+          request.url
+        );
+
+        templateUrl.searchParams.set(
+          "slug",
+          slug
+        );
+
+        const templateRequest = new Request(
+          templateUrl.toString(),
+          request
+        );
+
+        if (env.ASSETS) {
+          return env.ASSETS.fetch(
+            templateRequest
+          );
+        }
+      }
+    }
+
+    /*
+     * Existing FigureNG website.
      */
 
     if (env.ASSETS) {
