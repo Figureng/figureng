@@ -1,1155 +1,2753 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FigureNG Publisher</title>
-  <meta name="robots" content="noindex, nofollow">
 
-  <style>
-    :root {
-      --ink: #17202a;
-      --muted: #68737d;
-      --green: #167447;
-      --green-dark: #105c37;
-      --paper: #ffffff;
-      --bg: #f4f5f3;
-      --line: #dfe3df;
-      --danger: #b42318;
-      --success-bg: #edf8f1;
-      --danger-bg: #fff1f0;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FigureNG Admin</title>
+
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<style>
+
+:root {
+    --green: #12372a;
+    --green2: #1b513d;
+    --green-light: #edf5f0;
+    --ink: #14231d;
+    --muted: #69756f;
+    --background: #f5f7f5;
+    --white: #ffffff;
+    --line: #dce3df;
+    --danger: #b42318;
+    --danger-light: #fff1f0;
+    --blue: #175cd3;
+    --blue-light: #eff8ff;
+    --orange: #b54708;
+    --orange-light: #fffaeb;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--background);
+    color: var(--ink);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.55;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(1180px, calc(100% - 30px));
+    margin: auto;
+}
+
+
+/* HEADER */
+
+header {
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    min-height: 68px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.mark {
+    width: 30px;
+    height: 30px;
+
+    display: grid;
+    place-items: center;
+
+    background: var(--green);
+    color: white;
+
+    border-radius: 5px;
+
+    font-size: 11px;
+}
+
+.brand span {
+    color: var(--green2);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-right a,
+.logout-button {
+    border: 1px solid var(--line);
+    background: white;
+    color: var(--muted);
+
+    padding: 8px 11px;
+    border-radius: 5px;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.logout-button:hover,
+.header-right a:hover {
+    border-color: var(--green2);
+    color: var(--green2);
+}
+
+
+/* PAGE */
+
+main {
+    padding: 35px 0 70px;
+}
+
+.page-heading {
+    margin-bottom: 25px;
+}
+
+.page-heading .kicker {
+    color: var(--green2);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+}
+
+.page-heading h1 {
+    font-size: 32px;
+    line-height: 1.15;
+    margin-bottom: 6px;
+}
+
+.page-heading p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+
+/* LOGIN */
+
+.login-screen {
+    min-height: calc(100vh - 68px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-box {
+    width: min(420px, 100%);
+
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+
+    padding: 30px;
+
+    box-shadow: 0 12px 35px rgba(20,35,29,.06);
+}
+
+.login-box h1 {
+    font-size: 25px;
+    margin-bottom: 7px;
+}
+
+.login-box p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 22px;
+}
+
+
+/* LAYOUT */
+
+.admin-layout {
+    display: grid;
+
+    grid-template-columns: minmax(0, 1.5fr) minmax(300px, .75fr);
+
+    gap: 22px;
+
+    align-items: start;
+}
+
+
+/* CARD */
+
+.card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    padding: 22px;
+}
+
+.card + .card {
+    margin-top: 18px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+.card-header h2 {
+    font-size: 17px;
+}
+
+.card-header p {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+
+/* FORM */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 16px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: block;
+
+    color: var(--ink);
+
+    font-size: 11px;
+    font-weight: 900;
+
+    margin-bottom: 6px;
+}
+
+.field-help {
+    color: var(--muted);
+
+    font-size: 10px;
+
+    margin-top: 5px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+
+    border: 1px solid var(--line);
+    border-radius: 5px;
+
+    background: white;
+    color: var(--ink);
+
+    outline: none;
+}
+
+input,
+select {
+    height: 42px;
+    padding: 0 11px;
+}
+
+textarea {
+    min-height: 150px;
+    padding: 11px;
+
+    resize: vertical;
+}
+
+#content {
+    min-height: 360px;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--green2);
+
+    box-shadow:
+        0 0 0 3px rgba(27,81,61,.08);
+}
+
+
+/* BUTTONS */
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+
+    margin-top: 20px;
+}
+
+.btn {
+    min-height: 40px;
+
+    border: 1px solid transparent;
+    border-radius: 5px;
+
+    padding: 0 15px;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.btn-primary {
+    background: var(--green);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--green2);
+}
+
+.btn-secondary {
+    background: white;
+    border-color: var(--line);
+    color: var(--ink);
+}
+
+.btn-secondary:hover {
+    border-color: var(--green2);
+    color: var(--green2);
+}
+
+.btn-danger {
+    background: var(--danger-light);
+    border-color: #fecdca;
+    color: var(--danger);
+}
+
+.btn-danger:hover {
+    background: #fee4e2;
+}
+
+.btn-blue {
+    background: var(--blue-light);
+    border-color: #b2ddff;
+    color: var(--blue);
+}
+
+.btn-small {
+    min-height: 32px;
+    padding: 0 10px;
+    font-size: 10px;
+}
+
+
+/* STATUS */
+
+.status-box {
+    display: none;
+
+    border-radius: 5px;
+
+    padding: 11px 13px;
+
+    margin-bottom: 18px;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.status-box.show {
+    display: block;
+}
+
+.status-success {
+    background: var(--green-light);
+    border: 1px solid #b7d8c5;
+    color: var(--green2);
+}
+
+.status-error {
+    background: var(--danger-light);
+    border: 1px solid #fecdca;
+    color: var(--danger);
+}
+
+
+/* EDITING STATE */
+
+.editor-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.editor-badge {
+    display: none;
+
+    padding: 4px 7px;
+
+    border-radius: 4px;
+
+    background: var(--blue-light);
+    color: var(--blue);
+
+    font-size: 9px;
+    font-weight: 900;
+
+    text-transform: uppercase;
+}
+
+.editor-badge.show {
+    display: inline-block;
+}
+
+
+/* ARTICLE LIST */
+
+.article-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-bottom: 16px;
+}
+
+.search-input {
+    flex: 1;
+    min-width: 180px;
+}
+
+.filter-button {
+    height: 38px;
+
+    border: 1px solid var(--line);
+    border-radius: 5px;
+
+    padding: 0 11px;
+
+    background: white;
+    color: var(--muted);
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.filter-button.active,
+.filter-button:hover {
+    background: var(--green);
+    border-color: var(--green);
+    color: white;
+}
+
+.article-list {
+    display: grid;
+    gap: 9px;
+}
+
+.article-row {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+
+    padding: 13px;
+
+    background: #fff;
+}
+
+.article-row:hover {
+    border-color: #c7d3cc;
+}
+
+.article-main {
+    min-width: 0;
+}
+
+.article-title {
+    font-size: 13px;
+    font-weight: 900;
+
+    margin-bottom: 4px;
+}
+
+.article-slug {
+    color: #89938e;
+
+    font-size: 9px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    margin-bottom: 7px;
+}
+
+.article-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-bottom: 10px;
+}
+
+.status-badge {
+    display: inline-block;
+
+    padding: 4px 7px;
+
+    border-radius: 4px;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    text-transform: uppercase;
+}
+
+.status-published {
+    background: var(--green-light);
+    color: var(--green2);
+}
+
+.status-draft {
+    background: var(--orange-light);
+    color: var(--orange);
+}
+
+.category-badge {
+    color: var(--muted);
+
+    font-size: 9px;
+}
+
+.article-date {
+    color: #89938e;
+    font-size: 9px;
+}
+
+.article-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+
+/* EMPTY */
+
+.empty {
+    padding: 30px 15px;
+
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+
+/* STATS */
+
+.stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 9px;
+
+    margin-bottom: 18px;
+}
+
+.stat {
+    background: white;
+
+    border: 1px solid var(--line);
+    border-radius: 6px;
+
+    padding: 13px;
+}
+
+.stat small {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    margin-bottom: 4px;
+}
+
+.stat strong {
+    font-size: 21px;
+}
+
+
+/* SIDE INFO */
+
+.info-list {
+    display: grid;
+    gap: 10px;
+}
+
+.info-item {
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.info-item:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.info-item strong {
+    display: block;
+
+    font-size: 11px;
+
+    margin-bottom: 3px;
+}
+
+.info-item span {
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+
+/* LOADING */
+
+.loading {
+    padding: 25px;
+
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:900px) {
+
+    .admin-layout {
+        grid-template-columns: 1fr;
     }
 
-    * {
-      box-sizing: border-box;
+}
+
+@media(max-width:650px) {
+
+    .header-inner {
+        min-height: 60px;
     }
 
-    html {
-      background: var(--bg);
+    .header-right a {
+        display: none;
     }
 
-    body {
-      margin: 0;
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-      color: var(--ink);
-      background: var(--bg);
-      line-height: 1.55;
+    main {
+        padding-top: 25px;
     }
 
-    button,
-    input,
-    textarea,
-    select {
-      font: inherit;
+    .page-heading h1 {
+        font-size: 27px;
     }
 
-    button {
-      cursor: pointer;
+    .card {
+        padding: 17px;
     }
 
-    .topbar {
-      background: var(--paper);
-      border-bottom: 1px solid var(--line);
-      position: sticky;
-      top: 0;
-      z-index: 20;
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
     }
 
-    .topbar-inner {
-      width: min(1180px, 94%);
-      min-height: 62px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
+    .form-group.full {
+        grid-column: auto;
     }
 
-    .brand {
-      text-decoration: none;
-      color: var(--ink);
-      font-size: 21px;
-      font-weight: 900;
-      letter-spacing: -0.5px;
-    }
-
-    .brand span {
-      color: var(--green);
-    }
-
-    .topbar-right {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-    }
-
-    .view-site {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .page {
-      width: min(1180px, 94%);
-      margin: 28px auto 60px;
-    }
-
-    .page-header {
-      margin-bottom: 22px;
-    }
-
-    .eyebrow {
-      color: var(--green);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 11px;
-      font-weight: 900;
-      margin-bottom: 5px;
-    }
-
-    .page-header h1 {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(29px, 5vw, 42px);
-      line-height: 1.1;
-      letter-spacing: -0.7px;
-    }
-
-    .page-header p {
-      color: var(--muted);
-      margin: 8px 0 0;
-      font-size: 14px;
-    }
-
-    .editor-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 320px;
-      gap: 22px;
-      align-items: start;
-    }
-
-    .panel {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .panel-body {
-      padding: 22px;
-    }
-
-    .field {
-      margin-bottom: 20px;
-    }
-
-    .field:last-child {
-      margin-bottom: 0;
-    }
-
-    label {
-      display: block;
-      color: var(--ink);
-      font-size: 12px;
-      font-weight: 800;
-      margin-bottom: 7px;
-    }
-
-    .required {
-      color: var(--green);
-    }
-
-    input,
-    textarea,
-    select {
-      width: 100%;
-      border: 1px solid #cfd5d1;
-      border-radius: 7px;
-      background: #fff;
-      color: var(--ink);
-      padding: 11px 12px;
-      outline: none;
-    }
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-      border-color: var(--green);
-      box-shadow: 0 0 0 2px rgba(22, 116, 71, 0.08);
-    }
-
-    .title-input {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 25px;
-      line-height: 1.25;
-      padding: 13px;
-    }
-
-    textarea {
-      resize: vertical;
-    }
-
-    .excerpt {
-      min-height: 110px;
-    }
-
-    .content {
-      min-height: 430px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 17px;
-      line-height: 1.7;
-    }
-
-    .help {
-      color: var(--muted);
-      font-size: 11px;
-      margin-top: 5px;
-    }
-
-    .slug-row {
-      display: flex;
-      gap: 8px;
-      align-items: stretch;
-    }
-
-    .slug-row input {
-      flex: 1;
-    }
-
-    .small-button {
-      border: 1px solid var(--line);
-      background: #fff;
-      color: var(--ink);
-      border-radius: 7px;
-      padding: 0 12px;
-      font-size: 12px;
-      font-weight: 800;
-      white-space: nowrap;
-    }
-
-    .small-button:hover {
-      background: #f6f7f6;
-    }
-
-    .two-column {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-
-    .panel-heading {
-      border-bottom: 1px solid var(--line);
-      padding: 15px 18px;
-      font-size: 13px;
-      font-weight: 900;
-    }
-
-    .side-panel {
-      position: sticky;
-      top: 84px;
-    }
-
-    .side-section {
-      padding: 18px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .side-section:last-child {
-      border-bottom: 0;
-    }
-
-    .side-title {
-      font-size: 12px;
-      font-weight: 900;
-      margin-bottom: 12px;
-    }
-
-    .preview {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
-      background: #fff;
-    }
-
-    .preview-image {
-      display: none;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      background: #eee;
-    }
-
-    .preview-copy {
-      padding: 13px;
-    }
-
-    .preview-category {
-      color: var(--green);
-      text-transform: uppercase;
-      font-size: 9px;
-      font-weight: 900;
-      letter-spacing: .8px;
-    }
-
-    .preview-title {
-      margin: 5px 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 19px;
-      line-height: 1.2;
-    }
-
-    .preview-excerpt {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.45;
+    .stats {
+        grid-template-columns: 1fr 1fr;
     }
 
     .actions {
-      display: grid;
-      gap: 9px;
+        flex-direction: column;
     }
 
-    .action-button {
-      width: 100%;
-      min-height: 46px;
-      border-radius: 7px;
-      border: 1px solid var(--line);
-      background: #fff;
-      color: var(--ink);
-      font-weight: 900;
+    .actions .btn {
+        width: 100%;
     }
 
-    .action-button.primary {
-      border-color: var(--green);
-      background: var(--green);
-      color: #fff;
-    }
+}
 
-    .action-button.primary:hover {
-      background: var(--green-dark);
-    }
+</style>
 
-    .action-button.secondary:hover {
-      background: #f5f7f5;
-    }
-
-    .status {
-      display: none;
-      padding: 12px 14px;
-      border-radius: 7px;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 18px;
-    }
-
-    .status.show {
-      display: block;
-    }
-
-    .status.success {
-      background: var(--success-bg);
-      color: #126039;
-      border: 1px solid #b9dfc8;
-    }
-
-    .status.error {
-      background: var(--danger-bg);
-      color: var(--danger);
-      border: 1px solid #f0c3be;
-    }
-
-    .auth-box {
-      max-width: 440px;
-      margin: 50px auto;
-    }
-
-    .auth-box h2 {
-      font-family: Georgia, "Times New Roman", serif;
-      margin: 0 0 6px;
-      font-size: 28px;
-    }
-
-    .auth-box p {
-      color: var(--muted);
-      font-size: 13px;
-      margin: 0 0 22px;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    .logout {
-      border: 0;
-      background: transparent;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 800;
-      padding: 5px;
-    }
-
-    .logout:hover {
-      color: var(--danger);
-    }
-
-    @media (max-width: 850px) {
-      .editor-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .side-panel {
-        position: static;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .page {
-        width: 94%;
-        margin-top: 20px;
-      }
-
-      .panel-body {
-        padding: 16px;
-      }
-
-      .two-column {
-        grid-template-columns: 1fr;
-        gap: 0;
-      }
-
-      .content {
-        min-height: 360px;
-      }
-
-      .title-input {
-        font-size: 22px;
-      }
-
-      .topbar-inner {
-        width: 94%;
-      }
-
-      .view-site {
-        display: none;
-      }
-    }
-  </style>
 </head>
 
 <body>
 
-  <header class="topbar">
-    <div class="topbar-inner">
 
-      <a href="/" class="brand">
-        Figure<span>NG</span>
-      </a>
+<header>
 
-      <div class="topbar-right">
-        <a href="/" class="view-site">
-          View site
-        </a>
+<div class="container header-inner">
 
-        <button
-          type="button"
-          class="logout hidden"
-          id="logoutButton"
-          onclick="logout()"
-        >
-          Log out
-        </button>
-      </div>
+<a href="/" class="brand">
 
-    </div>
-  </header>
+<div class="mark">
+FG
+</div>
 
-  <main class="page">
+Figure<span>NG</span>
 
-    <section id="loginView" class="panel auth-box">
+</a>
 
-      <div class="panel-body">
+<div class="header-right">
 
-        <div class="eyebrow">
-          Private publisher
-        </div>
+<a href="/" target="_blank">
+View site
+</a>
 
-        <h2>
-          FigureNG Publisher
-        </h2>
+<button
+    id="logoutButton"
+    class="logout-button"
+    type="button"
+>
+Log out
+</button>
 
-        <p>
-          Sign in to create and manage FigureNG articles.
-        </p>
+</div>
 
-        <div id="loginStatus" class="status"></div>
+</div>
 
-        <div class="field">
+</header>
 
-          <label for="password">
-            Admin password
-          </label>
 
-          <input
-            id="password"
-            type="password"
-            autocomplete="current-password"
-            placeholder="Enter your password"
-          >
+<div id="loginScreen" class="login-screen">
 
-        </div>
+<div class="login-box">
 
-        <button
-          type="button"
-          class="action-button primary"
-          onclick="login()"
-        >
-          Continue
-        </button>
+<h1>
+FigureNG Admin
+</h1>
 
-      </div>
+<p>
+Enter your administrator password to manage articles.
+</p>
 
-    </section>
+<div
+    id="loginError"
+    class="status-box status-error"
+></div>
 
-    <section id="publisherView" class="hidden">
+<div class="form-group">
 
-      <div class="page-header">
+<label for="loginPassword">
+Admin password
+</label>
 
-        <div class="eyebrow">
-          Publishing
-        </div>
+<input
+    id="loginPassword"
+    type="password"
+    autocomplete="current-password"
+    placeholder="Enter password"
+>
 
-        <h1>
-          New article
-        </h1>
+</div>
 
-        <p>
-          Write, prepare and publish a FigureNG guide.
-        </p>
+<button
+    id="loginButton"
+    class="btn btn-primary"
+    style="width:100%;"
+    type="button"
+>
+Open Admin
+</button>
 
-      </div>
+</div>
 
-      <div id="editorStatus" class="status"></div>
+</div>
 
-      <div class="editor-layout">
 
-        <section class="panel">
+<div id="adminApp" style="display:none;">
 
-          <div class="panel-body">
+<main>
 
-            <div class="field">
+<div class="container">
 
-              <label for="title">
-                Article title <span class="required">*</span>
-              </label>
 
-              <input
-                id="title"
-                class="title-input"
-                type="text"
-                maxlength="200"
-                placeholder="Enter the article title"
-                oninput="updatePreview(); generateSlug()"
-              >
+<div class="page-heading">
 
-            </div>
+<div class="kicker">
+FigureNG Publishing
+</div>
 
-            <div class="field">
+<h1>
+Content management
+</h1>
 
-              <label for="slug">
-                URL slug
-              </label>
+<p>
+Create, edit, publish and manage your FigureNG guides.
+</p>
 
-              <div class="slug-row">
+</div>
 
-                <input
-                  id="slug"
-                  type="text"
-                  maxlength="200"
-                  placeholder="article-url"
-                >
 
-                <button
-                  type="button"
-                  class="small-button"
-                  onclick="generateSlug(true)"
-                >
-                  Generate
-                </button>
+<div
+    id="globalStatus"
+    class="status-box"
+></div>
 
-              </div>
 
-              <div class="help">
-                Example: /guides/how-to-calculate-paye
-              </div>
+<div class="stats">
 
-            </div>
+<div class="stat">
 
-            <div class="two-column">
+<small>
+Total articles
+</small>
 
-              <div class="field">
+<strong id="totalCount">
+0
+</strong>
 
-                <label for="category">
-                  Category
-                </label>
+</div>
 
-                <select id="category">
+<div class="stat">
 
-                  <option value="Guides">
-                    Guides
-                  </option>
+<small>
+Published
+</small>
 
-                  <option value="Finance">
-                    Finance
-                  </option>
+<strong id="publishedCount">
+0
+</strong>
 
-                  <option value="Loans">
-                    Loans
-                  </option>
+</div>
 
-                  <option value="Salary">
-                    Salary
-                  </option>
+<div class="stat">
 
-                  <option value="Tax">
-                    Tax
-                  </option>
+<small>
+Drafts
+</small>
 
-                  <option value="Tools">
-                    Tools
-                  </option>
+<strong id="draftCount">
+0
+</strong>
 
-                </select>
+</div>
 
-              </div>
+</div>
 
-              <div class="field">
 
-                <label for="featuredImage">
-                  Featured image URL
-                </label>
+<div class="admin-layout">
 
-                <input
-                  id="featuredImage"
-                  type="url"
-                  placeholder="https://..."
-                  oninput="updatePreview()"
-                >
 
-              </div>
+<section>
 
-            </div>
 
-            <div class="field">
+<div class="card">
 
-              <label for="excerpt">
-                Article excerpt
-              </label>
+<div class="card-header">
 
-              <textarea
-                id="excerpt"
-                class="excerpt"
-                maxlength="500"
-                placeholder="A short introduction that explains what the reader will learn."
-                oninput="updatePreview()"
-              ></textarea>
+<div class="editor-title">
 
-              <div class="help">
-                Keep this clear and useful. It may appear on article listings.
-              </div>
+<h2 id="editorHeading">
+New article
+</h2>
 
-            </div>
+<span
+    id="editingBadge"
+    class="editor-badge"
+>
+Editing
+</span>
 
-            <div class="field">
+</div>
 
-              <label for="content">
-                Article content <span class="required">*</span>
-              </label>
+<button
+    id="newArticleButton"
+    class="btn btn-secondary btn-small"
+    type="button"
+>
+New article
+</button>
 
-              <textarea
-                id="content"
-                class="content"
-                placeholder="Write your article here..."
-              ></textarea>
+</div>
 
-              <div class="help">
-                Plain text is supported in this first publisher version.
-              </div>
 
-            </div>
+<div
+    id="editorStatus"
+    class="status-box"
+></div>
 
-            <div class="field">
 
-              <label for="seoTitle">
-                SEO title
-              </label>
+<form id="articleForm">
 
-              <input
-                id="seoTitle"
-                type="text"
-                maxlength="200"
-                placeholder="Search-friendly title"
-              >
 
-            </div>
+<input
+    id="articleId"
+    type="hidden"
+>
 
-            <div class="field">
 
-              <label for="metaDescription">
-                Meta description
-              </label>
+<div class="form-grid">
 
-              <textarea
-                id="metaDescription"
-                maxlength="320"
-                rows="4"
-                placeholder="A concise description for search engines."
-              ></textarea>
 
-            </div>
+<div class="form-group full">
 
-          </div>
+<label for="title">
+Title
+</label>
 
-        </section>
+<input
+    id="title"
+    type="text"
+    maxlength="200"
+    required
+    placeholder="Enter article title"
+>
 
-        <aside class="panel side-panel">
+</div>
 
-          <div class="panel-heading">
-            Publish
-          </div>
 
-          <div class="side-section">
+<div class="form-group">
 
-            <div class="actions">
+<label for="slug">
+Slug
+</label>
 
-              <button
-                type="button"
-                class="action-button secondary"
-                onclick="saveArticle('draft')"
-              >
-                Save draft
-              </button>
+<input
+    id="slug"
+    type="text"
+    maxlength="200"
+    placeholder="article-url-slug"
+>
 
-              <button
-                type="button"
-                class="action-button primary"
-                onclick="saveArticle('published')"
-              >
-                Publish article
-              </button>
+<div class="field-help">
+Leave blank to generate it from the title.
+</div>
 
-            </div>
+</div>
 
-          </div>
 
-          <div class="side-section">
+<div class="form-group">
 
-            <div class="side-title">
-              Article preview
-            </div>
+<label for="category">
+Category
+</label>
 
-            <div class="preview">
+<select id="category">
 
-              <img
-                id="previewImage"
-                class="preview-image"
-                alt=""
-              >
+<option value="Guides">
+Guides
+</option>
 
-              <div class="preview-copy">
+<option value="Salary">
+Salary
+</option>
 
-                <div
-                  id="previewCategory"
-                  class="preview-category"
-                >
-                  Guides
-                </div>
+<option value="Tax">
+Tax
+</option>
 
-                <div
-                  id="previewTitle"
-                  class="preview-title"
-                >
-                  Your article title
-                </div>
+<option value="Loans">
+Loans
+</option>
 
-                <div
-                  id="previewExcerpt"
-                  class="preview-excerpt"
-                >
-                  Your article excerpt will appear here.
-                </div>
+<option value="Personal Finance">
+Personal Finance
+</option>
 
-              </div>
+<option value="Money">
+Money
+</option>
 
-            </div>
+<option value="Business">
+Business
+</option>
 
-          </div>
+</select>
 
-        </aside>
+</div>
 
-      </div>
 
-    </section>
+<div class="form-group full">
 
-  </main>
+<label for="excerpt">
+Excerpt
+</label>
 
-  <script>
-    const API_BASE = "/api";
+<textarea
+    id="excerpt"
+    style="min-height:90px;"
+    maxlength="500"
+    placeholder="Short description of the article"
+></textarea>
 
-    let adminPassword = "";
+</div>
 
-    const loginView =
-      document.getElementById("loginView");
 
-    const publisherView =
-      document.getElementById("publisherView");
+<div class="form-group full">
 
-    const logoutButton =
-      document.getElementById("logoutButton");
+<label for="content">
+Article content
+</label>
 
-    const passwordInput =
-      document.getElementById("password");
+<textarea
+    id="content"
+    required
+    placeholder="Write the article content here..."
+></textarea>
 
-    function showStatus(element, message, type) {
-      element.textContent = message;
-      element.className =
-        "status show " + type;
+<div class="field-help">
+Plain text is supported. Separate paragraphs with blank lines.
+</div>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="featuredImage">
+Featured image URL
+</label>
+
+<input
+    id="featuredImage"
+    type="url"
+    maxlength="1000"
+    placeholder="https://example.com/image.jpg"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="status">
+Publication status
+</label>
+
+<select id="status">
+
+<option value="draft">
+Draft
+</option>
+
+<option value="published">
+Published
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="seoTitle">
+SEO title
+</label>
+
+<input
+    id="seoTitle"
+    type="text"
+    maxlength="200"
+    placeholder="SEO title"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="metaDescription">
+Meta description
+</label>
+
+<textarea
+    id="metaDescription"
+    maxlength="320"
+    style="min-height:90px;"
+    placeholder="Search engine description"
+></textarea>
+
+</div>
+
+
+</div>
+
+
+<div class="actions">
+
+<button
+    id="saveDraftButton"
+    class="btn btn-secondary"
+    type="button"
+>
+Save draft
+</button>
+
+<button
+    id="publishButton"
+    class="btn btn-primary"
+    type="submit"
+>
+Publish article
+</button>
+
+<button
+    id="deleteEditorButton"
+    class="btn btn-danger"
+    type="button"
+    style="display:none;"
+>
+Delete article
+</button>
+
+</div>
+
+
+</form>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-header">
+
+<div>
+
+<h2>
+Articles
+</h2>
+
+<p>
+Manage existing articles.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="article-tools">
+
+<input
+    id="articleSearch"
+    class="search-input"
+    type="search"
+    placeholder="Search articles..."
+>
+
+<button
+    class="filter-button active"
+    data-filter="all"
+    type="button"
+>
+All
+</button>
+
+<button
+    class="filter-button"
+    data-filter="published"
+    type="button"
+>
+Published
+</button>
+
+<button
+    class="filter-button"
+    data-filter="draft"
+    type="button"
+>
+Drafts
+</button>
+
+</div>
+
+
+<div
+    id="articleList"
+    class="article-list"
+>
+
+<div class="loading">
+Loading articles...
+</div>
+
+</div>
+
+</div>
+
+
+</section>
+
+
+<aside>
+
+
+<div class="card">
+
+<div class="card-header">
+
+<div>
+
+<h2>
+Publishing workflow
+</h2>
+
+<p>
+How to use the panel.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="info-list">
+
+
+<div class="info-item">
+
+<strong>
+Save draft
+</strong>
+
+<span>
+Keeps the article in the database without making it publicly published.
+</span>
+
+</div>
+
+
+<div class="info-item">
+
+<strong>
+Publish
+</strong>
+
+<span>
+Makes the article available through the public article system.
+</span>
+
+</div>
+
+
+<div class="info-item">
+
+<strong>
+Edit
+</strong>
+
+<span>
+Loads the complete article back into the editor for changes.
+</span>
+
+</div>
+
+
+<div class="info-item">
+
+<strong>
+Unpublish
+</strong>
+
+<span>
+Changes a published article back into draft status.
+</span>
+
+</div>
+
+
+<div class="info-item">
+
+<strong>
+Delete
+</strong>
+
+<span>
+Permanently removes the article from the database.
+</span>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-header">
+
+<div>
+
+<h2>
+Current article
+</h2>
+
+</div>
+
+</div>
+
+
+<div class="info-list">
+
+
+<div class="info-item">
+
+<strong>
+Status
+</strong>
+
+<span id="currentStatus">
+New article
+</span>
+
+</div>
+
+
+<div class="info-item">
+
+<strong>
+Article ID
+</strong>
+
+<span id="currentId">
+Not saved
+</span>
+
+</div>
+
+
+<div class="info-item">
+
+<strong>
+Slug
+</strong>
+
+<span id="currentSlug">
+Not saved
+</span>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+</aside>
+
+
+</div>
+
+
+</div>
+
+</main>
+
+</div>
+
+
+<script>
+
+/*
+ * FigureNG Admin
+ *
+ * The administrator password is kept in sessionStorage
+ * only while this browser session is open.
+ */
+
+const API_BASE = "/api/articles";
+
+let adminPassword = "";
+let articles = [];
+let currentFilter = "all";
+
+
+const loginScreen =
+    document.getElementById("loginScreen");
+
+const adminApp =
+    document.getElementById("adminApp");
+
+const loginPassword =
+    document.getElementById("loginPassword");
+
+const loginButton =
+    document.getElementById("loginButton");
+
+const loginError =
+    document.getElementById("loginError");
+
+const logoutButton =
+    document.getElementById("logoutButton");
+
+const articleForm =
+    document.getElementById("articleForm");
+
+const articleId =
+    document.getElementById("articleId");
+
+const title =
+    document.getElementById("title");
+
+const slug =
+    document.getElementById("slug");
+
+const excerpt =
+    document.getElementById("excerpt");
+
+const content =
+    document.getElementById("content");
+
+const category =
+    document.getElementById("category");
+
+const featuredImage =
+    document.getElementById("featuredImage");
+
+const seoTitle =
+    document.getElementById("seoTitle");
+
+const metaDescription =
+    document.getElementById("metaDescription");
+
+const status =
+    document.getElementById("status");
+
+const articleList =
+    document.getElementById("articleList");
+
+const articleSearch =
+    document.getElementById("articleSearch");
+
+const editorHeading =
+    document.getElementById("editorHeading");
+
+const editingBadge =
+    document.getElementById("editingBadge");
+
+const deleteEditorButton =
+    document.getElementById("deleteEditorButton");
+
+const saveDraftButton =
+    document.getElementById("saveDraftButton");
+
+const publishButton =
+    document.getElementById("publishButton");
+
+const newArticleButton =
+    document.getElementById("newArticleButton");
+
+const editorStatus =
+    document.getElementById("editorStatus");
+
+const globalStatus =
+    document.getElementById("globalStatus");
+
+const totalCount =
+    document.getElementById("totalCount");
+
+const publishedCount =
+    document.getElementById("publishedCount");
+
+const draftCount =
+    document.getElementById("draftCount");
+
+const currentStatus =
+    document.getElementById("currentStatus");
+
+const currentId =
+    document.getElementById("currentId");
+
+const currentSlug =
+    document.getElementById("currentSlug");
+
+
+/*
+ * STATUS MESSAGE
+ */
+
+function showMessage(element, message, type) {
+
+    element.textContent = message;
+
+    element.className =
+        "status-box show " +
+        (type === "error"
+            ? "status-error"
+            : "status-success");
+
+}
+
+
+function clearMessage(element) {
+
+    element.textContent = "";
+
+    element.className =
+        "status-box";
+
+}
+
+
+/*
+ * API REQUEST
+ */
+
+async function apiRequest(
+    url,
+    options = {}
+) {
+
+    const headers = {
+        ...(options.headers || {}),
+        "X-Admin-Password": adminPassword
+    };
+
+    if (
+        options.body &&
+        !headers["Content-Type"]
+    ) {
+
+        headers["Content-Type"] =
+            "application/json";
+
     }
 
-    function hideStatus(element) {
-      element.className = "status";
-      element.textContent = "";
-    }
+    const response =
+        await fetch(url, {
+            ...options,
+            headers
+        });
 
-    async function login() {
-      const password =
-        passwordInput.value.trim();
+    let data;
 
-      if (!password) {
-        showStatus(
-          document.getElementById("loginStatus"),
-          "Enter your admin password.",
-          "error"
+    try {
+
+        data = await response.json();
+
+    } catch {
+
+        throw new Error(
+            "The server returned an invalid response."
         );
+
+    }
+
+    if (!response.ok || data.success === false) {
+
+        throw new Error(
+            data.error ||
+            data.message ||
+            "The request failed."
+        );
+
+    }
+
+    return data;
+
+}
+
+
+/*
+ * LOGIN
+ */
+
+async function login() {
+
+    const password =
+        loginPassword.value.trim();
+
+    if (!password) {
+
+        showMessage(
+            loginError,
+            "Please enter your admin password.",
+            "error"
+        );
+
         return;
-      }
 
-      try {
-        const response = await fetch(
-          API_BASE + "/articles?status=all&limit=1",
-          {
-            method: "GET",
-            headers: {
-              "X-Admin-Password": password
-            }
-          }
-        );
+    }
 
-        if (response.status === 401) {
-          showStatus(
-            document.getElementById("loginStatus"),
-            "The password is incorrect.",
-            "error"
-          );
-          return;
-        }
+    loginButton.disabled = true;
+    loginButton.textContent = "Checking...";
 
-        if (!response.ok) {
-          showStatus(
-            document.getElementById("loginStatus"),
-            "Unable to connect to the publishing system.",
-            "error"
-          );
-          return;
+    try {
+
+        const response =
+            await fetch(
+                API_BASE + "?status=all&limit=100",
+                {
+                    headers: {
+                        "X-Admin-Password":
+                            password
+                    }
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if (
+            !response.ok ||
+            data.success === false
+        ) {
+
+            throw new Error(
+                data.error ||
+                "Incorrect password."
+            );
+
         }
 
         adminPassword = password;
 
         sessionStorage.setItem(
-          "figureng_admin_password",
-          password
+            "figureng_admin_password",
+            password
         );
 
-        loginView.classList.add("hidden");
-        publisherView.classList.remove("hidden");
-        logoutButton.classList.remove("hidden");
+        loginScreen.style.display = "none";
+        adminApp.style.display = "block";
 
-      } catch (error) {
-        showStatus(
-          document.getElementById("loginStatus"),
-          "A connection error occurred.",
-          "error"
-        );
-      }
-    }
+        await loadArticles();
 
-    function logout() {
-      adminPassword = "";
+    } catch (error) {
 
-      sessionStorage.removeItem(
-        "figureng_admin_password"
-      );
-
-      publisherView.classList.add("hidden");
-      loginView.classList.remove("hidden");
-      logoutButton.classList.add("hidden");
-
-      passwordInput.value = "";
-
-      hideStatus(
-        document.getElementById("loginStatus")
-      );
-    }
-
-    function slugify(text) {
-      return text
-        .toString()
-        .trim()
-        .toLowerCase()
-        .replace(/[^a-z0-9\s-]/g, "")
-        .replace(/\s+/g, "-")
-        .replace(/-+/g, "-")
-        .replace(/^-|-$/g, "");
-    }
-
-    function generateSlug(force = false) {
-      const title =
-        document.getElementById("title").value;
-
-      const slugInput =
-        document.getElementById("slug");
-
-      if (
-        force ||
-        !slugInput.value.trim()
-      ) {
-        slugInput.value = slugify(title);
-      }
-    }
-
-    function updatePreview() {
-      const title =
-        document.getElementById("title").value.trim();
-
-      const excerpt =
-        document.getElementById("excerpt").value.trim();
-
-      const category =
-        document.getElementById("category").value;
-
-      const image =
-        document.getElementById("featuredImage").value.trim();
-
-      document.getElementById(
-        "previewTitle"
-      ).textContent =
-        title || "Your article title";
-
-      document.getElementById(
-        "previewExcerpt"
-      ).textContent =
-        excerpt ||
-        "Your article excerpt will appear here.";
-
-      document.getElementById(
-        "previewCategory"
-      ).textContent =
-        category;
-
-      const previewImage =
-        document.getElementById("previewImage");
-
-      if (image) {
-        previewImage.src = image;
-        previewImage.style.display = "block";
-      } else {
-        previewImage.removeAttribute("src");
-        previewImage.style.display = "none";
-      }
-    }
-
-    async function saveArticle(status) {
-      const title =
-        document.getElementById("title").value.trim();
-
-      const slug =
-        document.getElementById("slug").value.trim();
-
-      const excerpt =
-        document.getElementById("excerpt").value.trim();
-
-      const content =
-        document.getElementById("content").value.trim();
-
-      const category =
-        document.getElementById("category").value;
-
-      const featuredImage =
-        document.getElementById(
-          "featuredImage"
-        ).value.trim();
-
-      const seoTitle =
-        document.getElementById(
-          "seoTitle"
-        ).value.trim();
-
-      const metaDescription =
-        document.getElementById(
-          "metaDescription"
-        ).value.trim();
-
-      const statusBox =
-        document.getElementById("editorStatus");
-
-      if (!title) {
-        showStatus(
-          statusBox,
-          "Please enter an article title.",
-          "error"
-        );
-        return;
-      }
-
-      if (!content) {
-        showStatus(
-          statusBox,
-          "Please enter the article content.",
-          "error"
-        );
-        return;
-      }
-
-      if (!adminPassword) {
-        showStatus(
-          statusBox,
-          "Your publishing session has expired. Please log in again.",
-          "error"
-        );
-        return;
-      }
-
-      const payload = {
-        title,
-        slug,
-        excerpt,
-        content,
-        category,
-        featured_image: featuredImage,
-        seo_title: seoTitle,
-        meta_description: metaDescription,
-        status
-      };
-
-      try {
-        const response = await fetch(
-          API_BASE + "/articles",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type":
-                "application/json",
-              "X-Admin-Password":
-                adminPassword
-            },
-            body: JSON.stringify(payload)
-          }
-        );
-
-        const data =
-          await response.json();
-
-        if (!response.ok || !data.success) {
-          showStatus(
-            statusBox,
-            data.error ||
-              "The article could not be saved.",
+        showMessage(
+            loginError,
+            error.message || "Unable to sign in.",
             "error"
-          );
-          return;
-        }
-
-        const action =
-          status === "published"
-            ? "published"
-            : "saved as a draft";
-
-        showStatus(
-          statusBox,
-          "Article " +
-            action +
-            " successfully.",
-          "success"
         );
 
-        if (status === "published") {
-          clearEditor();
-        }
+    } finally {
 
-      } catch (error) {
-        showStatus(
-          statusBox,
-          "A connection error occurred while saving the article.",
-          "error"
-        );
-      }
+        loginButton.disabled = false;
+        loginButton.textContent = "Open Admin";
+
     }
 
-    function clearEditor() {
-      document.getElementById("title").value = "";
-      document.getElementById("slug").value = "";
-      document.getElementById("excerpt").value = "";
-      document.getElementById("content").value = "";
-      document.getElementById("featuredImage").value = "";
-      document.getElementById("seoTitle").value = "";
-      document.getElementById("metaDescription").value = "";
+}
 
-      document.getElementById(
-        "category"
-      ).value = "Guides";
 
-      updatePreview();
-    }
+/*
+ * LOGOUT
+ */
 
-    /*
-     * Restore the session if the page is reopened
-     * during the same browser session.
-     */
+function logout() {
 
-    const savedPassword =
-      sessionStorage.getItem(
+    adminPassword = "";
+
+    sessionStorage.removeItem(
         "figureng_admin_password"
-      );
-
-    if (savedPassword) {
-      adminPassword = savedPassword;
-
-      loginView.classList.add("hidden");
-      publisherView.classList.remove("hidden");
-      logoutButton.classList.remove("hidden");
-    }
-
-    passwordInput.addEventListener(
-      "keydown",
-      function(event) {
-        if (event.key === "Enter") {
-          login();
-        }
-      }
     );
 
-    document
-      .getElementById("category")
-      .addEventListener(
-        "change",
-        updatePreview
-      );
+    location.reload();
 
-    updatePreview();
-  </script>
+}
+
+
+/*
+ * LOAD ARTICLES
+ */
+
+async function loadArticles() {
+
+    articleList.innerHTML =
+        '<div class="loading">Loading articles...</div>';
+
+    try {
+
+        const data =
+            await apiRequest(
+                API_BASE +
+                "?status=all&limit=100"
+            );
+
+        articles =
+            Array.isArray(data.articles)
+                ? data.articles
+                : [];
+
+        updateStats();
+
+        renderArticles();
+
+    } catch (error) {
+
+        articleList.innerHTML =
+            '<div class="empty">' +
+            escapeHtml(error.message) +
+            '</div>';
+
+    }
+
+}
+
+
+/*
+ * STATS
+ */
+
+function updateStats() {
+
+    const published =
+        articles.filter(function(article) {
+
+            return article.status === "published";
+
+        }).length;
+
+    const drafts =
+        articles.filter(function(article) {
+
+            return article.status === "draft";
+
+        }).length;
+
+    totalCount.textContent =
+        articles.length;
+
+    publishedCount.textContent =
+        published;
+
+    draftCount.textContent =
+        drafts;
+
+}
+
+
+/*
+ * ESCAPE HTML
+ */
+
+function escapeHtml(value) {
+
+    return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/*
+ * FORMAT DATE
+ */
+
+function formatDate(value) {
+
+    if (!value) {
+        return "";
+    }
+
+    const date =
+        new Date(value);
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return value;
+
+    }
+
+    return date.toLocaleDateString(
+        "en-NG",
+        {
+            day: "numeric",
+            month: "short",
+            year: "numeric"
+        }
+    );
+
+}
+
+
+/*
+ * RENDER ARTICLE LIST
+ */
+
+function renderArticles() {
+
+    const query =
+        articleSearch.value
+            .trim()
+            .toLowerCase();
+
+    const filtered =
+        articles.filter(function(article) {
+
+            const matchesFilter =
+                currentFilter === "all" ||
+                article.status === currentFilter;
+
+            const searchText =
+                [
+                    article.title,
+                    article.slug,
+                    article.excerpt,
+                    article.category
+                ]
+                .join(" ")
+                .toLowerCase();
+
+            const matchesSearch =
+                !query ||
+                searchText.includes(query);
+
+            return (
+                matchesFilter &&
+                matchesSearch
+            );
+
+        });
+
+
+    if (!filtered.length) {
+
+        articleList.innerHTML =
+            '<div class="empty">' +
+            'No articles match your search.' +
+            '</div>';
+
+        return;
+
+    }
+
+
+    articleList.innerHTML =
+        filtered.map(function(article) {
+
+            const published =
+                article.status === "published";
+
+            const statusClass =
+                published
+                    ? "status-published"
+                    : "status-draft";
+
+            const statusLabel =
+                published
+                    ? "Published"
+                    : "Draft";
+
+
+            return `
+
+<div class="article-row">
+
+    <div class="article-main">
+
+        <div class="article-title">
+            ${escapeHtml(article.title)}
+        </div>
+
+        <div class="article-slug">
+            /guides/${escapeHtml(article.slug)}.html
+        </div>
+
+        <div class="article-info">
+
+            <span class="status-badge ${statusClass}">
+                ${statusLabel}
+            </span>
+
+            <span class="category-badge">
+                ${escapeHtml(article.category || "Guides")}
+            </span>
+
+            <span class="article-date">
+                ${formatDate(
+                    article.updated_at ||
+                    article.created_at
+                )}
+            </span>
+
+        </div>
+
+        <div class="article-actions">
+
+            <button
+                class="btn btn-secondary btn-small"
+                type="button"
+                onclick="editArticle(${article.id})"
+            >
+                Edit
+            </button>
+
+            ${
+                published
+                ?
+
+                `
+                <button
+                    class="btn btn-secondary btn-small"
+                    type="button"
+                    onclick="changeStatus(
+                        ${article.id},
+                        'draft'
+                    )"
+                >
+                    Unpublish
+                </button>
+
+                <a
+                    class="btn btn-blue btn-small"
+                    href="/article.html?slug=${encodeURIComponent(article.slug)}"
+                    target="_blank"
+                    style="
+                        display:inline-flex;
+                        align-items:center;
+                    "
+                >
+                    View
+                </a>
+                `
+
+                :
+
+                `
+                <button
+                    class="btn btn-primary btn-small"
+                    type="button"
+                    onclick="changeStatus(
+                        ${article.id},
+                        'published'
+                    )"
+                >
+                    Publish
+                </button>
+                `
+            }
+
+            <button
+                class="btn btn-danger btn-small"
+                type="button"
+                onclick="deleteArticle(${article.id})"
+            >
+                Delete
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+`;
+
+        }).join("");
+
+}
+
+
+/*
+ * EDIT ARTICLE
+ */
+
+async function editArticle(id) {
+
+    clearMessage(editorStatus);
+
+    try {
+
+        const data =
+            await apiRequest(
+                API_BASE + "/" + id
+            );
+
+        const article =
+            data.article;
+
+        articleId.value =
+            article.id || "";
+
+        title.value =
+            article.title || "";
+
+        slug.value =
+            article.slug || "";
+
+        excerpt.value =
+            article.excerpt || "";
+
+        content.value =
+            article.content || "";
+
+        category.value =
+            article.category || "Guides";
+
+        featuredImage.value =
+            article.featured_image || "";
+
+        seoTitle.value =
+            article.seo_title || "";
+
+        metaDescription.value =
+            article.meta_description || "";
+
+        status.value =
+            article.status === "published"
+                ? "published"
+                : "draft";
+
+
+        editorHeading.textContent =
+            "Edit article";
+
+        editingBadge.classList.add(
+            "show"
+        );
+
+        deleteEditorButton.style.display =
+            "inline-block";
+
+
+        currentStatus.textContent =
+            article.status || "draft";
+
+        currentId.textContent =
+            article.id;
+
+        currentSlug.textContent =
+            article.slug || "None";
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+
+    } catch (error) {
+
+        showMessage(
+            globalStatus,
+            error.message,
+            "error"
+        );
+
+    }
+
+}
+
+
+/*
+ * NEW ARTICLE
+ */
+
+function newArticle() {
+
+    articleForm.reset();
+
+    articleId.value = "";
+
+    status.value = "draft";
+
+    category.value = "Guides";
+
+    editorHeading.textContent =
+        "New article";
+
+    editingBadge.classList.remove(
+        "show"
+    );
+
+    deleteEditorButton.style.display =
+        "none";
+
+    clearMessage(editorStatus);
+
+    currentStatus.textContent =
+        "New article";
+
+    currentId.textContent =
+        "Not saved";
+
+    currentSlug.textContent =
+        "Not saved";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/*
+ * SAVE ARTICLE
+ */
+
+async function saveArticle(
+    desiredStatus
+) {
+
+    clearMessage(editorStatus);
+
+    const id =
+        articleId.value.trim();
+
+    const articleData = {
+
+        title:
+            title.value.trim(),
+
+        slug:
+            slug.value.trim(),
+
+        excerpt:
+            excerpt.value.trim(),
+
+        content:
+            content.value.trim(),
+
+        category:
+            category.value,
+
+        featured_image:
+            featuredImage.value.trim(),
+
+        seo_title:
+            seoTitle.value.trim(),
+
+        meta_description:
+            metaDescription.value.trim(),
+
+        status:
+            desiredStatus
+
+    };
+
+
+    if (!articleData.title) {
+
+        showMessage(
+            editorStatus,
+            "Article title is required.",
+            "error"
+        );
+
+        title.focus();
+
+        return;
+
+    }
+
+
+    if (!articleData.content) {
+
+        showMessage(
+            editorStatus,
+            "Article content is required.",
+            "error"
+        );
+
+        content.focus();
+
+        return;
+
+    }
+
+
+    const isEditing =
+        Boolean(id);
+
+
+    saveDraftButton.disabled = true;
+    publishButton.disabled = true;
+
+    saveDraftButton.textContent =
+        desiredStatus === "draft"
+            ? "Saving..."
+            : "Save draft";
+
+    publishButton.textContent =
+        desiredStatus === "published"
+            ? "Publishing..."
+            : "Publish article";
+
+
+    try {
+
+        let data;
+
+        if (isEditing) {
+
+            data =
+                await apiRequest(
+                    API_BASE + "/" + id,
+                    {
+                        method: "PUT",
+                        body:
+                            JSON.stringify(
+                                articleData
+                            )
+                    }
+                );
+
+        } else {
+
+            data =
+                await apiRequest(
+                    API_BASE,
+                    {
+                        method: "POST",
+                        body:
+                            JSON.stringify(
+                                articleData
+                            )
+                    }
+                );
+
+        }
+
+
+        showMessage(
+            editorStatus,
+            desiredStatus === "published"
+                ? "Article published successfully."
+                : "Draft saved successfully.",
+            "success"
+        );
+
+
+        if (
+            data.article &&
+            data.article.id
+        ) {
+
+            articleId.value =
+                data.article.id;
+
+            currentId.textContent =
+                data.article.id;
+
+            currentSlug.textContent =
+                data.article.slug || "";
+
+            currentStatus.textContent =
+                data.article.status || desiredStatus;
+
+            editorHeading.textContent =
+                "Edit article";
+
+            editingBadge.classList.add(
+                "show"
+            );
+
+            deleteEditorButton.style.display =
+                "inline-block";
+
+        }
+
+
+        await loadArticles();
+
+
+    } catch (error) {
+
+        showMessage(
+            editorStatus,
+            error.message,
+            "error"
+        );
+
+    } finally {
+
+        saveDraftButton.disabled = false;
+        publishButton.disabled = false;
+
+        saveDraftButton.textContent =
+            "Save draft";
+
+        publishButton.textContent =
+            "Publish article";
+
+    }
+
+}
+
+
+/*
+ * QUICK STATUS CHANGE
+ */
+
+async function changeStatus(
+    id,
+    newStatus
+) {
+
+    const article =
+        articles.find(function(item) {
+
+            return Number(item.id) === Number(id);
+
+        });
+
+
+    if (!article) {
+
+        return;
+
+    }
+
+
+    const action =
+        newStatus === "published"
+            ? "publish"
+            : "move back to drafts";
+
+
+    const confirmed =
+        confirm(
+            'Are you sure you want to ' +
+            action +
+            ' "' +
+            article.title +
+            '"?'
+        );
+
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
+    try {
+
+        const data =
+            await apiRequest(
+                API_BASE + "/" + id
+            );
+
+
+        const fullArticle =
+            data.article;
+
+
+        fullArticle.status =
+            newStatus;
+
+
+        await apiRequest(
+            API_BASE + "/" + id,
+            {
+                method: "PUT",
+
+                body:
+                    JSON.stringify({
+
+                        title:
+                            fullArticle.title,
+
+                        slug:
+                            fullArticle.slug,
+
+                        excerpt:
+                            fullArticle.excerpt || "",
+
+                        content:
+                            fullArticle.content || "",
+
+                        category:
+                            fullArticle.category || "Guides",
+
+                        featured_image:
+                            fullArticle.featured_image || "",
+
+                        seo_title:
+                            fullArticle.seo_title || "",
+
+                        meta_description:
+                            fullArticle.meta_description || "",
+
+                        status:
+                            newStatus
+
+                    })
+
+            }
+        );
+
+
+        showMessage(
+            globalStatus,
+            newStatus === "published"
+                ? "Article published."
+                : "Article moved to drafts.",
+            "success"
+        );
+
+
+        await loadArticles();
+
+
+        if (
+            articleId.value &&
+            Number(articleId.value) === Number(id)
+        ) {
+
+            status.value =
+                newStatus;
+
+            currentStatus.textContent =
+                newStatus;
+
+        }
+
+
+    } catch (error) {
+
+        showMessage(
+            globalStatus,
+            error.message,
+            "error"
+        );
+
+    }
+
+}
+
+
+/*
+ * DELETE ARTICLE FROM LIST
+ */
+
+async function deleteArticle(id) {
+
+    const article =
+        articles.find(function(item) {
+
+            return Number(item.id) === Number(id);
+
+        });
+
+
+    if (!article) {
+
+        return;
+
+    }
+
+
+    const confirmed =
+        confirm(
+            'This will permanently delete "' +
+            article.title +
+            '".\n\n' +
+            'This action cannot be undone.\n\n' +
+            'Continue?'
+        );
+
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
+    try {
+
+        await apiRequest(
+            API_BASE + "/" + id,
+            {
+                method: "DELETE"
+            }
+        );
+
+
+        showMessage(
+            globalStatus,
+            "Article deleted successfully.",
+            "success"
+        );
+
+
+        if (
+            articleId.value &&
+            Number(articleId.value) === Number(id)
+        ) {
+
+            newArticle();
+
+        }
+
+
+        await loadArticles();
+
+
+    } catch (error) {
+
+        showMessage(
+            globalStatus,
+            error.message,
+            "error"
+        );
+
+    }
+
+}
+
+
+/*
+ * DELETE FROM EDITOR
+ */
+
+deleteEditorButton.addEventListener(
+    "click",
+    async function() {
+
+        const id =
+            articleId.value.trim();
+
+        if (!id) {
+
+            return;
+
+        }
+
+        await deleteArticle(
+            Number(id)
+        );
+
+    }
+);
+
+
+/*
+ * FORM SUBMIT = PUBLISH
+ */
+
+articleForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+        saveArticle("published");
+
+    }
+);
+
+
+/*
+ * SAVE DRAFT
+ */
+
+saveDraftButton.addEventListener(
+    "click",
+    function() {
+
+        saveArticle("draft");
+
+    }
+);
+
+
+/*
+ * NEW ARTICLE
+ */
+
+newArticleButton.addEventListener(
+    "click",
+    newArticle
+);
+
+
+/*
+ * SEARCH
+ */
+
+articleSearch.addEventListener(
+    "input",
+    renderArticles
+);
+
+
+/*
+ * FILTER BUTTONS
+ */
+
+document
+    .querySelectorAll(".filter-button")
+    .forEach(function(button) {
+
+        button.addEventListener(
+            "click",
+            function() {
+
+                document
+                    .querySelectorAll(
+                        ".filter-button"
+                    )
+                    .forEach(function(item) {
+
+                        item.classList.remove(
+                            "active"
+                        );
+
+                    });
+
+
+                this.classList.add(
+                    "active"
+                );
+
+
+                currentFilter =
+                    this.dataset.filter;
+
+
+                renderArticles();
+
+            }
+        );
+
+    });
+
+
+/*
+ * LOGIN EVENTS
+ */
+
+loginButton.addEventListener(
+    "click",
+    login
+);
+
+
+loginPassword.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+
+            login();
+
+        }
+
+    }
+);
+
+
+logoutButton.addEventListener(
+    "click",
+    logout
+);
+
+
+/*
+ * RESTORE SESSION
+ */
+
+const savedPassword =
+    sessionStorage.getItem(
+        "figureng_admin_password"
+    );
+
+
+if (savedPassword) {
+
+    adminPassword =
+        savedPassword;
+
+    loginScreen.style.display =
+        "none";
+
+    adminApp.style.display =
+        "block";
+
+    loadArticles();
+
+}
+
+</script>
+
 
 </body>
 </html>
