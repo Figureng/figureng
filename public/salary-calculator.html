@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Nigeria Salary Calculator 2026 | FigureNG</title>
+
+  <meta
+    name="description"
+    content="Calculate your estimated Nigerian salary, PAYE tax and take-home pay using the 2026 tax rules. Free Nigeria salary calculator from FigureNG."
+  >
+
+  <meta
+    name="keywords"
+    content="Nigeria salary calculator 2026, Nigerian salary calculator, PAYE calculator Nigeria, take home salary Nigeria, net salary calculator Nigeria"
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <meta name="theme-color" content="#0f172a">
+
+  <link
+    rel="canonical"
+    href="https://figureng.figureng247.workers.dev/salary-calculator.html"
+  >
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #0f172a;
+      --green: #16a34a;
+      --green-dark: #15803d;
+      --green-light: #dcfce7;
+      --background: #f8fafc;
+      --white: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --danger: #dc2626;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1000px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .logo span {
+      color: var(--green);
+    }
+
+    .back-link {
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .hero {
+      background: var(--navy);
+      color: white;
+      padding: 50px 0;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 7vw, 52px);
+      line-height: 1.1;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: auto;
+      color: #cbd5e1;
+    }
+
+    .main {
+      padding: 40px 0 70px;
+    }
+
+    .calculator {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 25px;
+    }
+
+    .card h2 {
+      color: var(--navy);
+      font-size: 22px;
+      margin-bottom: 7px;
+    }
+
+    .card-intro {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    .field label {
+      display: block;
+      color: var(--navy);
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    .field small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    .currency {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    input {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 0 14px 0 34px;
+      background: white;
+      color: var(--text);
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+    }
+
+    .calculate-button {
+      width: 100%;
+      min-height: 52px;
+      border: 0;
+      border-radius: 10px;
+      background: var(--green);
+      color: white;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .calculate-button:hover {
+      background: var(--green-dark);
+    }
+
+    .reset-button {
+      width: 100%;
+      min-height: 45px;
+      margin-top: 10px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: white;
+      color: var(--muted);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .result-main {
+      padding: 22px;
+      background: var(--green-light);
+      border-radius: 14px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .result-main span {
+      display: block;
+      color: #166534;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .result-main strong {
+      display: block;
+      color: #14532d;
+      font-size: clamp(30px, 7vw, 44px);
+      line-height: 1.1;
+    }
+
+    .result-grid {
+      display: grid;
+      gap: 0;
+    }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    .result-row:last-child {
+      border-bottom: 0;
+    }
+
+    .result-row span {
+      color: var(--muted);
+    }
+
+    .result-row strong {
+      color: var(--navy);
+      text-align: right;
+    }
+
+    .tax-breakdown {
+      margin-top: 20px;
+      padding: 18px;
+      background: #f8fafc;
+      border-radius: 12px;
+    }
+
+    .tax-breakdown h3 {
+      font-size: 16px;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .tax-band {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .tax-band:last-child {
+      border-bottom: 0;
+    }
+
+    .tax-band span:first-child {
+      color: var(--muted);
+    }
+
+    .info {
+      margin-top: 25px;
+      padding: 18px;
+      border-left: 4px solid var(--green);
+      background: #f0fdf4;
+      border-radius: 8px;
+      color: #166534;
+      font-size: 13px;
+    }
+
+    .content {
+      margin-top: 45px;
+    }
+
+    .content-section {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+
+    .content-section h2 {
+      color: var(--navy);
+      font-size: 26px;
+      margin-bottom: 14px;
+    }
+
+    .content-section h3 {
+      color: var(--navy);
+      font-size: 19px;
+      margin: 22px 0 8px;
+    }
+
+    .content-section p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .content-section ul {
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .content-section li {
+      margin-bottom: 7px;
+    }
+
+    .faq {
+      border-top: 1px solid var(--border);
+      padding: 18px 0;
+    }
+
+    .faq:first-of-type {
+      border-top: 0;
+    }
+
+    .faq h3 {
+      margin: 0 0 7px;
+      font-size: 17px;
+    }
+
+    .faq p {
+      margin: 0;
+    }
+
+    footer {
+      background: var(--navy);
+      color: #cbd5e1;
+      padding: 35px 0;
+      text-align: center;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    footer p {
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 760px) {
+
+      .calculator {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        min-height: 62px;
+      }
+
+      .hero {
+        padding: 42px 0;
+      }
+
+      .main {
+        padding: 28px 0 55px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .content-section {
+        padding: 22px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="/" class="logo">
+      Figure<span>NG</span>
+    </a>
+
+    <a href="/" class="back-link">
+      ← Back to FigureNG
+    </a>
+
+  </div>
+</header>
+
+
+<section class="hero">
+
+  <div class="container">
+
+    <h1>Nigeria Salary Calculator 2026</h1>
+
+    <p>
+      Estimate your PAYE tax, deductions and take-home salary
+      using the current 2026 Nigerian tax framework.
+    </p>
+
+  </div>
+
+</section>
+
+
+<main class="main">
+
+  <div class="container">
+
+    <div class="calculator">
+
+      <section class="card">
+
+        <h2>Your salary</h2>
+
+        <p class="card-intro">
+          Enter your monthly figures below. The calculator will
+          estimate your annual income and monthly take-home pay.
+        </p>
+
+
+        <div class="field">
+
+          <label for="salary">
+            Monthly basic salary
+          </label>
+
+          <div class="input-wrap">
+
+            <span class="currency">₦</span>
+
+            <input
+              id="salary"
+              type="number"
+              min="0"
+              step="1000"
+              placeholder="250000"
+            >
+
+          </div>
+
+          <small>
+            Your regular monthly basic salary.
+          </small>
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="allowances">
+            Monthly taxable allowances
+          </label>
+
+          <div class="input-wrap">
+
+            <span class="currency">₦</span>
+
+            <input
+              id="allowances"
+              type="number"
+              min="0"
+              step="1000"
+              placeholder="50000"
+            >
+
+          </div>
+
+          <small>
+            Examples include taxable bonuses or allowances.
+          </small>
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="pension">
+            Pension contribution
+          </label>
+
+          <div class="input-wrap">
+
+            <span class="currency">₦</span>
+
+            <input
+              id="pension"
+              type="number"
+              min="0"
+              step="100"
+              placeholder="0"
+            >
+
+          </div>
+
+          <small>
+            Enter your actual monthly pension contribution if known.
+          </small>
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="nhf">
+            NHF contribution
+          </label>
+
+          <div class="input-wrap">
+
+            <span class="currency">₦</span>
+
+            <input
+              id="nhf"
+              type="number"
+              min="0"
+              step="100"
+              placeholder="0"
+            >
+
+          </div>
+
+          <small>
+            Enter your monthly NHF contribution if applicable.
+          </small>
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="rent">
+            Annual rent paid
+          </label>
+
+          <div class="input-wrap">
+
+            <span class="currency">₦</span>
+
+            <input
+              id="rent"
+              type="number"
+              min="0"
+              step="10000"
+              placeholder="1200000"
+            >
+
+          </div>
+
+          <small>
+            Eligible rent relief is limited to the applicable
+            statutory maximum.
+          </small>
+
+        </div>
+
+
+        <button
+          class="calculate-button"
+          onclick="calculateSalary()"
+        >
+          Calculate My Salary
+        </button>
+
+        <button
+          class="reset-button"
+          onclick="resetCalculator()"
+        >
+          Reset
+        </button>
+
+      </section>
+
+
+      <section class="card">
+
+        <h2>Your estimated result</h2>
+
+        <p class="card-intro">
+          Your result will appear here after calculation.
+        </p>
+
+
+        <div class="result-main">
+
+          <span>
+            Estimated monthly take-home pay
+          </span>
+
+          <strong id="takeHome">
+            ₦0
+          </strong>
+
+        </div>
+
+
+        <div class="result-grid">
+
+          <div class="result-row">
+            <span>Monthly gross income</span>
+            <strong id="monthlyGross">₦0</strong>
+          </div>
+
+          <div class="result-row">
+            <span>Annual gross income</span>
+            <strong id="annualGross">₦0</strong>
+          </div>
+
+          <div class="result-row">
+            <span>Annual PAYE tax</span>
+            <strong id="annualTax">₦0</strong>
+          </div>
+
+          <div class="result-row">
+            <span>Monthly PAYE tax</span>
+            <strong id="monthlyTax">₦0</strong>
+          </div>
+
+          <div class="result-row">
+            <span>Monthly pension</span>
+            <strong id="monthlyPension">₦0</strong>
+          </div>
+
+          <div class="result-row">
+            <span>Monthly NHF</span>
+            <strong id="monthlyNhf">₦0</strong>
+          </div>
+
+          <div class="result-row">
+            <span>Annual rent relief used</span>
+            <strong id="rentRelief">₦0</strong>
+          </div>
+
+          <div class="result-row">
+            <span>Annual take-home</span>
+            <strong id="annualTakeHome">₦0</strong>
+          </div>
+
+        </div>
+
+
+        <div class="tax-breakdown">
+
+          <h3>PAYE tax bands used</h3>
+
+          <div class="tax-band">
+            <span>First ₦800,000</span>
+            <strong>0%</strong>
+          </div>
+
+          <div class="tax-band">
+            <span>Next ₦2,200,000</span>
+            <strong>15%</strong>
+          </div>
+
+          <div class="tax-band">
+            <span>Next ₦9,000,000</span>
+            <strong>18%</strong>
+          </div>
+
+          <div class="tax-band">
+            <span>Next ₦13,000,000</span>
+            <strong>21%</strong>
+          </div>
+
+          <div class="tax-band">
+            <span>Next ₦25,000,000</span>
+            <strong>23%</strong>
+          </div>
+
+          <div class="tax-band">
+            <span>Above ₦50,000,000</span>
+            <strong>25%</strong>
+          </div>
+
+        </div>
+
+
+        <div class="info">
+
+          This calculator provides an estimate for educational
+          and planning purposes. Your actual PAYE may differ
+          depending on your employment arrangement, eligible
+          deductions, benefits and other circumstances.
+
+        </div>
+
+      </section>
+
+    </div>
+
+
+    <div class="content">
+
+
+      <section class="content-section">
+
+        <h2>How the Nigeria Salary Calculator works</h2>
+
+        <p>
+          This calculator estimates your take-home salary by
+          starting with your gross employment income and applying
+          the relevant deductions and progressive personal income
+          tax calculation.
+        </p>
+
+        <p>
+          Your monthly salary and allowances are converted into
+          an annual figure. The calculator then estimates PAYE
+          using the progressive tax bands and considers the
+          deductions entered by the user.
+        </p>
+
+        <p>
+          The result is an estimate and should not be treated as
+          an official tax assessment.
+        </p>
+
+      </section>
+
+
+      <section class="content-section">
+
+        <h2>Gross salary vs net salary</h2>
+
+        <p>
+          Gross salary is the amount you earn before applicable
+          deductions. Net salary, also called take-home pay, is
+          the amount remaining after deductions such as PAYE and
+          applicable contributions.
+        </p>
+
+        <p>
+          Two people with the same gross salary can have different
+          take-home pay if their pension, rent relief, benefits or
+          other applicable deductions are different.
+        </p>
+
+      </section>
+
+
+      <section class="content-section">
+
+        <h2>2026 Nigeria PAYE tax bands</h2>
+
+        <p>
+          The 2026 calculation uses a progressive personal income
+          tax structure. This means different portions of taxable
+          income can be taxed at different rates.
+        </p>
+
+        <ul>
+
+          <li>
+            First ₦800,000: 0%
+          </li>
+
+          <li>
+            Next ₦2,200,000: 15%
+          </li>
+
+          <li>
+            Next ₦9,000,000: 18%
+          </li>
+
+          <li>
+            Next ₦13,000,000: 21%
+          </li>
+
+          <li>
+            Next ₦25,000,000: 23%
+          </li>
+
+          <li>
+            Amount above ₦50,000,000: 25%
+          </li>
+
+        </ul>
+
+        <p>
+          These are marginal bands. The highest rate does not
+          automatically apply to your entire income.
+        </p>
+
+      </section>
+
+
+      <section class="content-section">
+
+        <h2>Frequently asked questions</h2>
+
+
+        <div class="faq">
+
+          <h3>
+            Is this Nigeria salary calculator free?
+          </h3>
+
+          <p>
+            Yes. FigureNG provides this calculator free of charge.
+          </p>
+
+        </div>
+
+
+        <div class="faq">
+
+          <h3>
+            Does the calculator use the 2026 tax rules?
+          </h3>
+
+          <p>
+            Yes. The calculator is designed around the Nigerian
+            tax framework applicable from 2026.
+          </p>
+
+        </div>
+
+
+        <div class="faq">
+
+          <h3>
+            What is take-home salary?
+          </h3>
+
+          <p>
+            Take-home salary is the amount you receive after
+            applicable taxes and deductions have been taken from
+            your gross income.
+          </p>
+
+        </div>
+
+
+        <div class="faq">
+
+          <h3>
+            Is the result an official tax assessment?
+          </h3>
+
+          <p>
+            No. It is an estimate for planning and informational
+            purposes. Your employer or tax authority may calculate
+            your actual liability differently based on your
+            circumstances.
+          </p>
+
+        </div>
+
+
+        <div class="faq">
+
+          <h3>
+            Can I use this calculator on my phone?
+          </h3>
+
+          <p>
+            Yes. FigureNG is designed to work on smartphones,
+            tablets and computers.
+          </p>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </div>
+
+</main>
+
+
+<footer>
+
+  <div class="container">
+
+    <strong>FigureNG</strong>
+
+    <p>
+      Free Nigerian calculators and practical digital tools.
+    </p>
+
+    <p>
+      © 2026 FigureNG. All rights reserved.
+    </p>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+  function numberValue(id) {
+
+    const value = parseFloat(
+      document.getElementById(id).value
+    );
+
+    return Number.isFinite(value) && value > 0
+      ? value
+      : 0;
+  }
+
+
+  function formatNaira(value) {
+
+    return "₦" + Math.round(value).toLocaleString("en-NG");
+  }
+
+
+  function calculateProgressiveTax(taxableIncome) {
+
+    let remaining = Math.max(0, taxableIncome);
+
+    let tax = 0;
+
+    const bands = [
+      {
+        amount: 800000,
+        rate: 0
+      },
+      {
+        amount: 2200000,
+        rate: 0.15
+      },
+      {
+        amount: 9000000,
+        rate: 0.18
+      },
+      {
+        amount: 13000000,
+        rate: 0.21
+      },
+      {
+        amount: 25000000,
+        rate: 0.23
+      }
+    ];
+
+    for (const band of bands) {
+
+      if (remaining <= 0) {
+        break;
+      }
+
+      const taxableAtThisBand =
+        Math.min(remaining, band.amount);
+
+      tax += taxableAtThisBand * band.rate;
+
+      remaining -= taxableAtThisBand;
+    }
+
+
+    if (remaining > 0) {
+
+      tax += remaining * 0.25;
+
+    }
+
+
+    return tax;
+
+  }
+
+
+  function calculateSalary() {
+
+    const monthlySalary =
+      numberValue("salary");
+
+    const monthlyAllowances =
+      numberValue("allowances");
+
+    const monthlyPension =
+      numberValue("pension");
+
+    const monthlyNhf =
+      numberValue("nhf");
+
+    const annualRent =
+      numberValue("rent");
+
+
+    const monthlyGross =
+      monthlySalary + monthlyAllowances;
+
+    const annualGross =
+      monthlyGross * 12;
+
+
+    const annualPension =
+      monthlyPension * 12;
+
+    const annualNhf =
+      monthlyNhf * 12;
+
+
+    const rentRelief =
+      Math.min(
+        annualRent * 0.20,
+        500000
+      );
+
+
+    const taxableIncome =
+      Math.max(
+        0,
+        annualGross -
+        annualPension -
+        annualNhf -
+        rentRelief
+      );
+
+
+    const annualTax =
+      calculateProgressiveTax(
+        taxableIncome
+      );
+
+
+    const monthlyTax =
+      annualTax / 12;
+
+
+    const annualTakeHome =
+      annualGross -
+      annualTax -
+      annualPension -
+      annualNhf;
+
+
+    const monthlyTakeHome =
+      annualTakeHome / 12;
+
+
+    document.getElementById("takeHome").textContent =
+      formatNaira(monthlyTakeHome);
+
+    document.getElementById("monthlyGross").textContent =
+      formatNaira(monthlyGross);
+
+    document.getElementById("annualGross").textContent =
+      formatNaira(annualGross);
+
+    document.getElementById("annualTax").textContent =
+      formatNaira(annualTax);
+
+    document.getElementById("monthlyTax").textContent =
+      formatNaira(monthlyTax);
+
+    document.getElementById("monthlyPension").textContent =
+      formatNaira(monthlyPension);
+
+    document.getElementById("monthlyNhf").textContent =
+      formatNaira(monthlyNhf);
+
+    document.getElementById("rentRelief").textContent =
+      formatNaira(rentRelief);
+
+    document.getElementById("annualTakeHome").textContent =
+      formatNaira(annualTakeHome);
+
+  }
+
+
+  function resetCalculator() {
+
+    document.getElementById("salary").value = "";
+
+    document.getElementById("allowances").value = "";
+
+    document.getElementById("pension").value = "";
+
+    document.getElementById("nhf").value = "";
+
+    document.getElementById("rent").value = "";
+
+
+    document.getElementById("takeHome").textContent =
+      "₦0";
+
+    document.getElementById("monthlyGross").textContent =
+      "₦0";
+
+    document.getElementById("annualGross").textContent =
+      "₦0";
+
+    document.getElementById("annualTax").textContent =
+      "₦0";
+
+    document.getElementById("monthlyTax").textContent =
+      "₦0";
+
+    document.getElementById("monthlyPension").textContent =
+      "₦0";
+
+    document.getElementById("monthlyNhf").textContent =
+      "₦0";
+
+    document.getElementById("rentRelief").textContent =
+      "₦0";
+
+    document.getElementById("annualTakeHome").textContent =
+      "₦0";
+
+  }
+
+</script>
+
+</body>
+  </html>
