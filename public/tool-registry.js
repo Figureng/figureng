@@ -1,17 +1,22 @@
-/* FigureNG Tool Registry
-   Add each new public tool here once. The homepage, search, categories,
-   and navigation read this registry automatically.
-*/
+/*
+ * FigureNG Tool Registry
+ *
+ * This is the single source of truth for public tools.
+ * The homepage, tools directory, search and category navigation
+ * all read this file. When a new tool is built, add ONE entry here.
+ */
 
 window.FIGURENG_TOOLS = [
   {
-    name: "Salary Calculator",
+    name: "Nigeria Salary Calculator 2026",
     slug: "salary-calculator",
     url: "/salary-calculator.html",
     category: "Salary & PAYE",
-    description: "Estimate your take-home salary after common Nigerian deductions.",
-    keywords: "salary take home pay PAYE net gross income",
-    featured: true
+    description: "Estimate Nigerian PAYE, deductions and monthly take-home pay.",
+    keywords: "salary take home pay PAYE net gross income tax",
+    icon: "💵",
+    featured: true,
+    order: 1
   },
   {
     name: "Salary Increase Calculator",
@@ -19,44 +24,21 @@ window.FIGURENG_TOOLS = [
     url: "/salary-increase-calculator.html",
     category: "Salary & PAYE",
     description: "See how a salary increase changes your monthly and annual income.",
-    keywords: "salary raise increment increase new salary",
-    featured: true
+    keywords: "salary raise increment increase new salary percentage",
+    icon: "📈",
+    featured: true,
+    order: 2
   },
   {
     name: "Loan Calculator",
     slug: "loan-calculator",
     url: "/loan-calculator.html",
     category: "Loans & Debt",
-    description: "Estimate loan payments, total interest and repayment costs.",
-    keywords: "loan repayment interest borrowing debt",
-    featured: true
-  },
-  {
-    name: "VAT Calculator",
-    slug: "vat-calculator",
-    url: "/vat-calculator.html",
-    category: "Tax",
-    description: "Calculate VAT amounts and totals for transactions in Nigeria.",
-    keywords: "VAT tax value added tax price",
-    featured: true
-  },
-  {
-    name: "Fuel Cost Calculator",
-    slug: "fuel-cost-calculator",
-    url: "/fuel-cost-calculator.html",
-    category: "Everyday Costs",
-    description: "Estimate how much a trip will cost based on fuel use and distance.",
-    keywords: "fuel petrol transport trip cost distance",
-    featured: true
-  },
-  {
-    name: "Electricity Bill Calculator",
-    slug: "electricity-bill-calculator",
-    url: "/electricity-bill-calculator.html",
-    category: "Everyday Costs",
-    description: "Estimate electricity usage and your expected bill.",
-    keywords: "electricity power bill energy units tariff",
-    featured: true
+    description: "Estimate monthly repayments, total interest and borrowing costs.",
+    keywords: "loan repayment interest borrowing debt monthly payment",
+    icon: "💳",
+    featured: true,
+    order: 3
   },
   {
     name: "Flat vs Reducing Balance Calculator",
@@ -65,13 +47,95 @@ window.FIGURENG_TOOLS = [
     category: "Loans & Debt",
     description: "Compare flat-rate and reducing-balance loan costs side by side.",
     keywords: "flat rate reducing balance loan interest comparison",
-    featured: false
+    icon: "⚖️",
+    featured: false,
+    order: 4
+  },
+  {
+    name: "VAT Calculator",
+    slug: "vat-calculator",
+    url: "/vat-calculator.html",
+    category: "Tax",
+    description: "Calculate VAT, pre-tax amounts and totals for Nigerian transactions.",
+    keywords: "VAT tax value added tax price inclusive exclusive",
+    icon: "🧾",
+    featured: true,
+    order: 5
+  },
+  {
+    name: "Fuel Cost Calculator",
+    slug: "fuel-cost-calculator",
+    url: "/fuel-cost-calculator.html",
+    category: "Everyday Costs",
+    description: "Estimate trip fuel costs from distance, fuel use and petrol price.",
+    keywords: "fuel petrol transport trip cost distance consumption",
+    icon: "⛽",
+    featured: true,
+    order: 6
+  },
+  {
+    name: "Electricity Bill Calculator",
+    slug: "electricity-bill-calculator",
+    url: "/electricity-bill-calculator.html",
+    category: "Everyday Costs",
+    description: "Estimate electricity usage and your expected household bill.",
+    keywords: "electricity power bill energy units tariff NEPA AEDC EKEDC",
+    icon: "⚡",
+    featured: true,
+    order: 7
   }
 ];
 
 window.FIGURENG_CATEGORIES = [
-  { name: "Salary & PAYE", description: "Understand earnings, deductions and take-home pay." },
-  { name: "Tax", description: "Useful calculators for Nigerian taxes and charges." },
-  { name: "Loans & Debt", description: "Compare borrowing costs and repayment options." },
-  { name: "Everyday Costs", description: "Calculate everyday expenses before you spend." }
+  {
+    name: "Salary & PAYE",
+    description: "Understand earnings, deductions and take-home pay.",
+    icon: "💰",
+    order: 1
+  },
+  {
+    name: "Tax",
+    description: "Useful calculators for Nigerian taxes and charges.",
+    icon: "🧾",
+    order: 2
+  },
+  {
+    name: "Loans & Debt",
+    description: "Compare borrowing costs and repayment options.",
+    icon: "🏦",
+    order: 3
+  },
+  {
+    name: "Everyday Costs",
+    description: "Calculate everyday expenses before you spend.",
+    icon: "🧮",
+    order: 4
+  }
 ];
+
+/* Helpers shared by FigureNG pages. */
+window.FigureNGTools = {
+  all: function () {
+    return window.FIGURENG_TOOLS.slice().sort(function (a, b) {
+      return (a.order || 999) - (b.order || 999);
+    });
+  },
+
+  categories: function () {
+    return window.FIGURENG_CATEGORIES.slice().sort(function (a, b) {
+      return (a.order || 999) - (b.order || 999);
+    });
+  },
+
+  byCategory: function (category) {
+    return this.all().filter(function (tool) {
+      return tool.category === category;
+    });
+  },
+
+  find: function (slug) {
+    return this.all().find(function (tool) {
+      return tool.slug === slug;
+    }) || null;
+  }
+};
