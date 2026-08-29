@@ -2,26 +2,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FigureNG | Nigerian Calculators & Practical Tools</title>
+<title>FigureNG | Calculators, Tools & Guides for Nigeria</title>
 
-<meta
-name="description"
-content="FigureNG provides practical calculators and online tools for salary, tax, loans, finance and everyday decisions in Nigeria."
->
+<meta name="description" content="FigureNG provides practical calculators, financial tools and useful guides for everyday decisions in Nigeria.">
 
 <meta name="robots" content="index, follow">
 
+<link rel="canonical" href="https://figureng.figureng247.workers.dev/">
+
+<!-- FigureNG favicon -->
 <link
-rel="canonical"
-href="https://figureng.figureng247.workers.dev/"
+    rel="icon"
+    type="image/svg+xml"
+    href="/favicon.svg"
 >
 
+<meta name="theme-color" content="#12372a">
+
 <style>
+
+:root {
+    --ink: #14231d;
+    --ink-soft: #34423b;
+    --muted: #69756f;
+    --faint: #8b9690;
+
+    --green: #12372a;
+    --green-2: #1b513d;
+    --green-light: #edf5f0;
+
+    --paper: #ffffff;
+    --background: #f6f7f5;
+
+    --line: #dfe4e1;
+    --line-dark: #c9d0cc;
+
+    --accent: #b7791f;
+
+    --max: 1160px;
+}
 
 * {
     box-sizing: border-box;
@@ -29,39 +51,18 @@ href="https://figureng.figureng247.workers.dev/"
     padding: 0;
 }
 
-:root {
-    --black: #101828;
-    --dark: #1d2939;
-    --text: #344054;
-    --muted: #667085;
-    --light-muted: #98a2b3;
-    --border: #e4e7ec;
-    --surface: #ffffff;
-    --page: #f8f9fb;
-    --green: #087443;
-    --green-dark: #05603a;
-    --green-light: #ecfdf3;
-    --green-border: #abefc6;
-}
-
 html {
     scroll-behavior: smooth;
 }
 
 body {
+    background: var(--background);
+    color: var(--ink);
     font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Helvetica,
         Arial,
+        Helvetica,
         sans-serif;
-
-    background: var(--page);
-    color: var(--text);
-    line-height: 1.5;
+    line-height: 1.55;
 }
 
 a {
@@ -74,526 +75,306 @@ input {
     font: inherit;
 }
 
-.container {
-    width: min(1120px, calc(100% - 40px));
-    margin: 0 auto;
+img {
+    max-width: 100%;
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* =========================================
+   GLOBAL
+========================================= */
 
-.header {
-    height: 68px;
+.container {
+    width: min(
+        var(--max),
+        calc(100% - 40px)
+    );
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.kicker {
+    color: var(--green-2);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.section {
+    padding: 72px 0;
+}
+
+.section + .section {
+    border-top: 1px solid var(--line);
+}
+
+.section-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 30px;
+
+    margin-bottom: 28px;
+}
+
+.section-head h2 {
+    color: var(--ink);
+    font-size: 29px;
+    line-height: 1.15;
+    letter-spacing: -.8px;
+}
+
+.section-head p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 6px;
+}
+
+.text-link {
+    color: var(--green-2);
+    font-size: 13px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.text-link:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.site-header {
     background: rgba(255,255,255,.97);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--line);
+
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
 }
 
 .header-inner {
-    height: 100%;
+    min-height: 70px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    gap: 30px;
 }
 
-.logo {
-    color: var(--black);
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: -0.7px;
+
+/* BRAND */
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: -.8px;
 }
 
-.logo span {
-    color: var(--green);
+.brand-mark {
+    width: 30px;
+    height: 30px;
+
+    display: grid;
+    place-items: center;
+
+    background: var(--green);
+    color: white;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    border-radius: 5px;
 }
 
-.nav {
+.brand-word {
+    color: var(--ink);
+}
+
+.brand-word span {
+    color: var(--green-2);
+}
+
+
+/* NAVIGATION */
+
+.main-nav {
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: 27px;
 }
 
-.nav a {
+.main-nav a {
     color: var(--muted);
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 700;
 }
 
-.nav a:hover {
-    color: var(--black);
+.main-nav a:hover {
+    color: var(--ink);
 }
 
-.nav .nav-tools {
-    color: var(--black);
-}
-
-.mobile-menu {
-    display: none;
-    border: 0;
-    background: transparent;
-    color: var(--black);
-    font-size: 24px;
-    cursor: pointer;
+.main-nav .active {
+    color: var(--ink);
 }
 
 
-/* =========================
+/* =========================================
    HERO
-========================= */
+========================================= */
 
 .hero {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
 }
 
 .hero-inner {
-    padding: 76px 0 70px;
+    padding: 82px 0 76px;
 }
 
-.eyebrow {
-    display: inline-block;
-    color: var(--green);
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: .09em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
+.hero-kicker {
+    margin-bottom: 19px;
 }
 
 .hero h1 {
-    max-width: 760px;
-    color: var(--black);
-    font-size: clamp(42px, 6vw, 60px);
-    line-height: 1.05;
-    letter-spacing: -2.8px;
-    margin-bottom: 18px;
+    max-width: 850px;
+
+    color: var(--ink);
+
+    font-size: clamp(
+        43px,
+        6.5vw,
+        68px
+    );
+
+    line-height: 1.01;
+    letter-spacing: -3.2px;
+
+    margin-bottom: 22px;
 }
 
-.hero-description {
-    max-width: 650px;
+.hero h1 span {
+    color: var(--green-2);
+}
+
+.hero-intro {
+    max-width: 680px;
+
     color: var(--muted);
+
     font-size: 17px;
     line-height: 1.7;
-    margin-bottom: 30px;
+
+    margin-bottom: 34px;
 }
 
 
-/* =========================
-   SEARCH
-========================= */
+/* SEARCH */
 
-.search-box {
-    width: min(680px, 100%);
+.search-area {
+    width: min(700px, 100%);
+}
+
+.search-label {
+    display: block;
+
+    color: var(--ink-soft);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    margin-bottom: 8px;
+}
+
+.search-wrapper {
     position: relative;
 }
 
-.search-box input {
+.search-input {
     width: 100%;
-    height: 54px;
-    border: 1px solid #d0d5dd;
-    border-radius: 7px;
+    height: 56px;
+
     background: white;
-    color: var(--black);
+
+    border: 1px solid var(--line-dark);
+    border-radius: 5px;
+
     padding: 0 18px 0 48px;
+
+    color: var(--ink);
+
     outline: none;
+
     font-size: 14px;
-    box-shadow: 0 1px 2px rgba(16,24,40,.04);
+
+    box-shadow:
+        0 1px 2px rgba(20,35,29,.04);
 }
 
-.search-box input::placeholder {
-    color: var(--light-muted);
+.search-input:focus {
+    border-color: var(--green-2);
+
+    box-shadow:
+        0 0 0 3px rgba(27,81,61,.09);
 }
 
-.search-box input:focus {
-    border-color: var(--green);
-    box-shadow: 0 0 0 3px rgba(8,116,67,.10);
+.search-input::placeholder {
+    color: var(--faint);
 }
 
-.search-icon {
+.search-symbol {
     position: absolute;
+
     left: 17px;
     top: 50%;
+
     transform: translateY(-50%);
+
     color: var(--muted);
-    font-size: 17px;
+
+    font-size: 18px;
+
     pointer-events: none;
 }
 
 
-/* =========================
-   MAIN
-========================= */
-
-main {
-    padding: 64px 0 80px;
-}
-
-.section {
-    margin-bottom: 72px;
-}
-
-.section-header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 20px;
-    margin-bottom: 22px;
-}
-
-.section-header h2 {
-    color: var(--black);
-    font-size: 25px;
-    line-height: 1.2;
-    letter-spacing: -.7px;
-}
-
-.section-header p {
-    color: var(--muted);
-    font-size: 14px;
-    margin-top: 5px;
-}
-
-.section-link {
-    flex-shrink: 0;
-    color: var(--green);
-    font-size: 13px;
-    font-weight: 700;
-}
-
-.section-link:hover {
-    color: var(--green-dark);
-}
-
-
-/* =========================
-   FEATURED TOOLS
-========================= */
-
-.tools-list {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 9px;
-    overflow: hidden;
-}
-
-.tool-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 25px;
-    padding: 22px 24px;
-    border-bottom: 1px solid var(--border);
-    transition: background .15s ease;
-}
-
-.tool-row:last-child {
-    border-bottom: 0;
-}
-
-.tool-row:hover {
-    background: #fcfdfd;
-}
-
-.tool-main {
-    min-width: 0;
-}
-
-.tool-category {
-    color: var(--green);
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    margin-bottom: 5px;
-}
-
-.tool-name {
-    color: var(--black);
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 3px;
-}
-
-.tool-description {
-    color: var(--muted);
-    font-size: 13px;
-}
-
-.tool-action {
-    flex-shrink: 0;
-    color: var(--green);
-    font-size: 13px;
-    font-weight: 800;
-}
-
-
-/* =========================
-   CATEGORIES
-========================= */
-
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid var(--border);
-    border-left: 1px solid var(--border);
-    background: white;
-}
-
-.category {
-    min-height: 135px;
-    padding: 23px;
-    border-right: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    transition: background .15s ease;
-}
-
-.category:hover {
-    background: #fcfdfd;
-}
-
-.category-number {
-    color: var(--light-muted);
-    font-size: 11px;
-    font-weight: 700;
-    margin-bottom: 22px;
-}
-
-.category h3 {
-    color: var(--black);
-    font-size: 16px;
-    margin-bottom: 4px;
-}
-
-.category p {
-    color: var(--muted);
-    font-size: 13px;
-}
-
-
-/* =========================
-   RECENT TOOLS
-========================= */
-
-.recent-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-}
-
-.recent-tool {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 21px;
-}
-
-.recent-tool:hover {
-    border-color: #cfd4dc;
-}
-
-.recent-tool .tool-category {
-    margin-bottom: 12px;
-}
-
-.recent-tool h3 {
-    color: var(--black);
-    font-size: 15px;
-    margin-bottom: 6px;
-}
-
-.recent-tool p {
-    color: var(--muted);
-    font-size: 13px;
-    margin-bottom: 16px;
-}
-
-.recent-tool a {
-    color: var(--green);
-    font-size: 12px;
-    font-weight: 800;
-}
-
-
-/* =========================
-   PRINCIPLES
-========================= */
-
-.principles {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-}
-
-.principle {
-    padding: 25px 22px;
-    border-right: 1px solid var(--border);
-}
-
-.principle:last-child {
-    border-right: 0;
-}
-
-.principle-number {
-    color: var(--green);
-    font-size: 11px;
-    font-weight: 800;
-    margin-bottom: 19px;
-}
-
-.principle h3 {
-    color: var(--black);
-    font-size: 15px;
-    margin-bottom: 6px;
-}
-
-.principle p {
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.6;
-}
-
-
-/* =========================
-   INFO BLOCK
-========================= */
-
-.info-block {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    padding: 38px 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-}
-
-.info-block h2 {
-    color: var(--black);
-    font-size: 26px;
-    letter-spacing: -.7px;
-    margin-bottom: 12px;
-}
-
-.info-block p {
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.75;
-    margin-bottom: 10px;
-}
-
-.info-points {
-    display: grid;
-    gap: 15px;
-}
-
-.info-point {
-    display: flex;
-    gap: 13px;
-}
-
-.info-point-marker {
-    width: 7px;
-    height: 7px;
-    background: var(--green);
-    border-radius: 50%;
-    margin-top: 7px;
-    flex-shrink: 0;
-}
-
-.info-point strong {
-    display: block;
-    color: var(--black);
-    font-size: 14px;
-    margin-bottom: 2px;
-}
-
-.info-point span {
-    color: var(--muted);
-    font-size: 13px;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-.footer {
-    background: white;
-    border-top: 1px solid var(--border);
-}
-
-.footer-main {
-    padding: 42px 0 35px;
-    display: flex;
-    justify-content: space-between;
-    gap: 50px;
-}
-
-.footer-brand {
-    max-width: 370px;
-}
-
-.footer-brand .logo {
-    display: inline-block;
-    margin-bottom: 9px;
-}
-
-.footer-brand p {
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.6;
-}
-
-.footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 18px;
-    align-content: flex-start;
-    max-width: 500px;
-}
-
-.footer-links a {
-    color: var(--muted);
-    font-size: 13px;
-}
-
-.footer-links a:hover {
-    color: var(--black);
-}
-
-.footer-bottom {
-    border-top: 1px solid var(--border);
-    padding: 17px 0 22px;
-    color: var(--light-muted);
-    font-size: 11px;
-}
-
-
-/* =========================
-   SEARCH RESULTS
-========================= */
+/* SEARCH RESULTS */
 
 .search-results {
     display: none;
+
+    margin-top: 7px;
+
     background: white;
-    border: 1px solid var(--border);
-    border-radius: 7px;
-    margin-top: 8px;
+
+    border: 1px solid var(--line);
+    border-radius: 5px;
+
     overflow: hidden;
+
+    box-shadow:
+        0 8px 24px rgba(20,35,29,.08);
 }
 
-.search-results.show {
+.search-results.visible {
     display: block;
 }
 
 .search-result {
     display: block;
+
     padding: 14px 17px;
-    border-bottom: 1px solid var(--border);
+
+    border-bottom: 1px solid var(--line);
 }
 
 .search-result:last-child {
@@ -601,181 +382,574 @@ main {
 }
 
 .search-result:hover {
-    background: var(--page);
+    background: var(--background);
 }
 
 .search-result-category {
-    color: var(--green);
+    color: var(--green-2);
+
     font-size: 10px;
     font-weight: 800;
+
+    letter-spacing: .08em;
     text-transform: uppercase;
-    letter-spacing: .07em;
+
+    margin-bottom: 2px;
 }
 
-.search-result-name {
-    color: var(--black);
+.search-result-title {
+    color: var(--ink);
+
     font-size: 14px;
     font-weight: 700;
 }
 
 .no-results {
-    padding: 18px;
+    padding: 16px;
+
     color: var(--muted);
+
     font-size: 13px;
 }
 
 
-/* =========================
+/* =========================================
+   FEATURED TOOLS
+========================================= */
+
+.tool-table {
+    background: white;
+
+    border: 1px solid var(--line);
+
+    border-radius: 5px;
+
+    overflow: hidden;
+}
+
+.tool {
+    min-height: 94px;
+
+    display: grid;
+
+    grid-template-columns:
+        105px
+        minmax(0, 1fr)
+        90px;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 17px 21px;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.tool:last-child {
+    border-bottom: 0;
+}
+
+.tool:hover {
+    background: #fcfdfc;
+}
+
+.tool-number {
+    color: var(--faint);
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.tool-category {
+    color: var(--green-2);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: .08em;
+    text-transform: uppercase;
+
+    margin-bottom: 3px;
+}
+
+.tool-title {
+    color: var(--ink);
+
+    font-size: 16px;
+    font-weight: 800;
+
+    margin-bottom: 2px;
+}
+
+.tool-description {
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+.tool-open {
+    color: var(--green-2);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    text-align: right;
+}
+
+
+/* =========================================
+   CATEGORIES
+========================================= */
+
+.category-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    background: white;
+
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+}
+
+.category {
+    min-height: 145px;
+
+    padding: 24px;
+
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+
+    transition:
+        background .15s ease;
+}
+
+.category:hover {
+    background: #fbfcfb;
+}
+
+.category-number {
+    color: var(--faint);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    margin-bottom: 29px;
+}
+
+.category h3 {
+    color: var(--ink);
+
+    font-size: 16px;
+
+    margin-bottom: 4px;
+}
+
+.category p {
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   GUIDES
+========================================= */
+
+.guides-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+.guide {
+    background: white;
+
+    border: 1px solid var(--line);
+
+    border-radius: 5px;
+
+    padding: 23px;
+}
+
+.guide-category {
+    color: var(--green-2);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: .08em;
+    text-transform: uppercase;
+
+    margin-bottom: 17px;
+}
+
+.guide h3 {
+    color: var(--ink);
+
+    font-size: 17px;
+    line-height: 1.35;
+
+    margin-bottom: 8px;
+}
+
+.guide p {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.65;
+
+    margin-bottom: 20px;
+}
+
+.guide-link {
+    color: var(--green-2);
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+/* =========================================
+   TRUST / EDITORIAL SECTION
+========================================= */
+
+.trust {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 60px;
+
+    padding: 15px 0;
+}
+
+.trust h2 {
+    color: var(--ink);
+
+    font-size: 30px;
+
+    line-height: 1.15;
+
+    letter-spacing: -.9px;
+
+    margin-bottom: 13px;
+}
+
+.trust-copy {
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.75;
+}
+
+.trust-list {
+    border-top: 1px solid var(--line);
+}
+
+.trust-item {
+    display: grid;
+
+    grid-template-columns: 42px 1fr;
+
+    gap: 15px;
+
+    padding: 16px 0;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.trust-number {
+    color: var(--green-2);
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.trust-item strong {
+    display: block;
+
+    color: var(--ink);
+
+    font-size: 14px;
+
+    margin-bottom: 2px;
+}
+
+.trust-item span {
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+    background: var(--green);
+
+    color: white;
+}
+
+.footer-main {
+    display: grid;
+
+    grid-template-columns:
+        1.3fr
+        1fr
+        1fr;
+
+    gap: 60px;
+
+    padding: 52px 0 46px;
+}
+
+.footer-brand .brand {
+    color: white;
+
+    margin-bottom: 12px;
+}
+
+.footer-brand .brand-word {
+    color: white;
+}
+
+.footer-brand .brand-word span {
+    color: #d7eee1;
+}
+
+.footer-brand .brand-mark {
+    background: white;
+    color: var(--green);
+}
+
+.footer-brand p {
+    max-width: 340px;
+
+    color: #c9dbd1;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+.footer-column h3 {
+    color: white;
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .1em;
+
+    margin-bottom: 14px;
+}
+
+.footer-column a {
+    display: block;
+
+    color: #c9dbd1;
+
+    font-size: 13px;
+
+    margin-bottom: 9px;
+}
+
+.footer-column a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.15);
+
+    padding: 18px 0 22px;
+
+    color: #aac4b6;
+
+    font-size: 11px;
+}
+
+
+/* =========================================
    MOBILE
-========================= */
+========================================= */
 
 @media (max-width: 800px) {
 
     .container {
-        width: min(100% - 30px, 1120px);
+        width:
+            calc(100% - 30px);
     }
 
-    .nav {
-        gap: 16px;
+    .main-nav {
+        gap: 15px;
     }
 
-    .nav a:nth-child(n+3) {
+    .main-nav a:nth-child(n+3) {
         display: none;
     }
 
     .hero-inner {
-        padding: 58px 0 55px;
+        padding:
+            58px 0
+            55px;
     }
 
     .hero h1 {
-        font-size: 42px;
-        letter-spacing: -1.8px;
-    }
-
-    .hero-description {
-        font-size: 16px;
+        font-size: 45px;
+        letter-spacing: -2px;
     }
 
     .category-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
-    .recent-grid {
-        grid-template-columns: 1fr;
+    .guides-grid {
+        grid-template-columns:
+            1fr;
     }
 
-    .principles {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    .trust {
+        grid-template-columns:
+            1fr;
 
-    .principle:nth-child(2) {
-        border-right: 0;
-    }
-
-    .principle:nth-child(-n+2) {
-        border-bottom: 1px solid var(--border);
-    }
-
-    .info-block {
-        grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 35px;
     }
 
     .footer-main {
-        flex-direction: column;
+        grid-template-columns:
+            1fr
+            1fr;
+
+        gap: 35px;
+    }
+
+    .footer-brand {
+        grid-column:
+            1 / -1;
     }
 
 }
 
 
-@media (max-width: 520px) {
+@media (max-width: 560px) {
 
-    .header {
-        height: 60px;
+    .header-inner {
+        min-height: 62px;
     }
 
-    .logo {
-        font-size: 20px;
+    .brand {
+        font-size: 19px;
     }
 
-    .nav {
+    .brand-mark {
+        width: 28px;
+        height: 28px;
+    }
+
+    .main-nav {
         gap: 12px;
     }
 
-    .nav a {
-        font-size: 12px;
+    .main-nav a {
+        font-size: 11px;
     }
 
     .hero-inner {
-        padding: 47px 0 48px;
-    }
-
-    .eyebrow {
-        font-size: 10px;
+        padding:
+            48px 0
+            45px;
     }
 
     .hero h1 {
-        font-size: 37px;
+        font-size: 38px;
         letter-spacing: -1.5px;
     }
 
-    .hero-description {
+    .hero-intro {
         font-size: 15px;
     }
 
-    .search-box input {
-        height: 50px;
-    }
-
-    main {
-        padding: 48px 0 60px;
+    .search-input {
+        height: 52px;
     }
 
     .section {
-        margin-bottom: 55px;
+        padding: 55px 0;
     }
 
-    .section-header {
+    .section-head {
         display: block;
     }
 
-    .section-link {
+    .section-head h2 {
+        font-size: 25px;
+    }
+
+    .text-link {
         display: inline-block;
         margin-top: 9px;
     }
 
-    .tool-row {
-        align-items: flex-start;
-        padding: 19px;
+    .tool {
+        grid-template-columns:
+            1fr
+            auto;
+
+        gap: 3px 15px;
+
+        padding: 18px;
     }
 
-    .tool-action {
-        margin-top: 2px;
+    .tool-number {
+        display: none;
+    }
+
+    .tool-open {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+
+        align-self: center;
+    }
+
+    .tool-category,
+    .tool-title,
+    .tool-description {
+        padding-right: 10px;
     }
 
     .category-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .category {
         min-height: auto;
     }
 
-    .principles {
-        grid-template-columns: 1fr;
+    .category-number {
+        margin-bottom: 17px;
     }
 
-    .principle {
-        border-right: 0;
-        border-bottom: 1px solid var(--border);
+    .footer-main {
+        grid-template-columns:
+            1fr;
     }
 
-    .principle:last-child {
-        border-bottom: 0;
-    }
-
-    .footer-links {
-        gap: 13px;
+    .footer-brand {
+        grid-column: auto;
     }
 
 }
@@ -788,20 +962,45 @@ main {
 <body>
 
 
-<!-- HEADER -->
+<!-- =========================================
+     HEADER
+========================================= -->
 
-<header class="header">
+<header class="site-header">
 
 <div class="container header-inner">
 
-<a href="/" class="logo">
+<a
+    href="/"
+    class="brand"
+    aria-label="FigureNG home"
+>
+
+<span class="brand-mark">
+FG
+</span>
+
+<span class="brand-word">
 Figure<span>NG</span>
+</span>
+
 </a>
 
-<nav class="nav">
 
-<a href="/tools.html" class="nav-tools">
+<nav
+    class="main-nav"
+    aria-label="Main navigation"
+>
+
+<a
+    href="/tools.html"
+    class="active"
+>
 Tools
+</a>
+
+<a href="/guides.html">
+Guides
 </a>
 
 <a href="/about.html">
@@ -820,43 +1019,59 @@ Contact
 
 
 
-<!-- HERO -->
+<!-- =========================================
+     HERO
+========================================= -->
 
 <section class="hero">
 
 <div class="container hero-inner">
 
-<div class="eyebrow">
-FigureNG
+<div class="kicker hero-kicker">
+Calculators · Tools · Guides
 </div>
 
 <h1>
-Numbers made useful.
+Useful numbers for
+<span>everyday decisions.</span>
 </h1>
 
-<p class="hero-description">
-Practical calculators and online tools built around
-Nigerian money, work, business and everyday decisions.
+<p class="hero-intro">
+FigureNG brings together practical calculators,
+financial tools and straightforward guides built
+for people in Nigeria.
 </p>
 
 
-<div class="search-box">
+<div class="search-area">
 
-<span class="search-icon">
+<label
+    class="search-label"
+    for="toolSearch"
+>
+Find a tool
+</label>
+
+
+<div class="search-wrapper">
+
+<span class="search-symbol">
 ⌕
 </span>
 
 <input
-type="search"
-id="toolSearch"
-placeholder="Search calculators and tools..."
-autocomplete="off"
+    id="toolSearch"
+    class="search-input"
+    type="search"
+    placeholder="Search salary, loan, tax, savings..."
+    autocomplete="off"
 >
 
 <div
-class="search-results"
-id="searchResults"
->
+    id="searchResults"
+    class="search-results"
+></div>
+
 </div>
 
 </div>
@@ -867,32 +1082,37 @@ id="searchResults"
 
 
 
+<!-- =========================================
+     MAIN
+========================================= -->
+
 <main>
+
+
+<!-- FEATURED TOOLS -->
+
+<section class="section">
 
 <div class="container">
 
 
-<!-- FEATURED -->
-
-<section class="section">
-
-<div class="section-header">
+<div class="section-head">
 
 <div>
 
 <h2>
-Popular tools
+Featured calculators
 </h2>
 
 <p>
-Start with one of the tools people use most.
+Start with a practical tool.
 </p>
 
 </div>
 
 <a
-href="/tools.html"
-class="section-link"
+    href="/tools.html"
+    class="text-link"
 >
 View all tools →
 </a>
@@ -900,31 +1120,35 @@ View all tools →
 </div>
 
 
-<div class="tools-list">
+<div class="tool-table">
 
 
 <a
-href="/salary-calculator.html"
-class="tool-row"
+    href="/salary-calculator.html"
+    class="tool"
 >
 
-<div class="tool-main">
+<div class="tool-number">
+01
+</div>
+
+<div>
 
 <div class="tool-category">
 Salary & Tax
 </div>
 
-<div class="tool-name">
+<div class="tool-title">
 Nigeria Salary Calculator 2026
 </div>
 
 <div class="tool-description">
-Estimate PAYE tax, deductions and take-home pay.
+Estimate PAYE, deductions and take-home pay.
 </div>
 
 </div>
 
-<div class="tool-action">
+<div class="tool-open">
 Open →
 </div>
 
@@ -933,27 +1157,31 @@ Open →
 
 
 <a
-href="/loan-calculator.html"
-class="tool-row"
+    href="/loan-calculator.html"
+    class="tool"
 >
 
-<div class="tool-main">
+<div class="tool-number">
+02
+</div>
+
+<div>
 
 <div class="tool-category">
 Loans & Credit
 </div>
 
-<div class="tool-name">
+<div class="tool-title">
 Loan Calculator
 </div>
 
 <div class="tool-description">
-Calculate repayment, interest and total borrowing cost.
+Calculate repayment, interest, fees and total cost.
 </div>
 
 </div>
 
-<div class="tool-action">
+<div class="tool-open">
 Open →
 </div>
 
@@ -962,32 +1190,38 @@ Open →
 
 
 <a
-href="/flat-vs-reducing.html"
-class="tool-row"
+    href="/flat-vs-reducing.html"
+    class="tool"
 >
 
-<div class="tool-main">
+<div class="tool-number">
+03
+</div>
+
+<div>
 
 <div class="tool-category">
 Loans & Credit
 </div>
 
-<div class="tool-name">
+<div class="tool-title">
 Flat vs Reducing Balance
 </div>
 
 <div class="tool-description">
-Compare two common methods of calculating loan interest.
+Compare the two common ways loan interest is calculated.
 </div>
 
 </div>
 
-<div class="tool-action">
+<div class="tool-open">
 Open →
 </div>
 
 </a>
 
+
+</div>
 
 </div>
 
@@ -999,16 +1233,19 @@ Open →
 
 <section class="section">
 
-<div class="section-header">
+<div class="container">
+
+
+<div class="section-head">
 
 <div>
 
 <h2>
-Browse by category
+Browse tools
 </h2>
 
 <p>
-Find tools based on what you need to calculate.
+Choose a category to find what you need.
 </p>
 
 </div>
@@ -1020,8 +1257,8 @@ Find tools based on what you need to calculate.
 
 
 <a
-href="/tools.html#salary-tax"
-class="category"
+    href="/tools.html#salary-tax"
+    class="category"
 >
 
 <div class="category-number">
@@ -1033,7 +1270,7 @@ Salary & Tax
 </h3>
 
 <p>
-PAYE, salary, deductions and income.
+Income, PAYE and employment calculations.
 </p>
 
 </a>
@@ -1041,8 +1278,8 @@ PAYE, salary, deductions and income.
 
 
 <a
-href="/tools.html#loans-credit"
-class="category"
+    href="/tools.html#loans-credit"
+    class="category"
 >
 
 <div class="category-number">
@@ -1062,8 +1299,8 @@ Repayments, interest and borrowing costs.
 
 
 <a
-href="/tools.html#savings-investment"
-class="category"
+    href="/tools.html#savings-investment"
+    class="category"
 >
 
 <div class="category-number">
@@ -1075,7 +1312,7 @@ Savings & Investment
 </h3>
 
 <p>
-Savings goals, returns and growth.
+Savings targets, growth and returns.
 </p>
 
 </a>
@@ -1083,8 +1320,8 @@ Savings goals, returns and growth.
 
 
 <a
-href="/tools.html#business"
-class="category"
+    href="/tools.html#business"
+    class="category"
 >
 
 <div class="category-number">
@@ -1096,7 +1333,7 @@ Business
 </h3>
 
 <p>
-Profit, pricing and business calculations.
+Pricing, profit and useful business numbers.
 </p>
 
 </a>
@@ -1104,8 +1341,8 @@ Profit, pricing and business calculations.
 
 
 <a
-href="/tools.html#everyday"
-class="category"
+    href="/tools.html#everyday"
+    class="category"
 >
 
 <div class="category-number">
@@ -1117,7 +1354,7 @@ Everyday
 </h3>
 
 <p>
-Useful calculations for daily decisions.
+Practical calculations for daily decisions.
 </p>
 
 </a>
@@ -1125,8 +1362,8 @@ Useful calculations for daily decisions.
 
 
 <a
-href="/tools.html"
-class="category"
+    href="/tools.html"
+    class="category"
 >
 
 <div class="category-number">
@@ -1138,11 +1375,13 @@ All tools
 </h3>
 
 <p>
-Browse the complete FigureNG directory.
+See the complete FigureNG collection.
 </p>
 
 </a>
 
+
+</div>
 
 </div>
 
@@ -1150,94 +1389,118 @@ Browse the complete FigureNG directory.
 
 
 
-<!-- RECENT -->
+<!-- GUIDES -->
 
 <section class="section">
 
-<div class="section-header">
+<div class="container">
+
+
+<div class="section-head">
 
 <div>
 
 <h2>
-Recently added
+From the guides
 </h2>
 
 <p>
-New tools will appear here as FigureNG grows.
+Clear explanations behind the numbers.
 </p>
 
 </div>
 
-</div>
-
-
-<div class="recent-grid">
-
-
-<div class="recent-tool">
-
-<div class="tool-category">
-Loans & Credit
-</div>
-
-<h3>
-Flat vs Reducing Balance
-</h3>
-
-<p>
-Understand the difference between flat-rate and reducing-balance interest.
-</p>
-
-<a href="/flat-vs-reducing.html">
-Open tool →
+<a
+    href="/guides.html"
+    class="text-link"
+>
+View all guides →
 </a>
 
 </div>
 
 
-
-<div class="recent-tool">
-
-<div class="tool-category">
-Loans & Credit
-</div>
-
-<h3>
-Loan Calculator
-</h3>
-
-<p>
-See repayment, interest, fees and the true cost of borrowing.
-</p>
-
-<a href="/loan-calculator.html">
-Open tool →
-</a>
-
-</div>
+<div class="guides-grid">
 
 
+<article class="guide">
 
-<div class="recent-tool">
-
-<div class="tool-category">
+<div class="guide-category">
 Salary & Tax
 </div>
 
 <h3>
-Nigeria Salary Calculator 2026
+How Nigerian PAYE tax works in 2026
 </h3>
 
 <p>
-Estimate your annual and monthly take-home pay under the 2026 framework.
+A straightforward explanation of the tax calculation,
+tax bands and what they mean for employees.
 </p>
 
-<a href="/salary-calculator.html">
-Open tool →
+<a
+    href="/guides.html"
+    class="guide-link"
+>
+Read guide →
 </a>
 
+</article>
+
+
+
+<article class="guide">
+
+<div class="guide-category">
+Loans & Credit
 </div>
 
+<h3>
+Flat rate vs reducing balance loans
+</h3>
+
+<p>
+Understand why two loans with the same advertised
+interest rate can have different costs.
+</p>
+
+<a
+    href="/flat-vs-reducing.html"
+    class="guide-link"
+>
+Read guide →
+</a>
+
+</article>
+
+
+
+<article class="guide">
+
+<div class="guide-category">
+Salary & Tax
+</div>
+
+<h3>
+What is take-home pay?
+</h3>
+
+<p>
+Understand the difference between gross income,
+deductions, tax and the money you actually receive.
+</p>
+
+<a
+    href="/guides.html"
+    class="guide-link"
+>
+Read guide →
+</a>
+
+</article>
+
+
+</div>
 
 </div>
 
@@ -1249,146 +1512,118 @@ Open tool →
 
 <section class="section">
 
-<div class="section-header">
+<div class="container">
+
+
+<div class="trust">
+
 
 <div>
 
+<div class="kicker">
+The FigureNG approach
+</div>
+
 <h2>
-How FigureNG works
+Useful first.
+Clear always.
 </h2>
 
-<p>
-The principles behind the tools.
+<p class="trust-copy">
+FigureNG is being built as a practical reference point
+for calculations that affect everyday decisions in Nigeria.
+The goal is not to overwhelm you with features. It is to
+give you the number you need and explain where it came from.
 </p>
 
 </div>
 
-</div>
+
+<div class="trust-list">
 
 
-<div class="principles">
+<div class="trust-item">
 
-
-<div class="principle">
-
-<div class="principle-number">
+<div class="trust-number">
 01
 </div>
 
-<h3>
-Built for Nigeria
-</h3>
+<div>
 
-<p>
-Calculations use Nigerian currency, rules and local context where applicable.
-</p>
+<strong>
+Built for Nigerian users
+</strong>
+
+<span>
+Currency, terminology and local context are considered
+where they apply.
+</span>
+
+</div>
 
 </div>
 
 
 
-<div class="principle">
+<div class="trust-item">
 
-<div class="principle-number">
+<div class="trust-number">
 02
 </div>
 
-<h3>
-Show the workings
-</h3>
+<div>
 
-<p>
-Important calculations should explain how the final number was reached.
-</p>
+<strong>
+Transparent methodology
+</strong>
+
+<span>
+Important calculations include explanations and assumptions.
+</span>
+
+</div>
 
 </div>
 
 
 
-<div class="principle">
+<div class="trust-item">
 
-<div class="principle-number">
+<div class="trust-number">
 03
 </div>
 
-<h3>
-No unnecessary sign-up
-</h3>
+<div>
 
-<p>
-Tools should be usable without creating an account for basic calculations.
-</p>
+<strong>
+No unnecessary barriers
+</strong>
+
+<span>
+Basic tools are designed to work without requiring an account.
+</span>
+
+</div>
 
 </div>
 
 
 
-<div class="principle">
+<div class="trust-item">
 
-<div class="principle-number">
+<div class="trust-number">
 04
 </div>
 
-<h3>
-Designed for phones
-</h3>
-
-<p>
-Every tool is built to remain usable on smaller screens.
-</p>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- ABOUT -->
-
-<section class="section">
-
-<div class="info-block">
-
-
-<div>
-
-<h2>
-Why FigureNG?
-</h2>
-
-<p>
-Many financial questions are easier to answer when the
-numbers are presented clearly.
-</p>
-
-<p>
-FigureNG is being built as a practical collection of
-calculators for Nigerians, starting with salary and
-borrowing tools and expanding gradually.
-</p>
-
-</div>
-
-
-
-<div class="info-points">
-
-
-<div class="info-point">
-
-<div class="info-point-marker"></div>
-
 <div>
 
 <strong>
-Clear results
+Designed for real screens
 </strong>
 
 <span>
-The important number is easy to find without hiding the details.
+The experience is built to work properly on phones as well
+as larger displays.
 </span>
 
 </div>
@@ -1396,45 +1631,7 @@ The important number is easy to find without hiding the details.
 </div>
 
 
-
-<div class="info-point">
-
-<div class="info-point-marker"></div>
-
-<div>
-
-<strong>
-Transparent calculations
-</strong>
-
-<span>
-Where methodology matters, the calculation and assumptions are explained.
-</span>
-
 </div>
-
-</div>
-
-
-
-<div class="info-point">
-
-<div class="info-point-marker"></div>
-
-<div>
-
-<strong>
-Practical tools
-</strong>
-
-<span>
-Each calculator is designed around a real-world question.
-</span>
-
-</div>
-
-</div>
-
 
 </div>
 
@@ -1442,14 +1639,14 @@ Each calculator is designed around a real-world question.
 
 </section>
 
-
-</div>
 
 </main>
 
 
 
-<!-- FOOTER -->
+<!-- =========================================
+     FOOTER
+========================================= -->
 
 <footer class="footer">
 
@@ -1461,12 +1658,23 @@ Each calculator is designed around a real-world question.
 
 <div class="footer-brand">
 
-<a href="/" class="logo">
+<a
+    href="/"
+    class="brand"
+>
+
+<span class="brand-mark">
+FG
+</span>
+
+<span class="brand-word">
 Figure<span>NG</span>
+</span>
+
 </a>
 
 <p>
-Practical calculators and online tools for everyday
+Practical calculators, tools and guides for everyday
 decisions in Nigeria.
 </p>
 
@@ -1474,15 +1682,37 @@ decisions in Nigeria.
 
 
 
-<div class="footer-links">
+<div class="footer-column">
 
-<a href="/">
-Home
-</a>
+<h3>
+Explore
+</h3>
 
 <a href="/tools.html">
 Tools
 </a>
+
+<a href="/guides.html">
+Guides
+</a>
+
+<a href="/salary-calculator.html">
+Salary Calculator
+</a>
+
+<a href="/loan-calculator.html">
+Loan Calculator
+</a>
+
+</div>
+
+
+
+<div class="footer-column">
+
+<h3>
+FigureNG
+</h3>
 
 <a href="/about.html">
 About
@@ -1510,7 +1740,6 @@ Disclaimer
 </div>
 
 
-
 <div class="footer-bottom">
 
 © 2026 FigureNG. All rights reserved.
@@ -1526,30 +1755,30 @@ Disclaimer
 
 <script>
 
-/* =========================
-   FIGURENG TOOL SEARCH
-========================= */
+/* =========================================
+   FIGURENG SEARCH
+========================================= */
 
 const tools = [
 
 {
-    name: "Nigeria Salary Calculator 2026",
+    title: "Nigeria Salary Calculator 2026",
     category: "Salary & Tax",
-    description: "Estimate PAYE tax, deductions and take-home pay.",
+    description: "Estimate PAYE, deductions and take-home pay.",
     url: "/salary-calculator.html"
 },
 
 {
-    name: "Loan Calculator",
+    title: "Loan Calculator",
     category: "Loans & Credit",
-    description: "Calculate repayment, interest and total borrowing cost.",
+    description: "Calculate repayment, interest, fees and total cost.",
     url: "/loan-calculator.html"
 },
 
 {
-    name: "Flat vs Reducing Balance",
+    title: "Flat vs Reducing Balance",
     category: "Loans & Credit",
-    description: "Compare flat-rate and reducing-balance loan calculations.",
+    description: "Compare common loan interest calculation methods.",
     url: "/flat-vs-reducing.html"
 }
 
@@ -1564,95 +1793,118 @@ document.getElementById("searchResults");
 
 
 searchInput.addEventListener(
-"input",
-function() {
+    "input",
+    function () {
 
-const query =
-this.value.trim().toLowerCase();
-
-
-if (!query) {
-
-searchResults.classList.remove("show");
-
-searchResults.innerHTML = "";
-
-return;
-
-}
+        const query =
+            this.value
+                .trim()
+                .toLowerCase();
 
 
-const matches =
-tools.filter(function(tool) {
+        if (!query) {
 
-return (
-tool.name.toLowerCase().includes(query) ||
-tool.category.toLowerCase().includes(query) ||
-tool.description.toLowerCase().includes(query)
+            searchResults.innerHTML = "";
+
+            searchResults.classList.remove(
+                "visible"
+            );
+
+            return;
+        }
+
+
+        const matches =
+            tools.filter(function (tool) {
+
+                return (
+                    tool.title
+                        .toLowerCase()
+                        .includes(query)
+
+                    ||
+
+                    tool.category
+                        .toLowerCase()
+                        .includes(query)
+
+                    ||
+
+                    tool.description
+                        .toLowerCase()
+                        .includes(query)
+                );
+
+            });
+
+
+        if (!matches.length) {
+
+            searchResults.innerHTML = `
+                <div class="no-results">
+                    No matching tool found.
+                </div>
+            `;
+
+            searchResults.classList.add(
+                "visible"
+            );
+
+            return;
+        }
+
+
+        searchResults.innerHTML =
+            matches.map(function (tool) {
+
+                return `
+
+                    <a
+                        href="${tool.url}"
+                        class="search-result"
+                    >
+
+                        <div class="search-result-category">
+                            ${tool.category}
+                        </div>
+
+                        <div class="search-result-title">
+                            ${tool.title}
+                        </div>
+
+                    </a>
+
+                `;
+
+            }).join("");
+
+
+        searchResults.classList.add(
+            "visible"
+        );
+
+    }
 );
-
-});
-
-
-if (matches.length === 0) {
-
-searchResults.innerHTML = `
-<div class="no-results">
-No matching tool found.
-</div>
-`;
-
-searchResults.classList.add("show");
-
-return;
-
-}
-
-
-searchResults.innerHTML =
-matches.map(function(tool) {
-
-return `
-
-<a
-href="${tool.url}"
-class="search-result"
->
-
-<div class="search-result-category">
-${tool.category}
-</div>
-
-<div class="search-result-name">
-${tool.name}
-</div>
-
-</a>
-
-`;
-
-}).join("");
-
-
-searchResults.classList.add("show");
-
-});
 
 
 document.addEventListener(
-"click",
-function(event) {
+    "click",
+    function (event) {
 
-if (
-!event.target.closest(".search-box")
-) {
+        if (
+            !event.target.closest(
+                ".search-area"
+            )
+        ) {
 
-searchResults.classList.remove("show");
+            searchResults.classList.remove(
+                "visible"
+            );
 
-}
+        }
 
-});
-
+    }
+);
 
 </script>
 
