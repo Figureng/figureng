@@ -1,0 +1,734 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Online Calculators & Tools | FigureNG</title>
+
+<meta name="description" content="Explore free online calculators and practical tools from FigureNG. Calculate salary, PAYE tax, loan repayments and more.">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://figureng.figureng247.workers.dev/tools.html">
+
+<style>
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --navy: #0f172a;
+  --navy2: #1e293b;
+  --green: #16a34a;
+  --green-dark: #15803d;
+  --green-light: #f0fdf4;
+  --white: #ffffff;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin: auto;
+}
+
+/* HEADER */
+
+header {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav {
+  min-height: 68px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 900;
+  color: var(--navy);
+}
+
+.logo span {
+  color: var(--green);
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.nav-links a {
+  color: var(--muted);
+}
+
+.nav-links a:hover {
+  color: var(--green);
+}
+
+/* HERO */
+
+.hero {
+  background: var(--navy);
+  color: white;
+  padding: 65px 0 70px;
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(22, 163, 74, 0.15);
+  border: 1px solid rgba(134, 239, 172, 0.25);
+  color: #86efac;
+  padding: 7px 12px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 7vw, 58px);
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  margin-bottom: 18px;
+}
+
+.hero h1 span {
+  color: #4ade80;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: auto;
+  color: #cbd5e1;
+  font-size: 17px;
+}
+
+/* TOOLS */
+
+main {
+  padding: 60px 0 75px;
+}
+
+.section-heading {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 35px;
+}
+
+.section-heading h2 {
+  color: var(--navy);
+  font-size: 32px;
+  margin-bottom: 9px;
+}
+
+.section-heading p {
+  color: var(--muted);
+}
+
+/* CATEGORY */
+
+.category {
+  margin-bottom: 45px;
+}
+
+.category-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--navy);
+  font-size: 22px;
+  margin-bottom: 17px;
+}
+
+.category-title span {
+  font-size: 24px;
+}
+
+/* GRID */
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+/* CARD */
+
+.tool-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  min-height: 255px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.tool-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--green-light);
+  font-size: 25px;
+  margin-bottom: 17px;
+}
+
+.tool-card h3 {
+  color: var(--navy);
+  font-size: 19px;
+  margin-bottom: 8px;
+}
+
+.tool-card p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.tool-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  min-height: 44px;
+  border-radius: 9px;
+  background: var(--green);
+  color: white;
+  font-size: 14px;
+  font-weight: 800;
+  transition: background 0.2s ease;
+}
+
+.tool-button:hover {
+  background: var(--green-dark);
+}
+
+/* COMING SOON */
+
+.coming-soon {
+  opacity: 0.75;
+}
+
+.coming-soon .tool-button {
+  background: #e2e8f0;
+  color: #64748b;
+  cursor: default;
+}
+
+/* INFO */
+
+.info-box {
+  background: var(--green-light);
+  border: 1px solid #bbf7d0;
+  border-radius: 16px;
+  padding: 25px;
+  margin-top: 10px;
+}
+
+.info-box h2 {
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.info-box p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* FOOTER */
+
+footer {
+  background: var(--navy);
+  color: #cbd5e1;
+  padding: 38px 0;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.footer-brand {
+  max-width: 430px;
+}
+
+.footer-brand .logo {
+  color: white;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.footer-brand p {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 13px;
+  align-content: flex-start;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+.copyright {
+  border-top: 1px solid #334155;
+  margin-top: 25px;
+  padding-top: 20px;
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+/* MOBILE */
+
+@media (max-width: 850px) {
+
+  .tools-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-top {
+    flex-direction: column;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .nav-links {
+    gap: 10px;
+    font-size: 12px;
+  }
+
+  .nav-links a:nth-child(n+3) {
+    display: none;
+  }
+
+  .hero {
+    padding: 48px 0 55px;
+  }
+
+  .hero h1 {
+    font-size: 39px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  main {
+    padding: 45px 0 60px;
+  }
+
+  .section-heading h2 {
+    font-size: 27px;
+  }
+
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-card {
+    min-height: 225px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="container nav">
+
+<a href="/" class="logo">
+Figure<span>NG</span>
+</a>
+
+<nav class="nav-links">
+
+<a href="/">Home</a>
+
+<a href="/tools.html">Tools</a>
+
+<a href="/about.html">About</a>
+
+<a href="/contact.html">Contact</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<section class="hero">
+
+<div class="container">
+
+<span class="badge">
+FIGURENG TOOLS
+</span>
+
+<h1>
+Useful tools for <span>real life.</span>
+</h1>
+
+<p>
+Free calculators and practical online tools designed
+to help you make everyday financial decisions faster.
+</p>
+
+</div>
+
+</section>
+
+
+<main>
+
+<div class="container">
+
+<section class="section-heading">
+
+<h2>
+Explore FigureNG Tools
+</h2>
+
+<p>
+Choose a calculator below. More practical tools will be
+added to FigureNG over time.
+</p>
+
+</section>
+
+
+<!-- SALARY & TAX -->
+
+<section class="category">
+
+<h2 class="category-title">
+<span>💰</span>
+Salary & Tax
+</h2>
+
+<div class="tools-grid">
+
+<article class="tool-card">
+
+<div class="tool-icon">
+💵
+</div>
+
+<h3>
+Nigeria Salary Calculator 2026
+</h3>
+
+<p>
+Estimate your Nigerian PAYE tax, eligible deductions
+and monthly take-home pay for 2026.
+</p>
+
+<a
+href="/salary-calculator.html"
+class="tool-button"
+>
+Use Calculator →
+</a>
+
+</article>
+
+</div>
+
+</section>
+
+
+<!-- LOANS -->
+
+<section class="category">
+
+<h2 class="category-title">
+<span>🏦</span>
+Loans & Finance
+</h2>
+
+<div class="tools-grid">
+
+<article class="tool-card">
+
+<div class="tool-icon">
+💳
+</div>
+
+<h3>
+Loan Calculator
+</h3>
+
+<p>
+Estimate monthly loan repayments, total interest and
+the overall cost of borrowing.
+</p>
+
+<a
+href="/loan-calculator.html"
+class="tool-button"
+>
+Use Calculator →
+</a>
+
+</article>
+
+
+<article class="tool-card">
+
+<div class="tool-icon">
+⚖️
+</div>
+
+<h3>
+Flat vs Reducing Balance Calculator
+</h3>
+
+<p>
+Compare flat-rate and reducing-balance loan calculations
+to understand the difference in borrowing costs.
+</p>
+
+<a
+href="/flat-vs-reducing.html"
+class="tool-button"
+>
+Use Calculator →
+</a>
+
+</article>
+
+
+<article class="tool-card coming-soon">
+
+<div class="tool-icon">
+📊
+</div>
+
+<h3>
+Loan Comparison Tool
+</h3>
+
+<p>
+Compare different loan offers by interest rate,
+fees, duration and total repayment.
+</p>
+
+<span class="tool-button">
+Coming Soon
+</span>
+
+</article>
+
+</div>
+
+</section>
+
+
+<!-- MONEY TOOLS -->
+
+<section class="category">
+
+<h2 class="category-title">
+<span>🧮</span>
+Money Calculators
+</h2>
+
+<div class="tools-grid">
+
+<article class="tool-card coming-soon">
+
+<div class="tool-icon">
+📈
+</div>
+
+<h3>
+Savings Calculator
+</h3>
+
+<p>
+Estimate how your savings could grow with regular
+contributions and interest.
+</p>
+
+<span class="tool-button">
+Coming Soon
+</span>
+
+</article>
+
+
+<article class="tool-card coming-soon">
+
+<div class="tool-icon">
+🎯
+</div>
+
+<h3>
+Savings Goal Calculator
+</h3>
+
+<p>
+Find out how much you may need to save regularly
+to reach a financial target.
+</p>
+
+<span class="tool-button">
+Coming Soon
+</span>
+
+</article>
+
+
+<article class="tool-card coming-soon">
+
+<div class="tool-icon">
+🧾
+</div>
+
+<h3>
+Percentage Calculator
+</h3>
+
+<p>
+Calculate percentages, increases, decreases and
+common percentage-based amounts.
+</p>
+
+<span class="tool-button">
+Coming Soon
+</span>
+
+</article>
+
+</div>
+
+</section>
+
+
+<section class="info-box">
+
+<h2>
+More tools are coming
+</h2>
+
+<p>
+FigureNG is being developed into a collection of simple,
+useful calculators for everyday financial decisions.
+New tools will be added gradually and each calculator
+will be designed to work smoothly on mobile phones.
+</p>
+
+</section>
+
+</div>
+
+</main>
+
+
+<footer>
+
+<div class="container">
+
+<div class="footer-top">
+
+<div class="footer-brand">
+
+<a href="/" class="logo">
+Figure<span>NG</span>
+</a>
+
+<p>
+Free calculators and practical online tools for
+everyday needs.
+</p>
+
+</div>
+
+
+<div class="footer-links">
+
+<a href="/">Home</a>
+
+<a href="/tools.html">Tools</a>
+
+<a href="/about.html">About</a>
+
+<a href="/contact.html">Contact</a>
+
+<a href="/privacy.html">Privacy Policy</a>
+
+<a href="/terms.html">Terms</a>
+
+<a href="/disclaimer.html">Disclaimer</a>
+
+</div>
+
+</div>
+
+
+<div class="copyright">
+
+© 2026 FigureNG. All rights reserved.
+
+</div>
+
+</div>
+
+</footer>
+
+</body>
+</html>
+```
