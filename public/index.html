@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>FigureNG | Free Nigerian Calculators & Tools</title>
+
+  <meta
+    name="description"
+    content="FigureNG provides free Nigerian calculators and practical digital tools for money, education, business, energy and everyday decisions."
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <meta name="theme-color" content="#0f172a">
+
+  <link rel="canonical" href="https://figureng.figureng247.workers.dev/">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #0f172a;
+      --green: #16a34a;
+      --green-dark: #15803d;
+      --green-light: #dcfce7;
+      --background: #f8fafc;
+      --white: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--navy);
+    }
+
+    .logo span {
+      color: var(--green);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    nav a:hover {
+      color: var(--green);
+    }
+
+    .hero {
+      background: var(--navy);
+      color: var(--white);
+      padding: 70px 0;
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 12px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(134, 239, 172, 0.3);
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.18);
+      color: #86efac;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 9vw, 70px);
+      line-height: 1;
+      letter-spacing: -2.5px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      color: #4ade80;
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: #cbd5e1;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .button-primary {
+      background: var(--green);
+      color: white;
+    }
+
+    .button-primary:hover {
+      background: var(--green-dark);
+    }
+
+    .button-secondary {
+      border: 1px solid #475569;
+      color: white;
+    }
+
+    .section {
+      padding: 60px 0;
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin: 0 auto 35px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      color: var(--navy);
+      font-size: 32px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .category {
+      padding: 25px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .category-icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 17px;
+      border-radius: 12px;
+      background: var(--green-light);
+      font-size: 25px;
+    }
+
+    .category h3 {
+      color: var(--navy);
+      font-size: 20px;
+      margin-bottom: 7px;
+    }
+
+    .category p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .category-link {
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .tool {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 20px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .tool h3 {
+      color: var(--navy);
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+
+    .tool p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .tool-status {
+      flex-shrink: 0;
+      padding: 6px 10px;
+      background: #f1f5f9;
+      color: var(--muted);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .about {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .about h2 {
+      color: var(--navy);
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .about p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .feature {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .feature-icon {
+      color: var(--green);
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .feature strong {
+      display: block;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+
+    .feature span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .cta {
+      padding: 60px 0;
+      background: var(--green);
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .cta p {
+      max-width: 620px;
+      margin: 0 auto;
+      color: #dcfce7;
+    }
+
+    footer {
+      padding: 40px 0;
+      background: var(--navy);
+      color: #cbd5e1;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 30px;
+    }
+
+    .footer-logo {
+      color: white;
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .footer-logo span {
+      color: #4ade80;
+    }
+
+    footer p {
+      max-width: 450px;
+      font-size: 13px;
+    }
+
+    footer h4 {
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 7px;
+      font-size: 13px;
+    }
+
+    .copyright {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #334155;
+      color: #94a3b8;
+      font-size: 12px;
+    }
+
+    @media (max-width: 800px) {
+      .categories {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nav {
+        min-height: 62px;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      nav a:nth-child(2) {
+        display: none;
+      }
+
+      .hero {
+        padding: 55px 0 60px;
+      }
+
+      .hero h1 {
+        font-size: 45px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .section {
+        padding: 45px 0;
+      }
+
+      .section-heading h2,
+      .about h2,
+      .cta h2 {
+        font-size: 27px;
+      }
+
+      .categories,
+      .tools,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tool {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="/" class="logo">Figure<span>NG</span></a>
+
+    <nav>
+      <a href="#tools">Tools</a>
+      <a href="#categories">Categories</a>
+      <a href="#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+
+      <div class="badge">🇳🇬 Built for everyday Nigeria</div>
+
+      <h1>
+        Calculate.<br>
+        Check.<br>
+        <span>Plan.</span>
+      </h1>
+
+      <p>
+        FigureNG provides simple, useful and free digital tools
+        designed around everyday Nigerian needs.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#tools" class="button button-primary">
+          Explore Tools
+        </a>
+
+        <a href="#categories" class="button button-secondary">
+          Browse Categories
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="categories">
+  <div class="container">
+
+    <div class="section-heading">
+      <h2>Tools for real-life problems</h2>
+
+      <p>
+        Find practical tools for money, education, energy,
+        business and everyday decisions.
+      </p>
+    </div>
+
+    <div class="categories">
+
+      <div class="category">
+        <div class="category-icon">💰</div>
+        <h3>Money</h3>
+        <p>
+          Salary, tax, budget, savings, profit and other money tools.
+        </p>
+        <a href="#tools" class="category-link">Explore Money →</a>
+      </div>
+
+      <div class="category">
+        <div class="category-icon">🎓</div>
+        <h3>Education</h3>
+        <p>
+          JAMB, CGPA, GPA, WAEC and other student tools.
+        </p>
+        <a href="#tools" class="category-link">Explore Education →</a>
+      </div>
+
+      <div class="category">
+        <div class="category-icon">⚡</div>
+        <h3>Energy</h3>
+        <p>
+          Electricity, fuel, generator, solar and battery tools.
+        </p>
+        <a href="#tools" class="category-link">Explore Energy →</a>
+      </div>
+
+      <div class="category">
+        <div class="category-icon">🏪</div>
+        <h3>Business</h3>
+        <p>
+          Profit, markup, ROI, break-even and business calculators.
+        </p>
+        <a href="#tools" class="category-link">Explore Business →</a>
+      </div>
+
+      <div class="category">
+        <div class="category-icon">🇳🇬</div>
+        <h3>Everyday</h3>
+        <p>
+          Fuel, NYSC, dates, age and other everyday tools.
+        </p>
+        <a href="#tools" class="category-link">Explore Everyday →</a>
+      </div>
+
+      <div class="category">
+        <div class="category-icon">🧱</div>
+        <h3>Construction</h3>
+        <p>
+          Useful calculators for building and renovation projects.
+        </p>
+        <a href="#tools" class="category-link">Coming Soon →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="tools">
+  <div class="container">
+
+    <div class="section-heading">
+      <h2>Our first tools</h2>
+
+      <p>
+        We're building a collection of simple tools that solve
+        specific Nigerian problems.
+      </p>
+    </div>
+
+    <div class="tools">
+
+      <div class="tool">
+        <div>
+          <h3>🇳🇬 Nigeria Salary Calculator</h3>
+          <p>Estimate your take-home salary.</p>
+        </div>
+        <span class="tool-status">Coming Soon</span>
+      </div>
+
+      <div class="tool">
+        <div>
+          <h3>⚡ Electricity Bill Calculator</h3>
+          <p>Estimate appliance electricity costs.</p>
+        </div>
+        <span class="tool-status">Coming Soon</span>
+      </div>
+
+      <div class="tool">
+        <div>
+          <h3>🎓 JAMB Aggregate Calculator</h3>
+          <p>Calculate your admission aggregate.</p>
+        </div>
+        <span class="tool-status">Coming Soon</span>
+      </div>
+
+      <div class="tool">
+        <div>
+          <h3>🎓 CGPA Calculator</h3>
+          <p>Calculate GPA and cumulative CGPA.</p>
+        </div>
+        <span class="tool-status">Coming Soon</span>
+      </div>
+
+      <div class="tool">
+        <div>
+          <h3>📚 WAEC Credit Checker</h3>
+          <p>Check your WAEC subject credits.</p>
+        </div>
+        <span class="tool-status">Coming Soon</span>
+      </div>
+
+      <div class="tool">
+        <div>
+          <h3>⛽ Fuel Cost Calculator</h3>
+          <p>Estimate the cost of a trip.</p>
+        </div>
+        <span class="tool-status">Coming Soon</span>
+      </div>
+
+      <div class="tool">
+        <div>
+          <h3>💵 Profit Margin Calculator</h3>
+          <p>Calculate profit and profit margin.</p>
+        </div>
+        <span class="tool-status">Coming Soon</span>
+      </div>
+
+      <div class="tool">
+        <div>
+          <h3>🏪 Markup Calculator</h3>
+          <p>Calculate selling price and markup.</p>
+        </div>
+        <span class="tool-status">Coming Soon</span>
+      </div>
+
+      <div class="tool">
+        <div>
+          <h3>🇳🇬 NYSC Allowance Calculator</h3>
+          <p>Estimate NYSC income and expenses.</p>
+        </div>
+        <span class="tool-status">Coming Soon</span>
+      </div>
+
+      <div class="tool">
+        <div>
+          <h3>📊 Monthly Budget Calculator</h3>
+          <p>Plan income, expenses and savings.</p>
+        </div>
+        <span class="tool-status">Coming Soon</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section about" id="about">
+  <div class="container">
+
+    <div class="about-grid">
+
+      <div>
+        <h2>Why FigureNG?</h2>
+
+        <p>
+          Everyday questions often need simple answers.
+          FigureNG is being built to make those answers easier
+          to find and understand.
+        </p>
+
+        <p>
+          Our tools are designed with Nigerian users in mind,
+          using familiar currencies, systems and real-life situations.
+        </p>
+      </div>
+
+      <div class="feature-list">
+
+        <div class="feature">
+          <div class="feature-icon">✓</div>
+          <div>
+            <strong>Free to use</strong>
+            <span>No payment required to use our core tools.</span>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">✓</div>
+          <div>
+            <strong>Built for mobile</strong>
+            <span>Designed to work comfortably on phones.</span>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">✓</div>
+          <div>
+            <strong>Nigerian-focused</strong>
+            <span>Tools designed around Nigerian needs.</span>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">✓</div>
+          <div>
+            <strong>Simple results</strong>
+            <span>Clear answers without unnecessary complexity.</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="cta">
+  <div class="container">
+    <h2>Need to figure something out?</h2>
+
+    <p>
+      We're building practical tools to help you calculate,
+      check and plan everyday decisions.
+    </p>
+  </div>
+</section>
+
+</main>
+
+
+<footer>
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-logo">
+          Figure<span>NG</span>
+        </div>
+
+        <p>
+          Free digital tools designed around everyday Nigerian needs.
+        </p>
+      </div>
+
+      <div>
+        <h4>Explore</h4>
+
+        <div class="footer-links">
+          <a href="#tools">Tools</a>
+          <a href="#categories">Categories</a>
+          <a href="#about">About</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Coming Soon</h4>
+
+        <div class="footer-links">
+          <span>Money</span>
+          <span>Education</span>
+          <span>Energy</span>
+          <span>Business</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 FigureNG. All rights reserved.
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
