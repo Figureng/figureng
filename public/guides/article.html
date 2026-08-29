@@ -5,17 +5,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FigureNG Guide</title>
+<title>Guide | FigureNG</title>
 
 <meta
     id="metaDescription"
     name="description"
-    content="FigureNG practical guide."
+    content="Practical guides from FigureNG."
 >
 
-<meta
-    name="robots"
-    content="index, follow"
+<meta name="robots" content="index, follow">
+
+<link
+    id="canonical"
+    rel="canonical"
+    href="https://figureng.figureng247.workers.dev/guides/article.html"
 >
 
 <link
@@ -46,7 +49,7 @@ body {
     background: var(--background);
     color: var(--ink);
     font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.75;
+    line-height: 1.7;
 }
 
 a {
@@ -58,6 +61,8 @@ a {
     width: min(1120px, calc(100% - 30px));
     margin: auto;
 }
+
+/* HEADER */
 
 header {
     background: white;
@@ -112,20 +117,29 @@ nav a:hover {
     color: var(--ink);
 }
 
+/* ARTICLE HEADER */
+
 .article-header {
     background: white;
     border-bottom: 1px solid var(--line);
-    padding: 65px 0 55px;
 }
 
 .article-header-inner {
-    width: min(820px, calc(100% - 30px));
-    margin: auto;
+    max-width: 850px;
+    padding: 65px 0 55px;
 }
 
-.category {
+.back-link {
+    display: inline-block;
     color: var(--green2);
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 900;
+    margin-bottom: 28px;
+}
+
+.article-category {
+    color: var(--green2);
+    font-size: 10px;
     font-weight: 900;
     letter-spacing: .12em;
     text-transform: uppercase;
@@ -133,58 +147,57 @@ nav a:hover {
 }
 
 h1 {
-    font-size: clamp(36px, 6vw, 58px);
+    font-size: clamp(38px, 6vw, 58px);
     line-height: 1.08;
     letter-spacing: -2px;
     margin-bottom: 18px;
 }
 
-.excerpt {
+.article-excerpt {
+    max-width: 760px;
     color: var(--muted);
     font-size: 17px;
     line-height: 1.65;
     margin-bottom: 18px;
 }
 
-.meta {
+.article-meta {
     color: #8a948f;
     font-size: 11px;
 }
+
+/* ARTICLE CONTENT */
 
 main {
     padding: 55px 0 80px;
 }
 
 .article-layout {
-    width: min(820px, calc(100% - 30px));
-    margin: auto;
-}
-
-.featured-image {
-    width: 100%;
-    max-height: 480px;
-    object-fit: cover;
-    border-radius: 6px;
-    margin-bottom: 35px;
+    display: grid;
+    grid-template-columns: minmax(0, 760px) 260px;
+    gap: 55px;
+    align-items: start;
 }
 
 .article-content {
     background: white;
     border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 40px;
+    border-radius: 5px;
+    padding: 38px;
 }
 
 .article-content p {
-    margin-bottom: 20px;
-    color: #394740;
+    color: #3f4d46;
+    font-size: 16px;
+    line-height: 1.85;
+    margin-bottom: 22px;
 }
 
 .article-content h2 {
     color: var(--ink);
     font-size: 28px;
     line-height: 1.25;
-    margin: 35px 0 15px;
+    margin: 38px 0 15px;
 }
 
 .article-content h3 {
@@ -196,39 +209,95 @@ main {
 
 .article-content ul,
 .article-content ol {
-    margin: 0 0 22px 25px;
-    color: #394740;
+    margin: 0 0 24px 24px;
+    color: #3f4d46;
 }
 
 .article-content li {
     margin-bottom: 8px;
 }
 
-.article-content a {
-    color: var(--green2);
-    text-decoration: underline;
-    font-weight: 700;
-}
-
 .article-content strong {
     color: var(--ink);
 }
 
-.back-link {
-    display: inline-block;
-    margin-bottom: 25px;
+.article-content a {
     color: var(--green2);
-    font-size: 12px;
-    font-weight: 900;
+    font-weight: 700;
+    text-decoration: underline;
 }
 
-.error {
+.article-content blockquote {
+    border-left: 4px solid var(--green2);
+    margin: 25px 0;
+    padding: 8px 0 8px 20px;
+    color: var(--muted);
+    font-style: italic;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    position: sticky;
+    top: 95px;
+}
+
+.sidebar-box {
     background: white;
     border: 1px solid var(--line);
-    border-radius: 6px;
+    border-radius: 5px;
+    padding: 22px;
+    margin-bottom: 15px;
+}
+
+.sidebar-box h3 {
+    color: var(--ink);
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.sidebar-box p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.tool-link {
+    display: block;
+    background: var(--green);
+    color: white;
+    padding: 11px 13px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 900;
+    text-align: center;
+}
+
+/* STATES */
+
+.loading,
+.error-message,
+.not-found {
+    max-width: 760px;
+    margin: 60px auto;
+    background: white;
+    border: 1px solid var(--line);
     padding: 30px;
     color: var(--muted);
+    font-size: 14px;
 }
+
+.error-message,
+.not-found {
+    display: none;
+}
+
+.error-message {
+    color: #8b3333;
+}
+
+/* FOOTER */
 
 footer {
     background: var(--green);
@@ -283,7 +352,21 @@ footer a:hover {
     font-size: 10px;
 }
 
-@media(max-width:700px) {
+/* MOBILE */
+
+@media(max-width:850px) {
+
+    .article-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+    }
+
+}
+
+@media(max-width:600px) {
 
     nav {
         gap: 12px;
@@ -297,23 +380,36 @@ footer a:hover {
         display: none;
     }
 
-    .article-header {
-        padding: 48px 0;
+    .article-header-inner {
+        padding: 45px 0;
     }
 
     h1 {
-        font-size: 38px;
-        letter-spacing: -1.3px;
+        font-size: 39px;
+        letter-spacing: -1.5px;
+    }
+
+    .article-excerpt {
+        font-size: 15px;
     }
 
     .article-content {
         padding: 25px;
     }
 
+    .article-content p {
+        font-size: 15px;
+    }
+
+    .article-content h2 {
+        font-size: 24px;
+    }
+
     .footer-grid {
         grid-template-columns: 1fr;
         gap: 30px;
     }
+
 }
 
 </style>
@@ -360,40 +456,10 @@ Contact
 
 </header>
 
+
 <section class="article-header">
 
-<div class="article-header-inner">
-
-<div
-    id="articleCategory"
-    class="category"
->
-Loading...
-</div>
-
-<h1 id="articleTitle">
-Loading guide...
-</h1>
-
-<p
-    id="articleExcerpt"
-    class="excerpt"
->
-</p>
-
-<div
-    id="articleMeta"
-    class="meta"
->
-</div>
-
-</div>
-
-</section>
-
-<main>
-
-<div class="article-layout">
+<div class="container article-header-inner">
 
 <a
     href="/guides.html"
@@ -403,30 +469,128 @@ Loading guide...
 </a>
 
 <div
-    id="articleError"
-    class="error"
-    style="display:none;"
+    id="articleCategory"
+    class="article-category"
+>
+Guide
+</div>
+
+<h1 id="articleTitle">
+Loading article...
+</h1>
+
+<p
+    id="articleExcerpt"
+    class="article-excerpt"
+>
+Loading...
+</p>
+
+<div
+    id="articleMeta"
+    class="article-meta"
+>
+</div>
+
+</div>
+
+</section>
+
+
+<main>
+
+<div class="container">
+
+<div
+    id="loading"
+    class="loading"
+>
+Loading article...
+</div>
+
+
+<div
+    id="errorMessage"
+    class="error-message"
+>
+We could not load this article. Please try again later.
+</div>
+
+
+<div
+    id="notFound"
+    class="not-found"
 >
 This guide could not be found.
 </div>
 
-<img
-    id="featuredImage"
-    class="featured-image"
+
+<div
+    id="articleLayout"
+    class="article-layout"
     style="display:none;"
-    alt=""
 >
+
 
 <article
     id="articleContent"
     class="article-content"
-    style="display:none;"
 >
 </article>
+
+
+<aside class="sidebar">
+
+<div class="sidebar-box">
+
+<h3>
+Need to calculate something?
+</h3>
+
+<p>
+Use a FigureNG calculator to apply the
+information from this guide to your own numbers.
+</p>
+
+<a
+    href="/salary-calculator.html"
+    class="tool-link"
+>
+Salary Calculator
+</a>
+
+</div>
+
+
+<div class="sidebar-box">
+
+<h3>
+Explore FigureNG
+</h3>
+
+<p>
+Browse more practical guides and
+everyday financial tools.
+</p>
+
+<a
+    href="/guides.html"
+    class="tool-link"
+>
+Browse All Guides
+</a>
+
+</div>
+
+</aside>
+
+
+</div>
 
 </div>
 
 </main>
+
 
 <footer>
 
@@ -453,6 +617,7 @@ decisions in Nigeria.
 
 </div>
 
+
 <div>
 
 <h3>
@@ -476,6 +641,7 @@ Loan Calculator
 </a>
 
 </div>
+
 
 <div>
 
@@ -507,6 +673,7 @@ Disclaimer
 
 </div>
 
+
 <div class="copyright">
 © 2026 FigureNG. All rights reserved.
 </div>
@@ -515,7 +682,112 @@ Disclaimer
 
 </footer>
 
+
 <script>
+
+const API_BASE = "/api/articles/slug/";
+
+const params =
+    new URLSearchParams(window.location.search);
+
+const slug =
+    params.get("slug");
+
+
+const loading =
+    document.getElementById("loading");
+
+const errorMessage =
+    document.getElementById("errorMessage");
+
+const notFound =
+    document.getElementById("notFound");
+
+const articleLayout =
+    document.getElementById("articleLayout");
+
+const articleTitle =
+    document.getElementById("articleTitle");
+
+const articleExcerpt =
+    document.getElementById("articleExcerpt");
+
+const articleCategory =
+    document.getElementById("articleCategory");
+
+const articleMeta =
+    document.getElementById("articleMeta");
+
+const articleContent =
+    document.getElementById("articleContent");
+
+const pageTitle =
+    document.querySelector("title");
+
+const metaDescription =
+    document.getElementById("metaDescription");
+
+const canonical =
+    document.getElementById("canonical");
+
+
+function formatDate(dateValue) {
+
+    if (!dateValue) {
+        return "";
+    }
+
+    const date =
+        new Date(dateValue);
+
+    if (Number.isNaN(date.getTime())) {
+        return "";
+    }
+
+    return date.toLocaleDateString(
+        "en-NG",
+        {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        }
+    );
+
+}
+
+
+function renderContent(content) {
+
+    if (!content) {
+        return "";
+    }
+
+
+    const paragraphs =
+        String(content)
+            .split(/\n\s*\n/)
+            .map(function(paragraph) {
+
+                const text =
+                    paragraph.trim();
+
+                if (!text) {
+                    return "";
+                }
+
+                return "<p>" +
+                    escapeHTML(text)
+                        .replace(/\n/g, "<br>") +
+                    "</p>";
+
+            })
+            .join("");
+
+
+    return paragraphs;
+
+}
+
 
 function escapeHTML(value) {
 
@@ -525,190 +797,156 @@ function escapeHTML(value) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+
 }
 
-function formatDate(value) {
 
-    if (!value) {
-        return "FigureNG";
-    }
+function showNotFound() {
 
-    const date = new Date(value);
+    loading.style.display = "none";
 
-    if (Number.isNaN(date.getTime())) {
-        return "FigureNG";
-    }
+    notFound.style.display = "block";
 
-    return "FigureNG · " +
-        date.toLocaleDateString(
-            "en-NG",
-            {
-                month: "long",
-                day: "numeric",
-                year: "numeric"
-            }
-        );
 }
 
-/*
- * The article content is intentionally treated
- * as trusted HTML from the admin publishing system.
- */
 
-function renderContent(content) {
+function showError() {
 
-    if (!content) {
-        return "<p>This guide has no content yet.</p>";
-    }
+    loading.style.display = "none";
 
-    return content;
+    errorMessage.style.display = "block";
+
 }
+
 
 async function loadArticle() {
 
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-    const slug =
-        params.get("slug");
-
     if (!slug) {
-        showError();
+
+        showNotFound();
+
         return;
+
     }
+
 
     try {
 
         const response =
             await fetch(
-                "/api/articles/slug/" +
+                API_BASE +
                 encodeURIComponent(slug),
                 {
+                    method: "GET",
                     cache: "no-store"
                 }
             );
 
-        if (!response.ok) {
-            throw new Error(
-                "Article not found."
-            );
+
+        if (response.status === 404) {
+
+            showNotFound();
+
+            return;
+
         }
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Article request failed."
+            );
+
+        }
+
 
         const data =
             await response.json();
+
 
         if (
             !data.success ||
             !data.article
         ) {
-            throw new Error(
-                "Invalid article response."
-            );
+
+            showNotFound();
+
+            return;
+
         }
+
 
         const article =
             data.article;
 
-        document.title =
-            article.seo_title ||
-            article.title +
-            " | FigureNG";
 
-        const description =
-            article.meta_description ||
-            article.excerpt ||
-            "";
+        articleTitle.textContent =
+            article.title;
 
-        document
-            .getElementById(
-                "metaDescription"
-            )
-            .setAttribute(
-                "content",
-                description
-            );
 
-        document
-            .getElementById(
-                "articleCategory"
-            )
-            .textContent =
-                article.category ||
-                "Guides";
+        articleExcerpt.textContent =
+            article.excerpt || "";
 
-        document
-            .getElementById(
-                "articleTitle"
-            )
-            .textContent =
-                article.title;
 
-        document
-            .getElementById(
-                "articleExcerpt"
-            )
-            .textContent =
-                article.excerpt || "";
+        articleCategory.textContent =
+            article.category ||
+            "Guide";
 
-        document
-            .getElementById(
-                "articleMeta"
-            )
-            .textContent =
-                formatDate(
-                    article.published_at
-                );
 
-        const image =
-            document.getElementById(
-                "featuredImage"
-            );
+        const date =
+            formatDate(article.published_at);
 
-        if (article.featured_image) {
 
-            image.src =
-                article.featured_image;
+        articleMeta.textContent =
+            date
+                ? "FigureNG · " + date
+                : "FigureNG";
 
-            image.alt =
-                article.title;
 
-            image.style.display =
-                "block";
-        }
-
-        const content =
-            document.getElementById(
-                "articleContent"
-            );
-
-        content.innerHTML =
+        articleContent.innerHTML =
             renderContent(
                 article.content
             );
 
-        content.style.display =
-            "block";
+
+        pageTitle.textContent =
+            article.seo_title ||
+            article.title +
+            " | FigureNG";
+
+
+        metaDescription.setAttribute(
+            "content",
+            article.meta_description ||
+            article.excerpt ||
+            "Practical guide from FigureNG."
+        );
+
+
+        canonical.href =
+            window.location.href;
+
+
+        loading.style.display = "none";
+
+        articleLayout.style.display =
+            "grid";
+
 
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            "FigureNG article error:",
+            error
+        );
 
         showError();
+
     }
+
 }
 
-function showError() {
-
-    document.title =
-        "Guide Not Found | FigureNG";
-
-    document.getElementById(
-        "articleError"
-    ).style.display =
-        "block";
-}
 
 loadArticle();
 
