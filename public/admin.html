@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,6 +59,11 @@ button {
     cursor: pointer;
 }
 
+button:disabled {
+    cursor: not-allowed;
+    opacity: .65;
+}
+
 a {
     color: inherit;
     text-decoration: none;
@@ -81,11 +87,9 @@ header {
 
 .header-inner {
     min-height: 68px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     gap: 20px;
 }
 
@@ -93,7 +97,6 @@ header {
     display: flex;
     align-items: center;
     gap: 9px;
-
     font-size: 20px;
     font-weight: 900;
 }
@@ -101,15 +104,11 @@ header {
 .mark {
     width: 30px;
     height: 30px;
-
     display: grid;
     place-items: center;
-
     background: var(--green);
     color: white;
-
     border-radius: 5px;
-
     font-size: 11px;
 }
 
@@ -128,10 +127,8 @@ header {
     border: 1px solid var(--line);
     background: white;
     color: var(--muted);
-
     padding: 8px 11px;
     border-radius: 5px;
-
     font-size: 11px;
     font-weight: 800;
 }
@@ -178,7 +175,6 @@ main {
 
 .login-screen {
     min-height: calc(100vh - 68px);
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -186,13 +182,10 @@ main {
 
 .login-box {
     width: min(420px, 100%);
-
     background: white;
     border: 1px solid var(--line);
     border-radius: 8px;
-
     padding: 30px;
-
     box-shadow: 0 12px 35px rgba(20,35,29,.06);
 }
 
@@ -212,11 +205,8 @@ main {
 
 .admin-layout {
     display: grid;
-
     grid-template-columns: minmax(0, 1.5fr) minmax(300px, .75fr);
-
     gap: 22px;
-
     align-items: start;
 }
 
@@ -238,9 +228,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     gap: 15px;
-
     margin-bottom: 20px;
 }
 
@@ -258,9 +246,7 @@ main {
 
 .form-grid {
     display: grid;
-
     grid-template-columns: 1fr 1fr;
-
     gap: 16px;
 }
 
@@ -274,20 +260,15 @@ main {
 
 label {
     display: block;
-
     color: var(--ink);
-
     font-size: 11px;
     font-weight: 900;
-
     margin-bottom: 6px;
 }
 
 .field-help {
     color: var(--muted);
-
     font-size: 10px;
-
     margin-top: 5px;
 }
 
@@ -295,13 +276,10 @@ input,
 textarea,
 select {
     width: 100%;
-
     border: 1px solid var(--line);
     border-radius: 5px;
-
     background: white;
     color: var(--ink);
-
     outline: none;
 }
 
@@ -314,18 +292,12 @@ select {
 textarea {
     min-height: 150px;
     padding: 11px;
-
     resize: vertical;
 }
 
 #content {
     min-height: 360px;
-
-    font-family:
-        "Courier New",
-        Courier,
-        monospace;
-
+    font-family: "Courier New", Courier, monospace;
     font-size: 13px;
     line-height: 1.65;
 }
@@ -334,9 +306,25 @@ input:focus,
 textarea:focus,
 select:focus {
     border-color: var(--green2);
+    box-shadow: 0 0 0 3px rgba(27,81,61,.08);
+}
 
-    box-shadow:
-        0 0 0 3px rgba(27,81,61,.08);
+
+/* COUNTERS */
+
+.content-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.content-counter {
+    display: flex;
+    gap: 12px;
 }
 
 
@@ -346,18 +334,14 @@ select:focus {
     display: flex;
     flex-wrap: wrap;
     gap: 9px;
-
     margin-top: 20px;
 }
 
 .btn {
     min-height: 40px;
-
     border: 1px solid transparent;
     border-radius: 5px;
-
     padding: 0 15px;
-
     font-size: 11px;
     font-weight: 900;
 }
@@ -398,6 +382,12 @@ select:focus {
     color: var(--blue);
 }
 
+.btn-orange {
+    background: var(--orange-light);
+    border-color: #fedf89;
+    color: var(--orange);
+}
+
 .btn-small {
     min-height: 32px;
     padding: 0 10px;
@@ -409,13 +399,9 @@ select:focus {
 
 .status-box {
     display: none;
-
     border-radius: 5px;
-
     padding: 11px 13px;
-
     margin-bottom: 18px;
-
     font-size: 11px;
     font-weight: 700;
 }
@@ -436,6 +422,12 @@ select:focus {
     color: var(--danger);
 }
 
+.status-warning {
+    background: var(--orange-light);
+    border: 1px solid #fedf89;
+    color: var(--orange);
+}
+
 
 /* EDITING STATE */
 
@@ -447,21 +439,31 @@ select:focus {
 
 .editor-badge {
     display: none;
-
     padding: 4px 7px;
-
     border-radius: 4px;
-
     background: var(--blue-light);
     color: var(--blue);
-
     font-size: 9px;
     font-weight: 900;
-
     text-transform: uppercase;
 }
 
 .editor-badge.show {
+    display: inline-block;
+}
+
+.unsaved-badge {
+    display: none;
+    padding: 4px 7px;
+    border-radius: 4px;
+    background: var(--orange-light);
+    color: var(--orange);
+    font-size: 9px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.unsaved-badge.show {
     display: inline-block;
 }
 
@@ -472,7 +474,6 @@ select:focus {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-
     margin-bottom: 16px;
 }
 
@@ -483,15 +484,11 @@ select:focus {
 
 .filter-button {
     height: 38px;
-
     border: 1px solid var(--line);
     border-radius: 5px;
-
     padding: 0 11px;
-
     background: white;
     color: var(--muted);
-
     font-size: 10px;
     font-weight: 900;
 }
@@ -511,9 +508,7 @@ select:focus {
 .article-row {
     border: 1px solid var(--line);
     border-radius: 6px;
-
     padding: 13px;
-
     background: #fff;
 }
 
@@ -528,19 +523,15 @@ select:focus {
 .article-title {
     font-size: 13px;
     font-weight: 900;
-
     margin-bottom: 4px;
 }
 
 .article-slug {
     color: #89938e;
-
     font-size: 9px;
-
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
     margin-bottom: 7px;
 }
 
@@ -548,22 +539,16 @@ select:focus {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-
     gap: 7px;
-
     margin-bottom: 10px;
 }
 
 .status-badge {
     display: inline-block;
-
     padding: 4px 7px;
-
     border-radius: 4px;
-
     font-size: 9px;
     font-weight: 900;
-
     text-transform: uppercase;
 }
 
@@ -579,7 +564,6 @@ select:focus {
 
 .category-badge {
     color: var(--muted);
-
     font-size: 9px;
 }
 
@@ -599,11 +583,8 @@ select:focus {
 
 .empty {
     padding: 30px 15px;
-
     text-align: center;
-
     color: var(--muted);
-
     font-size: 12px;
 }
 
@@ -612,32 +593,23 @@ select:focus {
 
 .stats {
     display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
+    grid-template-columns: repeat(3, 1fr);
     gap: 9px;
-
     margin-bottom: 18px;
 }
 
 .stat {
     background: white;
-
     border: 1px solid var(--line);
     border-radius: 6px;
-
     padding: 13px;
 }
 
 .stat small {
     display: block;
-
     color: var(--muted);
-
     font-size: 9px;
     font-weight: 800;
-
     margin-bottom: 4px;
 }
 
@@ -655,7 +627,6 @@ select:focus {
 
 .info-item {
     padding-bottom: 10px;
-
     border-bottom: 1px solid var(--line);
 }
 
@@ -666,15 +637,12 @@ select:focus {
 
 .info-item strong {
     display: block;
-
     font-size: 11px;
-
     margin-bottom: 3px;
 }
 
 .info-item span {
     color: var(--muted);
-
     font-size: 10px;
 }
 
@@ -683,11 +651,8 @@ select:focus {
 
 .loading {
     padding: 25px;
-
     text-align: center;
-
     color: var(--muted);
-
     font-size: 11px;
 }
 
@@ -737,12 +702,115 @@ select:focus {
         grid-template-columns: 1fr 1fr;
     }
 
+    .stats .stat:last-child {
+        grid-column: 1 / -1;
+    }
+
     .actions {
         flex-direction: column;
     }
 
     .actions .btn {
         width: 100%;
+    }
+
+    .article-actions .btn,
+    .article-actions a {
+        flex: 1;
+        text-align: center;
+        justify-content: center;
+    }
+
+}
+
+
+/* PREVIEW */
+
+.preview-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.65);
+    z-index: 500;
+    overflow-y: auto;
+    padding: 25px 15px;
+}
+
+.preview-overlay.show {
+    display: block;
+}
+
+.preview-box {
+    width: min(850px, 100%);
+    margin: auto;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.preview-header {
+    padding: 15px 18px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.preview-header strong {
+    font-size: 13px;
+}
+
+.preview-body {
+    padding: 30px;
+}
+
+.preview-category {
+    color: var(--green2);
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: 8px;
+}
+
+.preview-title {
+    font-size: 34px;
+    line-height: 1.15;
+    margin-bottom: 12px;
+}
+
+.preview-excerpt {
+    color: var(--muted);
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+.preview-content {
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.preview-content p {
+    margin-bottom: 18px;
+}
+
+.preview-image {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 25px;
+}
+
+@media(max-width:650px) {
+
+    .preview-body {
+        padding: 20px;
+    }
+
+    .preview-title {
+        font-size: 27px;
     }
 
 }
@@ -853,7 +921,7 @@ Content management
 </h1>
 
 <p>
-Create, edit, publish and manage your FigureNG guides.
+Create, edit, preview, publish and manage your FigureNG guides.
 </p>
 
 </div>
@@ -929,6 +997,13 @@ New article
 Editing
 </span>
 
+<span
+    id="unsavedBadge"
+    class="unsaved-badge"
+>
+Unsaved
+</span>
+
 </div>
 
 <button
@@ -991,7 +1066,7 @@ Slug
 >
 
 <div class="field-help">
-Leave blank to generate it from the title.
+Leave blank to generate it automatically from the title.
 </div>
 
 </div>
@@ -1051,6 +1126,11 @@ Excerpt
     placeholder="Short description of the article"
 ></textarea>
 
+<div class="content-meta">
+<span>Short description shown around the article.</span>
+<span id="excerptCount">0 / 500</span>
+</div>
+
 </div>
 
 
@@ -1066,8 +1146,24 @@ Article content
     placeholder="Write the article content here..."
 ></textarea>
 
-<div class="field-help">
-Plain text is supported. Separate paragraphs with blank lines.
+<div class="content-meta">
+
+<span>
+Separate paragraphs with blank lines.
+</span>
+
+<span class="content-counter">
+
+<span>
+Words: <strong id="wordCount">0</strong>
+</span>
+
+<span>
+Characters: <strong id="characterCount">0</strong>
+</span>
+
+</span>
+
 </div>
 
 </div>
@@ -1123,6 +1219,10 @@ SEO title
     placeholder="SEO title"
 >
 
+<div class="content-meta">
+<span id="seoTitleCount">0 / 200</span>
+</div>
+
 </div>
 
 
@@ -1139,6 +1239,10 @@ Meta description
     placeholder="Search engine description"
 ></textarea>
 
+<div class="content-meta">
+<span id="metaDescriptionCount">0 / 320</span>
+</div>
+
 </div>
 
 
@@ -1153,6 +1257,14 @@ Meta description
     type="button"
 >
 Save draft
+</button>
+
+<button
+    id="previewButton"
+    class="btn btn-blue"
+    type="button"
+>
+Preview
 </button>
 
 <button
@@ -1284,7 +1396,20 @@ Save draft
 </strong>
 
 <span>
-Keeps the article in the database without making it publicly published.
+Keeps the article in the database without making it public.
+</span>
+
+</div>
+
+
+<div class="info-item">
+
+<strong>
+Preview
+</strong>
+
+<span>
+Lets you review the article before publishing it.
 </span>
 
 </div>
@@ -1310,7 +1435,7 @@ Edit
 </strong>
 
 <span>
-Loads the complete article back into the editor for changes.
+Loads the complete article back into the editor.
 </span>
 
 </div>
@@ -1323,7 +1448,7 @@ Unpublish
 </strong>
 
 <span>
-Changes a published article back into draft status.
+Changes a published article back to draft status.
 </span>
 
 </div>
@@ -1422,21 +1547,112 @@ Not saved
 </div>
 
 
+<!-- PREVIEW -->
+
+<div
+    id="previewOverlay"
+    class="preview-overlay"
+>
+
+<div class="preview-box">
+
+<div class="preview-header">
+
+<strong>
+Article preview
+</strong>
+
+<button
+    id="closePreviewButton"
+    class="btn btn-secondary btn-small"
+    type="button"
+>
+Close
+</button>
+
+</div>
+
+<div class="preview-body">
+
+<div
+    id="previewCategory"
+    class="preview-category"
+></div>
+
+<h1
+    id="previewTitle"
+    class="preview-title"
+></h1>
+
+<div
+    id="previewExcerpt"
+    class="preview-excerpt"
+></div>
+
+<img
+    id="previewImage"
+    class="preview-image"
+    style="display:none;"
+    alt=""
+>
+
+<div
+    id="previewContent"
+    class="preview-content"
+></div>
+
+</div>
+
+</div>
+
+</div>
+
+
 <script>
+
 
 /*
  * FigureNG Admin
  *
- * The administrator password is kept in sessionStorage
- * only while this browser session is open.
+ * Complete publishing management system.
+ *
+ * Features:
+ *
+ * Create articles
+ * Edit articles
+ * Delete articles
+ * Save drafts
+ * Publish articles
+ * Unpublish articles
+ * Search
+ * Filters
+ * Preview
+ * Automatic slug generation
+ * Duplicate slug protection
+ * Writing counters
+ * Unsaved changes protection
+ * Mobile-friendly management
+ *
  */
+
 
 const API_BASE = "/api/articles";
 
+
 let adminPassword = "";
+
 let articles = [];
+
 let currentFilter = "all";
 
+let isDirty = false;
+
+let slugWasManuallyEdited = false;
+
+
+/*
+ * ELEMENTS
+ */
 
 const loginScreen =
     document.getElementById("loginScreen");
@@ -1501,6 +1717,9 @@ const editorHeading =
 const editingBadge =
     document.getElementById("editingBadge");
 
+const unsavedBadge =
+    document.getElementById("unsavedBadge");
+
 const deleteEditorButton =
     document.getElementById("deleteEditorButton");
 
@@ -1509,6 +1728,9 @@ const saveDraftButton =
 
 const publishButton =
     document.getElementById("publishButton");
+
+const previewButton =
+    document.getElementById("previewButton");
 
 const newArticleButton =
     document.getElementById("newArticleButton");
@@ -1537,20 +1759,75 @@ const currentId =
 const currentSlug =
     document.getElementById("currentSlug");
 
+const wordCount =
+    document.getElementById("wordCount");
+
+const characterCount =
+    document.getElementById("characterCount");
+
+const excerptCount =
+    document.getElementById("excerptCount");
+
+const seoTitleCount =
+    document.getElementById("seoTitleCount");
+
+const metaDescriptionCount =
+    document.getElementById("metaDescriptionCount");
+
+const previewOverlay =
+    document.getElementById("previewOverlay");
+
+const closePreviewButton =
+    document.getElementById("closePreviewButton");
+
+const previewCategory =
+    document.getElementById("previewCategory");
+
+const previewTitle =
+    document.getElementById("previewTitle");
+
+const previewExcerpt =
+    document.getElementById("previewExcerpt");
+
+const previewImage =
+    document.getElementById("previewImage");
+
+const previewContent =
+    document.getElementById("previewContent");
+
 
 /*
  * STATUS MESSAGE
  */
 
-function showMessage(element, message, type) {
+function showMessage(
+    element,
+    message,
+    type
+) {
 
     element.textContent = message;
 
+    let className =
+        "status-success";
+
+    if (type === "error") {
+
+        className =
+            "status-error";
+
+    }
+
+    if (type === "warning") {
+
+        className =
+            "status-warning";
+
+    }
+
     element.className =
         "status-box show " +
-        (type === "error"
-            ? "status-error"
-            : "status-success");
+        className;
 
 }
 
@@ -1576,7 +1853,8 @@ async function apiRequest(
 
     const headers = {
         ...(options.headers || {}),
-        "X-Admin-Password": adminPassword
+        "X-Admin-Password":
+            adminPassword
     };
 
     if (
@@ -1590,16 +1868,20 @@ async function apiRequest(
     }
 
     const response =
-        await fetch(url, {
-            ...options,
-            headers
-        });
+        await fetch(
+            url,
+            {
+                ...options,
+                headers
+            }
+        );
 
     let data;
 
     try {
 
-        data = await response.json();
+        data =
+            await response.json();
 
     } catch {
 
@@ -1609,7 +1891,10 @@ async function apiRequest(
 
     }
 
-    if (!response.ok || data.success === false) {
+    if (
+        !response.ok ||
+        data.success === false
+    ) {
 
         throw new Error(
             data.error ||
@@ -1646,13 +1931,16 @@ async function login() {
     }
 
     loginButton.disabled = true;
-    loginButton.textContent = "Checking...";
+
+    loginButton.textContent =
+        "Checking...";
 
     try {
 
         const response =
             await fetch(
-                API_BASE + "?status=all&limit=100",
+                API_BASE +
+                "?status=all&limit=100",
                 {
                     headers: {
                         "X-Admin-Password":
@@ -1676,15 +1964,19 @@ async function login() {
 
         }
 
-        adminPassword = password;
+        adminPassword =
+            password;
 
         sessionStorage.setItem(
             "figureng_admin_password",
             password
         );
 
-        loginScreen.style.display = "none";
-        adminApp.style.display = "block";
+        loginScreen.style.display =
+            "none";
+
+        adminApp.style.display =
+            "block";
 
         await loadArticles();
 
@@ -1692,14 +1984,18 @@ async function login() {
 
         showMessage(
             loginError,
-            error.message || "Unable to sign in.",
+            error.message ||
+            "Unable to sign in.",
             "error"
         );
 
     } finally {
 
-        loginButton.disabled = false;
-        loginButton.textContent = "Open Admin";
+        loginButton.disabled =
+            false;
+
+        loginButton.textContent =
+            "Open Admin";
 
     }
 
@@ -1711,6 +2007,21 @@ async function login() {
  */
 
 function logout() {
+
+    if (isDirty) {
+
+        const confirmed =
+            confirm(
+                "You have unsaved changes. Log out anyway?"
+            );
+
+        if (!confirmed) {
+
+            return;
+
+        }
+
+    }
 
     adminPassword = "";
 
@@ -1753,7 +2064,9 @@ async function loadArticles() {
 
         articleList.innerHTML =
             '<div class="empty">' +
-            escapeHtml(error.message) +
+            escapeHtml(
+                error.message
+            ) +
             '</div>';
 
     }
@@ -1768,18 +2081,24 @@ async function loadArticles() {
 function updateStats() {
 
     const published =
-        articles.filter(function(article) {
+        articles.filter(
+            function(article) {
 
-            return article.status === "published";
+                return article.status ===
+                    "published";
 
-        }).length;
+            }
+        ).length;
 
     const drafts =
-        articles.filter(function(article) {
+        articles.filter(
+            function(article) {
 
-            return article.status === "draft";
+                return article.status ===
+                    "draft";
 
-        }).length;
+            }
+        ).length;
 
     totalCount.textContent =
         articles.length;
@@ -1800,11 +2119,26 @@ function updateStats() {
 function escapeHtml(value) {
 
     return String(value || "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
@@ -1816,7 +2150,9 @@ function escapeHtml(value) {
 function formatDate(value) {
 
     if (!value) {
+
         return "";
+
     }
 
     const date =
@@ -1856,32 +2192,37 @@ function renderArticles() {
             .toLowerCase();
 
     const filtered =
-        articles.filter(function(article) {
+        articles.filter(
+            function(article) {
 
-            const matchesFilter =
-                currentFilter === "all" ||
-                article.status === currentFilter;
+                const matchesFilter =
+                    currentFilter === "all" ||
+                    article.status ===
+                        currentFilter;
 
-            const searchText =
-                [
-                    article.title,
-                    article.slug,
-                    article.excerpt,
-                    article.category
-                ]
-                .join(" ")
-                .toLowerCase();
+                const searchText =
+                    [
+                        article.title,
+                        article.slug,
+                        article.excerpt,
+                        article.category
+                    ]
+                    .join(" ")
+                    .toLowerCase();
 
-            const matchesSearch =
-                !query ||
-                searchText.includes(query);
+                const matchesSearch =
+                    !query ||
+                    searchText.includes(
+                        query
+                    );
 
-            return (
-                matchesFilter &&
-                matchesSearch
-            );
+                return (
+                    matchesFilter &&
+                    matchesSearch
+                );
 
-        });
+            }
+        );
 
 
     if (!filtered.length) {
@@ -1897,23 +2238,25 @@ function renderArticles() {
 
 
     articleList.innerHTML =
-        filtered.map(function(article) {
+        filtered.map(
+            function(article) {
 
-            const published =
-                article.status === "published";
+                const published =
+                    article.status ===
+                    "published";
 
-            const statusClass =
-                published
-                    ? "status-published"
-                    : "status-draft";
+                const statusClass =
+                    published
+                        ? "status-published"
+                        : "status-draft";
 
-            const statusLabel =
-                published
-                    ? "Published"
-                    : "Draft";
+                const statusLabel =
+                    published
+                        ? "Published"
+                        : "Draft";
 
 
-            return `
+                return `
 
 <div class="article-row">
 
@@ -1934,10 +2277,14 @@ function renderArticles() {
             </span>
 
             <span class="category-badge">
-                ${escapeHtml(article.category || "Guides")}
+                ${escapeHtml(
+                    article.category ||
+                    "Guides"
+                )}
             </span>
 
             <span class="article-date">
+                Updated:
                 ${formatDate(
                     article.updated_at ||
                     article.created_at
@@ -1974,7 +2321,9 @@ function renderArticles() {
 
                 <a
                     class="btn btn-blue btn-small"
-                    href="/article.html?slug=${encodeURIComponent(article.slug)}"
+                    href="/article.html?slug=${encodeURIComponent(
+                        article.slug
+                    )}"
                     target="_blank"
                     style="
                         display:inline-flex;
@@ -2017,7 +2366,78 @@ function renderArticles() {
 
 `;
 
-        }).join("");
+            }
+        ).join("");
+
+}
+
+
+/*
+ * GENERATE SLUG
+ */
+
+function generateSlug(text) {
+
+    return String(text || "")
+        .toLowerCase()
+        .trim()
+        .normalize("NFKD")
+        .replace(
+            /[\u0300-\u036f]/g,
+            ""
+        )
+        .replace(
+            /[^a-z0-9\s-]/g,
+            ""
+        )
+        .replace(
+            /\s+/g,
+            "-"
+        )
+        .replace(
+            /-+/g,
+            "-"
+        )
+        .replace(
+            /^-+|-+$/g,
+            ""
+        )
+        .substring(
+            0,
+            200
+        );
+
+}
+
+
+/*
+ * CHECK DUPLICATE SLUG
+ */
+
+function slugExists(
+    slugValue,
+    currentId
+) {
+
+    const normalized =
+        String(slugValue || "")
+            .trim()
+            .toLowerCase();
+
+    return articles.some(
+        function(article) {
+
+            return (
+                String(article.slug || "")
+                    .trim()
+                    .toLowerCase() ===
+                    normalized &&
+                Number(article.id) !==
+                    Number(currentId || 0)
+            );
+
+        }
+    );
 
 }
 
@@ -2028,13 +2448,30 @@ function renderArticles() {
 
 async function editArticle(id) {
 
+    if (isDirty) {
+
+        const confirmed =
+            confirm(
+                "You have unsaved changes. Load another article anyway?"
+            );
+
+        if (!confirmed) {
+
+            return;
+
+        }
+
+    }
+
     clearMessage(editorStatus);
 
     try {
 
         const data =
             await apiRequest(
-                API_BASE + "/" + id
+                API_BASE +
+                "/" +
+                id
             );
 
         const article =
@@ -2056,19 +2493,24 @@ async function editArticle(id) {
             article.content || "";
 
         category.value =
-            article.category || "Guides";
+            article.category ||
+            "Guides";
 
         featuredImage.value =
-            article.featured_image || "";
+            article.featured_image ||
+            "";
 
         seoTitle.value =
-            article.seo_title || "";
+            article.seo_title ||
+            "";
 
         metaDescription.value =
-            article.meta_description || "";
+            article.meta_description ||
+            "";
 
         status.value =
-            article.status === "published"
+            article.status ===
+            "published"
                 ? "published"
                 : "draft";
 
@@ -2085,13 +2527,23 @@ async function editArticle(id) {
 
 
         currentStatus.textContent =
-            article.status || "draft";
+            article.status ||
+            "draft";
 
         currentId.textContent =
             article.id;
 
         currentSlug.textContent =
-            article.slug || "None";
+            article.slug ||
+            "None";
+
+
+        slugWasManuallyEdited =
+            true;
+
+        setDirty(false);
+
+        updateCounters();
 
 
         window.scrollTo({
@@ -2119,13 +2571,31 @@ async function editArticle(id) {
 
 function newArticle() {
 
+    if (isDirty) {
+
+        const confirmed =
+            confirm(
+                "You have unsaved changes. Start a new article anyway?"
+            );
+
+        if (!confirmed) {
+
+            return;
+
+        }
+
+    }
+
     articleForm.reset();
 
-    articleId.value = "";
+    articleId.value =
+        "";
 
-    status.value = "draft";
+    status.value =
+        "draft";
 
-    category.value = "Guides";
+    category.value =
+        "Guides";
 
     editorHeading.textContent =
         "New article";
@@ -2134,10 +2604,16 @@ function newArticle() {
         "show"
     );
 
+    unsavedBadge.classList.remove(
+        "show"
+    );
+
     deleteEditorButton.style.display =
         "none";
 
-    clearMessage(editorStatus);
+    clearMessage(
+        editorStatus
+    );
 
     currentStatus.textContent =
         "New article";
@@ -2147,6 +2623,13 @@ function newArticle() {
 
     currentSlug.textContent =
         "Not saved";
+
+    slugWasManuallyEdited =
+        false;
+
+    setDirty(false);
+
+    updateCounters();
 
     window.scrollTo({
         top: 0,
@@ -2164,10 +2647,31 @@ async function saveArticle(
     desiredStatus
 ) {
 
-    clearMessage(editorStatus);
+    clearMessage(
+        editorStatus
+    );
 
     const id =
         articleId.value.trim();
+
+    let articleSlug =
+        slug.value.trim();
+
+    if (
+        !articleSlug &&
+        title.value.trim()
+    ) {
+
+        articleSlug =
+            generateSlug(
+                title.value
+            );
+
+        slug.value =
+            articleSlug;
+
+    }
+
 
     const articleData = {
 
@@ -2175,7 +2679,7 @@ async function saveArticle(
             title.value.trim(),
 
         slug:
-            slug.value.trim(),
+            articleSlug,
 
         excerpt:
             excerpt.value.trim(),
@@ -2231,12 +2735,54 @@ async function saveArticle(
     }
 
 
+    if (!articleData.slug) {
+
+        showMessage(
+            editorStatus,
+            "A valid slug could not be generated.",
+            "error"
+        );
+
+        slug.focus();
+
+        return;
+
+    }
+
+
+    if (
+        slugExists(
+            articleData.slug,
+            id
+        )
+    ) {
+
+        showMessage(
+            editorStatus,
+            "This slug is already being used by another article. Please choose a different slug.",
+            "error"
+        );
+
+        slug.focus();
+
+        return;
+
+    }
+
+
     const isEditing =
         Boolean(id);
 
 
-    saveDraftButton.disabled = true;
-    publishButton.disabled = true;
+    saveDraftButton.disabled =
+        true;
+
+    publishButton.disabled =
+        true;
+
+    previewButton.disabled =
+        true;
+
 
     saveDraftButton.textContent =
         desiredStatus === "draft"
@@ -2253,11 +2799,14 @@ async function saveArticle(
 
         let data;
 
+
         if (isEditing) {
 
             data =
                 await apiRequest(
-                    API_BASE + "/" + id,
+                    API_BASE +
+                    "/" +
+                    id,
                     {
                         method: "PUT",
                         body:
@@ -2286,7 +2835,8 @@ async function saveArticle(
 
         showMessage(
             editorStatus,
-            desiredStatus === "published"
+            desiredStatus ===
+                "published"
                 ? "Article published successfully."
                 : "Draft saved successfully.",
             "success"
@@ -2305,10 +2855,16 @@ async function saveArticle(
                 data.article.id;
 
             currentSlug.textContent =
-                data.article.slug || "";
+                data.article.slug ||
+                "";
 
             currentStatus.textContent =
-                data.article.status || desiredStatus;
+                data.article.status ||
+                desiredStatus;
+
+            slug.value =
+                data.article.slug ||
+                articleData.slug;
 
             editorHeading.textContent =
                 "Edit article";
@@ -2323,6 +2879,8 @@ async function saveArticle(
         }
 
 
+        setDirty(false);
+
         await loadArticles();
 
 
@@ -2336,8 +2894,14 @@ async function saveArticle(
 
     } finally {
 
-        saveDraftButton.disabled = false;
-        publishButton.disabled = false;
+        saveDraftButton.disabled =
+            false;
+
+        publishButton.disabled =
+            false;
+
+        previewButton.disabled =
+            false;
 
         saveDraftButton.textContent =
             "Save draft";
@@ -2360,11 +2924,14 @@ async function changeStatus(
 ) {
 
     const article =
-        articles.find(function(item) {
+        articles.find(
+            function(item) {
 
-            return Number(item.id) === Number(id);
+                return Number(item.id) ===
+                    Number(id);
 
-        });
+            }
+        );
 
 
     if (!article) {
@@ -2401,7 +2968,9 @@ async function changeStatus(
 
         const data =
             await apiRequest(
-                API_BASE + "/" + id
+                API_BASE +
+                "/" +
+                id
             );
 
 
@@ -2414,7 +2983,9 @@ async function changeStatus(
 
 
         await apiRequest(
-            API_BASE + "/" + id,
+            API_BASE +
+            "/" +
+            id,
             {
                 method: "PUT",
 
@@ -2428,22 +2999,28 @@ async function changeStatus(
                             fullArticle.slug,
 
                         excerpt:
-                            fullArticle.excerpt || "",
+                            fullArticle.excerpt ||
+                            "",
 
                         content:
-                            fullArticle.content || "",
+                            fullArticle.content ||
+                            "",
 
                         category:
-                            fullArticle.category || "Guides",
+                            fullArticle.category ||
+                            "Guides",
 
                         featured_image:
-                            fullArticle.featured_image || "",
+                            fullArticle.featured_image ||
+                            "",
 
                         seo_title:
-                            fullArticle.seo_title || "",
+                            fullArticle.seo_title ||
+                            "",
 
                         meta_description:
-                            fullArticle.meta_description || "",
+                            fullArticle.meta_description ||
+                            "",
 
                         status:
                             newStatus
@@ -2457,8 +3034,8 @@ async function changeStatus(
         showMessage(
             globalStatus,
             newStatus === "published"
-                ? "Article published."
-                : "Article moved to drafts.",
+                ? "Article published successfully."
+                : "Article moved back to drafts.",
             "success"
         );
 
@@ -2468,7 +3045,8 @@ async function changeStatus(
 
         if (
             articleId.value &&
-            Number(articleId.value) === Number(id)
+            Number(articleId.value) ===
+                Number(id)
         ) {
 
             status.value =
@@ -2476,6 +3054,8 @@ async function changeStatus(
 
             currentStatus.textContent =
                 newStatus;
+
+            setDirty(false);
 
         }
 
@@ -2494,17 +3074,20 @@ async function changeStatus(
 
 
 /*
- * DELETE ARTICLE FROM LIST
+ * DELETE ARTICLE
  */
 
 async function deleteArticle(id) {
 
     const article =
-        articles.find(function(item) {
+        articles.find(
+            function(item) {
 
-            return Number(item.id) === Number(id);
+                return Number(item.id) ===
+                    Number(id);
 
-        });
+            }
+        );
 
 
     if (!article) {
@@ -2534,7 +3117,9 @@ async function deleteArticle(id) {
     try {
 
         await apiRequest(
-            API_BASE + "/" + id,
+            API_BASE +
+            "/" +
+            id,
             {
                 method: "DELETE"
             }
@@ -2550,7 +3135,8 @@ async function deleteArticle(id) {
 
         if (
             articleId.value &&
-            Number(articleId.value) === Number(id)
+            Number(articleId.value) ===
+                Number(id)
         ) {
 
             newArticle();
@@ -2609,7 +3195,9 @@ articleForm.addEventListener(
 
         event.preventDefault();
 
-        saveArticle("published");
+        saveArticle(
+            "published"
+        );
 
     }
 );
@@ -2623,7 +3211,9 @@ saveDraftButton.addEventListener(
     "click",
     function() {
 
-        saveArticle("draft");
+        saveArticle(
+            "draft"
+        );
 
     }
 );
@@ -2654,41 +3244,381 @@ articleSearch.addEventListener(
  */
 
 document
-    .querySelectorAll(".filter-button")
-    .forEach(function(button) {
+    .querySelectorAll(
+        ".filter-button"
+    )
+    .forEach(
+        function(button) {
 
-        button.addEventListener(
-            "click",
-            function() {
+            button.addEventListener(
+                "click",
+                function() {
 
-                document
-                    .querySelectorAll(
-                        ".filter-button"
-                    )
-                    .forEach(function(item) {
+                    document
+                        .querySelectorAll(
+                            ".filter-button"
+                        )
+                        .forEach(
+                            function(item) {
 
-                        item.classList.remove(
-                            "active"
+                                item.classList.remove(
+                                    "active"
+                                );
+
+                            }
                         );
 
-                    });
+
+                    this.classList.add(
+                        "active"
+                    );
 
 
-                this.classList.add(
-                    "active"
+                    currentFilter =
+                        this.dataset.filter;
+
+
+                    renderArticles();
+
+                }
+            );
+
+        }
+    );
+
+
+/*
+ * AUTOMATIC SLUG
+ */
+
+title.addEventListener(
+    "input",
+    function() {
+
+        if (!slugWasManuallyEdited) {
+
+            slug.value =
+                generateSlug(
+                    title.value
                 );
 
+        }
 
-                currentFilter =
-                    this.dataset.filter;
+        setDirty(true);
+
+    }
+);
 
 
-                renderArticles();
+/*
+ * SLUG MANUAL EDIT
+ */
+
+slug.addEventListener(
+    "input",
+    function() {
+
+        slugWasManuallyEdited =
+            true;
+
+        slug.value =
+            generateSlug(
+                slug.value
+            );
+
+        setDirty(true);
+
+    }
+);
+
+
+/*
+ * WRITING COUNTERS
+ */
+
+function updateCounters() {
+
+    const contentText =
+        content.value.trim();
+
+    const words =
+        contentText
+            ? contentText
+                .split(/\s+/)
+                .filter(Boolean)
+                .length
+            : 0;
+
+    wordCount.textContent =
+        words;
+
+    characterCount.textContent =
+        content.value.length;
+
+    excerptCount.textContent =
+        excerpt.value.length +
+        " / 500";
+
+    seoTitleCount.textContent =
+        seoTitle.value.length +
+        " / 200";
+
+    metaDescriptionCount.textContent =
+        metaDescription.value.length +
+        " / 320";
+
+}
+
+
+/*
+ * MARK EDITOR DIRTY
+ */
+
+function setDirty(value) {
+
+    isDirty =
+        Boolean(value);
+
+    if (isDirty) {
+
+        unsavedBadge.classList.add(
+            "show"
+        );
+
+    } else {
+
+        unsavedBadge.classList.remove(
+            "show"
+        );
+
+    }
+
+}
+
+
+/*
+ * TRACK CHANGES
+ */
+
+[
+    excerpt,
+    content,
+    category,
+    featuredImage,
+    seoTitle,
+    metaDescription,
+    status
+]
+.forEach(
+    function(element) {
+
+        element.addEventListener(
+            "input",
+            function() {
+
+                setDirty(true);
+
+                updateCounters();
 
             }
         );
 
-    });
+        element.addEventListener(
+            "change",
+            function() {
+
+                setDirty(true);
+
+                updateCounters();
+
+            }
+        );
+
+    }
+);
+
+
+/*
+ * PREVIEW
+ */
+
+function openPreview() {
+
+    const previewTitleText =
+        title.value.trim();
+
+    const previewExcerptText =
+        excerpt.value.trim();
+
+    const previewContentText =
+        content.value.trim();
+
+    if (!previewTitleText) {
+
+        showMessage(
+            editorStatus,
+            "Enter an article title before previewing.",
+            "error"
+        );
+
+        title.focus();
+
+        return;
+
+    }
+
+    if (!previewContentText) {
+
+        showMessage(
+            editorStatus,
+            "Enter article content before previewing.",
+            "error"
+        );
+
+        content.focus();
+
+        return;
+
+    }
+
+
+    previewCategory.textContent =
+        category.value ||
+        "Guides";
+
+    previewTitle.textContent =
+        previewTitleText;
+
+    previewExcerpt.textContent =
+        previewExcerptText;
+
+
+    if (featuredImage.value.trim()) {
+
+        previewImage.src =
+            featuredImage.value.trim();
+
+        previewImage.alt =
+            previewTitleText;
+
+        previewImage.style.display =
+            "block";
+
+        previewImage.onerror =
+            function() {
+
+                this.style.display =
+                    "none";
+
+            };
+
+    } else {
+
+        previewImage.style.display =
+            "none";
+
+    }
+
+
+    const paragraphs =
+        previewContentText
+            .split(/\n\s*\n/)
+            .map(
+                function(paragraph) {
+
+                    return (
+                        "<p>" +
+                        escapeHtml(
+                            paragraph.trim()
+                        )
+                        .replace(
+                            /\n/g,
+                            "<br>"
+                        ) +
+                        "</p>"
+                    );
+
+                }
+            )
+            .join("");
+
+
+    previewContent.innerHTML =
+        paragraphs;
+
+
+    previewOverlay.classList.add(
+        "show"
+    );
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function closePreview() {
+
+    previewOverlay.classList.remove(
+        "show"
+    );
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+previewButton.addEventListener(
+    "click",
+    openPreview
+);
+
+
+closePreviewButton.addEventListener(
+    "click",
+    closePreview
+);
+
+
+previewOverlay.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target ===
+            previewOverlay
+        ) {
+
+            closePreview();
+
+        }
+
+    }
+);
+
+
+/*
+ * ESCAPE CLOSES PREVIEW
+ */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape" &&
+            previewOverlay.classList.contains(
+                "show"
+            )
+        ) {
+
+            closePreview();
+
+        }
+
+    }
+);
 
 
 /*
@@ -2705,7 +3635,9 @@ loginPassword.addEventListener(
     "keydown",
     function(event) {
 
-        if (event.key === "Enter") {
+        if (
+            event.key === "Enter"
+        ) {
 
             login();
 
@@ -2718,6 +3650,29 @@ loginPassword.addEventListener(
 logoutButton.addEventListener(
     "click",
     logout
+);
+
+
+/*
+ * PREVENT ACCIDENTAL PAGE LEAVE
+ */
+
+window.addEventListener(
+    "beforeunload",
+    function(event) {
+
+        if (!isDirty) {
+
+            return;
+
+        }
+
+        event.preventDefault();
+
+        event.returnValue =
+            "";
+
+    }
 );
 
 
@@ -2746,8 +3701,16 @@ if (savedPassword) {
 
 }
 
+
+/*
+ * INITIAL COUNTERS
+ */
+
+updateCounters();
+
 </script>
 
 
 </body>
 </html>
+
