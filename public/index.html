@@ -7,9 +7,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FigureNG | Free Nigerian Calculators & Financial Tools</title>
+<title>FigureNG | Nigerian Calculators & Financial Tools</title>
 
-<meta name="description" content="FigureNG provides free Nigerian calculators and practical online tools for salary, PAYE tax, loans, savings and everyday financial decisions.">
+<meta name="description" content="FigureNG provides practical calculators and financial tools for everyday decisions in Nigeria.">
 
 <meta name="robots" content="index, follow">
 
@@ -18,446 +18,506 @@
 <style>
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 :root {
-  --navy: #0f172a;
-  --navy2: #1e293b;
-  --green: #16a34a;
-  --green-dark: #15803d;
-  --green-light: #f0fdf4;
-  --white: #ffffff;
-  --bg: #f8fafc;
-  --text: #1e293b;
-  --muted: #64748b;
-  --border: #e2e8f0;
+    --ink: #111827;
+    --text: #374151;
+    --muted: #6b7280;
+    --line: #e5e7eb;
+    --surface: #ffffff;
+    --background: #f9fafb;
+    --green: #16803c;
+    --green-dark: #126b32;
+    --green-soft: #edf7f0;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+    color: inherit;
+    text-decoration: none;
 }
 
 .container {
-  width: min(1100px, 92%);
-  margin: auto;
+    width: min(1080px, calc(100% - 40px));
+    margin: 0 auto;
 }
 
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
-header {
-  background: white;
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+.site-header {
+    background: rgba(255,255,255,.96);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 50;
 }
 
-.nav {
-  min-height: 68px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.header-inner {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.logo {
-  font-size: 25px;
-  font-weight: 900;
-  color: var(--navy);
+.brand {
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--ink);
 }
 
-.logo span {
-  color: var(--green);
+.brand span {
+    color: var(--green);
 }
 
-.nav-links {
-  display: flex;
-  gap: 20px;
-  font-size: 14px;
-  font-weight: 700;
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-size: 14px;
+    font-weight: 600;
 }
 
-.nav-links a {
-  color: var(--muted);
+.navigation a {
+    color: var(--muted);
 }
 
-.nav-links a:hover {
-  color: var(--green);
+.navigation a:hover {
+    color: var(--ink);
+}
+
+.navigation .active {
+    color: var(--ink);
 }
 
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero {
-  background: var(--navy);
-  color: white;
-  padding: 75px 0 80px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    padding: 82px 0 78px;
 }
 
 .hero-content {
-  max-width: 800px;
+    max-width: 760px;
 }
 
-.badge {
-  display: inline-block;
-  background: rgba(22, 163, 74, 0.15);
-  border: 1px solid rgba(134, 239, 172, 0.25);
-  color: #86efac;
-  padding: 7px 12px;
-  border-radius: 30px;
-  font-size: 12px;
-  font-weight: 800;
-  margin-bottom: 20px;
+.eyebrow {
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
 }
 
 .hero h1 {
-  font-size: clamp(42px, 8vw, 64px);
-  line-height: 1.02;
-  letter-spacing: -2px;
-  margin-bottom: 20px;
+    color: var(--ink);
+    font-size: clamp(40px, 7vw, 62px);
+    line-height: 1.05;
+    letter-spacing: -2.5px;
+    max-width: 720px;
+    margin-bottom: 20px;
 }
 
-.hero h1 span {
-  color: #4ade80;
+.hero p {
+    color: var(--muted);
+    font-size: 18px;
+    max-width: 650px;
+    line-height: 1.65;
+    margin-bottom: 28px;
 }
 
-.hero-text {
-  color: #cbd5e1;
-  font-size: 18px;
-  max-width: 680px;
-  margin-bottom: 28px;
+.hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
-.hero-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+.button-primary {
+    min-height: 44px;
+    padding: 0 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    background: var(--green);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
 }
 
-.primary-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 48px;
-  padding: 0 20px;
-  border-radius: 9px;
-  background: var(--green);
-  color: white;
-  font-size: 14px;
-  font-weight: 800;
+.button-primary:hover {
+    background: var(--green-dark);
 }
 
-.primary-button:hover {
-  background: var(--green-dark);
+.button-secondary {
+    min-height: 44px;
+    padding: 0 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    background: white;
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 700;
 }
 
-.secondary-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 48px;
-  padding: 0 20px;
-  border-radius: 9px;
-  border: 1px solid #475569;
-  color: white;
-  font-size: 14px;
-  font-weight: 800;
-}
-
-.secondary-button:hover {
-  background: var(--navy2);
+.button-secondary:hover {
+    background: var(--background);
 }
 
 
-/* MAIN */
+/* =========================
+   MAIN
+========================= */
 
 main {
-  padding: 65px 0 80px;
+    padding: 70px 0;
 }
-
-
-/* SECTION */
 
 .section {
-  margin-bottom: 65px;
+    margin-bottom: 72px;
 }
 
-.section-heading {
-  max-width: 720px;
-  margin-bottom: 28px;
+.section-header {
+    margin-bottom: 26px;
 }
 
-.section-heading.center {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+.section-header h2 {
+    color: var(--ink);
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: -.7px;
+    margin-bottom: 7px;
 }
 
-.section-heading h2 {
-  color: var(--navy);
-  font-size: clamp(28px, 5vw, 38px);
-  line-height: 1.15;
-  margin-bottom: 9px;
-}
-
-.section-heading p {
-  color: var(--muted);
+.section-header p {
+    color: var(--muted);
+    font-size: 15px;
 }
 
 
-/* TOOLS GRID */
+/* =========================
+   TOOL LIST
+========================= */
 
-.tools-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+.tool-list {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.tool {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    padding: 23px 24px;
+    border-bottom: 1px solid var(--line);
+}
+
+.tool:last-child {
+    border-bottom: 0;
+}
+
+.tool:hover {
+    background: #fcfcfc;
+}
+
+.tool-info {
+    min-width: 0;
+}
+
+.tool-category {
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.tool h3 {
+    color: var(--ink);
+    font-size: 17px;
+    margin-bottom: 3px;
+}
+
+.tool p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.tool-link {
+    flex-shrink: 0;
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.tool-link:hover {
+    color: var(--green-dark);
+}
+
+.all-tools {
+    margin-top: 17px;
 }
 
 
-/* TOOL CARD */
+/* =========================
+   INTRO
+========================= */
 
-.tool-card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 24px;
-  min-height: 270px;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 45px;
 }
 
-.tool-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+.intro-copy h2 {
+    color: var(--ink);
+    font-size: 28px;
+    letter-spacing: -.7px;
+    margin-bottom: 13px;
 }
 
-.tool-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  background: var(--green-light);
-  font-size: 25px;
-  margin-bottom: 17px;
+.intro-copy p {
+    color: var(--muted);
+    font-size: 15px;
+    margin-bottom: 12px;
 }
 
-.tool-card h3 {
-  color: var(--navy);
-  font-size: 19px;
-  margin-bottom: 8px;
+.principles {
+    border-left: 2px solid var(--green);
+    padding-left: 22px;
 }
 
-.tool-card p {
-  color: var(--muted);
-  font-size: 14px;
-  margin-bottom: 20px;
+.principle {
+    margin-bottom: 20px;
 }
 
-.tool-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: auto;
-  min-height: 44px;
-  border-radius: 9px;
-  background: var(--green);
-  color: white;
-  font-size: 14px;
-  font-weight: 800;
+.principle:last-child {
+    margin-bottom: 0;
 }
 
-.tool-button:hover {
-  background: var(--green-dark);
+.principle strong {
+    display: block;
+    color: var(--ink);
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.principle span {
+    display: block;
+    color: var(--muted);
+    font-size: 13px;
 }
 
 
-/* WHY FIGURENG */
+/* =========================
+   CTA
+========================= */
 
-.why-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+.cta {
+    background: var(--ink);
+    color: white;
+    border-radius: 10px;
+    padding: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
 }
 
-.why-card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 15px;
-  padding: 24px;
+.cta h2 {
+    font-size: 24px;
+    letter-spacing: -.5px;
+    margin-bottom: 6px;
 }
 
-.why-icon {
-  font-size: 27px;
-  margin-bottom: 12px;
+.cta p {
+    color: #9ca3af;
+    font-size: 14px;
 }
 
-.why-card h3 {
-  color: var(--navy);
-  margin-bottom: 7px;
+.cta .button-primary {
+    flex-shrink: 0;
+    background: white;
+    color: var(--ink);
 }
 
-.why-card p {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-
-/* ABOUT */
-
-.about-box {
-  background: var(--green-light);
-  border: 1px solid #bbf7d0;
-  border-radius: 18px;
-  padding: 30px;
-}
-
-.about-box h2 {
-  color: var(--navy);
-  margin-bottom: 10px;
-}
-
-.about-box p {
-  color: var(--muted);
-  max-width: 760px;
-  margin-bottom: 17px;
-}
-
-.about-link {
-  color: var(--green-dark);
-  font-weight: 800;
-  font-size: 14px;
+.cta .button-primary:hover {
+    background: #f3f4f6;
 }
 
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer {
-  background: var(--navy);
-  color: #cbd5e1;
-  padding: 40px 0;
+    background: white;
+    border-top: 1px solid var(--line);
+    padding: 35px 0;
 }
 
-.footer-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
 }
 
 .footer-brand {
-  max-width: 430px;
+    max-width: 400px;
 }
 
-.footer-brand .logo {
-  color: white;
-  display: inline-block;
-  margin-bottom: 8px;
+.footer-brand .brand {
+    display: inline-block;
+    margin-bottom: 7px;
 }
 
 .footer-brand p {
-  color: #94a3b8;
-  font-size: 13px;
+    color: var(--muted);
+    font-size: 13px;
 }
 
 .footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  font-size: 13px;
-  align-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+    align-content: flex-start;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.footer-links a {
+    color: var(--muted);
 }
 
 .footer-links a:hover {
-  color: white;
+    color: var(--ink);
 }
 
-.copyright {
-  border-top: 1px solid #334155;
-  margin-top: 25px;
-  padding-top: 20px;
-  color: #94a3b8;
-  font-size: 12px;
-}
-
-
-/* MOBILE */
-
-@media (max-width: 850px) {
-
-  .tools-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .why-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .footer-top {
-    flex-direction: column;
-  }
-
-}
-
-
-@media (max-width: 600px) {
-
-  .nav-links {
-    gap: 10px;
+.footer-bottom {
+    border-top: 1px solid var(--line);
+    margin-top: 28px;
+    padding-top: 18px;
+    color: #9ca3af;
     font-size: 12px;
-  }
+}
 
-  .nav-links a:nth-child(n+3) {
-    display: none;
-  }
 
-  .hero {
-    padding: 55px 0 60px;
-  }
+/* =========================
+   MOBILE
+========================= */
 
-  .hero h1 {
-    font-size: 40px;
-  }
+@media (max-width: 700px) {
 
-  .hero-text {
-    font-size: 15px;
-  }
+    .container {
+        width: min(100% - 30px, 1080px);
+    }
 
-  .hero-buttons {
-    flex-direction: column;
-  }
+    .navigation {
+        gap: 13px;
+        font-size: 12px;
+    }
 
-  .primary-button,
-  .secondary-button {
-    width: 100%;
-  }
+    .navigation a:nth-child(n+4) {
+        display: none;
+    }
 
-  main {
-    padding: 50px 0 65px;
-  }
+    .hero {
+        padding: 58px 0 60px;
+    }
 
-  .tools-grid {
-    grid-template-columns: 1fr;
-  }
+    .hero h1 {
+        font-size: 40px;
+        letter-spacing: -1.7px;
+    }
 
-  .why-grid {
-    grid-template-columns: 1fr;
-  }
+    .hero p {
+        font-size: 16px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .button-primary,
+    .button-secondary {
+        width: 100%;
+    }
+
+    main {
+        padding: 50px 0;
+    }
+
+    .section {
+        margin-bottom: 55px;
+    }
+
+    .tool {
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .tool-link {
+        margin-top: 2px;
+    }
+
+    .tool p {
+        font-size: 13px;
+    }
+
+    .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .cta {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 27px;
+    }
+
+    .cta .button-primary {
+        width: 100%;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+    }
 
 }
 
@@ -469,17 +529,17 @@ footer {
 <body>
 
 
-<header>
+<header class="site-header">
 
-<div class="container nav">
+<div class="container header-inner">
 
-<a href="/" class="logo">
+<a href="/" class="brand">
 Figure<span>NG</span>
 </a>
 
-<nav class="nav-links">
+<nav class="navigation">
 
-<a href="/">Home</a>
+<a href="/" class="active">Home</a>
 
 <a href="/tools.html">Tools</a>
 
@@ -501,34 +561,33 @@ Figure<span>NG</span>
 
 <div class="hero-content">
 
-<span class="badge">
-FIGURENG
-</span>
+<div class="eyebrow">
+FigureNG
+</div>
 
 <h1>
-Simple tools for <span>real-life decisions.</span>
+Calculators that make the numbers easier to understand.
 </h1>
 
-<p class="hero-text">
-Free calculators and practical online tools designed
-to help you understand your money, compare options
-and make everyday calculations easier.
+<p>
+Practical online calculators and financial tools built
+for everyday decisions in Nigeria.
 </p>
 
-<div class="hero-buttons">
+<div class="hero-actions">
 
 <a
 href="/tools.html"
-class="primary-button"
+class="button-primary"
 >
-Explore All Tools →
+Browse all tools
 </a>
 
 <a
 href="/salary-calculator.html"
-class="secondary-button"
+class="button-secondary"
 >
-Calculate Your Salary
+Salary calculator
 </a>
 
 </div>
@@ -550,26 +609,31 @@ Calculate Your Salary
 
 <section class="section">
 
-<div class="section-heading center">
+<div class="section-header">
 
 <h2>
-Featured Tools
+Featured calculators
 </h2>
 
 <p>
-Start with one of our most useful calculators.
+Useful tools currently available on FigureNG.
 </p>
 
 </div>
 
 
-<div class="tools-grid">
+<div class="tool-list">
 
 
-<article class="tool-card">
+<a
+href="/salary-calculator.html"
+class="tool"
+>
 
-<div class="tool-icon">
-💵
+<div class="tool-info">
+
+<div class="tool-category">
+Salary & Tax
 </div>
 
 <h3>
@@ -577,25 +641,28 @@ Nigeria Salary Calculator 2026
 </h3>
 
 <p>
-Estimate PAYE tax, eligible deductions and your
-monthly take-home pay using the 2026 framework.
+Estimate PAYE tax, deductions and take-home pay.
 </p>
 
-<a
-href="/salary-calculator.html"
-class="tool-button"
->
-Use Calculator →
+</div>
+
+<span class="tool-link">
+Open →
+</span>
+
 </a>
 
-</article>
 
 
+<a
+href="/loan-calculator.html"
+class="tool"
+>
 
-<article class="tool-card">
+<div class="tool-info">
 
-<div class="tool-icon">
-💳
+<div class="tool-category">
+Loans & Finance
 </div>
 
 <h3>
@@ -603,25 +670,28 @@ Loan Calculator
 </h3>
 
 <p>
-Estimate your monthly loan repayment, total interest
-and total repayment amount.
+Calculate repayment, interest and total borrowing cost.
 </p>
 
-<a
-href="/loan-calculator.html"
-class="tool-button"
->
-Use Calculator →
+</div>
+
+<span class="tool-link">
+Open →
+</span>
+
 </a>
 
-</article>
 
 
+<a
+href="/flat-vs-reducing.html"
+class="tool"
+>
 
-<article class="tool-card">
+<div class="tool-info">
 
-<div class="tool-icon">
-⚖️
+<div class="tool-category">
+Loans & Finance
 </div>
 
 <h3>
@@ -629,114 +699,29 @@ Flat vs Reducing Balance
 </h3>
 
 <p>
-Compare two common loan interest methods and see
-how they can affect your borrowing cost.
+Compare two common methods of calculating loan interest.
 </p>
 
-<a
-href="/flat-vs-reducing.html"
-class="tool-button"
->
-Use Calculator →
-</a>
+</div>
 
-</article>
+<span class="tool-link">
+Open →
+</span>
+
+</a>
 
 
 </div>
 
 
-<div style="text-align:center;margin-top:25px;">
+<div class="all-tools">
 
 <a
 href="/tools.html"
-class="about-link"
+class="tool-link"
 >
-View All FigureNG Tools →
+View all FigureNG tools →
 </a>
-
-</div>
-
-</section>
-
-
-
-<!-- WHY FIGURENG -->
-
-<section class="section">
-
-<div class="section-heading center">
-
-<h2>
-Why use FigureNG?
-</h2>
-
-<p>
-Our tools are designed around simplicity, usefulness
-and easy access.
-</p>
-
-</div>
-
-
-<div class="why-grid">
-
-
-<div class="why-card">
-
-<div class="why-icon">
-📱
-</div>
-
-<h3>
-Mobile Friendly
-</h3>
-
-<p>
-Our calculators are designed to work comfortably
-on smartphones and smaller screens.
-</p>
-
-</div>
-
-
-
-<div class="why-card">
-
-<div class="why-icon">
-⚡
-</div>
-
-<h3>
-Fast & Simple
-</h3>
-
-<p>
-Enter your information, calculate your result and
-understand the numbers without unnecessary complexity.
-</p>
-
-</div>
-
-
-
-<div class="why-card">
-
-<div class="why-icon">
-🆓
-</div>
-
-<h3>
-Free to Use
-</h3>
-
-<p>
-FigureNG tools are designed to provide useful
-calculations without requiring payment.
-</p>
-
-</div>
-
 
 </div>
 
@@ -748,30 +733,110 @@ calculations without requiring payment.
 
 <section class="section">
 
-<div class="about-box">
+<div class="intro-grid">
+
+
+<div class="intro-copy">
 
 <h2>
-About FigureNG
+Built for practical use.
 </h2>
 
 <p>
-FigureNG is a growing collection of free calculators
-and practical digital tools designed for everyday use.
-Our goal is to make useful calculations easier to
-understand and easier to access.
+FigureNG is a growing collection of calculators and
+digital tools focused on everyday financial and
+practical questions.
 </p>
 
-<a
-href="/about.html"
-class="about-link"
->
-Learn more about FigureNG →
-</a>
+<p>
+The goal is straightforward: give you useful numbers
+without making the process unnecessarily complicated.
+</p>
+
+</div>
+
+
+
+<div class="principles">
+
+
+<div class="principle">
+
+<strong>
+Clear
+</strong>
+
+<span>
+Results are presented in a way that is easy to understand.
+</span>
+
+</div>
+
+
+
+<div class="principle">
+
+<strong>
+Practical
+</strong>
+
+<span>
+Tools focus on questions people actually need answered.
+</span>
+
+</div>
+
+
+
+<div class="principle">
+
+<strong>
+Mobile first
+</strong>
+
+<span>
+Pages are designed to work properly on phones and tablets.
+</span>
+
+</div>
+
+
+</div>
 
 </div>
 
 </section>
 
+
+
+<!-- CTA -->
+
+<section class="section">
+
+<div class="cta">
+
+<div>
+
+<h2>
+Looking for a specific calculation?
+</h2>
+
+<p>
+Browse the complete FigureNG tools directory.
+</p>
+
+</div>
+
+<a
+href="/tools.html"
+class="button-primary"
+>
+Explore tools
+</a>
+
+</div>
+
+</section>
 
 
 </div>
@@ -784,18 +849,18 @@ Learn more about FigureNG →
 
 <div class="container">
 
-<div class="footer-top">
+
+<div class="footer-inner">
 
 
 <div class="footer-brand">
 
-<a href="/" class="logo">
+<a href="/" class="brand">
 Figure<span>NG</span>
 </a>
 
 <p>
-Free calculators and practical online tools for
-everyday needs.
+Practical calculators and online tools for everyday needs.
 </p>
 
 </div>
@@ -824,11 +889,12 @@ everyday needs.
 </div>
 
 
-<div class="copyright">
+<div class="footer-bottom">
 
 © 2026 FigureNG. All rights reserved.
 
 </div>
+
 
 </div>
 
