@@ -1,0 +1,607 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Is Take-Home Pay? | FigureNG</title>
+
+<meta
+name="description"
+content="Learn what take-home pay means, how it differs from gross salary and how tax and deductions can affect your monthly income."
+>
+
+<meta name="robots" content="index, follow">
+
+<link
+rel="canonical"
+href="https://figureng.figureng247.workers.dev/guides/what-is-take-home-pay.html"
+>
+
+<link
+rel="icon"
+type="image/svg+xml"
+href="/favicon.svg"
+>
+
+<style>
+
+:root {
+    --green:#12372a;
+    --green2:#1b513d;
+    --ink:#14231d;
+    --muted:#69756f;
+    --bg:#f6f7f5;
+    --white:#fff;
+    --line:#dfe4e1;
+}
+
+* {
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body {
+    background:var(--bg);
+    color:var(--ink);
+    font-family:Arial,Helvetica,sans-serif;
+    line-height:1.75;
+}
+
+a {
+    color:inherit;
+    text-decoration:none;
+}
+
+.container {
+    width:min(1080px,calc(100% - 30px));
+    margin:auto;
+}
+
+header {
+    background:white;
+    border-bottom:1px solid var(--line);
+}
+
+.header {
+    min-height:68px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand {
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-size:20px;
+    font-weight:900;
+}
+
+.mark {
+    width:29px;
+    height:29px;
+    display:grid;
+    place-items:center;
+    background:var(--green);
+    color:white;
+    border-radius:5px;
+    font-size:11px;
+}
+
+.brand span {
+    color:var(--green2);
+}
+
+nav {
+    display:flex;
+    gap:23px;
+}
+
+nav a {
+    color:var(--muted);
+    font-size:13px;
+    font-weight:700;
+}
+
+.article-header {
+    background:white;
+    border-bottom:1px solid var(--line);
+    padding:65px 0 55px;
+}
+
+.kicker {
+    color:var(--green2);
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    margin-bottom:17px;
+}
+
+h1 {
+    max-width:850px;
+    font-size:clamp(38px,6vw,58px);
+    line-height:1.05;
+    letter-spacing:-2.5px;
+    margin-bottom:17px;
+}
+
+.intro {
+    max-width:730px;
+    color:var(--muted);
+    font-size:17px;
+}
+
+.meta {
+    color:#8a948f;
+    font-size:11px;
+    margin-top:18px;
+}
+
+main {
+    padding:55px 0 80px;
+}
+
+.layout {
+    display:grid;
+    grid-template-columns:minmax(0,720px) 280px;
+    gap:55px;
+    align-items:start;
+}
+
+.article {
+    background:white;
+    border:1px solid var(--line);
+    border-radius:5px;
+    padding:35px;
+}
+
+.article h2 {
+    font-size:27px;
+    line-height:1.25;
+    margin:34px 0 12px;
+}
+
+.article h2:first-child {
+    margin-top:0;
+}
+
+.article p {
+    color:#46544d;
+    font-size:15px;
+    margin-bottom:17px;
+}
+
+.article ul {
+    color:#46544d;
+    padding-left:23px;
+    margin-bottom:20px;
+}
+
+.article li {
+    margin-bottom:6px;
+}
+
+.calculator {
+    background:var(--green);
+    color:white;
+    padding:24px;
+    border-radius:5px;
+    margin:30px 0;
+}
+
+.calculator small {
+    color:#b9d5c7;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+}
+
+.calculator h3 {
+    color:white;
+    font-size:19px;
+    margin:6px 0;
+}
+
+.calculator p {
+    color:#d1e1d9;
+    font-size:13px;
+}
+
+.button {
+    display:inline-block;
+    background:white;
+    color:var(--green);
+    padding:9px 13px;
+    border-radius:4px;
+    font-size:11px;
+    font-weight:900;
+    margin-top:7px;
+}
+
+.sidebar {
+    position:sticky;
+    top:25px;
+}
+
+.box {
+    background:white;
+    border:1px solid var(--line);
+    border-radius:5px;
+    padding:21px;
+    margin-bottom:15px;
+}
+
+.box h3 {
+    font-size:13px;
+    margin-bottom:12px;
+}
+
+.box a {
+    display:block;
+    color:var(--green2);
+    font-size:12px;
+    font-weight:800;
+    padding:8px 0;
+    border-bottom:1px solid var(--line);
+}
+
+.box a:last-child {
+    border-bottom:0;
+}
+
+footer {
+    background:var(--green);
+    color:white;
+    padding:35px 0;
+}
+
+footer p {
+    color:#bfd4c9;
+    font-size:11px;
+}
+
+@media(max-width:850px) {
+
+    .layout {
+        grid-template-columns:1fr;
+    }
+
+    .sidebar {
+        position:static;
+    }
+
+}
+
+@media(max-width:560px) {
+
+    nav {
+        gap:12px;
+    }
+
+    nav a {
+        font-size:11px;
+    }
+
+    nav a:nth-child(n+3) {
+        display:none;
+    }
+
+    .article-header {
+        padding:48px 0;
+    }
+
+    h1 {
+        font-size:39px;
+        letter-spacing:-1.5px;
+    }
+
+    .article {
+        padding:23px;
+    }
+
+    .article h2 {
+        font-size:24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="container header">
+
+<a href="/" class="brand">
+
+<div class="mark">FG</div>
+
+Figure<span>NG</span>
+
+</a>
+
+<nav>
+
+<a href="/tools.html">Tools</a>
+<a href="/guides.html">Guides</a>
+<a href="/about.html">About</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<header class="article-header">
+
+<div class="container">
+
+<div class="kicker">
+Salary & Tax
+</div>
+
+<h1>
+What Is Take-Home Pay?
+</h1>
+
+<p class="intro">
+Gross salary is not necessarily the amount that reaches your
+bank account. Here's what take-home pay means and why it can
+be different from your stated salary.
+</p>
+
+<div class="meta">
+FigureNG · Updated August 2026
+</div>
+
+</div>
+
+</header>
+
+
+<main>
+
+<div class="container">
+
+<div class="layout">
+
+<article class="article">
+
+
+<p>
+Take-home pay is the amount of money you actually receive
+after applicable taxes and deductions have been taken from
+your gross income.
+</p>
+
+
+<h2>
+Gross salary vs take-home pay
+</h2>
+
+<p>
+Gross salary is the amount stated before relevant deductions.
+Take-home pay is the amount remaining after applicable
+deductions and taxes have been accounted for.
+</p>
+
+<p>
+This means two people earning the same gross salary can
+potentially receive different amounts depending on their
+individual deductions and circumstances.
+</p>
+
+
+<div class="calculator">
+
+<small>
+FigureNG calculator
+</small>
+
+<h3>
+Calculate your estimated take-home pay
+</h3>
+
+<p>
+Enter your annual income and applicable deductions to see an
+estimated result.
+</p>
+
+<a
+href="/salary-calculator.html"
+class="button"
+>
+Open salary calculator →
+</a>
+
+</div>
+
+
+<h2>
+What can reduce your take-home pay?
+</h2>
+
+<p>
+Depending on the employee and applicable rules, deductions
+can include taxes and certain qualifying contributions or
+other deductions.
+</p>
+
+<p>
+The exact items that apply can vary, which is why simply
+subtracting one fixed percentage from gross salary may not
+give an accurate estimate.
+</p>
+
+
+<h2>
+Why monthly salary can be misleading
+</h2>
+
+<p>
+When people compare salaries, they often compare the gross
+monthly figure. But the amount available for spending is the
+take-home amount.
+</p>
+
+<p>
+For example, an advertised salary of ₦300,000 per month does
+not automatically mean the employee receives ₦300,000 in their
+account.
+</p>
+
+
+<h2>
+Annual income matters too
+</h2>
+
+<p>
+Many tax calculations are based on annual figures. Converting
+a monthly salary to an annual amount can therefore make it
+easier to understand the overall calculation.
+</p>
+
+
+<h2>
+What should you look at when comparing jobs?
+</h2>
+
+<ul>
+
+<li>
+Gross annual salary.
+</li>
+
+<li>
+Estimated monthly take-home pay.
+</li>
+
+<li>
+Pension and other employee contributions.
+</li>
+
+<li>
+Tax treatment.
+</li>
+
+<li>
+Allowances and benefits.
+</li>
+
+</ul>
+
+
+<h2>
+The bottom line
+</h2>
+
+<p>
+Take-home pay gives you a more practical picture of how much
+income may actually be available after applicable deductions
+and tax.
+</p>
+
+<p>
+When evaluating a job offer or planning your finances, it is
+useful to understand both the gross figure and the estimated
+net amount.
+</p>
+
+
+<div class="calculator">
+
+<small>
+FigureNG
+</small>
+
+<h3>
+See your own estimate
+</h3>
+
+<p>
+Calculate annual and monthly estimated take-home pay.
+</p>
+
+<a
+href="/salary-calculator.html"
+class="button"
+>
+Calculate now →
+</a>
+
+</div>
+
+
+</article>
+
+
+<aside class="sidebar">
+
+<div class="box">
+
+<h3>
+Related tools
+</h3>
+
+<a href="/salary-calculator.html">
+Salary Calculator
+</a>
+
+<a href="/tools.html">
+All tools
+</a>
+
+</div>
+
+
+<div class="box">
+
+<h3>
+More guides
+</h3>
+
+<a href="/guides/how-nigerian-paye-tax-works-2026.html">
+PAYE Tax in Nigeria
+</a>
+
+<a href="/guides/flat-vs-reducing-balance.html">
+Flat vs Reducing Balance
+</a>
+
+</div>
+
+</aside>
+
+</div>
+
+</div>
+
+</main>
+
+
+<footer>
+
+<div class="container">
+
+<p>
+© 2026 FigureNG. Practical calculators, tools and guides
+for everyday decisions in Nigeria.
+</p>
+
+</div>
+
+</footer>
+
+</body>
+</html>
+```
