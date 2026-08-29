@@ -3,10 +3,13 @@ const jsonHeaders = {
   "Cache-Control": "no-store"
 };
 
-function json(data, status = 200) {
+function json(data, status = 200, extraHeaders = {}) {
   return new Response(JSON.stringify(data), {
     status,
-    headers: jsonHeaders
+    headers: {
+      ...jsonHeaders,
+      ...extraHeaders
+    }
   });
 }
 
@@ -37,6 +40,37 @@ async function getRequestBody(request) {
   }
 }
 
+/*
+ * ADMIN AUTHENTICATION
+ *
+ * The password is stored as a Cloudflare Worker secret.
+ * It is never placed inside the website JavaScript.
+ */
+
+async function authenticate(request, env) {
+  const password = request.headers.get("X-Admin-Password");
+
+  if (!password || !env.ADMIN_PASSWORD) {
+    return false;
+  }
+
+  return password === env.ADMIN_PASSWORD;
+}
+
+function unauthorized() {
+  return json(
+    {
+      success: false,
+      error: "Unauthorized."
+    },
+    401
+  );
+}
+
+/*
+ * CREATE ARTICLE
+ */
+
 async function createArticle(request, env) {
   const body = await getRequestBody(request);
 
@@ -56,7 +90,10 @@ async function createArticle(request, env) {
   const category = cleanText(body.category, 100) || "Guides";
   const featuredImage = cleanText(body.featured_image, 1000);
   const seoTitle = cleanText(body.seo_title, 200);
-  const metaDescription = cleanText(body.meta_description, 320);
+  const metaDescription = cleanText(
+    body.meta_description,
+    320
+  );
 
   if (!title) {
     return json(
@@ -90,9 +127,6 @@ async function createArticle(request, env) {
     );
   }
 
-  /*
-   * Make the slug unique.
-   */
   const existing = await env.DB
     .prepare(
       "SELECT id FROM articles WHERE slug = ? LIMIT 1"
@@ -104,11 +138,13 @@ async function createArticle(request, env) {
     slug = `${slug}-${Date.now()}`;
   }
 
-  const requestedStatus =
-    body.status === "published" ? "published" : "draft";
+  const status =
+    body.status === "published"
+      ? "published"
+      : "draft";
 
   const publishedAt =
-    requestedStatus === "published"
+    status === "published"
       ? new Date().toISOString()
       : null;
 
@@ -137,31 +173,45 @@ async function createArticle(request, env) {
       featuredImage,
       seoTitle,
       metaDescription,
-      requestedStatus,
+      status,
       publishedAt
     )
     .run();
 
-  return json({
-    success: true,
-    message: "Article created successfully.",
-    article: {
-      id: result.meta.last_row_id,
-      title,
-      slug,
-      status: requestedStatus
-    }
-  }, 201);
+  return json(
+    {
+      success: true,
+      message: "Article created successfully.",
+      article: {
+        id: result.meta.last_row_id,
+        title,
+        slug,
+        status
+      }
+    },
+    201
+  );
 }
+
+/*
+ * LIST ARTICLES
+ */
 
 async function listArticles(request, env) {
   const url = new URL(request.url);
 
-  const status = url.searchParams.get("status") || "published";
-  const limitValue = Number(url.searchParams.get("limit") || 20);
+  const status =
+    url.searchParams.get("status") || "published";
+
+  const limitValue = Number(
+    url.searchParams.get("limit") || 20
+  );
 
   const limit = Math.min(
-    Math.max(Number.isFinite(limitValue) ? limitValue : 20, 1),
+    Math.max(
+      Number.isFinite(limitValue) ? limitValue : 20,
+      1
+    ),
     100
   );
 
@@ -207,7 +257,8 @@ async function listArticles(request, env) {
         updated_at
       FROM articles
       WHERE status = ?
-      ORDER BY published_at DESC
+      ORDER BY
+        published_at DESC
       LIMIT ?
     `;
 
@@ -226,45 +277,9 @@ async function listArticles(request, env) {
   });
 }
 
-async function getArticleBySlug(slug, env) {
-  const article = await env.DB
-    .prepare(`
-      SELECT
-        id,
-        title,
-        slug,
-        excerpt,
-        content,
-        category,
-        featured_image,
-        seo_title,
-        meta_description,
-        status,
-        published_at,
-        created_at,
-        updated_at
-      FROM articles
-      WHERE slug = ?
-      LIMIT 1
-    `)
-    .bind(slug)
-    .first();
-
-  if (!article) {
-    return json(
-      {
-        success: false,
-        error: "Article not found."
-      },
-      404
-    );
-  }
-
-  return json({
-    success: true,
-    article
-  });
-}
+/*
+ * GET ARTICLE BY ID
+ */
 
 async function getArticleById(id, env) {
   const articleId = Number(id);
@@ -318,6 +333,54 @@ async function getArticleById(id, env) {
   });
 }
 
+/*
+ * GET ARTICLE BY SLUG
+ */
+
+async function getArticleBySlug(slug, env) {
+  const article = await env.DB
+    .prepare(`
+      SELECT
+        id,
+        title,
+        slug,
+        excerpt,
+        content,
+        category,
+        featured_image,
+        seo_title,
+        meta_description,
+        status,
+        published_at,
+        created_at,
+        updated_at
+      FROM articles
+      WHERE slug = ?
+      LIMIT 1
+    `)
+    .bind(slug)
+    .first();
+
+  if (!article) {
+    return json(
+      {
+        success: false,
+        error: "Article not found."
+      },
+      404
+    );
+  }
+
+  return json({
+    success: true,
+    article
+  });
+}
+
+/*
+ * UPDATE ARTICLE
+ */
+
 async function updateArticle(id, request, env) {
   const articleId = Number(id);
 
@@ -349,7 +412,10 @@ async function updateArticle(id, request, env) {
   const category = cleanText(body.category, 100) || "Guides";
   const featuredImage = cleanText(body.featured_image, 1000);
   const seoTitle = cleanText(body.seo_title, 200);
-  const metaDescription = cleanText(body.meta_description, 320);
+  const metaDescription = cleanText(
+    body.meta_description,
+    320
+  );
 
   if (!title || !content) {
     return json(
@@ -464,6 +530,10 @@ async function updateArticle(id, request, env) {
   });
 }
 
+/*
+ * DELETE ARTICLE
+ */
+
 async function deleteArticle(id, env) {
   const articleId = Number(id);
 
@@ -500,6 +570,10 @@ async function deleteArticle(id, env) {
   });
 }
 
+/*
+ * API ROUTER
+ */
+
 async function handleApi(request, env) {
   const url = new URL(request.url);
   const path = url.pathname;
@@ -524,32 +598,57 @@ async function handleApi(request, env) {
   }
 
   /*
-   * GET /api/articles
-   * GET /api/articles?status=draft
-   * GET /api/articles?status=published
+   * Public article reading.
    */
-  if (path === "/api/articles") {
-    if (request.method === "GET") {
-      return listArticles(request, env);
-    }
 
-    if (request.method === "POST") {
-      return createArticle(request, env);
-    }
+  if (
+    path === "/api/articles" &&
+    request.method === "GET"
+  ) {
+    return listArticles(request, env);
+  }
 
-    return json(
-      {
-        success: false,
-        error: "Method not allowed."
-      },
-      405
+  const publicSlugMatch = path.match(
+    /^\/api\/articles\/slug\/([^/]+)$/
+  );
+
+  if (
+    publicSlugMatch &&
+    request.method === "GET"
+  ) {
+    return getArticleBySlug(
+      decodeURIComponent(publicSlugMatch[1]),
+      env
     );
   }
 
   /*
-   * /api/articles/:id
+   * Everything below this point requires admin
+   * authentication.
    */
-  const idMatch = path.match(/^\/api\/articles\/(\d+)$/);
+
+  if (!(await authenticate(request, env))) {
+    return unauthorized();
+  }
+
+  /*
+   * Create article.
+   */
+
+  if (
+    path === "/api/articles" &&
+    request.method === "POST"
+  ) {
+    return createArticle(request, env);
+  }
+
+  /*
+   * Article by ID.
+   */
+
+  const idMatch = path.match(
+    /^\/api\/articles\/(\d+)$/
+  );
 
   if (idMatch) {
     const id = idMatch[1];
@@ -576,18 +675,11 @@ async function handleApi(request, env) {
   }
 
   /*
-   * GET /api/articles/slug/article-name
+   * Admin article listing.
+   *
+   * Example:
+   * /api/articles?status=all
    */
-  const slugMatch = path.match(
-    /^\/api\/articles\/slug\/([^/]+)$/
-  );
-
-  if (slugMatch && request.method === "GET") {
-    return getArticleBySlug(
-      decodeURIComponent(slugMatch[1]),
-      env
-    );
-  }
 
   return json(
     {
@@ -598,13 +690,14 @@ async function handleApi(request, env) {
   );
 }
 
+/*
+ * MAIN WORKER
+ */
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    /*
-     * API routes
-     */
     if (url.pathname.startsWith("/api/")) {
       try {
         return await handleApi(request, env);
@@ -622,8 +715,9 @@ export default {
     }
 
     /*
-     * Existing FigureNG website.
+     * Continue serving the existing FigureNG website.
      */
+
     if (env.ASSETS) {
       return env.ASSETS.fetch(request);
     }
@@ -633,7 +727,8 @@ export default {
       {
         status: 500,
         headers: {
-          "Content-Type": "text/plain; charset=UTF-8"
+          "Content-Type":
+            "text/plain; charset=UTF-8"
         }
       }
     );
