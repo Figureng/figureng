@@ -159,17 +159,13 @@ main {
 /* FEATURED */
 
 .featured {
-    display: none;
+    display: grid;
     grid-template-columns: 1.35fr .65fr;
     background: var(--green);
     color: white;
     border-radius: 6px;
     overflow: hidden;
     margin-bottom: 50px;
-}
-
-.featured.show {
-    display: grid;
 }
 
 .featured-main {
@@ -339,8 +335,7 @@ main {
 .loading {
     background: white;
     border: 1px solid var(--line);
-    padding: 30px;
-    text-align: center;
+    padding: 25px;
     color: var(--muted);
     font-size: 13px;
 }
@@ -350,15 +345,10 @@ main {
 .error-message {
     display: none;
     background: white;
-    border: 1px solid var(--line);
-    padding: 30px;
-    text-align: center;
-    color: var(--muted);
+    border: 1px solid #e6caca;
+    padding: 25px;
+    color: #8b3333;
     font-size: 13px;
-}
-
-.error-message.show {
-    display: block;
 }
 
 /* NO RESULTS */
@@ -370,10 +360,6 @@ main {
     padding: 25px;
     color: var(--muted);
     font-size: 13px;
-}
-
-.no-results.show {
-    display: block;
 }
 
 /* FOOTER */
@@ -460,6 +446,7 @@ footer a:hover {
     .footer-grid {
         grid-template-columns: 1fr 1fr;
     }
+
 }
 
 @media(max-width:560px) {
@@ -502,6 +489,7 @@ footer a:hover {
         grid-template-columns: 1fr;
         gap: 30px;
     }
+
 }
 
 </style>
@@ -515,8 +503,13 @@ footer a:hover {
 <div class="container header">
 
 <a href="/" class="brand">
-<div class="mark">FG</div>
+
+<div class="mark">
+FG
+</div>
+
 Figure<span>NG</span>
+
 </a>
 
 <nav>
@@ -543,6 +536,7 @@ Contact
 
 </header>
 
+
 <section class="hero">
 
 <div class="container hero-inner">
@@ -565,13 +559,14 @@ personal finance and practical calculations in Nigeria.
 
 </section>
 
+
 <main>
 
 <div class="container">
 
 <section
-    id="featured"
     class="featured"
+    id="featuredArticle"
 >
 
 <div class="featured-main">
@@ -580,9 +575,13 @@ personal finance and practical calculations in Nigeria.
 Featured guide
 </div>
 
-<h2 id="featuredTitle"></h2>
+<h2 id="featuredTitle">
+Loading guide...
+</h2>
 
-<p id="featuredExcerpt"></p>
+<p id="featuredExcerpt">
+Loading...
+</p>
 
 <a
     id="featuredLink"
@@ -594,6 +593,7 @@ Read guide
 
 </div>
 
+
 <div class="featured-side">
 
 <div>
@@ -603,17 +603,17 @@ Related tool
 </strong>
 
 <p>
-Use FigureNG calculators and tools to put
-the information into practice.
+Use the FigureNG calculators to apply the
+information from our guides to your own figures.
 </p>
 
 <br>
 
 <a
-    href="/tools.html"
+    href="/salary-calculator.html"
     style="color:white;font-size:12px;font-weight:800;"
 >
-Explore tools →
+Open salary calculator →
 </a>
 
 </div>
@@ -622,36 +622,19 @@ Explore tools →
 
 </section>
 
+
 <div class="toolbar">
 
-<div class="categories">
+<div
+    class="categories"
+    id="categories"
+>
 
 <button
     class="category active"
     data-category="all"
 >
 All
-</button>
-
-<button
-    class="category"
-    data-category="salary"
->
-Salary & Tax
-</button>
-
-<button
-    class="category"
-    data-category="loans"
->
-Loans
-</button>
-
-<button
-    class="category"
-    data-category="finance"
->
-Personal Finance
 </button>
 
 </div>
@@ -665,6 +648,7 @@ Personal Finance
 
 </div>
 
+
 <div
     id="loading"
     class="loading"
@@ -672,10 +656,22 @@ Personal Finance
 Loading guides...
 </div>
 
+
+<div
+    id="errorMessage"
+    class="error-message"
+>
+We could not load the guides right now. Please refresh
+the page and try again.
+</div>
+
+
 <div
     id="articleGrid"
     class="article-grid"
-></div>
+>
+</div>
+
 
 <div
     id="noResults"
@@ -684,16 +680,10 @@ Loading guides...
 No guides match your search.
 </div>
 
-<div
-    id="errorMessage"
-    class="error-message"
->
-Unable to load guides right now. Please try again later.
-</div>
-
 </div>
 
 </main>
+
 
 <footer>
 
@@ -720,6 +710,7 @@ decisions in Nigeria.
 
 </div>
 
+
 <div>
 
 <h3>
@@ -743,6 +734,7 @@ Loan Calculator
 </a>
 
 </div>
+
 
 <div>
 
@@ -774,6 +766,7 @@ Disclaimer
 
 </div>
 
+
 <div class="copyright">
 © 2026 FigureNG. All rights reserved.
 </div>
@@ -782,12 +775,19 @@ Disclaimer
 
 </footer>
 
+
 <script>
 
-const API_URL = "/api/articles?status=published&limit=100";
+const API_URL = "/api/articles";
+
+const searchInput =
+    document.getElementById("guideSearch");
 
 const articleGrid =
     document.getElementById("articleGrid");
+
+const categories =
+    document.getElementById("categories");
 
 const loading =
     document.getElementById("loading");
@@ -798,12 +798,6 @@ const errorMessage =
 const noResults =
     document.getElementById("noResults");
 
-const search =
-    document.getElementById("guideSearch");
-
-const featured =
-    document.getElementById("featured");
-
 const featuredTitle =
     document.getElementById("featuredTitle");
 
@@ -813,10 +807,6 @@ const featuredExcerpt =
 const featuredLink =
     document.getElementById("featuredLink");
 
-const categoryButtons =
-    Array.from(
-        document.querySelectorAll(".category")
-    );
 
 let articles = [];
 
@@ -825,23 +815,23 @@ let currentCategory = "all";
 
 function escapeHTML(value) {
 
-    const div = document.createElement("div");
+    return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
-    div.textContent =
-        value || "";
-
-    return div.innerHTML;
 }
 
 
-function formatDate(value) {
+function formatDate(dateValue) {
 
-    if (!value) {
+    if (!dateValue) {
         return "";
     }
 
-    const date =
-        new Date(value);
+    const date = new Date(dateValue);
 
     if (Number.isNaN(date.getTime())) {
         return "";
@@ -855,162 +845,249 @@ function formatDate(value) {
             day: "numeric"
         }
     );
+
 }
 
 
-function categoryClass(category) {
+function articleURL(article) {
 
-    const value =
-        String(category || "")
-            .toLowerCase();
+    return "/guides/article.html?slug=" +
+        encodeURIComponent(article.slug);
 
-    if (
-        value.includes("salary") ||
-        value.includes("tax")
-    ) {
-        return "salary";
-    }
-
-    if (
-        value.includes("loan") ||
-        value.includes("credit")
-    ) {
-        return "loans";
-    }
-
-    if (
-        value.includes("finance") ||
-        value.includes("money")
-    ) {
-        return "finance";
-    }
-
-    return "finance";
 }
 
 
-function articleUrl(slug) {
+function buildCategories() {
 
-    return "/article.html?slug=" +
-        encodeURIComponent(slug);
+    const categoryMap = {};
+
+    articles.forEach(function(article) {
+
+        const category =
+            (article.category || "Guides").trim();
+
+        if (category) {
+            categoryMap[category] = true;
+        }
+
+    });
+
+
+    Object.keys(categoryMap)
+        .sort()
+        .forEach(function(category) {
+
+            const button =
+                document.createElement("button");
+
+            button.className = "category";
+
+            button.dataset.category = category;
+
+            button.textContent = category;
+
+            categories.appendChild(button);
+
+        });
+
+
+    categories
+        .querySelectorAll(".category")
+        .forEach(function(button) {
+
+            button.addEventListener(
+                "click",
+                function() {
+
+                    categories
+                        .querySelectorAll(".category")
+                        .forEach(function(item) {
+
+                            item.classList.remove("active");
+
+                        });
+
+                    button.classList.add("active");
+
+                    currentCategory =
+                        button.dataset.category;
+
+                    renderArticles();
+
+                }
+            );
+
+        });
+
 }
 
 
-function renderFeatured() {
+function setupFeatured() {
 
     if (!articles.length) {
-        featured.classList.remove("show");
+        featuredTitle.textContent =
+            "No guides published yet.";
+
+        featuredExcerpt.textContent =
+            "New guides will appear here automatically.";
+
+        featuredLink.style.display = "none";
+
         return;
     }
 
-    const item =
+
+    const featured =
         articles[0];
 
+
     featuredTitle.textContent =
-        item.title || "";
+        featured.title;
+
 
     featuredExcerpt.textContent =
-        item.excerpt ||
-        "Read this practical FigureNG guide.";
+        featured.excerpt ||
+        "Read this FigureNG guide to understand the topic clearly.";
+
 
     featuredLink.href =
-        articleUrl(item.slug);
+        articleURL(featured);
 
-    featured.classList.add("show");
 }
 
 
 function renderArticles() {
 
     const query =
-        search.value
+        searchInput.value
             .trim()
             .toLowerCase();
 
+
     articleGrid.innerHTML = "";
+
 
     let visible = 0;
 
-    articles.forEach(function(article, index) {
+
+    articles.forEach(function(article) {
 
         const category =
-            categoryClass(article.category);
+            (article.category || "Guides").trim();
+
 
         const searchable = [
+
             article.title,
+
             article.excerpt,
-            article.category
+
+            article.category,
+
+            article.slug
+
         ]
-            .join(" ")
-            .toLowerCase();
+        .join(" ")
+        .toLowerCase();
+
 
         const categoryMatch =
             currentCategory === "all" ||
             category === currentCategory;
 
+
         const searchMatch =
             !query ||
             searchable.includes(query);
 
-        if (
-            categoryMatch &&
-            searchMatch
-        ) {
 
-            /*
-             * The first article is already displayed
-             * as the featured guide.
-             *
-             * It remains in the database and can still
-             * appear in search results.
-             */
-
-            const card =
-                document.createElement("article");
-
-            card.className = "article";
-
-            card.innerHTML = `
-
-                <div class="article-category">
-                    ${escapeHTML(article.category || "Guides")}
-                </div>
-
-                <h2>
-                    ${escapeHTML(article.title)}
-                </h2>
-
-                <div class="article-meta">
-                    FigureNG ·
-                    ${escapeHTML(formatDate(article.published_at))}
-                </div>
-
-                <p>
-                    ${escapeHTML(
-                        article.excerpt ||
-                        "Read this practical FigureNG guide."
-                    )}
-                </p>
-
-                <a
-                    href="${articleUrl(article.slug)}"
-                    class="article-link"
-                >
-                    Read guide →
-                </a>
-
-            `;
-
-            articleGrid.appendChild(card);
-
-            visible++;
+        if (!categoryMatch || !searchMatch) {
+            return;
         }
+
+
+        const card =
+            document.createElement("article");
+
+        card.className = "article";
+
+
+        const articleCategory =
+            document.createElement("div");
+
+        articleCategory.className =
+            "article-category";
+
+        articleCategory.textContent =
+            category;
+
+
+        const title =
+            document.createElement("h2");
+
+        title.textContent =
+            article.title;
+
+
+        const meta =
+            document.createElement("div");
+
+        meta.className =
+            "article-meta";
+
+        const date =
+            formatDate(article.published_at);
+
+
+        meta.textContent =
+            "FigureNG" +
+            (date ? " · " + date : "");
+
+
+        const excerpt =
+            document.createElement("p");
+
+        excerpt.textContent =
+            article.excerpt ||
+            "Read this guide from FigureNG.";
+
+
+        const link =
+            document.createElement("a");
+
+        link.className =
+            "article-link";
+
+        link.href =
+            articleURL(article);
+
+        link.textContent =
+            "Read guide →";
+
+
+        card.appendChild(articleCategory);
+
+        card.appendChild(title);
+
+        card.appendChild(meta);
+
+        card.appendChild(excerpt);
+
+        card.appendChild(link);
+
+
+        articleGrid.appendChild(card);
+
+        visible++;
+
     });
 
-    noResults.classList.toggle(
-        "show",
+
+    noResults.style.display =
         visible === 0
-    );
+            ? "block"
+            : "none";
+
 }
 
 
@@ -1018,17 +1095,20 @@ async function loadArticles() {
 
     loading.style.display = "block";
 
-    errorMessage.classList.remove("show");
+    errorMessage.style.display = "none";
+
 
     try {
 
         const response =
-            await fetch(API_URL, {
-                headers: {
-                    "Accept": "application/json"
-                },
-                cache: "no-store"
-            });
+            await fetch(
+                API_URL,
+                {
+                    method: "GET",
+                    cache: "no-store"
+                }
+            );
+
 
         if (!response.ok) {
             throw new Error(
@@ -1036,24 +1116,43 @@ async function loadArticles() {
             );
         }
 
+
         const data =
             await response.json();
+
 
         if (
             !data.success ||
             !Array.isArray(data.articles)
         ) {
+
             throw new Error(
                 "Invalid article response."
             );
+
         }
 
-        articles =
-            data.articles;
 
-        renderFeatured();
+        articles =
+            data.articles.filter(
+                function(article) {
+
+                    return article.status ===
+                        "published";
+
+                }
+            );
+
+
+        loading.style.display = "none";
+
+
+        buildCategories();
+
+        setupFeatured();
 
         renderArticles();
+
 
     } catch (error) {
 
@@ -1062,44 +1161,17 @@ async function loadArticles() {
             error
         );
 
-        errorMessage.classList.add("show");
-
-    } finally {
 
         loading.style.display = "none";
 
+        errorMessage.style.display = "block";
+
     }
+
 }
 
 
-categoryButtons.forEach(function(button) {
-
-    button.addEventListener(
-        "click",
-        function() {
-
-            categoryButtons.forEach(
-                function(item) {
-                    item.classList.remove(
-                        "active"
-                    );
-                }
-            );
-
-            button.classList.add("active");
-
-            currentCategory =
-                button.dataset.category;
-
-            renderArticles();
-
-        }
-    );
-
-});
-
-
-search.addEventListener(
+searchInput.addEventListener(
     "input",
     renderArticles
 );
@@ -1108,6 +1180,7 @@ search.addEventListener(
 loadArticles();
 
 </script>
+
 
 </body>
 </html>
