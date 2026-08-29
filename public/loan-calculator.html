@@ -2,710 +2,821 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Nigeria Loan Calculator 2026 | Flat Rate vs Reducing Balance | FigureNG</title>
-
-<meta name="description" content="Calculate Nigerian loan repayments using flat rate or reducing balance interest. Compare monthly payment, total interest, total repayment and view your repayment schedule.">
-
+<meta name="description" content="Calculate Nigerian loan repayments using flat rate or reducing balance interest. Compare monthly repayment, total interest, total repayment and repayment schedules.">
 <meta name="robots" content="index, follow">
-
 <link rel="canonical" href="https://figureng.figureng247.workers.dev/loan-calculator.html">
 
 <style>
-
 *{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
-
-:root{
---navy:#0f172a;
---navy2:#1e293b;
---green:#16a34a;
---green-dark:#15803d;
---green-light:#f0fdf4;
---white:#fff;
---bg:#f8fafc;
---text:#1e293b;
---muted:#64748b;
---border:#e2e8f0;
---yellow:#fef3c7;
---yellow-border:#f59e0b;
---red:#dc2626;
+    box-sizing:border-box;
 }
 
 html{
-scroll-behavior:smooth;
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
 }
 
 body{
-font-family:Arial,Helvetica,sans-serif;
-background:var(--bg);
-color:var(--text);
-line-height:1.6;
+    margin:0;
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f8fafc;
+    color:#1e293b;
+    line-height:1.6;
 }
 
 a{
-text-decoration:none;
-color:inherit;
+    text-decoration:none;
+    color:inherit;
+}
+
+img{
+    max-width:100%;
 }
 
 .container{
-width:min(1100px,92%);
-margin:auto;
+    width:92%;
+    max-width:1100px;
+    margin:0 auto;
 }
 
 /* HEADER */
 
 header{
-background:#fff;
-border-bottom:1px solid var(--border);
-position:sticky;
-top:0;
-z-index:100;
+    width:100%;
+    background:#fff;
+    border-bottom:1px solid #e2e8f0;
+    position:sticky;
+    top:0;
+    z-index:100;
 }
 
 .nav{
-min-height:68px;
-display:flex;
-justify-content:space-between;
-align-items:center;
+    min-height:64px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
 }
 
 .logo{
-font-size:25px;
-font-weight:900;
-color:var(--navy);
+    font-size:24px;
+    font-weight:900;
+    color:#0f172a;
+    white-space:nowrap;
 }
 
 .logo span{
-color:var(--green);
+    color:#16a34a;
 }
 
 .nav-links{
-display:flex;
-gap:20px;
-font-size:14px;
-font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    font-size:13px;
+    font-weight:700;
 }
 
 .nav-links a{
-color:var(--muted);
+    color:#64748b;
 }
 
 .nav-links a:hover{
-color:var(--green);
+    color:#16a34a;
 }
 
 /* HERO */
 
 .hero{
-background:var(--navy);
-color:#fff;
-padding:50px 0 60px;
+    width:100%;
+    background:#0f172a;
+    color:#fff;
+    padding:45px 0 55px;
 }
 
 .hero-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
-align-items:start;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,520px);
+    gap:40px;
+    align-items:start;
 }
 
 .badge{
-display:inline-block;
-background:rgba(22,163,74,.15);
-border:1px solid rgba(134,239,172,.25);
-color:#86efac;
-padding:7px 11px;
-border-radius:30px;
-font-size:12px;
-font-weight:800;
-margin-bottom:17px;
+    display:inline-block;
+    padding:7px 11px;
+    border-radius:30px;
+    background:rgba(22,163,74,.15);
+    border:1px solid rgba(134,239,172,.25);
+    color:#86efac;
+    font-size:11px;
+    font-weight:800;
+    margin-bottom:17px;
 }
 
 .hero h1{
-font-size:clamp(36px,7vw,55px);
-line-height:1.05;
-letter-spacing:-1.5px;
-margin-bottom:18px;
+    margin:0 0 18px;
+    font-size:clamp(36px,6vw,55px);
+    line-height:1.05;
+    letter-spacing:-1.5px;
 }
 
 .hero h1 span{
-color:#4ade80;
+    color:#4ade80;
 }
 
 .hero-text{
-color:#cbd5e1;
-font-size:17px;
-max-width:580px;
-margin-bottom:20px;
+    max-width:580px;
+    margin:0 0 22px;
+    color:#cbd5e1;
+    font-size:17px;
 }
 
 .hero-points{
-display:grid;
-gap:9px;
-color:#e2e8f0;
-font-size:14px;
+    display:grid;
+    gap:9px;
+    color:#e2e8f0;
+    font-size:14px;
 }
 
 .hero-point{
-display:flex;
-gap:9px;
+    display:flex;
+    gap:9px;
 }
 
 .check{
-color:#4ade80;
-font-weight:900;
+    color:#4ade80;
+    font-weight:900;
 }
 
 /* CALCULATOR */
 
 .calculator{
-background:#fff;
-color:var(--text);
-border-radius:20px;
-padding:25px;
-box-shadow:0 20px 45px rgba(0,0,0,.2);
+    width:100%;
+    min-width:0;
+    background:#fff;
+    color:#1e293b;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 20px 45px rgba(0,0,0,.2);
 }
 
 .calculator h2{
-color:var(--navy);
-font-size:24px;
-margin-bottom:5px;
+    margin:0 0 5px;
+    color:#0f172a;
+    font-size:24px;
 }
 
 .intro{
-color:var(--muted);
-font-size:13px;
-margin-bottom:20px;
+    margin:0 0 20px;
+    color:#64748b;
+    font-size:13px;
 }
 
 .field{
-margin-bottom:16px;
+    width:100%;
+    margin-bottom:16px;
 }
 
 .field label{
-display:block;
-color:var(--navy);
-font-size:13px;
-font-weight:800;
-margin-bottom:6px;
+    display:block;
+    margin-bottom:6px;
+    color:#0f172a;
+    font-size:13px;
+    font-weight:800;
 }
 
 .input-wrap{
-position:relative;
+    position:relative;
+    width:100%;
 }
 
 .currency{
-position:absolute;
-left:13px;
-top:50%;
-transform:translateY(-50%);
-color:var(--muted);
-font-weight:800;
+    position:absolute;
+    left:13px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#64748b;
+    font-weight:800;
+    pointer-events:none;
 }
 
 .percent{
-position:absolute;
-right:13px;
-top:50%;
-transform:translateY(-50%);
-color:var(--muted);
-font-weight:800;
+    position:absolute;
+    right:13px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#64748b;
+    font-weight:800;
+    pointer-events:none;
 }
 
 input,
 select{
-width:100%;
-height:47px;
-border:1px solid var(--border);
-border-radius:9px;
-padding:0 12px 0 32px;
-outline:none;
-color:var(--navy);
-background:#fff;
-font-size:14px;
+    display:block;
+    width:100%;
+    max-width:100%;
+    height:47px;
+    border:1px solid #e2e8f0;
+    border-radius:9px;
+    padding:0 12px;
+    outline:none;
+    color:#0f172a;
+    background:#fff;
+    font-size:14px;
+    font-family:inherit;
+}
+
+input.currency-input{
+    padding-left:32px;
 }
 
 input.percent-input{
-padding-right:35px;
+    padding-right:35px;
 }
 
 input:focus,
 select:focus{
-border-color:var(--green);
-box-shadow:0 0 0 3px rgba(22,163,74,.1);
-}
-
-select{
-padding-left:12px;
+    border-color:#16a34a;
+    box-shadow:0 0 0 3px rgba(22,163,74,.1);
 }
 
 .rate-help{
-font-size:11px;
-color:var(--muted);
-margin-top:4px;
+    margin-top:4px;
+    color:#64748b;
+    font-size:11px;
 }
 
-/* METHOD */
-
 .method-title{
-font-size:13px;
-font-weight:800;
-color:var(--navy);
-margin-bottom:8px;
+    margin-bottom:8px;
+    color:#0f172a;
+    font-size:13px;
+    font-weight:800;
 }
 
 .method-options{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:8px;
-margin-bottom:17px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    width:100%;
+    margin-bottom:17px;
 }
 
 .method-option{
-border:1px solid var(--border);
-border-radius:9px;
-padding:11px;
-cursor:pointer;
-font-size:12px;
-font-weight:800;
-text-align:center;
-color:var(--muted);
-background:#fff;
+    min-width:0;
+    border:1px solid #e2e8f0;
+    border-radius:9px;
+    padding:11px 7px;
+    text-align:center;
+    cursor:pointer;
+    color:#64748b;
+    background:#fff;
+    font-size:12px;
+    font-weight:800;
 }
 
 .method-option.active{
-border-color:var(--green);
-background:var(--green-light);
-color:var(--green-dark);
+    border-color:#16a34a;
+    background:#f0fdf4;
+    color:#15803d;
 }
 
 .method-option input{
-display:none;
+    display:none;
 }
 
 .calculate{
-width:100%;
-min-height:50px;
-border:0;
-border-radius:10px;
-background:var(--green);
-color:#fff;
-font-size:15px;
-font-weight:900;
-cursor:pointer;
-margin-top:4px;
+    display:block;
+    width:100%;
+    min-height:50px;
+    border:0;
+    border-radius:10px;
+    background:#16a34a;
+    color:#fff;
+    font-size:15px;
+    font-weight:900;
+    font-family:inherit;
+    cursor:pointer;
 }
 
 .calculate:hover{
-background:var(--green-dark);
+    background:#15803d;
 }
 
 .error{
-display:none;
-color:var(--red);
-font-size:13px;
-font-weight:700;
-margin-top:10px;
+    display:none;
+    margin-top:10px;
+    color:#dc2626;
+    font-size:13px;
+    font-weight:700;
 }
 
 /* RESULTS */
 
 .results{
-display:none;
-margin-top:22px;
-padding-top:20px;
-border-top:1px solid var(--border);
+    display:none;
+    width:100%;
+    min-width:0;
+    margin-top:22px;
+    padding-top:20px;
+    border-top:1px solid #e2e8f0;
 }
 
 .results.show{
-display:block;
+    display:block;
 }
 
 .main-result{
-background:var(--green-light);
-border:1px solid #bbf7d0;
-border-radius:13px;
-padding:18px;
-margin-bottom:15px;
+    width:100%;
+    background:#f0fdf4;
+    border:1px solid #bbf7d0;
+    border-radius:13px;
+    padding:18px;
+    margin-bottom:15px;
 }
 
 .main-result small{
-color:#166534;
-font-weight:800;
-font-size:12px;
+    display:block;
+    color:#166534;
+    font-size:12px;
+    font-weight:800;
 }
 
 .main-result strong{
-display:block;
-color:var(--green-dark);
-font-size:30px;
-line-height:1.2;
-margin-top:3px;
+    display:block;
+    margin-top:3px;
+    color:#15803d;
+    font-size:30px;
+    line-height:1.2;
+    overflow-wrap:anywhere;
 }
 
 .result-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:9px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+    width:100%;
 }
 
 .result-item{
-background:#f8fafc;
-border:1px solid var(--border);
-border-radius:9px;
-padding:11px;
+    min-width:0;
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    border-radius:9px;
+    padding:11px;
 }
 
 .result-item span{
-display:block;
-color:var(--muted);
-font-size:10px;
+    display:block;
+    color:#64748b;
+    font-size:10px;
 }
 
 .result-item strong{
-color:var(--navy);
-font-size:13px;
+    display:block;
+    margin-top:2px;
+    color:#0f172a;
+    font-size:13px;
+    overflow-wrap:anywhere;
 }
 
+/* COMPARISON */
+
 .comparison{
-margin-top:15px;
-border:1px solid var(--border);
-border-radius:12px;
-overflow:hidden;
+    width:100%;
+    margin-top:15px;
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    overflow:hidden;
+    background:#fff;
 }
 
 .comparison h3{
-padding:13px;
-background:#f8fafc;
-font-size:14px;
-color:var(--navy);
+    margin:0;
+    padding:13px;
+    background:#f8fafc;
+    color:#0f172a;
+    font-size:14px;
 }
 
 .compare-row{
-display:grid;
-grid-template-columns:1.3fr 1fr 1fr;
-border-top:1px solid var(--border);
-font-size:12px;
+    display:grid;
+    grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);
+    border-top:1px solid #e2e8f0;
+    font-size:12px;
 }
 
 .compare-row div{
-padding:10px;
+    min-width:0;
+    padding:10px;
+    overflow-wrap:anywhere;
 }
 
 .compare-row div:not(:last-child){
-border-right:1px solid var(--border);
+    border-right:1px solid #e2e8f0;
 }
 
 .compare-head{
-font-weight:800;
-background:#f8fafc;
+    background:#f8fafc;
+    color:#0f172a;
+    font-weight:800;
 }
 
 .savings{
-margin-top:14px;
-background:#ecfdf5;
-border:1px solid #a7f3d0;
-border-radius:10px;
-padding:13px;
-font-size:13px;
-color:#065f46;
+    width:100%;
+    margin-top:14px;
+    padding:13px;
+    border:1px solid #a7f3d0;
+    border-radius:10px;
+    background:#ecfdf5;
+    color:#065f46;
+    font-size:13px;
+    overflow-wrap:anywhere;
 }
 
 .warning{
-margin-top:12px;
-background:var(--yellow);
-border:1px solid var(--yellow-border);
-border-radius:10px;
-padding:13px;
-font-size:12px;
-color:#78350f;
+    width:100%;
+    margin-top:12px;
+    padding:13px;
+    border:1px solid #f59e0b;
+    border-radius:10px;
+    background:#fef3c7;
+    color:#78350f;
+    font-size:12px;
+    overflow-wrap:anywhere;
 }
 
 /* SCHEDULE */
 
 .schedule-section{
-margin-top:20px;
+    width:100%;
+    min-width:0;
+    margin-top:20px;
 }
 
 .schedule-title{
-font-size:15px;
-font-weight:900;
-color:var(--navy);
-margin-bottom:10px;
+    margin-bottom:10px;
+    color:#0f172a;
+    font-size:15px;
+    font-weight:900;
 }
 
 .schedule-wrap{
-overflow-x:auto;
-border:1px solid var(--border);
-border-radius:10px;
-background:#fff;
+    display:block;
+    width:100%;
+    max-width:100%;
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    border:1px solid #e2e8f0;
+    border-radius:10px;
+    background:#fff;
 }
 
-table{
-width:100%;
-border-collapse:collapse;
-font-size:11px;
-min-width:600px;
+.schedule-wrap table{
+    width:100%;
+    min-width:560px;
+    border-collapse:collapse;
+    font-size:11px;
 }
 
-th,
-td{
-padding:9px;
-text-align:right;
-border-bottom:1px solid var(--border);
+.schedule-wrap th,
+.schedule-wrap td{
+    padding:9px;
+    text-align:right;
+    white-space:nowrap;
+    border-bottom:1px solid #e2e8f0;
 }
 
-th{
-background:#f8fafc;
-color:var(--navy);
-font-weight:800;
+.schedule-wrap th{
+    background:#f8fafc;
+    color:#0f172a;
+    font-weight:800;
 }
 
-th:first-child,
-td:first-child{
-text-align:center;
+.schedule-wrap th:first-child,
+.schedule-wrap td:first-child{
+    text-align:center;
 }
 
 /* CONTENT */
 
 main{
-padding:55px 0 70px;
+    width:100%;
+    padding:55px 0 70px;
 }
 
 .section{
-margin-bottom:50px;
+    width:100%;
+    margin-bottom:50px;
 }
 
 .section-heading{
-max-width:760px;
-margin-bottom:22px;
+    max-width:760px;
+    margin-bottom:22px;
 }
 
 .section-heading h2{
-color:var(--navy);
-font-size:clamp(27px,5vw,36px);
-line-height:1.15;
-margin-bottom:9px;
+    margin:0 0 9px;
+    color:#0f172a;
+    font-size:clamp(27px,5vw,36px);
+    line-height:1.15;
 }
 
 .section-heading p{
-color:var(--muted);
+    margin:0;
+    color:#64748b;
 }
 
 .card{
-background:#fff;
-border:1px solid var(--border);
-border-radius:16px;
-padding:25px;
+    width:100%;
+    background:#fff;
+    border:1px solid #e2e8f0;
+    border-radius:16px;
+    padding:25px;
 }
 
 .card h3{
-color:var(--navy);
-margin-bottom:10px;
+    margin:0 0 10px;
+    color:#0f172a;
 }
 
 .card p{
-color:var(--muted);
-margin-bottom:13px;
+    margin:0 0 13px;
+    color:#64748b;
 }
 
 .steps{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:17px;
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:17px;
 }
 
 .step{
-background:#fff;
-border:1px solid var(--border);
-border-radius:15px;
-padding:22px;
+    min-width:0;
+    background:#fff;
+    border:1px solid #e2e8f0;
+    border-radius:15px;
+    padding:22px;
 }
 
 .step-number{
-width:36px;
-height:36px;
-border-radius:50%;
-display:grid;
-place-items:center;
-background:var(--green-light);
-color:var(--green-dark);
-font-weight:900;
-margin-bottom:12px;
+    width:36px;
+    height:36px;
+    display:grid;
+    place-items:center;
+    margin-bottom:12px;
+    border-radius:50%;
+    background:#f0fdf4;
+    color:#15803d;
+    font-weight:900;
 }
 
 .step h3{
-color:var(--navy);
-margin-bottom:6px;
+    margin:0 0 6px;
+    color:#0f172a;
 }
 
 .step p{
-color:var(--muted);
-font-size:14px;
+    margin:0;
+    color:#64748b;
+    font-size:14px;
 }
 
 .notice{
-background:var(--yellow);
-border:1px solid var(--yellow-border);
-border-radius:14px;
-padding:20px;
-color:#78350f;
+    width:100%;
+    padding:20px;
+    border:1px solid #f59e0b;
+    border-radius:14px;
+    background:#fef3c7;
+    color:#78350f;
 }
 
 .notice strong{
-display:block;
-margin-bottom:5px;
+    display:block;
+    margin-bottom:5px;
 }
 
 .formula{
-background:#f1f5f9;
-border-radius:10px;
-padding:15px;
-font-size:14px;
-color:var(--navy);
-margin-top:12px;
-overflow-x:auto;
+    width:100%;
+    max-width:100%;
+    margin-top:12px;
+    padding:15px;
+    border-radius:10px;
+    background:#f1f5f9;
+    color:#0f172a;
+    font-size:14px;
+    overflow-x:auto;
+    white-space:nowrap;
 }
 
 .faq{
-display:grid;
-gap:12px;
+    display:grid;
+    gap:12px;
 }
 
 .faq-item{
-background:#fff;
-border:1px solid var(--border);
-border-radius:12px;
-padding:18px;
+    width:100%;
+    background:#fff;
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    padding:18px;
 }
 
 .faq-item h3{
-color:var(--navy);
-font-size:16px;
-margin-bottom:6px;
+    margin:0 0 6px;
+    color:#0f172a;
+    font-size:16px;
 }
 
 .faq-item p{
-color:var(--muted);
-font-size:14px;
+    margin:0;
+    color:#64748b;
+    font-size:14px;
 }
 
 /* FOOTER */
 
 footer{
-background:var(--navy);
-color:#cbd5e1;
-padding:38px 0;
+    width:100%;
+    background:#0f172a;
+    color:#cbd5e1;
+    padding:38px 0;
 }
 
 .footer-top{
-display:flex;
-justify-content:space-between;
-gap:30px;
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
 }
 
 .footer-brand{
-max-width:430px;
+    max-width:430px;
 }
 
 .footer-brand .logo{
-color:#fff;
-display:inline-block;
-margin-bottom:8px;
+    display:inline-block;
+    margin-bottom:8px;
+    color:#fff;
 }
 
 .footer-brand p{
-color:#94a3b8;
-font-size:13px;
+    margin:0;
+    color:#94a3b8;
+    font-size:13px;
 }
 
 .footer-links{
-display:flex;
-flex-wrap:wrap;
-gap:15px;
-font-size:13px;
-align-content:flex-start;
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    align-content:flex-start;
+    font-size:13px;
 }
 
 .footer-links a:hover{
-color:#fff;
+    color:#fff;
 }
 
 .copyright{
-border-top:1px solid #334155;
-margin-top:25px;
-padding-top:20px;
-color:#94a3b8;
-font-size:12px;
+    margin-top:25px;
+    padding-top:20px;
+    border-top:1px solid #334155;
+    color:#94a3b8;
+    font-size:12px;
 }
 
-/* MOBILE */
+/* TABLET */
 
 @media(max-width:850px){
 
-.hero-grid{
-grid-template-columns:1fr;
+    .hero-grid{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+    .footer-top{
+        flex-direction:column;
+    }
 }
 
-.steps{
-grid-template-columns:1fr;
-}
-
-.footer-top{
-flex-direction:column;
-}
-
-}
+/* PHONE */
 
 @media(max-width:600px){
 
-.nav-links{
-gap:10px;
-font-size:12px;
+    .container{
+        width:94%;
+    }
+
+    .nav{
+        min-height:60px;
+    }
+
+    .logo{
+        font-size:22px;
+    }
+
+    .nav-links{
+        gap:10px;
+        font-size:11px;
+    }
+
+    .nav-links a:nth-child(n+3){
+        display:none;
+    }
+
+    .hero{
+        padding:35px 0 42px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero-text{
+        font-size:15px;
+    }
+
+    .calculator{
+        padding:18px;
+        border-radius:16px;
+    }
+
+    .calculator h2{
+        font-size:22px;
+    }
+
+    .result-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .compare-row{
+        grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr);
+        font-size:10px;
+    }
+
+    .compare-row div{
+        padding:8px 6px;
+    }
+
+    .main-result strong{
+        font-size:27px;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .footer-links{
+        gap:12px;
+    }
 }
 
-.nav-links a:nth-child(n+3){
-display:none;
-}
+/* VERY SMALL PHONES */
 
-.hero{
-padding:42px 0 50px;
-}
+@media(max-width:360px){
 
-.hero h1{
-font-size:39px;
-}
+    .container{
+        width:95%;
+    }
 
-.hero-text{
-font-size:15px;
-}
+    .hero h1{
+        font-size:34px;
+    }
 
-.calculator{
-padding:20px;
-}
+    .calculator{
+        padding:15px;
+    }
 
-.compare-row{
-font-size:11px;
-}
+    .result-grid{
+        grid-template-columns:1fr;
+    }
 
+    .method-options{
+        grid-template-columns:1fr;
+    }
+
+    .compare-row{
+        font-size:9px;
+    }
 }
 
 </style>
-
 </head>
 
 <body>
 
 <header>
-
 <div class="container nav">
 
 <a href="/" class="logo">
@@ -713,25 +824,13 @@ Figure<span>NG</span>
 </a>
 
 <nav class="nav-links">
-
 <a href="/">Salary Calculator</a>
-
-<a href="/loan-calculator.html">
-Loan Calculator
-</a>
-
-<a href="/about.html">
-About
-</a>
-
-<a href="/contact.html">
-Contact
-</a>
-
+<a href="/loan-calculator.html">Loan Calculator</a>
+<a href="/about.html">About</a>
+<a href="/contact.html">Contact</a>
 </nav>
 
 </div>
-
 </header>
 
 
@@ -750,9 +849,8 @@ Know the <span>true cost</span> of your loan.
 </h1>
 
 <p class="hero-text">
-Compare flat-rate and reducing-balance loans before you
-borrow. See your estimated monthly repayment, total
-interest and total repayment.
+Compare flat-rate and reducing-balance loans before you borrow.
+See your estimated monthly repayment, total interest and total repayment.
 </p>
 
 <div class="hero-points">
@@ -784,9 +882,7 @@ interest and total repayment.
 
 <div class="calculator">
 
-<h2>
-Loan Calculator
-</h2>
+<h2>Loan Calculator</h2>
 
 <p class="intro">
 Enter the details from your lender's offer.
@@ -805,6 +901,7 @@ Loan Amount
 
 <input
 id="loanAmount"
+class="currency-input"
 type="number"
 inputmode="numeric"
 min="1"
@@ -874,69 +971,22 @@ Loan Duration
 
 <select id="loanTerm">
 
-<option value="1">
-1 month
-</option>
-
-<option value="2">
-2 months
-</option>
-
-<option value="3">
-3 months
-</option>
-
-<option value="4">
-4 months
-</option>
-
-<option value="5">
-5 months
-</option>
-
-<option value="6">
-6 months
-</option>
-
-<option value="9">
-9 months
-</option>
-
-<option value="12" selected>
-12 months
-</option>
-
-<option value="18">
-18 months
-</option>
-
-<option value="24">
-24 months
-</option>
-
-<option value="36">
-36 months
-</option>
-
-<option value="48">
-48 months
-</option>
-
-<option value="60">
-60 months
-</option>
-
-<option value="72">
-72 months
-</option>
-
-<option value="84">
-84 months
-</option>
-
-<option value="120">
-120 months
-</option>
+<option value="1">1 month</option>
+<option value="2">2 months</option>
+<option value="3">3 months</option>
+<option value="4">4 months</option>
+<option value="5">5 months</option>
+<option value="6">6 months</option>
+<option value="9">9 months</option>
+<option value="12" selected>12 months</option>
+<option value="18">18 months</option>
+<option value="24">24 months</option>
+<option value="36">36 months</option>
+<option value="48">48 months</option>
+<option value="60">60 months</option>
+<option value="72">72 months</option>
+<option value="84">84 months</option>
+<option value="120">120 months</option>
 
 </select>
 
@@ -979,6 +1029,7 @@ Flat Rate
 
 
 <button
+type="button"
 class="calculate"
 onclick="calculateLoan()"
 >
@@ -1009,68 +1060,33 @@ Estimated monthly repayment
 <div class="result-grid">
 
 <div class="result-item">
-
 <span>Loan amount</span>
-
-<strong id="displayLoan">
-₦0
-</strong>
-
+<strong id="displayLoan">₦0</strong>
 </div>
 
-
 <div class="result-item">
-
 <span>Interest rate</span>
-
-<strong id="displayRate">
-0%
-</strong>
-
+<strong id="displayRate">0%</strong>
 </div>
 
-
 <div class="result-item">
-
 <span>Calculation method</span>
-
-<strong id="displayMethod">
-Reducing balance
-</strong>
-
+<strong id="displayMethod">Reducing balance</strong>
 </div>
 
-
 <div class="result-item">
-
 <span>Loan duration</span>
-
-<strong id="displayTerm">
-0 months
-</strong>
-
+<strong id="displayTerm">0 months</strong>
 </div>
 
-
 <div class="result-item">
-
 <span>Total interest</span>
-
-<strong id="totalInterest">
-₦0
-</strong>
-
+<strong id="totalInterest">₦0</strong>
 </div>
 
-
 <div class="result-item">
-
 <span>Total repayment</span>
-
-<strong id="totalRepayment">
-₦0
-</strong>
-
+<strong id="totalRepayment">₦0</strong>
 </div>
 
 </div>
@@ -1084,26 +1100,16 @@ Flat Rate vs Reducing Balance
 
 <div class="compare-row compare-head">
 
-<div>
-Cost
-</div>
-
-<div>
-Reducing
-</div>
-
-<div>
-Flat
-</div>
+<div>Cost</div>
+<div>Reducing</div>
+<div>Flat</div>
 
 </div>
 
 
 <div class="compare-row">
 
-<div>
-Monthly payment
-</div>
+<div>Monthly payment</div>
 
 <div id="compareReducingPayment">
 ₦0
@@ -1118,9 +1124,7 @@ Monthly payment
 
 <div class="compare-row">
 
-<div>
-Total interest
-</div>
+<div>Total interest</div>
 
 <div id="compareReducingInterest">
 ₦0
@@ -1135,9 +1139,7 @@ Total interest
 
 <div class="compare-row">
 
-<div>
-Total repayment
-</div>
+<div>Total repayment</div>
 
 <div id="compareReducingTotal">
 ₦0
@@ -1152,16 +1154,15 @@ Total repayment
 </div>
 
 
-<div class="savings" id="comparisonMessage">
-</div>
+<div class="savings" id="comparisonMessage"></div>
 
 
 <div class="warning">
 
 <strong>Important:</strong>
-The comparison is an estimate. Actual lender calculations
-may include fees, insurance, taxes, penalties, rounding or
-other charges that are not included here.
+This is an estimate. Actual lender calculations may include
+processing fees, insurance, taxes, penalties, other charges
+or different rounding methods.
 
 </div>
 
@@ -1179,33 +1180,16 @@ Repayment Schedule
 <thead>
 
 <tr>
-
-<th>
-Month
-</th>
-
-<th>
-Payment
-</th>
-
-<th>
-Principal
-</th>
-
-<th>
-Interest
-</th>
-
-<th>
-Balance
-</th>
-
+<th>Month</th>
+<th>Payment</th>
+<th>Principal</th>
+<th>Interest</th>
+<th>Balance</th>
 </tr>
 
 </thead>
 
-<tbody id="scheduleBody">
-</tbody>
+<tbody id="scheduleBody"></tbody>
 
 </table>
 
@@ -1237,9 +1221,8 @@ Why flat rate vs reducing balance matters
 </h2>
 
 <p>
-The same advertised interest rate can result in very
-different repayment costs depending on how interest is
-calculated.
+The same advertised interest rate can result in very different
+repayment costs depending on how interest is calculated.
 </p>
 
 </div>
@@ -1262,9 +1245,8 @@ repaid part of the principal.
 </p>
 
 <p>
-Research on loan products has found both flat and declining
-balance methods in use, which makes knowing the method
-important when comparing loan offers.
+This is why borrowers should check the calculation method
+when comparing different loan offers.
 </p>
 
 </div>
@@ -1287,9 +1269,7 @@ How to use FigureNG Loan Calculator
 
 <div class="step">
 
-<div class="step-number">
-1
-</div>
+<div class="step-number">1</div>
 
 <h3>
 Enter the loan amount
@@ -1304,16 +1284,14 @@ Enter the amount you plan to borrow.
 
 <div class="step">
 
-<div class="step-number">
-2
-</div>
+<div class="step-number">2</div>
 
 <h3>
 Enter the interest rate
 </h3>
 
 <p>
-Enter the rate quoted by your lender and choose whether
+Enter the rate quoted by your lender and select whether
 it is annual or monthly.
 </p>
 
@@ -1322,17 +1300,15 @@ it is annual or monthly.
 
 <div class="step">
 
-<div class="step-number">
-3
-</div>
+<div class="step-number">3</div>
 
 <h3>
 Compare the results
 </h3>
 
 <p>
-See how flat and reducing-balance calculations affect the
-total cost of the loan.
+See how the two calculation methods affect the total cost
+of the loan.
 </p>
 
 </div>
@@ -1367,11 +1343,7 @@ generally falls too.
 </p>
 
 <div class="formula">
-
-Monthly Payment =
-P × r × (1 + r)<sup>n</sup> ÷
-((1 + r)<sup>n</sup> − 1)
-
+Monthly Payment = P × r × (1 + r)<sup>n</sup> ÷ ((1 + r)<sup>n</sup> − 1)
 </div>
 
 
@@ -1386,10 +1358,7 @@ spreads the resulting interest across the repayment period.
 </p>
 
 <div class="formula">
-
-Total Interest =
-Loan Amount × Rate × Loan Period
-
+Total Interest = Loan Amount × Rate × Loan Period
 </div>
 
 </div>
@@ -1427,7 +1396,6 @@ Frequently asked questions
 
 
 <div class="faq">
-
 
 <div class="faq-item">
 
@@ -1468,8 +1436,7 @@ Which is cheaper, flat rate or reducing balance?
 <p>
 For the same nominal rate and term, a flat-rate calculation
 will generally produce more interest than a reducing-balance
-calculation because interest continues to be based on the
-original principal.
+calculation.
 </p>
 
 </div>
@@ -1482,9 +1449,8 @@ Can I enter a monthly interest rate?
 </h3>
 
 <p>
-Yes. Select "Monthly rate" when the lender quotes the
-interest rate per month. The calculator will use that rate
-for the loan calculation.
+Yes. Select Monthly rate when the lender quotes the interest
+rate per month.
 </p>
 
 </div>
@@ -1498,8 +1464,8 @@ Does the calculator include processing fees?
 
 <p>
 No. The calculator focuses on principal and interest.
-Always add lender fees, insurance and other compulsory
-charges when determining the real cost of borrowing.
+Lender fees, insurance and other compulsory charges should
+be considered separately.
 </p>
 
 </div>
@@ -1514,11 +1480,10 @@ Is this calculator an official lender quotation?
 <p>
 No. FigureNG provides estimates for informational purposes.
 The lender's signed offer and repayment schedule should
-always be treated as the authoritative figures for a loan.
+always be treated as the authoritative figures.
 </p>
 
 </div>
-
 
 </div>
 
@@ -1538,14 +1503,12 @@ Use our free calculators for everyday financial decisions.
 </p>
 
 <p>
-
 <a
 href="/"
 style="color:#15803d;font-weight:800;"
 >
 Nigeria Salary Calculator →
 </a>
-
 </p>
 
 </div>
@@ -1571,8 +1534,7 @@ Figure<span>NG</span>
 </a>
 
 <p>
-Free calculators and practical online tools for
-everyday needs.
+Free calculators and practical online tools for everyday needs.
 </p>
 
 </div>
@@ -1580,33 +1542,13 @@ everyday needs.
 
 <div class="footer-links">
 
-<a href="/">
-Salary Calculator
-</a>
-
-<a href="/loan-calculator.html">
-Loan Calculator
-</a>
-
-<a href="/about.html">
-About
-</a>
-
-<a href="/contact.html">
-Contact
-</a>
-
-<a href="/privacy.html">
-Privacy Policy
-</a>
-
-<a href="/terms.html">
-Terms
-</a>
-
-<a href="/disclaimer.html">
-Disclaimer
-</a>
+<a href="/">Salary Calculator</a>
+<a href="/loan-calculator.html">Loan Calculator</a>
+<a href="/about.html">About</a>
+<a href="/contact.html">Contact</a>
+<a href="/privacy.html">Privacy Policy</a>
+<a href="/terms.html">Terms</a>
+<a href="/disclaimer.html">Disclaimer</a>
 
 </div>
 
@@ -1614,9 +1556,7 @@ Disclaimer
 
 
 <div class="copyright">
-
 © 2026 FigureNG. All rights reserved.
-
 </div>
 
 </div>
@@ -1642,7 +1582,7 @@ maximumFractionDigits:0
 }
 
 
-/* Method buttons */
+/* METHOD SELECTION */
 
 document.querySelectorAll(
 'input[name="method"]'
@@ -1681,16 +1621,7 @@ document.getElementById(
 });
 
 
-/*
-Convert the entered rate to
-an effective monthly rate.
-
-Annual rate:
-annual / 12
-
-Monthly rate:
-entered rate
-*/
+/* MONTHLY RATE */
 
 function getMonthlyRate(rate,period){
 
@@ -1705,9 +1636,7 @@ return rate/100/12;
 }
 
 
-/*
-Reducing balance calculation.
-*/
+/* REDUCING BALANCE */
 
 function calculateReducing(
 principal,
@@ -1716,7 +1645,6 @@ months
 ){
 
 let payment;
-
 
 if(monthlyRate===0){
 
@@ -1738,13 +1666,11 @@ factor/
 
 }
 
-
 let balance=principal;
 
 let totalInterest=0;
 
 const schedule=[];
-
 
 for(
 let month=1;
@@ -1758,37 +1684,32 @@ balance*monthlyRate;
 let principalPart=
 payment-interest;
 
+let paymentPart=
+payment;
 
-/*
-Prevent tiny rounding errors
-on the final payment.
-*/
 
 if(month===months){
 
 principalPart=balance;
 
-payment=principalPart+interest;
+paymentPart=
+principalPart+interest;
 
 }
-
 
 balance-=principalPart;
 
 if(balance<0.01){
-
 balance=0;
-
 }
 
 totalInterest+=interest;
-
 
 schedule.push({
 
 month:month,
 
-payment:payment,
+payment:paymentPart,
 
 principal:principalPart,
 
@@ -1800,8 +1721,7 @@ balance:balance
 
 }
 
-
-return {
+return{
 
 payment:payment,
 
@@ -1817,15 +1737,7 @@ schedule:schedule
 }
 
 
-/*
-Flat rate calculation.
-
-The entered rate is applied
-to the original principal.
-
-The rate is interpreted according
-to the selected rate period.
-*/
+/* FLAT RATE */
 
 function calculateFlat(
 principal,
@@ -1835,7 +1747,6 @@ months
 ){
 
 let totalInterest;
-
 
 if(period==="monthly"){
 
@@ -1853,14 +1764,11 @@ principal*
 
 }
 
-
 const totalRepayment=
 principal+totalInterest;
 
-
 const payment=
 totalRepayment/months;
-
 
 const principalPerMonth=
 principal/months;
@@ -1868,11 +1776,9 @@ principal/months;
 const interestPerMonth=
 totalInterest/months;
 
-
 const schedule=[];
 
 let balance=principal;
-
 
 for(
 let month=1;
@@ -1898,15 +1804,11 @@ principalPart+interestPart;
 
 }
 
-
 balance-=principalPart;
 
 if(balance<0.01){
-
 balance=0;
-
 }
-
 
 schedule.push({
 
@@ -1924,8 +1826,7 @@ balance:balance
 
 }
 
-
-return {
+return{
 
 payment:payment,
 
@@ -1940,9 +1841,7 @@ schedule:schedule
 }
 
 
-/*
-Display repayment schedule.
-*/
+/* SCHEDULE */
 
 function displaySchedule(schedule){
 
@@ -1953,12 +1852,10 @@ document.getElementById(
 
 body.innerHTML="";
 
-
 schedule.forEach(function(row){
 
 const tr=
 document.createElement("tr");
-
 
 tr.innerHTML=
 
@@ -1972,7 +1869,6 @@ tr.innerHTML=
 
 "<td>"+money(row.balance)+"</td>";
 
-
 body.appendChild(tr);
 
 });
@@ -1980,9 +1876,7 @@ body.appendChild(tr);
 }
 
 
-/*
-Main calculator.
-*/
+/* MAIN CALCULATOR */
 
 function calculateLoan(){
 
@@ -2003,8 +1897,7 @@ document.getElementById(
 const period=
 document.getElementById(
 "ratePeriod"
-).value
-;
+).value;
 
 const months=
 Number(
@@ -2016,9 +1909,7 @@ document.getElementById(
 const method=
 document.querySelector(
 'input[name="method"]:checked'
-).value
-;
-
+).value;
 
 const error=
 document.getElementById(
@@ -2047,7 +1938,6 @@ return;
 
 }
 
-
 error.style.display="none";
 
 
@@ -2057,11 +1947,6 @@ rate,
 period
 );
 
-
-/*
-Calculate both methods so
-the comparison is always visible.
-*/
 
 const reducing=
 calculateReducing(
@@ -2080,19 +1965,11 @@ months
 );
 
 
-/*
-Choose primary method.
-*/
-
 const selected=
 method==="reducing"
 ?reducing
 :flat;
 
-
-/*
-Rate display.
-*/
 
 const rateDisplay=
 rate.toLocaleString(
@@ -2102,14 +1979,12 @@ maximumFractionDigits:2
 }
 )
 +
-(period==="monthly"
+(
+period==="monthly"
 ?"% per month"
-:"% per year");
+:"% per year"
+);
 
-
-/*
-Main results.
-*/
 
 document.getElementById(
 "monthlyPayment"
@@ -2141,9 +2016,11 @@ document.getElementById(
 "displayTerm"
 ).textContent=
 months+
-(months===1
+(
+months===1
 ?" month"
-:" months");
+:" months"
+);
 
 
 document.getElementById(
@@ -2157,10 +2034,6 @@ document.getElementById(
 ).textContent=
 money(selected.totalRepayment);
 
-
-/*
-Comparison table.
-*/
 
 document.getElementById(
 "compareReducingPayment"
@@ -2197,10 +2070,6 @@ document.getElementById(
 ).textContent=
 money(flat.totalRepayment);
 
-
-/*
-Comparison message.
-*/
 
 const difference=
 flat.totalInterest-
@@ -2247,10 +2116,6 @@ comparisonMessage.innerHTML=
 }
 
 
-/*
-Schedule for selected method.
-*/
-
 displaySchedule(
 selected.schedule
 );
@@ -2259,20 +2124,24 @@ selected.schedule
 results.classList.add("show");
 
 
+/*
+Important mobile fix:
+scroll only to the calculator results.
+*/
+
+setTimeout(function(){
+
 results.scrollIntoView({
-
 behavior:"smooth",
-
 block:"nearest"
-
 });
+
+},50);
 
 }
 
 
-/*
-Enter key support.
-*/
+/* ENTER KEY */
 
 document.querySelectorAll(
 "input"
@@ -2295,8 +2164,6 @@ calculateLoan();
 
 </script>
 
-
-<!-- FAQ structured data -->
 
 <script type="application/ld+json">
 
