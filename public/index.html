@@ -1,14 +1,20 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>FigureNG | Free Nigerian Calculators & Tools</title>
+  <title>Nigeria Salary Calculator 2026 | Calculate Your Take-Home Pay | FigureNG</title>
 
   <meta
     name="description"
-    content="Free Nigerian calculators and practical tools for salary, money, education, energy, business and everyday decisions."
+    content="Use the free Nigeria Salary Calculator 2026 to estimate PAYE tax, pension, NHF, rent relief and monthly take-home pay from your gross salary."
+  >
+
+  <meta
+    name="keywords"
+    content="Nigeria salary calculator 2026, Nigerian salary calculator, PAYE calculator Nigeria, take home pay calculator Nigeria, Nigerian tax calculator"
   >
 
   <meta name="robots" content="index, follow">
@@ -30,14 +36,16 @@
 
     :root {
       --navy: #0f172a;
+      --navy-2: #1e293b;
       --green: #16a34a;
       --green-dark: #15803d;
-      --green-light: #dcfce7;
-      --background: #f8fafc;
+      --green-light: #f0fdf4;
       --white: #ffffff;
+      --background: #f8fafc;
       --text: #1e293b;
       --muted: #64748b;
       --border: #e2e8f0;
+      --danger: #dc2626;
     }
 
     html {
@@ -56,17 +64,24 @@
       text-decoration: none;
     }
 
+    button,
+    input {
+      font: inherit;
+    }
+
     .container {
-      width: min(1120px, 92%);
+      width: min(1100px, 92%);
       margin: 0 auto;
     }
+
+    /* HEADER */
 
     header {
       background: var(--white);
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 100;
     }
 
     .nav {
@@ -78,115 +93,264 @@
     }
 
     .logo {
-      font-size: 24px;
-      font-weight: 800;
+      font-size: 25px;
+      font-weight: 900;
       color: var(--navy);
+      letter-spacing: -0.5px;
     }
 
     .logo span {
       color: var(--green);
     }
 
-    nav {
+    .nav-links {
       display: flex;
       align-items: center;
       gap: 20px;
-    }
-
-    nav a {
-      color: var(--muted);
       font-size: 14px;
       font-weight: 700;
     }
 
-    nav a:hover {
+    .nav-links a {
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
       color: var(--green);
     }
 
+    /* HERO */
+
     .hero {
       background: var(--navy);
-      color: var(--white);
-      padding: 70px 0;
+      color: white;
+      padding: 58px 0 70px;
     }
 
-    .hero-content {
-      max-width: 780px;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
     }
 
     .badge {
       display: inline-block;
-      padding: 7px 12px;
-      margin-bottom: 20px;
-      border-radius: 999px;
-      background: rgba(22, 163, 74, 0.18);
+      background: rgba(22, 163, 74, 0.16);
       color: #86efac;
-      font-size: 13px;
-      font-weight: 700;
+      border: 1px solid rgba(134, 239, 172, 0.25);
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 16px;
     }
 
     .hero h1 {
-      font-size: clamp(42px, 9vw, 70px);
-      line-height: 1;
-      letter-spacing: -2.5px;
-      margin-bottom: 22px;
+      font-size: clamp(36px, 7vw, 58px);
+      line-height: 1.04;
+      letter-spacing: -1.5px;
+      margin-bottom: 18px;
     }
 
     .hero h1 span {
       color: #4ade80;
     }
 
-    .hero p {
-      max-width: 680px;
+    .hero-text {
       color: #cbd5e1;
-      font-size: 18px;
-      margin-bottom: 30px;
+      font-size: 17px;
+      max-width: 650px;
+      margin-bottom: 25px;
     }
 
-    .hero-buttons {
+    .hero-points {
+      display: grid;
+      gap: 10px;
+      color: #e2e8f0;
+      font-size: 14px;
+    }
+
+    .hero-point {
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+      gap: 9px;
+      align-items: flex-start;
     }
 
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
+    .check {
+      color: #4ade80;
+      font-weight: 900;
+    }
+
+    /* CALCULATOR */
+
+    .calculator-card {
+      background: white;
+      color: var(--text);
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.22);
+    }
+
+    .calculator-card h2 {
+      font-size: 23px;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .calculator-card-intro {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+
+    .field {
+      margin-bottom: 17px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 7px;
+      color: var(--navy);
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    .currency {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: 800;
+      color: var(--muted);
+      pointer-events: none;
+    }
+
+    .field input {
+      width: 100%;
+      height: 48px;
+      border: 1px solid var(--border);
       border-radius: 10px;
-      font-size: 15px;
-      font-weight: 700;
+      padding: 0 13px 0 34px;
+      outline: none;
+      color: var(--navy);
+      background: white;
     }
 
-    .button-primary {
+    .field input:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.12);
+    }
+
+    .calculate-btn {
+      width: 100%;
+      min-height: 50px;
+      border: none;
+      border-radius: 10px;
       background: var(--green);
       color: white;
+      font-size: 15px;
+      font-weight: 900;
+      cursor: pointer;
     }
 
-    .button-primary:hover {
+    .calculate-btn:hover {
       background: var(--green-dark);
     }
 
-    .button-secondary {
-      border: 1px solid #475569;
-      color: white;
+    .error {
+      color: var(--danger);
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 10px;
+      display: none;
+    }
+
+    /* RESULTS */
+
+    .results {
+      display: none;
+      margin-top: 22px;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+
+    .results.show {
+      display: block;
+    }
+
+    .result-main {
+      background: var(--green-light);
+      border: 1px solid #bbf7d0;
+      border-radius: 13px;
+      padding: 18px;
+      margin-bottom: 15px;
+    }
+
+    .result-main small {
+      display: block;
+      color: #166534;
+      font-weight: 800;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .result-main strong {
+      display: block;
+      color: var(--green-dark);
+      font-size: 30px;
+      line-height: 1.2;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+    }
+
+    .result-item {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 11px;
+    }
+
+    .result-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      margin-bottom: 3px;
+    }
+
+    .result-item strong {
+      display: block;
+      color: var(--navy);
+      font-size: 14px;
+    }
+
+    /* CONTENT */
+
+    main {
+      padding: 55px 0 75px;
     }
 
     .section {
-      padding: 60px 0;
+      margin-bottom: 48px;
     }
 
     .section-heading {
-      max-width: 720px;
-      margin: 0 auto 35px;
-      text-align: center;
+      max-width: 760px;
+      margin-bottom: 22px;
     }
 
     .section-heading h2 {
       color: var(--navy);
-      font-size: 32px;
-      line-height: 1.2;
+      font-size: clamp(27px, 5vw, 36px);
+      line-height: 1.15;
       margin-bottom: 10px;
     }
 
@@ -194,328 +358,266 @@
       color: var(--muted);
     }
 
-    .featured {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
-    .featured-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 28px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 25px;
-    }
-
-    .featured-label {
-      display: inline-block;
-      color: var(--green);
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.7px;
-      margin-bottom: 8px;
-    }
-
-    .featured-card h3 {
-      color: var(--navy);
-      font-size: 25px;
-      margin-bottom: 8px;
-    }
-
-    .featured-card p {
-      color: var(--muted);
-      max-width: 650px;
-      font-size: 14px;
-    }
-
-    .tool-button {
-      flex-shrink: 0;
-      background: var(--green);
-      color: white;
-      padding: 13px 18px;
-      border-radius: 9px;
-      font-size: 14px;
-      font-weight: 800;
-    }
-
-    .tool-button:hover {
-      background: var(--green-dark);
-    }
-
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .category {
-      padding: 25px;
-      background: var(--white);
+    .info-card {
+      background: white;
       border: 1px solid var(--border);
       border-radius: 16px;
+      padding: 25px;
     }
 
-    .category-icon {
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 17px;
-      border-radius: 12px;
-      background: var(--green-light);
-      font-size: 25px;
-    }
-
-    .category h3 {
+    .info-card h3 {
       color: var(--navy);
       font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .info-card p {
+      color: var(--muted);
+      margin-bottom: 13px;
+    }
+
+    .info-card ul {
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .info-card li {
+      margin-bottom: 8px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .step {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 22px;
+    }
+
+    .step-number {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--green-light);
+      color: var(--green-dark);
+      font-weight: 900;
+      margin-bottom: 13px;
+    }
+
+    .step h3 {
+      color: var(--navy);
+      font-size: 18px;
       margin-bottom: 7px;
     }
 
-    .category p {
+    .step p {
       color: var(--muted);
       font-size: 14px;
-      margin-bottom: 15px;
     }
 
-    .category-link {
-      color: var(--green);
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .tools {
+    .assumptions {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
-
-    .tool {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      padding: 20px;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-    }
-
-    .tool h3 {
-      color: var(--navy);
-      font-size: 17px;
-      margin-bottom: 4px;
-    }
-
-    .tool p {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .tool-status {
-      flex-shrink: 0;
-      padding: 6px 10px;
-      background: #f1f5f9;
-      color: var(--muted);
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    .tool-status.live {
-      background: var(--green-light);
-      color: #166534;
-    }
-
-    .about {
-      background: var(--white);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 45px;
-      align-items: center;
-    }
-
-    .about h2 {
-      color: var(--navy);
-      font-size: 32px;
-      margin-bottom: 15px;
-    }
-
-    .about p {
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-
-    .feature-list {
-      display: grid;
-      gap: 16px;
-    }
-
-    .feature {
-      display: flex;
       gap: 12px;
-      align-items: flex-start;
     }
 
-    .feature-icon {
-      color: var(--green);
-      font-size: 20px;
-      font-weight: 900;
+    .assumption {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 17px;
     }
 
-    .feature strong {
+    .assumption strong {
       display: block;
       color: var(--navy);
-      margin-bottom: 2px;
+      margin-bottom: 5px;
     }
 
-    .feature span {
+    .assumption p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .notice {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 14px;
+      padding: 20px;
+      color: #78350f;
+    }
+
+    .notice strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    /* FUTURE TOOLS */
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .tool-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 22px;
+    }
+
+    .tool-card .icon {
+      font-size: 27px;
+      margin-bottom: 10px;
+    }
+
+    .tool-card h3 {
+      color: var(--navy);
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .tool-card p {
       color: var(--muted);
       font-size: 14px;
     }
 
-    .cta {
-      padding: 60px 0;
-      background: var(--green);
-      color: white;
-      text-align: center;
+    .coming {
+      display: inline-block;
+      margin-top: 12px;
+      background: #f1f5f9;
+      color: var(--muted);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
     }
 
-    .cta h2 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-
-    .cta p {
-      max-width: 620px;
-      margin: 0 auto;
-      color: #dcfce7;
-    }
+    /* FOOTER */
 
     footer {
-      padding: 40px 0;
       background: var(--navy);
       color: #cbd5e1;
+      padding: 38px 0;
     }
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
       gap: 30px;
+      margin-bottom: 25px;
     }
 
-    .footer-logo {
+    .footer-brand {
+      max-width: 430px;
+    }
+
+    .footer-brand .logo {
       color: white;
-      font-size: 22px;
-      font-weight: 800;
+      display: inline-block;
       margin-bottom: 10px;
     }
 
-    .footer-logo span {
-      color: #4ade80;
-    }
-
-    footer p {
-      max-width: 450px;
+    .footer-brand p {
       font-size: 13px;
-    }
-
-    footer h4 {
-      color: white;
-      margin-bottom: 10px;
+      color: #94a3b8;
     }
 
     .footer-links {
-      display: grid;
-      gap: 7px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      align-content: flex-start;
+      justify-content: flex-end;
       font-size: 13px;
     }
 
+    .footer-links a:hover {
+      color: white;
+    }
+
     .copyright {
-      margin-top: 30px;
-      padding-top: 20px;
       border-top: 1px solid #334155;
+      padding-top: 20px;
       color: #94a3b8;
       font-size: 12px;
     }
 
-    @media (max-width: 800px) {
+    /* MOBILE */
 
-      .categories {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    @media (max-width: 850px) {
 
-      .about-grid {
+      .hero-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
       }
 
-      .footer-grid {
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .tools-grid {
         grid-template-columns: 1fr 1fr;
       }
 
-      .featured-card {
-        align-items: flex-start;
+      .footer-top {
         flex-direction: column;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
       }
 
     }
 
-    @media (max-width: 560px) {
+    @media (max-width: 600px) {
 
       .nav {
         min-height: 62px;
       }
 
-      nav {
-        gap: 12px;
+      .nav-links {
+        gap: 10px;
+        font-size: 12px;
       }
 
-      nav a:nth-child(2) {
+      .nav-links a:nth-child(n+3) {
         display: none;
       }
 
       .hero {
-        padding: 55px 0 60px;
+        padding: 42px 0 50px;
       }
 
       .hero h1 {
-        font-size: 45px;
+        font-size: 39px;
       }
 
-      .hero p {
-        font-size: 16px;
+      .hero-text {
+        font-size: 15px;
       }
 
-      .section {
-        padding: 45px 0;
+      .calculator-card {
+        padding: 20px;
       }
 
-      .section-heading h2,
-      .about h2,
-      .cta h2 {
-        font-size: 27px;
+      main {
+        padding: 42px 0 60px;
       }
 
-      .categories,
-      .tools,
-      .footer-grid {
+      .tools-grid {
         grid-template-columns: 1fr;
       }
 
-      .tool {
-        align-items: flex-start;
+      .result-grid {
+        grid-template-columns: 1fr 1fr;
       }
 
     }
@@ -523,7 +625,9 @@
   </style>
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -533,10 +637,24 @@
       Figure<span>NG</span>
     </a>
 
-    <nav>
-      <a href="#tools">Tools</a>
-      <a href="#categories">Categories</a>
-      <a href="#about">About</a>
+    <nav class="nav-links">
+
+      <a href="#calculator">
+        Calculator
+      </a>
+
+      <a href="#how-it-works">
+        How It Works
+      </a>
+
+      <a href="/about.html">
+        About
+      </a>
+
+      <a href="/contact.html">
+        Contact
+      </a>
+
     </nav>
 
   </div>
@@ -544,100 +662,247 @@
 </header>
 
 
-<main>
+<section class="hero" id="calculator">
+
+  <div class="container hero-grid">
 
 
-<section class="hero">
+    <div>
 
-  <div class="container">
-
-    <div class="hero-content">
-
-      <div class="badge">
-        🇳🇬 Built for everyday Nigeria
-      </div>
+      <span class="badge">
+        NIGERIA SALARY CALCULATOR 2026
+      </span>
 
       <h1>
-        Calculate.<br>
-        Check.<br>
-        <span>Plan.</span>
+        Know your <span>real take-home pay.</span>
       </h1>
 
-      <p>
-        FigureNG provides simple, useful and free digital tools
-        designed around everyday Nigerian needs.
+      <p class="hero-text">
+        Estimate your monthly salary after PAYE tax,
+        pension, NHF and applicable rent relief.
+        Simple, fast and free.
       </p>
 
-      <div class="hero-buttons">
+      <div class="hero-points">
 
-        <a
-          href="/salary-calculator.html"
-          class="button button-primary"
-        >
-          Calculate Your Salary
-        </a>
+        <div class="hero-point">
+          <span class="check">✓</span>
+          <span>Designed for Nigerian salary calculations</span>
+        </div>
 
-        <a
-          href="#tools"
-          class="button button-secondary"
-        >
-          Explore Tools
-        </a>
+        <div class="hero-point">
+          <span class="check">✓</span>
+          <span>Works directly in your browser</span>
+        </div>
+
+        <div class="hero-point">
+          <span class="check">✓</span>
+          <span>No account or payment required</span>
+        </div>
 
       </div>
 
     </div>
 
-  </div>
 
-</section>
-
-
-<section class="section">
-
-  <div class="container">
-
-    <div class="section-heading">
+    <div class="calculator-card">
 
       <h2>
-        Featured calculator
+        Calculate your salary
       </h2>
 
-      <p>
-        Start with our first live tool.
+      <p class="calculator-card-intro">
+        Enter your annual gross salary to estimate your
+        take-home pay.
       </p>
 
-    </div>
 
+      <div class="field">
 
-    <div class="featured">
+        <label for="salary">
+          Annual Gross Salary
+        </label>
 
-      <div class="featured-card">
+        <div class="input-wrap">
 
-        <div>
-
-          <span class="featured-label">
-            Live now
+          <span class="currency">
+            ₦
           </span>
 
-          <h3>
-            🇳🇬 Nigeria Salary Calculator 2026
-          </h3>
-
-          <p>
-            Estimate your gross salary, PAYE tax, rent relief,
-            deductions and monthly take-home pay using the
-            current 2026 Nigerian tax framework.
-          </p>
+          <input
+            type="number"
+            id="salary"
+            min="0"
+            step="1000"
+            placeholder="e.g. 3,600,000"
+            inputmode="numeric"
+          >
 
         </div>
 
-        <a
-          href="/salary-calculator.html"
-          class="tool-button"
-        >
-          Use Calculator →
-        </a>
+      </div>
+
+
+      <div class="field">
+
+        <label for="rent">
+          Annual Rent Paid
+        </label>
+
+        <div class="input-wrap">
+
+          <span class="currency">
+            ₦
+          </span>
+
+          <input
+            type="number"
+            id="rent"
+            min="0"
+            step="1000"
+            placeholder="e.g. 240,000"
+            inputmode="numeric"
+          >
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="calculate-btn"
+        onclick="calculateSalary()"
+      >
+        Calculate My Take-Home Pay
+      </button>
+
+
+      <div class="error" id="error">
+        Please enter a valid gross salary.
+      </div>
+
+
+      <div class="results" id="results">
+
+        <div class="result-main">
+
+          <small>
+            Estimated monthly take-home pay
+          </small>
+
+          <strong id="monthlyTakeHome">
+            ₦0
+          </strong>
+
+        </div>
+
+
+        <div class="result-grid">
+
+          <div class="result-item">
+
+            <span>
+              Monthly gross income
+            </span>
+
+            <strong id="monthlyGross">
+              ₦0
+            </strong>
+
+          </div>
+
+
+          <div class="result-item">
+
+            <span>
+              Annual gross income
+            </span>
+
+            <strong id="annualGross">
+              ₦0
+            </strong>
+
+          </div>
+
+
+          <div class="result-item">
+
+            <span>
+              Annual PAYE tax
+            </span>
+
+            <strong id="annualTax">
+              ₦0
+            </strong>
+
+          </div>
+
+
+          <div class="result-item">
+
+            <span>
+              Monthly PAYE tax
+            </span>
+
+            <strong id="monthlyTax">
+              ₦0
+            </strong>
+
+          </div>
+
+
+          <div class="result-item">
+
+            <span>
+              Monthly pension
+            </span>
+
+            <strong id="monthlyPension">
+              ₦0
+            </strong>
+
+          </div>
+
+
+          <div class="result-item">
+
+            <span>
+              Monthly NHF
+            </span>
+
+            <strong id="monthlyNhf">
+              ₦0
+            </strong>
+
+          </div>
+
+
+          <div class="result-item">
+
+            <span>
+              Annual rent relief used
+            </span>
+
+            <strong id="rentRelief">
+              ₦0
+            </strong>
+
+          </div>
+
+
+          <div class="result-item">
+
+            <span>
+              Annual take-home
+            </span>
+
+            <strong id="annualTakeHome">
+              ₦0
+            </strong>
+
+          </div>
+
+        </div>
 
       </div>
 
@@ -648,490 +913,362 @@
 </section>
 
 
-<section class="section" id="categories">
+<main>
 
   <div class="container">
 
-    <div class="section-heading">
 
-      <h2>
-        Tools for real-life problems
-      </h2>
+    <section class="section">
 
-      <p>
-        Find practical tools for money, education, energy,
-        business and everyday decisions.
-      </p>
-
-    </div>
-
-
-    <div class="categories">
-
-
-      <div class="category">
-
-        <div class="category-icon">💰</div>
-
-        <h3>Money</h3>
-
-        <p>
-          Salary, tax, budget, savings, profit and other
-          money tools.
-        </p>
-
-        <a href="#tools" class="category-link">
-          Explore Money →
-        </a>
-
-      </div>
-
-
-      <div class="category">
-
-        <div class="category-icon">🎓</div>
-
-        <h3>Education</h3>
-
-        <p>
-          JAMB, CGPA, GPA, WAEC and other student tools.
-        </p>
-
-        <a href="#tools" class="category-link">
-          Explore Education →
-        </a>
-
-      </div>
-
-
-      <div class="category">
-
-        <div class="category-icon">⚡</div>
-
-        <h3>Energy</h3>
-
-        <p>
-          Electricity, fuel, generator, solar and battery tools.
-        </p>
-
-        <a href="#tools" class="category-link">
-          Explore Energy →
-        </a>
-
-      </div>
-
-
-      <div class="category">
-
-        <div class="category-icon">🏪</div>
-
-        <h3>Business</h3>
-
-        <p>
-          Profit, markup, ROI, break-even and business calculators.
-        </p>
-
-        <a href="#tools" class="category-link">
-          Explore Business →
-        </a>
-
-      </div>
-
-
-      <div class="category">
-
-        <div class="category-icon">🇳🇬</div>
-
-        <h3>Everyday</h3>
-
-        <p>
-          Fuel, NYSC, dates, age and other everyday tools.
-        </p>
-
-        <a href="#tools" class="category-link">
-          Explore Everyday →
-        </a>
-
-      </div>
-
-
-      <div class="category">
-
-        <div class="category-icon">🧱</div>
-
-        <h3>Construction</h3>
-
-        <p>
-          Useful calculators for building and renovation projects.
-        </p>
-
-        <a href="#tools" class="category-link">
-          Coming Soon →
-        </a>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="section" id="tools">
-
-  <div class="container">
-
-    <div class="section-heading">
-
-      <h2>
-        FigureNG tools
-      </h2>
-
-      <p>
-        We're building practical tools that solve specific
-        Nigerian problems.
-      </p>
-
-    </div>
-
-
-    <div class="tools">
-
-
-      <div class="tool">
-
-        <div>
-
-          <h3>
-            🇳🇬 Nigeria Salary Calculator
-          </h3>
-
-          <p>
-            Estimate your 2026 take-home salary.
-          </p>
-
-        </div>
-
-        <a
-          href="/salary-calculator.html"
-          class="tool-status live"
-        >
-          Use Now
-        </a>
-
-      </div>
-
-
-      <div class="tool">
-
-        <div>
-
-          <h3>
-            ⚡ Electricity Bill Calculator
-          </h3>
-
-          <p>
-            Estimate appliance electricity costs.
-          </p>
-
-        </div>
-
-        <span class="tool-status">
-          Coming Soon
-        </span>
-
-      </div>
-
-
-      <div class="tool">
-
-        <div>
-
-          <h3>
-            🎓 JAMB Aggregate Calculator
-          </h3>
-
-          <p>
-            Calculate your admission aggregate.
-          </p>
-
-        </div>
-
-        <span class="tool-status">
-          Coming Soon
-        </span>
-
-      </div>
-
-
-      <div class="tool">
-
-        <div>
-
-          <h3>
-            🎓 CGPA Calculator
-          </h3>
-
-          <p>
-            Calculate GPA and cumulative CGPA.
-          </p>
-
-        </div>
-
-        <span class="tool-status">
-          Coming Soon
-        </span>
-
-      </div>
-
-
-      <div class="tool">
-
-        <div>
-
-          <h3>
-            ⛽ Fuel Cost Calculator
-          </h3>
-
-          <p>
-            Estimate the cost of a trip.
-          </p>
-
-        </div>
-
-        <span class="tool-status">
-          Coming Soon
-        </span>
-
-      </div>
-
-
-      <div class="tool">
-
-        <div>
-
-          <h3>
-            💵 Profit Margin Calculator
-          </h3>
-
-          <p>
-            Calculate profit and profit margin.
-          </p>
-
-        </div>
-
-        <span class="tool-status">
-          Coming Soon
-        </span>
-
-      </div>
-
-
-      <div class="tool">
-
-        <div>
-
-          <h3>
-            🏪 Markup Calculator
-          </h3>
-
-          <p>
-            Calculate selling price and markup.
-          </p>
-
-        </div>
-
-        <span class="tool-status">
-          Coming Soon
-        </span>
-
-      </div>
-
-
-      <div class="tool">
-
-        <div>
-
-          <h3>
-            🇳🇬 NYSC Allowance Calculator
-          </h3>
-
-          <p>
-            Estimate NYSC income and expenses.
-          </p>
-
-        </div>
-
-        <span class="tool-status">
-          Coming Soon
-        </span>
-
-      </div>
-
-
-      <div class="tool">
-
-        <div>
-
-          <h3>
-            📊 Monthly Budget Calculator
-          </h3>
-
-          <p>
-            Plan income, expenses and savings.
-          </p>
-
-        </div>
-
-        <span class="tool-status">
-          Coming Soon
-        </span>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="section about" id="about">
-
-  <div class="container">
-
-    <div class="about-grid">
-
-
-      <div>
+      <div class="section-heading">
 
         <h2>
-          Why FigureNG?
+          What is the Nigeria Salary Calculator?
         </h2>
 
         <p>
-          Everyday questions often need simple answers.
-          FigureNG is being built to make those answers easier
-          to find and understand.
+          FigureNG's salary calculator helps Nigerian employees
+          estimate how much of their gross salary they may receive
+          after applicable deductions.
+        </p>
+
+      </div>
+
+
+      <div class="info-card">
+
+        <p>
+          Your gross salary is not always the same as the amount
+          that reaches your bank account. Depending on your
+          circumstances, deductions may include PAYE tax,
+          pension contributions and other applicable items.
         </p>
 
         <p>
-          Our tools are designed with Nigerian users in mind,
-          using familiar currencies, systems and real-life
-          situations.
+          This calculator provides an estimate using the
+          assumptions built into the tool. It is intended as a
+          convenient planning tool rather than a replacement for
+          an official tax calculation.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <section class="section" id="how-it-works">
+
+      <div class="section-heading">
+
+        <h2>
+          How it works
+        </h2>
+
+        <p>
+          Getting an estimate takes only a few seconds.
         </p>
 
       </div>
 
 
-      <div class="feature-list">
+      <div class="steps">
 
 
-        <div class="feature">
+        <div class="step">
 
-          <div class="feature-icon">✓</div>
-
-          <div>
-
-            <strong>
-              Free to use
-            </strong>
-
-            <span>
-              No payment required to use our core tools.
-            </span>
-
+          <div class="step-number">
+            1
           </div>
+
+          <h3>
+            Enter your salary
+          </h3>
+
+          <p>
+            Enter your annual gross salary before deductions.
+          </p>
 
         </div>
 
 
-        <div class="feature">
+        <div class="step">
 
-          <div class="feature-icon">✓</div>
-
-          <div>
-
-            <strong>
-              Built for mobile
-            </strong>
-
-            <span>
-              Designed to work comfortably on phones.
-            </span>
-
+          <div class="step-number">
+            2
           </div>
+
+          <h3>
+            Add your rent
+          </h3>
+
+          <p>
+            Enter the amount of rent you pay annually if
+            applicable.
+          </p>
 
         </div>
 
 
-        <div class="feature">
+        <div class="step">
 
-          <div class="feature-icon">✓</div>
-
-          <div>
-
-            <strong>
-              Nigerian-focused
-            </strong>
-
-            <span>
-              Tools designed around Nigerian needs.
-            </span>
-
+          <div class="step-number">
+            3
           </div>
 
-        </div>
+          <h3>
+            Get your estimate
+          </h3>
 
-
-        <div class="feature">
-
-          <div class="feature-icon">✓</div>
-
-          <div>
-
-            <strong>
-              Simple results
-            </strong>
-
-            <span>
-              Clear answers without unnecessary complexity.
-            </span>
-
-          </div>
+          <p>
+            The calculator estimates your PAYE and
+            take-home income.
+          </p>
 
         </div>
 
 
       </div>
 
-    </div>
+    </section>
+
+
+    <section class="section">
+
+      <div class="section-heading">
+
+        <h2>
+          What does the calculation include?
+        </h2>
+
+        <p>
+          The result is presented as a breakdown rather than
+          one unexplained number.
+        </p>
+
+      </div>
+
+
+      <div class="assumptions">
+
+
+        <div class="assumption">
+
+          <strong>
+            Gross income
+          </strong>
+
+          <p>
+            Your annual salary before the deductions included
+            by the calculator.
+          </p>
+
+        </div>
+
+
+        <div class="assumption">
+
+          <strong>
+            PAYE tax
+          </strong>
+
+          <p>
+            An estimated annual and monthly PAYE amount based
+            on the calculator's tax-band assumptions.
+          </p>
+
+        </div>
+
+
+        <div class="assumption">
+
+          <strong>
+            Pension
+          </strong>
+
+          <p>
+            The calculator displays the pension contribution
+            used by its current calculation rules.
+          </p>
+
+        </div>
+
+
+        <div class="assumption">
+
+          <strong>
+            NHF
+          </strong>
+
+          <p>
+            Where applicable, the calculator can account for
+            the NHF deduction used by its current rules.
+          </p>
+
+        </div>
+
+
+        <div class="assumption">
+
+          <strong>
+            Rent relief
+          </strong>
+
+          <p>
+            The calculator considers the annual rent entered
+            and applies the rent-relief assumption built into
+            the current calculation.
+          </p>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <div class="notice">
+
+        <strong>
+          Important information
+        </strong>
+
+        This calculator provides an estimate. Tax rules,
+        thresholds, pension requirements, rent-relief rules
+        and other regulations can change. Always verify
+        important financial or tax information with the
+        appropriate Nigerian authority or a qualified
+        professional.
+
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <div class="section-heading">
+
+        <h2>
+          More useful tools are coming
+        </h2>
+
+        <p>
+          FigureNG is being developed into a collection of
+          practical calculators and tools for everyday
+          Nigerian needs.
+        </p>
+
+      </div>
+
+
+      <div class="tools-grid">
+
+
+        <div class="tool-card">
+
+          <div class="icon">
+            🧮
+          </div>
+
+          <h3>
+            Tax Calculator
+          </h3>
+
+          <p>
+            Explore Nigerian tax calculations and estimates.
+          </p>
+
+          <span class="coming">
+            Coming soon
+          </span>
+
+        </div>
+
+
+        <div class="tool-card">
+
+          <div class="icon">
+            💰
+          </div>
+
+          <h3>
+            Loan Calculator
+          </h3>
+
+          <p>
+            Estimate monthly payments and total loan costs.
+          </p>
+
+          <span class="coming">
+            Coming soon
+          </span>
+
+        </div>
+
+
+        <div class="tool-card">
+
+          <div class="icon">
+            📊
+          </div>
+
+          <h3>
+            Savings Calculator
+          </h3>
+
+          <p>
+            See how regular savings could grow over time.
+          </p>
+
+          <span class="coming">
+            Coming soon
+          </span>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <div class="info-card">
+
+        <h3>
+          About FigureNG
+        </h3>
+
+        <p>
+          FigureNG creates free online calculators, tools and
+          practical resources designed to make everyday
+          calculations easier.
+        </p>
+
+        <p>
+          Our goal is to provide simple tools that work well
+          on mobile phones and are easy to understand.
+        </p>
+
+        <p>
+          <a
+            href="/about.html"
+            style="color:#16a34a;font-weight:800;"
+          >
+            Learn more about FigureNG →
+          </a>
+        </p>
+
+      </div>
+
+    </section>
+
 
   </div>
-
-</section>
-
-
-<section class="cta">
-
-  <div class="container">
-
-    <h2>
-      Need to figure something out?
-    </h2>
-
-    <p>
-      We're building practical tools to help you calculate,
-      check and plan everyday decisions.
-    </p>
-
-  </div>
-
-</section>
-
 
 </main>
 
@@ -1140,76 +1277,49 @@
 
   <div class="container">
 
-    <div class="footer-grid">
+
+    <div class="footer-top">
 
 
-      <div>
+      <div class="footer-brand">
 
-        <div class="footer-logo">
+        <a href="/" class="logo">
           Figure<span>NG</span>
-        </div>
+        </a>
 
         <p>
-          Free digital tools designed around everyday Nigerian needs.
+          Free calculators and practical online tools
+          designed with everyday Nigerian needs in mind.
         </p>
 
       </div>
 
 
-      <div>
+      <div class="footer-links">
 
-        <h4>
-          Explore
-        </h4>
+        <a href="/">
+          Home
+        </a>
 
-        <div class="footer-links">
+        <a href="/about.html">
+          About
+        </a>
 
-          <a href="/salary-calculator.html">
-            Salary Calculator
-          </a>
+        <a href="/contact.html">
+          Contact
+        </a>
 
-          <a href="#tools">
-            All Tools
-          </a>
+        <a href="/privacy.html">
+          Privacy Policy
+        </a>
 
-          <a href="#categories">
-            Categories
-          </a>
+        <a href="/terms.html">
+          Terms
+        </a>
 
-          <a href="#about">
-            About
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <div>
-
-        <h4>
-          Coming Soon
-        </h4>
-
-        <div class="footer-links">
-
-          <span>
-            Education
-          </span>
-
-          <span>
-            Energy
-          </span>
-
-          <span>
-            Business
-          </span>
-
-          <span>
-            Construction
-          </span>
-
-        </div>
+        <a href="/disclaimer.html">
+          Disclaimer
+        </a>
 
       </div>
 
@@ -1223,10 +1333,280 @@
 
     </div>
 
+
   </div>
 
 </footer>
 
 
+<script>
+
+  function formatNaira(number) {
+
+    return "₦" + Number(number).toLocaleString("en-NG", {
+      maximumFractionDigits: 0
+    });
+
+  }
+
+
+  function calculatePAYE(taxableIncome) {
+
+    let remaining = Math.max(0, taxableIncome);
+
+    let tax = 0;
+
+
+    const bands = [
+
+      {
+        amount: 800000,
+        rate: 0.15
+      },
+
+      {
+        amount: 2200000,
+        rate: 0.18
+      },
+
+      {
+        amount: 9000000,
+        rate: 0.21
+      },
+
+      {
+        amount: 13000000,
+        rate: 0.23
+      },
+
+      {
+        amount: Infinity,
+        rate: 0.25
+      }
+
+    ];
+
+
+    for (const band of bands) {
+
+      if (remaining <= 0) {
+        break;
+      }
+
+      const taxableAtBand =
+        Math.min(remaining, band.amount);
+
+      tax += taxableAtBand * band.rate;
+
+      remaining -= taxableAtBand;
+
+    }
+
+
+    return tax;
+
+  }
+
+
+  function calculateSalary() {
+
+    const salaryInput =
+      document.getElementById("salary");
+
+    const rentInput =
+      document.getElementById("rent");
+
+    const error =
+      document.getElementById("error");
+
+    const results =
+      document.getElementById("results");
+
+
+    const annualGross =
+      Number(salaryInput.value);
+
+    const annualRent =
+      Number(rentInput.value) || 0;
+
+
+    if (!annualGross || annualGross <= 0) {
+
+      error.style.display = "block";
+
+      results.classList.remove("show");
+
+      return;
+
+    }
+
+
+    error.style.display = "none";
+
+
+    /*
+      Current FigureNG salary calculation assumptions.
+
+      The calculator applies:
+
+      1. Rent relief based on the entered annual rent,
+         capped at ₦500,000.
+
+      2. A consolidated relief amount of ₦800,000.
+
+      3. PAYE tax bands.
+
+      4. Pension and NHF displayed as zero unless
+         future calculation rules are added.
+
+      These assumptions should be reviewed and updated
+      whenever the applicable Nigerian rules change.
+    */
+
+
+    const rentRelief =
+      Math.min(annualRent * 0.20, 500000);
+
+
+    const consolidatedRelief =
+      800000;
+
+
+    const taxableIncome =
+      Math.max(
+        0,
+        annualGross -
+        consolidatedRelief -
+        rentRelief
+      );
+
+
+    const annualTax =
+      calculatePAYE(taxableIncome);
+
+
+    const monthlyGross =
+      annualGross / 12;
+
+
+    const monthlyTax =
+      annualTax / 12;
+
+
+    const monthlyPension =
+      0;
+
+
+    const monthlyNhf =
+      0;
+
+
+    const annualDeductions =
+      annualTax +
+      (monthlyPension * 12) +
+      (monthlyNhf * 12);
+
+
+    const annualTakeHome =
+      Math.max(
+        0,
+        annualGross - annualDeductions
+      );
+
+
+    const monthlyTakeHome =
+      annualTakeHome / 12;
+
+
+    document.getElementById(
+      "monthlyTakeHome"
+    ).textContent =
+      formatNaira(monthlyTakeHome);
+
+
+    document.getElementById(
+      "monthlyGross"
+    ).textContent =
+      formatNaira(monthlyGross);
+
+
+    document.getElementById(
+      "annualGross"
+    ).textContent =
+      formatNaira(annualGross);
+
+
+    document.getElementById(
+      "annualTax"
+    ).textContent =
+      formatNaira(annualTax);
+
+
+    document.getElementById(
+      "monthlyTax"
+    ).textContent =
+      formatNaira(monthlyTax);
+
+
+    document.getElementById(
+      "monthlyPension"
+    ).textContent =
+      formatNaira(monthlyPension);
+
+
+    document.getElementById(
+      "monthlyNhf"
+    ).textContent =
+      formatNaira(monthlyNhf);
+
+
+    document.getElementById(
+      "rentRelief"
+    ).textContent =
+      formatNaira(rentRelief);
+
+
+    document.getElementById(
+      "annualTakeHome"
+    ).textContent =
+      formatNaira(annualTakeHome);
+
+
+    results.classList.add("show");
+
+
+    results.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest"
+    });
+
+  }
+
+
+  document
+    .getElementById("salary")
+    .addEventListener("keydown", function(event) {
+
+      if (event.key === "Enter") {
+        calculateSalary();
+      }
+
+    });
+
+
+  document
+    .getElementById("rent")
+    .addEventListener("keydown", function(event) {
+
+      if (event.key === "Enter") {
+        calculateSalary();
+      }
+
+    });
+
+</script>
+
+
 </body>
 </html>
+```
