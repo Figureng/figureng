@@ -1,0 +1,2034 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nigeria Fuel Cost Calculator 2026 | FigureNG</title>
+
+<meta name="description" content="Free Nigeria fuel cost calculator. Calculate petrol needed, trip fuel cost, cost per kilometre and monthly fuel expenses using your distance, vehicle fuel efficiency and current petrol price.">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://figureng.figureng247.workers.dev/fuel-cost-calculator.html">
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+html{
+overflow-x:hidden;
+}
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#f8fafc;
+color:#1e293b;
+line-height:1.65;
+overflow-x:hidden;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+.container{
+width:92%;
+max-width:1050px;
+margin:0 auto;
+}
+
+/* HEADER */
+
+header{
+background:#fff;
+border-bottom:1px solid #e2e8f0;
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.nav{
+min-height:64px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+}
+
+.logo{
+font-size:24px;
+font-weight:900;
+color:#0f172a;
+}
+
+.logo span{
+color:#16a34a;
+}
+
+.nav-links{
+display:flex;
+gap:18px;
+font-size:13px;
+font-weight:700;
+}
+
+.nav-links a{
+color:#64748b;
+}
+
+.nav-links a:hover{
+color:#16a34a;
+}
+
+/* HERO */
+
+.hero{
+background:#0f172a;
+color:#fff;
+padding:55px 0;
+}
+
+.hero-content{
+max-width:800px;
+}
+
+.badge{
+display:inline-block;
+padding:7px 11px;
+border-radius:30px;
+background:rgba(22,163,74,.15);
+border:1px solid rgba(134,239,172,.25);
+color:#86efac;
+font-size:11px;
+font-weight:800;
+margin-bottom:18px;
+}
+
+.hero h1{
+margin:0 0 18px;
+font-size:clamp(35px,6vw,52px);
+line-height:1.08;
+letter-spacing:-1px;
+}
+
+.hero h1 span{
+color:#4ade80;
+}
+
+.hero p{
+max-width:720px;
+margin:0;
+color:#cbd5e1;
+font-size:17px;
+}
+
+/* MAIN */
+
+main{
+padding:50px 0 70px;
+}
+
+.section{
+margin-bottom:48px;
+}
+
+.section h2{
+margin:0 0 14px;
+font-size:30px;
+line-height:1.2;
+color:#0f172a;
+}
+
+.section h3{
+margin:0 0 8px;
+color:#0f172a;
+}
+
+.section p{
+color:#475569;
+}
+
+.card{
+background:#fff;
+border:1px solid #e2e8f0;
+border-radius:16px;
+padding:25px;
+}
+
+.highlight{
+background:#f0fdf4;
+border:1px solid #bbf7d0;
+border-radius:14px;
+padding:20px;
+}
+
+.highlight strong{
+color:#15803d;
+}
+
+/* CALCULATOR */
+
+.calculator{
+background:#0f172a;
+border-radius:18px;
+padding:25px;
+color:#fff;
+}
+
+.calculator h2{
+color:#fff;
+margin-top:0;
+}
+
+.calculator-intro{
+color:#cbd5e1;
+font-size:14px;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+margin-top:20px;
+}
+
+.field label{
+display:block;
+font-size:12px;
+font-weight:800;
+color:#e2e8f0;
+margin-bottom:7px;
+}
+
+input,
+select{
+width:100%;
+height:48px;
+border:1px solid #cbd5e1;
+border-radius:9px;
+padding:0 13px;
+font-size:15px;
+background:#fff;
+color:#0f172a;
+outline:none;
+}
+
+input:focus,
+select:focus{
+border-color:#4ade80;
+}
+
+.helper{
+font-size:11px;
+color:#94a3b8;
+margin-top:5px;
+}
+
+.calculator button{
+width:100%;
+height:50px;
+margin-top:20px;
+border:0;
+border-radius:9px;
+background:#16a34a;
+color:#fff;
+font-size:15px;
+font-weight:900;
+cursor:pointer;
+}
+
+.calculator button:hover{
+background:#15803d;
+}
+
+/* RESULTS */
+
+.results{
+display:none;
+margin-top:22px;
+}
+
+.results.show{
+display:block;
+}
+
+.result-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.result{
+background:#fff;
+border-radius:10px;
+padding:15px;
+color:#0f172a;
+}
+
+.result span{
+display:block;
+font-size:10px;
+font-weight:700;
+color:#64748b;
+}
+
+.result strong{
+display:block;
+font-size:19px;
+margin-top:4px;
+overflow-wrap:anywhere;
+}
+
+.result.main{
+grid-column:1 / -1;
+background:#f0fdf4;
+}
+
+.result.main strong{
+font-size:30px;
+color:#15803d;
+}
+
+.result-note{
+margin-top:14px;
+padding:14px;
+background:#ecfdf5;
+border-radius:10px;
+color:#065f46;
+font-size:13px;
+}
+
+/* QUICK */
+
+.quick-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:10px;
+}
+
+.quick-card{
+background:#fff;
+border-radius:10px;
+padding:15px;
+color:#0f172a;
+}
+
+.quick-card span{
+display:block;
+font-size:10px;
+font-weight:700;
+color:#64748b;
+}
+
+.quick-card strong{
+display:block;
+font-size:19px;
+color:#15803d;
+margin-top:4px;
+}
+
+/* SAVED PRICE */
+
+.saved-price{
+margin-top:15px;
+padding:13px;
+background:#1e293b;
+border:1px solid #334155;
+border-radius:10px;
+font-size:12px;
+color:#cbd5e1;
+display:none;
+}
+
+.saved-price button{
+width:auto;
+height:auto;
+margin:8px 0 0;
+padding:7px 10px;
+font-size:11px;
+background:#334155;
+}
+
+/* INFO */
+
+.benefit-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+}
+
+.benefit{
+background:#fff;
+border:1px solid #e2e8f0;
+border-radius:14px;
+padding:20px;
+}
+
+.benefit strong{
+display:block;
+font-size:17px;
+margin-bottom:6px;
+color:#0f172a;
+}
+
+.benefit p{
+font-size:13px;
+margin:0;
+}
+
+/* TABLE */
+
+.table-wrap{
+overflow-x:auto;
+background:#fff;
+border:1px solid #e2e8f0;
+border-radius:14px;
+}
+
+table{
+width:100%;
+min-width:560px;
+border-collapse:collapse;
+}
+
+th,
+td{
+padding:14px;
+border-bottom:1px solid #e2e8f0;
+text-align:left;
+font-size:14px;
+}
+
+th{
+background:#f8fafc;
+font-weight:900;
+color:#0f172a;
+}
+
+td{
+color:#475569;
+}
+
+tr:last-child td{
+border-bottom:0;
+}
+
+/* FAQ */
+
+.faq{
+display:grid;
+gap:12px;
+}
+
+.faq-item{
+background:#fff;
+border:1px solid #e2e8f0;
+border-radius:12px;
+padding:18px;
+}
+
+.faq-item h3{
+font-size:16px;
+margin:0 0 7px;
+}
+
+.faq-item p{
+margin:0;
+font-size:14px;
+color:#64748b;
+}
+
+/* CTA */
+
+.cta{
+background:#f0fdf4;
+border:1px solid #bbf7d0;
+border-radius:16px;
+padding:25px;
+}
+
+.cta h2{
+margin-top:0;
+}
+
+.cta-button{
+display:inline-block;
+margin-top:10px;
+padding:12px 17px;
+background:#16a34a;
+color:#fff;
+border-radius:9px;
+font-weight:900;
+}
+
+.cta-button:hover{
+background:#15803d;
+}
+
+/* FOOTER */
+
+footer{
+background:#0f172a;
+color:#cbd5e1;
+padding:38px 0;
+}
+
+.footer-top{
+display:flex;
+justify-content:space-between;
+gap:30px;
+}
+
+.footer-brand{
+max-width:430px;
+}
+
+.footer-brand .logo{
+display:inline-block;
+margin-bottom:8px;
+color:#fff;
+}
+
+.footer-brand p{
+margin:0;
+font-size:13px;
+color:#94a3b8;
+}
+
+.footer-links{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+font-size:13px;
+}
+
+.copyright{
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #334155;
+font-size:12px;
+color:#94a3b8;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.container{
+width:94%;
+}
+
+.nav{
+min-height:60px;
+}
+
+.logo{
+font-size:22px;
+}
+
+.nav-links{
+gap:10px;
+font-size:11px;
+}
+
+.nav-links a:nth-child(n+3){
+display:none;
+}
+
+.hero{
+padding:40px 0;
+}
+
+.hero h1{
+font-size:38px;
+}
+
+.hero p{
+font-size:15px;
+}
+
+main{
+padding-top:38px;
+}
+
+.section h2{
+font-size:27px;
+}
+
+.form-grid{
+grid-template-columns:1fr;
+}
+
+.result-grid{
+grid-template-columns:1fr;
+}
+
+.result.main{
+grid-column:auto;
+}
+
+.quick-grid{
+grid-template-columns:1fr;
+}
+
+.benefit-grid{
+grid-template-columns:1fr;
+}
+
+.footer-top{
+flex-direction:column;
+}
+
+}
+
+@media(max-width:360px){
+
+.hero h1{
+font-size:33px;
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="container nav">
+
+<a href="/" class="logo">
+Figure<span>NG</span>
+</a>
+
+<nav class="nav-links">
+
+<a href="/">
+Salary
+</a>
+
+<a href="/loan-calculator.html">
+Loan
+</a>
+
+<a href="/electricity-bill-calculator.html">
+Electricity
+</a>
+
+<a href="/about.html">
+About
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<section class="hero">
+
+<div class="container hero-content">
+
+<span class="badge">
+NIGERIA FUEL CALCULATOR 2026
+</span>
+
+<h1>
+Nigeria <span>Fuel Cost Calculator</span>
+</h1>
+
+<p>
+Estimate how much petrol your vehicle needs and how much
+your trip will cost using your distance, vehicle efficiency
+and current petrol price.
+</p>
+
+</div>
+
+</section>
+
+
+<main>
+
+<div class="container">
+
+
+<section class="section">
+
+<div class="calculator">
+
+<h2>
+Calculate Your Fuel Cost
+</h2>
+
+<p class="calculator-intro">
+Enter your trip distance, vehicle fuel efficiency and the
+petrol price you are currently paying.
+</p>
+
+
+<div class="form-grid">
+
+
+<div class="field">
+
+<label for="distance">
+Distance
+</label>
+
+<input
+id="distance"
+type="number"
+inputmode="decimal"
+min="0"
+step="0.1"
+value="100"
+>
+
+<div class="helper">
+Enter distance in kilometres.
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label for="efficiency">
+Vehicle Fuel Efficiency
+</label>
+
+<input
+id="efficiency"
+type="number"
+inputmode="decimal"
+min="0.1"
+step="0.1"
+value="10"
+>
+
+<div class="helper">
+How many kilometres your vehicle travels per litre.
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label for="fuelPrice">
+Petrol Price per Litre
+</label>
+
+<input
+id="fuelPrice"
+type="number"
+inputmode="decimal"
+min="0"
+step="1"
+value="1200"
+>
+
+<div class="helper">
+Enter the price at your filling station.
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label for="tripType">
+Trip Type
+</label>
+
+<select id="tripType">
+
+<option value="oneway">
+One Way
+</option>
+
+<option value="return">
+Return Trip
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label for="tripsPerMonth">
+Trips Per Month
+</label>
+
+<input
+id="tripsPerMonth"
+type="number"
+inputmode="numeric"
+min="1"
+step="1"
+value="20"
+>
+
+<div class="helper">
+Used to estimate your monthly fuel cost.
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label for="passengers">
+Number of Passengers
+</label>
+
+<input
+id="passengers"
+type="number"
+inputmode="numeric"
+min="1"
+step="1"
+value="1"
+>
+
+<div class="helper">
+Used to estimate cost per passenger.
+</div>
+
+</div>
+
+
+</div>
+
+
+<button
+type="button"
+onclick="calculateFuel()"
+>
+Calculate Fuel Cost
+</button>
+
+
+<div
+class="saved-price"
+id="savedPrice"
+>
+Your last saved petrol price is being used.
+
+<br>
+
+<button
+type="button"
+onclick="clearSavedPrice()"
+>
+Clear Saved Price
+</button>
+
+</div>
+
+
+<div
+class="results"
+id="results"
+>
+
+<div class="result-grid">
+
+
+<div class="result main">
+
+<span>
+Estimated Trip Fuel Cost
+</span>
+
+<strong id="tripCost">
+₦0
+</strong>
+
+</div>
+
+
+<div class="result">
+
+<span>
+Fuel Required
+</span>
+
+<strong id="litres">
+0 L
+</strong>
+
+</div>
+
+
+<div class="result">
+
+<span>
+Fuel Cost per Kilometre
+</span>
+
+<strong id="costPerKm">
+₦0
+</strong>
+
+</div>
+
+
+<div class="result">
+
+<span>
+Distance
+</span>
+
+<strong id="distanceResult">
+0 km
+</strong>
+
+</div>
+
+
+<div class="result">
+
+<span>
+Cost per Passenger
+</span>
+
+<strong id="passengerCost">
+₦0
+</strong>
+
+</div>
+
+
+</div>
+
+
+<div class="quick-grid">
+
+
+<div class="quick-card">
+
+<span>
+Estimated Weekly Cost
+</span>
+
+<strong id="weeklyCost">
+₦0
+</strong>
+
+</div>
+
+
+<div class="quick-card">
+
+<span>
+Estimated Monthly Cost
+</span>
+
+<strong id="monthlyCost">
+₦0
+</strong>
+
+</div>
+
+
+<div class="quick-card">
+
+<span>
+Petrol Price Used
+</span>
+
+<strong id="priceUsed">
+₦0
+</strong>
+
+</div>
+
+
+</div>
+
+
+<div
+class="result-note"
+id="resultNote"
+>
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>
+How the fuel cost calculator works
+</h2>
+
+<div class="card">
+
+<p>
+The calculator estimates the amount of petrol required from
+your trip distance and vehicle fuel efficiency.
+</p>
+
+<div class="highlight">
+
+<strong>
+Fuel required = Distance ÷ Vehicle efficiency
+</strong>
+
+</div>
+
+<p>
+It then multiplies the estimated litres required by the
+petrol price you entered.
+</p>
+
+<div class="highlight">
+
+<strong>
+Fuel cost = Litres required × Petrol price
+</strong>
+
+</div>
+
+<p>
+For example, a vehicle that travels 10 kilometres per litre
+and makes a 100-kilometre one-way trip would require about
+10 litres of petrol.
+</p>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>
+What can you calculate?
+</h2>
+
+<div class="benefit-grid">
+
+
+<div class="benefit">
+
+<strong>
+Trip Fuel Cost
+</strong>
+
+<p>
+Estimate how much petrol money you need for a journey.
+</p>
+
+</div>
+
+
+<div class="benefit">
+
+<strong>
+Fuel Required
+</strong>
+
+<p>
+Estimate the number of litres needed for your trip.
+</p>
+
+</div>
+
+
+<div class="benefit">
+
+<strong>
+Cost Per Kilometre
+</strong>
+
+<p>
+See approximately how much your vehicle costs to operate
+per kilometre based on your inputs.
+</p>
+
+</div>
+
+
+<div class="benefit">
+
+<strong>
+Monthly Fuel Cost
+</strong>
+
+<p>
+Estimate your monthly fuel spending based on your expected
+number of trips.
+</p>
+
+</div>
+
+
+<div class="benefit">
+
+<strong>
+Passenger Cost
+</strong>
+
+<p>
+Estimate the fuel cost per passenger when travelling
+together.
+</p>
+
+</div>
+
+
+<div class="benefit">
+
+<strong>
+Return Trip Cost
+</strong>
+
+<p>
+Calculate the estimated fuel cost for going to your
+destination and returning.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>
+Example fuel calculations
+</h2>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Distance
+</th>
+
+<th>
+Efficiency
+</th>
+
+<th>
+Petrol Price
+</th>
+
+<th>
+Estimated Cost
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>
+50 km
+</td>
+
+<td>
+10 km/L
+</td>
+
+<td>
+₦1,200/L
+</td>
+
+<td>
+₦6,000
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+100 km
+</td>
+
+<td>
+10 km/L
+</td>
+
+<td>
+₦1,200/L
+</td>
+
+<td>
+₦12,000
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+200 km
+</td>
+
+<td>
+10 km/L
+</td>
+
+<td>
+₦1,200/L
+</td>
+
+<td>
+₦24,000
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+100 km
+</td>
+
+<td>
+15 km/L
+</td>
+
+<td>
+₦1,200/L
+</td>
+
+<td>
+₦8,000
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+300 km
+</td>
+
+<td>
+12 km/L
+</td>
+
+<td>
+₦1,200/L
+</td>
+
+<td>
+₦30,000
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>
+Why petrol prices vary in Nigeria
+</h2>
+
+<div class="card">
+
+<p>
+There is not one permanent pump price that applies to every
+filling station in Nigeria.
+</p>
+
+<p>
+Petrol prices can vary according to location, supply
+conditions, distributor pricing, logistics and movements in
+the downstream petroleum market.
+</p>
+
+<p>
+Recent August 2026 reports demonstrate how quickly prices can
+change. Dangote Refinery's PMS gantry price moved from
+₦1,185 to ₦1,200 per litre effective August 26, 2026.
+</p>
+
+<p>
+Therefore, FigureNG does not present ₦1,200 as a permanent
+national pump price. Instead, the calculator allows you to
+enter the actual price you are paying.
+</p>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>
+Understanding vehicle fuel efficiency
+</h2>
+
+<div class="card">
+
+<p>
+Fuel efficiency describes how far a vehicle can travel using
+a given amount of petrol.
+</p>
+
+<p>
+For example, if your vehicle travels approximately 10
+kilometres using one litre of petrol, its fuel efficiency is
+10 km/L.
+</p>
+
+<p>
+Actual fuel consumption can change because of traffic,
+driving style, road conditions, vehicle condition, air
+conditioning, tyre pressure, load and other factors.
+</p>
+
+<div class="highlight">
+
+<strong>
+Tip:
+</strong>
+
+For a more accurate personal estimate, calculate your
+vehicle's real-world fuel consumption from your own recent
+trips rather than relying only on the manufacturer's quoted
+figure.
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>
+Frequently asked questions
+</h2>
+
+
+<div class="faq">
+
+
+<div class="faq-item">
+
+<h3>
+How do I calculate fuel cost for a trip?
+</h3>
+
+<p>
+Divide the distance by your vehicle's kilometres-per-litre
+efficiency to estimate litres required. Then multiply the
+litres by the current petrol price per litre.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+How much fuel do I need for 100 km?
+</h3>
+
+<p>
+It depends on your vehicle. A vehicle achieving 10 km/L would
+need approximately 10 litres for 100 km.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+How much does it cost to travel 100 km by car in Nigeria?
+</h3>
+
+<p>
+The answer depends on the vehicle's fuel efficiency and the
+petrol price. At 10 km/L and ₦1,200 per litre, the estimated
+fuel cost is ₦12,000.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+What is km/L?
+</h3>
+
+<p>
+km/L means kilometres per litre. It indicates approximately
+how many kilometres a vehicle can travel using one litre of
+fuel.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+Does the calculator use today's Nigerian petrol price?
+</h3>
+
+<p>
+No. Petrol prices can vary between locations and change
+frequently. Enter the price you are currently paying at your
+filling station for a more relevant estimate.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+Can I use this calculator for a return journey?
+</h3>
+
+<p>
+Yes. Select Return Trip and the calculator will double the
+entered one-way distance before calculating the estimated
+fuel requirement and cost.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="cta">
+
+<h2>
+More FigureNG calculators
+</h2>
+
+<p>
+Calculate your electricity costs, salary, loans and VAT with
+our other free Nigerian calculators.
+</p>
+
+<a
+class="cta-button"
+href="/electricity-bill-calculator.html"
+>
+Electricity Calculator →
+</a>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="card">
+
+<h3>
+Disclaimer
+</h3>
+
+<p>
+This calculator provides estimates for general informational
+purposes. Actual fuel consumption and trip costs may differ
+because of traffic, driving conditions, vehicle condition,
+route, fuel price changes and other factors. Petrol prices
+also vary by location and filling station. Always use your
+actual current pump price when making financial estimates.
+</p>
+
+</div>
+
+</section>
+
+
+</div>
+
+</main>
+
+
+<footer>
+
+<div class="container">
+
+<div class="footer-top">
+
+<div class="footer-brand">
+
+<a href="/" class="logo">
+Figure<span>NG</span>
+</a>
+
+<p>
+Free calculators and practical online tools for everyday
+needs.
+</p>
+
+</div>
+
+
+<div class="footer-links">
+
+<a href="/">
+Salary Calculator
+</a>
+
+<a href="/loan-calculator.html">
+Loan Calculator
+</a>
+
+<a href="/vat-calculator.html">
+VAT Calculator
+</a>
+
+<a href="/electricity-bill-calculator.html">
+Electricity Calculator
+</a>
+
+<a href="/about.html">
+About
+</a>
+
+<a href="/contact.html">
+Contact
+</a>
+
+<a href="/privacy.html">
+Privacy Policy
+</a>
+
+<a href="/terms.html">
+Terms
+</a>
+
+<a href="/disclaimer.html">
+Disclaimer
+</a>
+
+</div>
+
+</div>
+
+
+<div class="copyright">
+© 2026 FigureNG. All rights reserved.
+</div>
+
+</div>
+
+</footer>
+
+
+<script>
+
+function money(value){
+
+if(!Number.isFinite(value)){
+value=0;
+}
+
+return "₦" +
+value.toLocaleString(
+"en-NG",
+{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+}
+);
+
+}
+
+
+function calculateFuel(){
+
+const distance=
+Number(
+document.getElementById(
+"distance"
+).value
+);
+
+const efficiency=
+Number(
+document.getElementById(
+"efficiency"
+).value
+);
+
+const fuelPrice=
+Number(
+document.getElementById(
+"fuelPrice"
+).value
+);
+
+const trips=
+Number(
+document.getElementById(
+"tripsPerMonth"
+).value
+);
+
+const passengers=
+Number(
+document.getElementById(
+"passengers"
+).value
+);
+
+const tripType=
+document.getElementById(
+"tripType"
+).value
+;
+
+
+if(
+!Number.isFinite(distance) ||
+distance<=0
+){
+
+alert(
+"Please enter a valid trip distance."
+);
+
+return;
+
+}
+
+
+if(
+!Number.isFinite(efficiency) ||
+efficiency<=0
+){
+
+alert(
+"Please enter a valid vehicle fuel efficiency."
+);
+
+return;
+
+}
+
+
+if(
+!Number.isFinite(fuelPrice) ||
+fuelPrice<0
+){
+
+alert(
+"Please enter a valid petrol price."
+);
+
+return;
+
+}
+
+
+if(
+!Number.isFinite(trips) ||
+trips<=0
+){
+
+alert(
+"Please enter a valid number of monthly trips."
+);
+
+return;
+
+}
+
+
+if(
+!Number.isFinite(passengers) ||
+passengers<=0
+){
+
+alert(
+"Please enter a valid number of passengers."
+);
+
+return;
+
+}
+
+
+const multiplier=
+tripType==="return"
+?2
+:1;
+
+
+const actualDistance=
+distance *
+multiplier;
+
+
+const litres=
+actualDistance /
+efficiency;
+
+
+const tripCost=
+litres *
+fuelPrice;
+
+
+const costPerKm=
+tripCost /
+actualDistance;
+
+
+const monthlyCost=
+tripCost *
+trips;
+
+
+const weeklyCost=
+monthlyCost /
+4.345;
+
+
+const passengerCost=
+tripCost /
+passengers;
+
+
+document.getElementById(
+"tripCost"
+).textContent=
+money(tripCost);
+
+
+document.getElementById(
+"litres"
+).textContent=
+litres.toLocaleString(
+"en-NG",
+{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+}
+)
++
+" L";
+
+
+document.getElementById(
+"costPerKm"
+).textContent=
+money(costPerKm);
+
+
+document.getElementById(
+"distanceResult"
+).textContent=
+actualDistance.toLocaleString(
+"en-NG",
+{
+maximumFractionDigits:1
+}
+)
++
+" km";
+
+
+document.getElementById(
+"passengerCost"
+).textContent=
+money(passengerCost);
+
+
+document.getElementById(
+"weeklyCost"
+).textContent=
+money(weeklyCost);
+
+
+document.getElementById(
+"monthlyCost"
+).textContent=
+money(monthlyCost);
+
+
+document.getElementById(
+"priceUsed"
+).textContent=
+money(fuelPrice);
+
+
+let note=
+"For this "
++
+(
+tripType==="return"
+? "return trip"
+: "one-way trip"
+)
++
+", your estimated fuel requirement is "
++
+litres.toLocaleString(
+"en-NG",
+{
+maximumFractionDigits:2
+}
+)
++
+" litres.";
+
+
+note+=
+" Your estimated fuel cost is "
++
+money(tripCost)
++
+".";
+
+
+document.getElementById(
+"resultNote"
+).textContent=
+note;
+
+
+document.getElementById(
+"results"
+).classList.add(
+"show"
+);
+
+
+/* SAVE PETROL PRICE */
+
+try{
+
+localStorage.setItem(
+"figurengFuelPrice",
+String(fuelPrice)
+);
+
+}catch(error){
+
+}
+
+
+/* SCROLL */
+
+setTimeout(
+function(){
+
+document.getElementById(
+"results"
+).scrollIntoView({
+
+behavior:"smooth",
+
+block:"nearest"
+
+});
+
+},
+50
+);
+
+}
+
+
+function loadSavedPrice(){
+
+try{
+
+const saved=
+localStorage.getItem(
+"figurengFuelPrice"
+);
+
+if(
+saved &&
+Number(saved)>0
+){
+
+document.getElementById(
+"fuelPrice"
+).value=
+saved;
+
+document.getElementById(
+"savedPrice"
+).style.display=
+"block";
+
+}
+
+}catch(error){
+
+}
+
+}
+
+
+function clearSavedPrice(){
+
+try{
+
+localStorage.removeItem(
+"figurengFuelPrice"
+);
+
+}catch(error){
+
+}
+
+document.getElementById(
+"savedPrice"
+).style.display=
+"none";
+
+document.getElementById(
+"fuelPrice"
+).value=
+"1200";
+
+calculateFuel();
+
+}
+
+
+window.addEventListener(
+"DOMContentLoaded",
+function(){
+
+loadSavedPrice();
+
+calculateFuel();
+
+}
+);
+
+</script>
+
+
+<script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"FAQPage",
+"mainEntity":[
+
+{
+"@type":"Question",
+"name":"How do I calculate fuel cost for a trip?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Divide the distance by your vehicle's kilometres-per-litre efficiency to estimate litres required. Then multiply the litres by the current petrol price per litre."
+}
+},
+
+{
+"@type":"Question",
+"name":"How much fuel do I need for 100 km?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"It depends on the vehicle. A vehicle achieving 10 km/L would need approximately 10 litres for 100 km."
+}
+},
+
+{
+"@type":"Question",
+"name":"How much does it cost to travel 100 km by car in Nigeria?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"The answer depends on the vehicle's fuel efficiency and petrol price. At 10 km/L and ₦1,200 per litre, the estimated fuel cost is ₦12,000."
+}
+},
+
+{
+"@type":"Question",
+"name":"What is km/L?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"km/L means kilometres per litre. It indicates approximately how many kilometres a vehicle can travel using one litre of fuel."
+}
+},
+
+{
+"@type":"Question",
+"name":"Does the calculator use today's Nigerian petrol price?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"No. Petrol prices can vary between locations and change frequently. Enter the price you are currently paying at your filling station for a more relevant estimate."
+}
+},
+
+{
+"@type":"Question",
+"name":"Can I use this calculator for a return journey?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. Select Return Trip and the calculator will double the entered one-way distance before calculating the estimated fuel requirement and cost."
+}
+}
+
+]
+}
+
+</script>
+
+
+</body>
+</html>
+```
