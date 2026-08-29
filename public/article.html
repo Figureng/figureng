@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -10,23 +9,16 @@
     content="width=device-width, initial-scale=1.0"
 >
 
-<title>Guide | FigureNG</title>
+<title>FigureNG</title>
 
 <meta
-    id="metaDescription"
     name="description"
-    content="Practical guides from FigureNG."
+    content="FigureNG financial guides and practical money information for Nigerians."
 >
 
 <meta
     name="robots"
     content="index, follow"
->
-
-<link
-    id="canonical"
-    rel="canonical"
-    href="https://figureng.figureng247.workers.dev/article.html"
 >
 
 <link
@@ -40,11 +32,13 @@
 :root {
     --green: #12372a;
     --green2: #1b513d;
+    --green-light: #edf5f0;
     --ink: #14231d;
     --muted: #69756f;
-    --background: #f6f7f5;
+    --background: #f5f7f5;
     --white: #ffffff;
-    --line: #dfe4e1;
+    --line: #dce3df;
+    --danger: #b42318;
 }
 
 * {
@@ -53,11 +47,15 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: var(--background);
     color: var(--ink);
     font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.75;
+    line-height: 1.7;
 }
 
 a {
@@ -66,43 +64,52 @@ a {
 }
 
 .container {
-    width: min(1120px, calc(100% - 30px));
+    width: min(1100px, calc(100% - 30px));
     margin: auto;
 }
+
 
 /* HEADER */
 
 header {
-    background: white;
+    background: var(--white);
     border-bottom: 1px solid var(--line);
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
-.header {
+.header-inner {
     min-height: 68px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    gap: 20px;
 }
 
 .brand {
     display: flex;
     align-items: center;
     gap: 9px;
+
     font-size: 20px;
     font-weight: 900;
 }
 
 .mark {
-    width: 29px;
-    height: 29px;
+    width: 30px;
+    height: 30px;
+
     display: grid;
     place-items: center;
+
     background: var(--green);
     color: white;
+
     border-radius: 5px;
+
     font-size: 11px;
 }
 
@@ -110,263 +117,495 @@ header {
     color: var(--green2);
 }
 
-nav {
+.nav {
     display: flex;
-    gap: 24px;
+    align-items: center;
+    gap: 18px;
 }
 
-nav a {
+.nav a {
     color: var(--muted);
-    font-size: 13px;
-    font-weight: 700;
+
+    font-size: 12px;
+    font-weight: 800;
 }
 
-nav a:hover {
-    color: var(--ink);
+.nav a:hover {
+    color: var(--green2);
 }
 
-/* ARTICLE */
 
-.article-page {
-    padding: 65px 0 90px;
+/* MAIN */
+
+main {
+    padding: 45px 0 80px;
 }
 
-.article-wrap {
-    max-width: 820px;
+.article-container {
+    width: min(780px, 100%);
     margin: auto;
 }
 
-.back-link {
-    display: inline-block;
-    color: var(--green2);
-    font-size: 12px;
-    font-weight: 900;
+
+/* ARTICLE HEADER */
+
+.article-header {
     margin-bottom: 30px;
 }
 
-.category {
+.article-category {
+    display: inline-block;
+
+    background: var(--green-light);
     color: var(--green2);
-    font-size: 11px;
+
+    padding: 6px 9px;
+
+    border-radius: 4px;
+
+    font-size: 10px;
     font-weight: 900;
-    letter-spacing: .12em;
+
     text-transform: uppercase;
-    margin-bottom: 15px;
+    letter-spacing: .08em;
+
+    margin-bottom: 13px;
 }
 
-h1 {
-    font-size: clamp(36px, 6vw, 56px);
-    line-height: 1.08;
-    letter-spacing: -2px;
+.article-title {
+    font-size: clamp(30px, 5vw, 48px);
+    line-height: 1.12;
+
+    letter-spacing: -.025em;
+
+    margin-bottom: 16px;
+}
+
+.article-excerpt {
+    color: var(--muted);
+
+    font-size: 17px;
+    line-height: 1.6;
+
     margin-bottom: 18px;
 }
 
-.meta {
+.article-meta {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px 15px;
+
     color: #89938e;
-    font-size: 12px;
-    margin-bottom: 35px;
+
+    font-size: 11px;
 }
 
-.excerpt {
-    background: white;
-    border-left: 4px solid var(--green2);
-    padding: 20px 22px;
-    color: #46534d;
-    font-size: 16px;
-    margin-bottom: 40px;
-}
 
-.content {
-    background: white;
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 38px;
-}
-
-.content h2 {
-    color: var(--ink);
-    font-size: 27px;
-    line-height: 1.3;
-    margin: 30px 0 13px;
-}
-
-.content h3 {
-    color: var(--ink);
-    font-size: 21px;
-    line-height: 1.35;
-    margin: 26px 0 10px;
-}
-
-.content p {
-    color: #46534d;
-    font-size: 15px;
-    margin-bottom: 17px;
-}
-
-.content ul,
-.content ol {
-    margin: 0 0 20px 25px;
-    color: #46534d;
-}
-
-.content li {
-    margin-bottom: 7px;
-}
-
-.content a {
-    color: var(--green2);
-    font-weight: 700;
-}
-
-.content strong {
-    color: var(--ink);
-}
+/* FEATURED IMAGE */
 
 .featured-image {
     width: 100%;
-    display: none;
-    margin-bottom: 35px;
-    border-radius: 6px;
-    max-height: 500px;
+
+    margin: 30px 0;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    background: #e9eeeb;
+}
+
+.featured-image img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    max-height: 520px;
+
     object-fit: cover;
 }
+
+
+/* ARTICLE CONTENT */
+
+.article-content {
+    background: white;
+
+    border: 1px solid var(--line);
+
+    border-radius: 8px;
+
+    padding: 30px;
+}
+
+.article-content p {
+    margin-bottom: 20px;
+
+    font-size: 16px;
+
+    line-height: 1.85;
+}
+
+.article-content h2 {
+    font-size: 25px;
+
+    line-height: 1.25;
+
+    margin: 35px 0 15px;
+}
+
+.article-content h3 {
+    font-size: 20px;
+
+    line-height: 1.3;
+
+    margin: 30px 0 12px;
+}
+
+.article-content ul,
+.article-content ol {
+    margin: 0 0 22px 25px;
+}
+
+.article-content li {
+    margin-bottom: 9px;
+}
+
+.article-content strong {
+    font-weight: 900;
+}
+
+.article-content a {
+    color: var(--green2);
+    text-decoration: underline;
+}
+
+
+/* SHARE */
+
+.share-box {
+    margin-top: 25px;
+
+    background: white;
+
+    border: 1px solid var(--line);
+
+    border-radius: 8px;
+
+    padding: 20px;
+}
+
+.share-box h3 {
+    font-size: 14px;
+
+    margin-bottom: 12px;
+}
+
+.share-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.share-button {
+    border: 1px solid var(--line);
+
+    background: white;
+
+    border-radius: 5px;
+
+    padding: 9px 12px;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    cursor: pointer;
+}
+
+.share-button:hover {
+    border-color: var(--green2);
+
+    color: var(--green2);
+}
+
+
+/* RELATED */
+
+.related {
+    margin-top: 45px;
+}
+
+.related-heading {
+    font-size: 20px;
+
+    margin-bottom: 15px;
+}
+
+.related-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+.related-card {
+    background: white;
+
+    border: 1px solid var(--line);
+
+    border-radius: 7px;
+
+    padding: 16px;
+
+    transition:
+        transform .15s ease,
+        border-color .15s ease;
+}
+
+.related-card:hover {
+    transform: translateY(-2px);
+
+    border-color: #b9c8c0;
+}
+
+.related-card .category {
+    color: var(--green2);
+
+    font-size: 9px;
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    margin-bottom: 7px;
+}
+
+.related-card h3 {
+    font-size: 14px;
+
+    line-height: 1.35;
+
+    margin-bottom: 7px;
+}
+
+.related-card p {
+    color: var(--muted);
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* NAVIGATION */
+
+.article-navigation {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+.navigation-card {
+    background: white;
+
+    border: 1px solid var(--line);
+
+    border-radius: 7px;
+
+    padding: 15px;
+}
+
+.navigation-card.next {
+    text-align: right;
+}
+
+.navigation-card small {
+    display: block;
+
+    color: #89938e;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    margin-bottom: 6px;
+}
+
+.navigation-card strong {
+    display: block;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+}
+
 
 /* LOADING */
 
 .loading {
-    text-align: center;
-    padding: 100px 20px;
+    min-height: 350px;
+
+    display: grid;
+    place-items: center;
+
     color: var(--muted);
+
+    font-size: 13px;
 }
+
 
 /* ERROR */
 
-.error {
-    max-width: 650px;
-    margin: 80px auto;
+.error-box {
     background: white;
-    border: 1px solid var(--line);
-    padding: 35px;
+
+    border: 1px solid #fecdca;
+
+    border-radius: 8px;
+
+    padding: 30px;
+
     text-align: center;
 }
 
-.error h1 {
-    font-size: 28px;
-    letter-spacing: -1px;
-    margin-bottom: 12px;
+.error-box h1 {
+    font-size: 25px;
+
+    margin-bottom: 8px;
 }
 
-.error p {
+.error-box p {
     color: var(--muted);
-    font-size: 14px;
+
+    font-size: 13px;
+
     margin-bottom: 20px;
 }
 
-.error a {
-    color: var(--green2);
-    font-size: 13px;
+.home-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 40px;
+
+    padding: 0 15px;
+
+    background: var(--green);
+
+    color: white;
+
+    border-radius: 5px;
+
+    font-size: 11px;
     font-weight: 900;
 }
+
 
 /* FOOTER */
 
 footer {
-    background: var(--green);
-    color: white;
-    padding: 45px 0 22px;
+    border-top: 1px solid var(--line);
+
+    background: white;
+
+    padding: 30px 0;
+
+    margin-top: 30px;
 }
 
-.footer-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 50px;
-    padding-bottom: 35px;
+.footer-inner {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
 }
 
-footer .brand {
-    color: white;
-    margin-bottom: 12px;
-}
+.footer-copy {
+    color: var(--muted);
 
-footer .brand span {
-    color: #c9e0d4;
-}
-
-.footer-description {
-    max-width: 340px;
-    color: #c4d8ce;
-    font-size: 12px;
-    line-height: 1.6;
-}
-
-footer h3 {
-    font-size: 10px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    margin-bottom: 13px;
-}
-
-footer a {
-    display: block;
-    color: #c4d8ce;
-    font-size: 12px;
-    margin-bottom: 8px;
-}
-
-footer a:hover {
-    color: white;
-}
-
-.copyright {
-    border-top: 1px solid rgba(255,255,255,.15);
-    padding-top: 18px;
-    color: #a9c2b6;
     font-size: 10px;
 }
+
+.footer-links {
+    display: flex;
+
+    gap: 15px;
+}
+
+.footer-links a {
+    color: var(--muted);
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
 
 /* MOBILE */
 
-@media(max-width:650px) {
+@media(max-width:700px) {
 
-    nav {
-        gap: 12px;
+    .header-inner {
+        min-height: 60px;
     }
 
-    nav a {
-        font-size: 11px;
+    .nav {
+        gap: 10px;
     }
 
-    nav a:nth-child(n+3) {
-        display: none;
+    .nav a {
+        font-size: 10px;
     }
 
-    .article-page {
-        padding: 45px 0 65px;
+    main {
+        padding: 30px 0 60px;
     }
 
-    h1 {
-        font-size: 38px;
-        letter-spacing: -1.5px;
+    .article-title {
+        font-size: 32px;
     }
 
-    .content {
-        padding: 25px 20px;
+    .article-excerpt {
+        font-size: 15px;
     }
 
-    .content h2 {
-        font-size: 24px;
+    .article-content {
+        padding: 20px;
     }
 
-    .content h3 {
-        font-size: 19px;
+    .article-content p {
+        font-size: 15px;
     }
 
-    .content p {
-        font-size: 14px;
-    }
-
-    .footer-grid {
+    .related-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
+    }
+
+    .article-navigation {
+        grid-template-columns: 1fr;
+    }
+
+    .navigation-card.next {
+        text-align: left;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+
+        align-items: flex-start;
     }
 
 }
@@ -375,11 +614,13 @@ footer a:hover {
 
 </head>
 
+
 <body>
+
 
 <header>
 
-<div class="container header">
+<div class="container header-inner">
 
 <a href="/" class="brand">
 
@@ -391,22 +632,15 @@ Figure<span>NG</span>
 
 </a>
 
-<nav>
 
-<a href="/tools.html">
-Tools
+<nav class="nav">
+
+<a href="/">
+Home
 </a>
 
 <a href="/guides.html">
 Guides
-</a>
-
-<a href="/about.html">
-About
-</a>
-
-<a href="/contact.html">
-Contact
 </a>
 
 </nav>
@@ -415,215 +649,110 @@ Contact
 
 </header>
 
-<main class="article-page">
+
+<main>
+
+<div class="container">
 
 <div
-    id="loading"
-    class="loading"
+    id="articleContainer"
+    class="article-container"
 >
-Loading guide...
+
+<div class="loading">
+Loading article...
 </div>
 
-<div
-    id="article"
-    class="article-wrap"
-    style="display:none;"
->
-
-<a
-    href="/guides.html"
-    class="back-link"
->
-← Back to Guides
-</a>
-
-<div
-    id="category"
-    class="category"
-></div>
-
-<h1 id="title"></h1>
-
-<div
-    id="meta"
-    class="meta"
-></div>
-
-<img
-    id="featuredImage"
-    class="featured-image"
-    alt=""
->
-
-<div
-    id="excerpt"
-    class="excerpt"
-></div>
-
-<div
-    id="content"
-    class="content"
-></div>
-
 </div>
-
-<div
-    id="error"
-    class="error"
-    style="display:none;"
->
-
-<h1>
-Guide not found
-</h1>
-
-<p>
-The guide you are looking for could not be found.
-It may have been removed or the link may be incorrect.
-</p>
-
-<a href="/guides.html">
-Return to Guides
-</a>
 
 </div>
 
 </main>
 
+
 <footer>
 
-<div class="container">
+<div class="container footer-inner">
 
-<div class="footer-grid">
-
-<div>
-
-<a href="/" class="brand">
-
-<div class="mark">
-FG
+<div class="footer-copy">
+© <span id="year"></span> FigureNG. All rights reserved.
 </div>
 
-Figure<span>NG</span>
+<div class="footer-links">
 
-</a>
-
-<p class="footer-description">
-Practical calculators, tools and guides for everyday
-decisions in Nigeria.
-</p>
-
-</div>
-
-<div>
-
-<h3>
-Explore
-</h3>
-
-<a href="/tools.html">
-Tools
+<a href="/">
+Home
 </a>
 
 <a href="/guides.html">
 Guides
 </a>
 
-<a href="/salary-calculator.html">
-Salary Calculator
-</a>
-
-<a href="/loan-calculator.html">
-Loan Calculator
-</a>
-
-</div>
-
-<div>
-
-<h3>
-FigureNG
-</h3>
-
-<a href="/about.html">
-About
-</a>
-
-<a href="/contact.html">
-Contact
-</a>
-
-<a href="/privacy.html">
-Privacy Policy
-</a>
-
-<a href="/terms.html">
-Terms
-</a>
-
-<a href="/disclaimer.html">
-Disclaimer
-</a>
-
-</div>
-
-</div>
-
-<div class="copyright">
-© 2026 FigureNG. All rights reserved.
 </div>
 
 </div>
 
 </footer>
 
+
 <script>
 
-const loading =
-    document.getElementById("loading");
-
-const article =
-    document.getElementById("article");
-
-const error =
-    document.getElementById("error");
-
-const title =
-    document.getElementById("title");
-
-const category =
-    document.getElementById("category");
-
-const meta =
-    document.getElementById("meta");
-
-const excerpt =
-    document.getElementById("excerpt");
-
-const content =
-    document.getElementById("content");
-
-const featuredImage =
-    document.getElementById("featuredImage");
-
-const metaDescription =
-    document.getElementById("metaDescription");
-
-const canonical =
-    document.getElementById("canonical");
+const API_BASE = "/api/articles";
 
 
-function escapeHTML(value) {
+const articleContainer =
+    document.getElementById(
+        "articleContainer"
+    );
 
-    const div =
-        document.createElement("div");
 
-    div.textContent =
-        value || "";
+document.getElementById("year")
+    .textContent =
+    new Date().getFullYear();
 
-    return div.innerHTML;
+
+/*
+ * GET SLUG FROM URL
+ *
+ * Supports:
+ *
+ * /article.html?slug=example
+ *
+ */
+
+function getSlug() {
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    return (
+        params.get("slug") || ""
+    ).trim();
+
 }
 
+
+/*
+ * ESCAPE HTML
+ */
+
+function escapeHtml(value) {
+
+    return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/*
+ * FORMAT DATE
+ */
 
 function formatDate(value) {
 
@@ -634,168 +763,963 @@ function formatDate(value) {
     const date =
         new Date(value);
 
-    if (Number.isNaN(date.getTime())) {
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+
         return "";
+
     }
 
     return date.toLocaleDateString(
         "en-NG",
         {
-            year: "numeric",
+            day: "numeric",
             month: "long",
-            day: "numeric"
+            year: "numeric"
         }
     );
+
 }
 
 
-function getSlug() {
+/*
+ * CONVERT PLAIN TEXT
+ * INTO SAFE HTML
+ */
 
-    const params =
-        new URLSearchParams(
-            window.location.search
+function formatContent(text) {
+
+    const safe =
+        escapeHtml(text || "");
+
+    const paragraphs =
+        safe.split(/\n\s*\n/);
+
+
+    return paragraphs
+        .map(function(paragraph) {
+
+            const trimmed =
+                paragraph.trim();
+
+            if (!trimmed) {
+                return "";
+            }
+
+
+            return `
+                <p>
+                    ${trimmed.replace(
+                        /\n/g,
+                        "<br>"
+                    )}
+                </p>
+            `;
+
+        })
+        .join("");
+
+}
+
+
+/*
+ * UPDATE PAGE SEO
+ */
+
+function updateSEO(article) {
+
+    const title =
+        article.seo_title ||
+        article.title ||
+        "FigureNG";
+
+
+    const description =
+        article.meta_description ||
+        article.excerpt ||
+        "FigureNG financial guides and practical money information for Nigerians.";
+
+
+    document.title =
+        title + " | FigureNG";
+
+
+    const descriptionTag =
+        document.querySelector(
+            'meta[name="description"]'
         );
 
-    return params.get("slug");
+
+    if (descriptionTag) {
+
+        descriptionTag.setAttribute(
+            "content",
+            description
+        );
+
+    }
+
+
+    /*
+     * Canonical URL
+     */
+
+    let canonical =
+        document.querySelector(
+            'link[rel="canonical"]'
+        );
+
+
+    if (!canonical) {
+
+        canonical =
+            document.createElement("link");
+
+        canonical.rel =
+            "canonical";
+
+        document.head.appendChild(
+            canonical
+        );
+
+    }
+
+
+    canonical.href =
+        window.location.origin +
+        "/article.html?slug=" +
+        encodeURIComponent(
+            article.slug
+        );
+
+
+    /*
+     * Open Graph
+     */
+
+    setMeta(
+        "og:title",
+        title
+    );
+
+    setMeta(
+        "og:description",
+        description
+    );
+
+    setMeta(
+        "og:type",
+        "article"
+    );
+
+    setMeta(
+        "og:url",
+        window.location.href
+    );
+
+
+    if (article.featured_image) {
+
+        setMeta(
+            "og:image",
+            article.featured_image
+        );
+
+    }
+
 }
 
+
+/*
+ * CREATE / UPDATE META
+ */
+
+function setMeta(
+    property,
+    content
+) {
+
+    let meta =
+        document.querySelector(
+            `meta[property="${property}"]`
+        );
+
+
+    if (!meta) {
+
+        meta =
+            document.createElement("meta");
+
+        meta.setAttribute(
+            "property",
+            property
+        );
+
+        document.head.appendChild(
+            meta
+        );
+
+    }
+
+
+    meta.setAttribute(
+        "content",
+        content
+    );
+
+}
+
+
+/*
+ * LOAD RELATED ARTICLES
+ */
+
+function getRelatedArticles(
+    currentArticle
+) {
+
+    return articles
+        .filter(function(article) {
+
+            return (
+                Number(article.id) !==
+                    Number(currentArticle.id) &&
+                article.status === "published"
+            );
+
+        })
+        .filter(function(article) {
+
+            return (
+                article.category ===
+                currentArticle.category
+            );
+
+        })
+        .slice(0, 4);
+
+}
+
+
+/*
+ * GLOBAL ARTICLE CACHE
+ */
+
+let articles = [];
+
+
+/*
+ * LOAD ALL PUBLISHED ARTICLES
+ *
+ * Used for related articles
+ * and previous/next navigation.
+ */
+
+async function loadArticles() {
+
+    try {
+
+        const response =
+            await fetch(
+                API_BASE +
+                "?status=published&limit=100"
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (
+            !response.ok ||
+            data.success === false
+        ) {
+
+            return [];
+
+        }
+
+
+        return Array.isArray(
+            data.articles
+        )
+            ? data.articles
+            : [];
+
+    } catch {
+
+        return [];
+
+    }
+
+}
+
+
+/*
+ * LOAD CURRENT ARTICLE
+ */
 
 async function loadArticle() {
 
     const slug =
         getSlug();
 
+
     if (!slug) {
 
-        loading.style.display = "none";
-
-        error.style.display = "block";
+        showError(
+            "Article not found",
+            "No article slug was provided."
+        );
 
         return;
+
     }
+
 
     try {
 
         const response =
             await fetch(
-                "/api/articles/slug/" +
-                encodeURIComponent(slug),
-                {
-                    headers: {
-                        "Accept":
-                            "application/json"
-                    },
-                    cache: "no-store"
-                }
+                API_BASE +
+                "?slug=" +
+                encodeURIComponent(slug)
             );
 
-        if (!response.ok) {
-            throw new Error(
-                "Article not found."
-            );
-        }
 
         const data =
             await response.json();
 
+
         if (
-            !data.success ||
-            !data.article
+            !response.ok ||
+            data.success === false
         ) {
+
+            throw new Error(
+                data.error ||
+                "Unable to load article."
+            );
+
+        }
+
+
+        let article =
+            data.article;
+
+
+        /*
+         * Some APIs return articles[]
+         * instead of article.
+         */
+
+        if (!article && Array.isArray(data.articles)) {
+
+            article =
+                data.articles.find(
+                    function(item) {
+
+                        return (
+                            item.slug ===
+                            slug
+                        );
+
+                    }
+                );
+
+        }
+
+
+        if (!article) {
+
             throw new Error(
                 "Article not found."
             );
+
         }
 
-        const item =
-            data.article;
 
         /*
-         * Display article information.
+         * Do not show drafts publicly.
          */
 
-        document.title =
-            item.seo_title ||
-            item.title ||
-            "Guide | FigureNG";
+        if (
+            article.status &&
+            article.status !== "published"
+        ) {
 
-        metaDescription.setAttribute(
-            "content",
-            item.meta_description ||
-            item.excerpt ||
-            "Practical guide from FigureNG."
-        );
-
-        canonical.href =
-            window.location.href;
-
-        title.textContent =
-            item.title || "";
-
-        category.textContent =
-            item.category ||
-            "Guides";
-
-        meta.textContent =
-            "FigureNG · " +
-            formatDate(
-                item.published_at ||
-                item.created_at
+            throw new Error(
+                "Article not found."
             );
 
-        excerpt.textContent =
-            item.excerpt || "";
-
-        /*
-         * The content entered through Admin is
-         * expected to contain HTML.
-         *
-         * This allows headings, paragraphs,
-         * lists and links inside articles.
-         */
-
-        content.innerHTML =
-            item.content || "";
-
-        if (item.featured_image) {
-
-            featuredImage.src =
-                item.featured_image;
-
-            featuredImage.alt =
-                item.title || "FigureNG guide";
-
-            featuredImage.style.display =
-                "block";
         }
 
-        loading.style.display =
-            "none";
 
-        article.style.display =
-            "block";
+        articles =
+            await loadArticles();
 
-    } catch (err) {
 
-        console.error(
-            "FigureNG article error:",
-            err
+        renderArticle(
+            article
         );
 
-        loading.style.display =
-            "none";
 
-        error.style.display =
-            "block";
+    } catch (error) {
+
+        showError(
+            "Article unavailable",
+            error.message ||
+            "We could not load this article."
+        );
+
     }
 
 }
 
 
+/*
+ * RENDER ARTICLE
+ */
+
+function renderArticle(article) {
+
+    updateSEO(article);
+
+
+    const related =
+        getRelatedArticles(
+            article
+        );
+
+
+    /*
+     * Find current article
+     * inside published list.
+     */
+
+    const index =
+        articles.findIndex(
+            function(item) {
+
+                return (
+                    Number(item.id) ===
+                    Number(article.id)
+                );
+
+            }
+        );
+
+
+    let previous =
+        null;
+
+    let next =
+        null;
+
+
+    if (index !== -1) {
+
+        previous =
+            articles[index + 1] ||
+            null;
+
+        next =
+            articles[index - 1] ||
+            null;
+
+    }
+
+
+    const image =
+        article.featured_image
+            ? `
+                <div class="featured-image">
+                    <img
+                        src="${escapeHtml(
+                            article.featured_image
+                        )}"
+                        alt="${escapeHtml(
+                            article.title
+                        )}"
+                        loading="lazy"
+                    >
+                </div>
+            `
+            : "";
+
+
+    const relatedHtml =
+        related.length
+            ? `
+                <section class="related">
+
+                    <h2 class="related-heading">
+                        Related guides
+                    </h2>
+
+                    <div class="related-grid">
+
+                        ${related.map(
+                            function(item) {
+
+                                return `
+                                    <a
+                                        class="related-card"
+                                        href="/article.html?slug=${encodeURIComponent(
+                                            item.slug
+                                        )}"
+                                    >
+
+                                        <div class="category">
+                                            ${escapeHtml(
+                                                item.category ||
+                                                "Guides"
+                                            )}
+                                        </div>
+
+                                        <h3>
+                                            ${escapeHtml(
+                                                item.title
+                                            )}
+                                        </h3>
+
+                                        <p>
+                                            ${escapeHtml(
+                                                item.excerpt ||
+                                                ""
+                                            )}
+                                        </p>
+
+                                    </a>
+                                `;
+
+                            }
+                        ).join("")}
+
+                    </div>
+
+                </section>
+            `
+            : "";
+
+
+    const navigationHtml =
+        (previous || next)
+            ? `
+                <section class="article-navigation">
+
+                    ${
+                        previous
+                            ? `
+                                <a
+                                    class="navigation-card"
+                                    href="/article.html?slug=${encodeURIComponent(
+                                        previous.slug
+                                    )}"
+                                >
+
+                                    <small>
+                                        Previous article
+                                    </small>
+
+                                    <strong>
+                                        ${escapeHtml(
+                                            previous.title
+                                        )}
+                                    </strong>
+
+                                </a>
+                            `
+                            : `
+                                <div></div>
+                            `
+                    }
+
+
+                    ${
+                        next
+                            ? `
+                                <a
+                                    class="navigation-card next"
+                                    href="/article.html?slug=${encodeURIComponent(
+                                        next.slug
+                                    )}"
+                                >
+
+                                    <small>
+                                        Next article
+                                    </small>
+
+                                    <strong>
+                                        ${escapeHtml(
+                                            next.title
+                                        )}
+                                    </strong>
+
+                                </a>
+                            `
+                            : ""
+                    }
+
+                </section>
+            `
+            : "";
+
+
+    articleContainer.innerHTML = `
+
+        <article>
+
+            <header class="article-header">
+
+                <div class="article-category">
+                    ${escapeHtml(
+                        article.category ||
+                        "Guides"
+                    )}
+                </div>
+
+
+                <h1 class="article-title">
+                    ${escapeHtml(
+                        article.title
+                    )}
+                </h1>
+
+
+                ${
+                    article.excerpt
+                        ? `
+                            <div class="article-excerpt">
+                                ${escapeHtml(
+                                    article.excerpt
+                                )}
+                            </div>
+                        `
+                        : ""
+                }
+
+
+                <div class="article-meta">
+
+                    <span>
+                        FigureNG
+                    </span>
+
+                    ${
+                        formatDate(
+                            article.published_at ||
+                            article.created_at
+                        )
+                            ? `
+                                <span>
+                                    ${formatDate(
+                                        article.published_at ||
+                                        article.created_at
+                                    )}
+                                </span>
+                            `
+                            : ""
+                    }
+
+                </div>
+
+            </header>
+
+
+            ${image}
+
+
+            <div class="article-content">
+
+                ${formatContent(
+                    article.content
+                )}
+
+            </div>
+
+
+            <div class="share-box">
+
+                <h3>
+                    Share this guide
+                </h3>
+
+                <div class="share-buttons">
+
+                    <button
+                        class="share-button"
+                        type="button"
+                        onclick="shareArticle()"
+                    >
+                        Share
+                    </button>
+
+                    <button
+                        class="share-button"
+                        type="button"
+                        onclick="copyArticleLink()"
+                    >
+                        Copy link
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            ${relatedHtml}
+
+            ${navigationHtml}
+
+        </article>
+
+    `;
+
+
+    /*
+     * Add structured data
+     */
+
+    addStructuredData(
+        article
+    );
+
+}
+
+
+/*
+ * SHARE ARTICLE
+ */
+
+async function shareArticle() {
+
+    const shareData = {
+
+        title:
+            document.title,
+
+        url:
+            window.location.href
+
+    };
+
+
+    if (
+        navigator.share
+    ) {
+
+        try {
+
+            await navigator.share(
+                shareData
+            );
+
+        } catch {
+
+            /*
+             * User cancelled share.
+             */
+
+        }
+
+        return;
+
+    }
+
+
+    await copyArticleLink();
+
+}
+
+
+/*
+ * COPY LINK
+ */
+
+async function copyArticleLink() {
+
+    try {
+
+        await navigator.clipboard.writeText(
+            window.location.href
+        );
+
+
+        alert(
+            "Article link copied."
+        );
+
+    } catch {
+
+        alert(
+            "Unable to copy the article link."
+        );
+
+    }
+
+}
+
+
+/*
+ * ERROR
+ */
+
+function showError(
+    title,
+    message
+) {
+
+    articleContainer.innerHTML = `
+
+        <div class="error-box">
+
+            <h1>
+                ${escapeHtml(title)}
+            </h1>
+
+            <p>
+                ${escapeHtml(message)}
+            </p>
+
+            <a
+                class="home-button"
+                href="/"
+            >
+                Back to FigureNG
+            </a>
+
+        </div>
+
+    `;
+
+}
+
+
+/*
+ * STRUCTURED DATA
+ */
+
+function addStructuredData(
+    article
+) {
+
+    const existing =
+        document.getElementById(
+            "articleStructuredData"
+        );
+
+
+    if (existing) {
+
+        existing.remove();
+
+    }
+
+
+    const schema = {
+
+        "@context":
+            "https://schema.org",
+
+        "@type":
+            "Article",
+
+        "headline":
+            article.title,
+
+        "description":
+            article.meta_description ||
+            article.excerpt ||
+            "",
+
+        "datePublished":
+            article.published_at ||
+            article.created_at ||
+            "",
+
+        "dateModified":
+            article.updated_at ||
+            article.created_at ||
+            "",
+
+        "author": {
+
+            "@type":
+                "Organization",
+
+            "name":
+                "FigureNG"
+
+        },
+
+        "publisher": {
+
+            "@type":
+                "Organization",
+
+            "name":
+                "FigureNG"
+
+        },
+
+        "mainEntityOfPage": {
+
+            "@type":
+                "WebPage",
+
+            "@id":
+                window.location.href
+
+        }
+
+    };
+
+
+    if (article.featured_image) {
+
+        schema.image =
+            article.featured_image;
+
+    }
+
+
+    const script =
+        document.createElement(
+            "script"
+        );
+
+
+    script.id =
+        "articleStructuredData";
+
+    script.type =
+        "application/ld+json";
+
+    script.textContent =
+        JSON.stringify(
+            schema
+        );
+
+
+    document.head.appendChild(
+        script
+    );
+
+}
+
+
+/*
+ * START
+ */
+
 loadArticle();
 
 </script>
 
-</body>
 
+</body>
 </html>
