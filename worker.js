@@ -39,7 +39,9 @@ async function getRequestBody(request) {
   }
 }
 
-/* ADMIN AUTHENTICATION */
+/* =========================================================
+   ADMIN AUTHENTICATION
+   ========================================================= */
 
 async function authenticate(request, env) {
   const password = request.headers.get("X-Admin-Password");
@@ -61,7 +63,9 @@ function unauthorized() {
   );
 }
 
-/* CREATE ARTICLE */
+/* =========================================================
+   CREATE ARTICLE
+   ========================================================= */
 
 async function createArticle(request, env) {
   const body = await getRequestBody(request);
@@ -173,56 +177,75 @@ async function createArticle(request, env) {
   return json(
     {
       success: true,
-      message: "Article published successfully.",
+      message: "Article created successfully.",
       article: {
         id: result.meta.last_row_id,
         title,
         slug,
-        status
+        status,
+        url: `/guides/${slug}`
       }
     },
     201
   );
 }
 
-/* LIST ARTICLES */
+/* =========================================================
+   LIST ARTICLES
+   ========================================================= */
 
 async function listArticles(request, env) {
   const url = new URL(request.url);
 
-  const requestedStatus =
+  const status =
     url.searchParams.get("status") || "published";
 
-  /*
-   * Public visitors are only allowed to see
-   * published articles.
-   */
-  const status =
-    requestedStatus === "all"
-      ? "published"
-      : requestedStatus;
-
   const limitValue = Number(
-    url.searchParams.get("limit") || 50
+    url.searchParams.get("limit") || 20
   );
 
   const limit = Math.min(
     Math.max(
-      Number.isFinite(limitValue)
-        ? limitValue
-        : 50,
+      Number.isFinite(limitValue) ? limitValue : 20,
       1
     ),
     100
   );
 
-  const result = await env.DB
-    .prepare(`
+  let query;
+  let bindings;
+
+  if (status === "all") {
+    query = `
       SELECT
         id,
         title,
         slug,
         excerpt,
+        content,
+        category,
+        featured_image,
+        seo_title,
+        meta_description,
+        status,
+        published_at,
+        created_at,
+        updated_at
+      FROM articles
+      ORDER BY
+        COALESCE(published_at, created_at) DESC
+      LIMIT ?
+    `;
+
+    bindings = [limit];
+  } else {
+    query = `
+      SELECT
+        id,
+        title,
+        slug,
+        excerpt,
+        content,
         category,
         featured_image,
         seo_title,
@@ -234,11 +257,16 @@ async function listArticles(request, env) {
       FROM articles
       WHERE status = ?
       ORDER BY
-        published_at DESC,
-        id DESC
+        published_at DESC
       LIMIT ?
-    `)
-    .bind(status, limit)
+    `;
+
+    bindings = [status, limit];
+  }
+
+  const result = await env.DB
+    .prepare(query)
+    .bind(...bindings)
     .all();
 
   return json({
@@ -248,7 +276,9 @@ async function listArticles(request, env) {
   });
 }
 
-/* GET ARTICLE BY ID */
+/* =========================================================
+   GET ARTICLE BY ID
+   ========================================================= */
 
 async function getArticleById(id, env) {
   const articleId = Number(id);
@@ -302,7 +332,9 @@ async function getArticleById(id, env) {
   });
 }
 
-/* GET ARTICLE BY SLUG */
+/* =========================================================
+   GET ARTICLE BY SLUG
+   ========================================================= */
 
 async function getArticleBySlug(slug, env) {
   const article = await env.DB
@@ -345,7 +377,9 @@ async function getArticleBySlug(slug, env) {
   });
 }
 
-/* UPDATE ARTICLE */
+/* =========================================================
+   UPDATE ARTICLE
+   ========================================================= */
 
 async function updateArticle(id, request, env) {
   const articleId = Number(id);
@@ -491,12 +525,15 @@ async function updateArticle(id, request, env) {
       id: articleId,
       title,
       slug,
-      status
+      status,
+      url: `/guides/${slug}`
     }
   });
 }
 
-/* DELETE ARTICLE */
+/* =========================================================
+   DELETE ARTICLE
+   ========================================================= */
 
 async function deleteArticle(id, env) {
   const articleId = Number(id);
@@ -534,7 +571,549 @@ async function deleteArticle(id, env) {
   });
 }
 
-/* API ROUTER */
+/* =========================================================
+   HTML ESCAPING
+   ========================================================= */
+
+function escapeHtml(value) {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+/* =========================================================
+   ARTICLE CONTENT
+   ========================================================= */
+
+function formatArticleContent(content) {
+  const escaped = escapeHtml(content);
+
+  return escaped
+    .split(/\n\s*\n/)
+    .map(function(paragraph) {
+      const text = paragraph.trim();
+
+      if (!text) {
+        return "";
+      }
+
+      return `<p>${text.replace(/\n/g, "<br>")}</p>`;
+    })
+    .join("\n");
+}
+
+/* =========================================================
+   DYNAMIC PUBLIC ARTICLE PAGE
+   ========================================================= */
+
+async function renderArticlePage(slug, env) {
+  const article = await env.DB
+    .prepare(`
+      SELECT
+        id,
+        title,
+        slug,
+        excerpt,
+        content,
+        category,
+        featured_image,
+        seo_title,
+        meta_description,
+        status,
+        published_at
+      FROM articles
+      WHERE slug = ?
+      AND status = 'published'
+      LIMIT 1
+    `)
+    .bind(slug)
+    .first();
+
+  if (!article) {
+    return new Response(
+      `<!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Guide Not Found | FigureNG</title>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+        <style>
+          body {
+            margin: 0;
+            background: #f6f7f5;
+            color: #14231d;
+            font-family: Arial, Helvetica, sans-serif;
+          }
+
+          .wrap {
+            max-width: 760px;
+            margin: 100px auto;
+            padding: 30px;
+            text-align: center;
+          }
+
+          a {
+            color: #12372a;
+            font-weight: 800;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="wrap">
+          <h1>Guide not found</h1>
+          <p>The guide you are looking for does not exist or is not published.</p>
+          <p><a href="/guides.html">Return to FigureNG Guides</a></p>
+        </div>
+      </body>
+      </html>`,
+      {
+        status: 404,
+        headers: {
+          "Content-Type": "text/html; charset=UTF-8",
+          "Cache-Control": "no-store"
+        }
+      }
+    );
+  }
+
+  const title =
+    escapeHtml(
+      article.seo_title || article.title
+    );
+
+  const description =
+    escapeHtml(
+      article.meta_description ||
+      article.excerpt ||
+      article.title
+    );
+
+  const articleTitle =
+    escapeHtml(article.title);
+
+  const category =
+    escapeHtml(article.category);
+
+  const excerpt =
+    escapeHtml(article.excerpt);
+
+  const content =
+    formatArticleContent(article.content);
+
+  const featuredImage =
+    article.featured_image
+      ? `
+        <img
+          src="${escapeHtml(article.featured_image)}"
+          alt="${articleTitle}"
+          class="featured-image"
+        >
+      `
+      : "";
+
+  let date = "";
+
+  if (article.published_at) {
+    const parsedDate = new Date(article.published_at);
+
+    if (!Number.isNaN(parsedDate.getTime())) {
+      date = parsedDate.toLocaleDateString(
+        "en-NG",
+        {
+          year: "numeric",
+          month: "long",
+          day: "numeric"
+        }
+      );
+    }
+  }
+
+  const canonical =
+    `https://figureng.figureng247.workers.dev/guides/${encodeURIComponent(article.slug)}`;
+
+  return new Response(
+    `<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>${title} | FigureNG</title>
+
+<meta
+  name="description"
+  content="${description}"
+>
+
+<meta
+  name="robots"
+  content="index, follow"
+>
+
+<link
+  rel="canonical"
+  href="${canonical}"
+>
+
+<link
+  rel="icon"
+  type="image/svg+xml"
+  href="/favicon.svg"
+>
+
+<style>
+
+:root {
+  --green: #12372a;
+  --green2: #1b513d;
+  --ink: #14231d;
+  --muted: #69756f;
+  --background: #f6f7f5;
+  --white: #ffffff;
+  --line: #dfe4e1;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--background);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.75;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(1120px, calc(100% - 30px));
+  margin: auto;
+}
+
+header {
+  background: white;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.mark {
+  width: 29px;
+  height: 29px;
+  display: grid;
+  place-items: center;
+  background: var(--green);
+  color: white;
+  border-radius: 5px;
+  font-size: 11px;
+}
+
+.brand span {
+  color: var(--green2);
+}
+
+nav {
+  display: flex;
+  gap: 24px;
+}
+
+nav a {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+nav a:hover {
+  color: var(--ink);
+}
+
+main {
+  padding: 70px 0 90px;
+}
+
+.article-wrap {
+  max-width: 820px;
+  margin: auto;
+}
+
+.article-header {
+  margin-bottom: 38px;
+}
+
+.article-category {
+  color: var(--green2);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+h1 {
+  font-size: clamp(38px, 6vw, 58px);
+  line-height: 1.08;
+  letter-spacing: -2px;
+  margin-bottom: 17px;
+}
+
+.excerpt {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.meta {
+  color: #8a948f;
+  font-size: 11px;
+}
+
+.featured-image {
+  display: block;
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin: 35px 0;
+}
+
+.article-content {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 40px;
+}
+
+.article-content p {
+  color: #33423a;
+  font-size: 16px;
+  margin-bottom: 23px;
+}
+
+.article-content p:last-child {
+  margin-bottom: 0;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 25px;
+  color: var(--green2);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+footer {
+  background: var(--green);
+  color: white;
+  padding: 40px 0;
+}
+
+.footer-description {
+  color: #c4d8ce;
+  font-size: 12px;
+  max-width: 400px;
+}
+
+.copyright {
+  margin-top: 25px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.15);
+  color: #a9c2b6;
+  font-size: 10px;
+}
+
+@media(max-width:600px) {
+
+  nav {
+    gap: 12px;
+  }
+
+  nav a {
+    font-size: 11px;
+  }
+
+  nav a:nth-child(n+3) {
+    display: none;
+  }
+
+  main {
+    padding: 45px 0 65px;
+  }
+
+  h1 {
+    font-size: 38px;
+    letter-spacing: -1.2px;
+  }
+
+  .article-content {
+    padding: 25px 20px;
+  }
+
+  .article-content p {
+    font-size: 15px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+  <div class="container header">
+
+    <a href="/" class="brand">
+      <div class="mark">FG</div>
+      Figure<span>NG</span>
+    </a>
+
+    <nav>
+      <a href="/tools.html">Tools</a>
+      <a href="/guides.html">Guides</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+
+  </div>
+
+</header>
+
+<main>
+
+  <div class="container">
+
+    <article class="article-wrap">
+
+      <a
+        href="/guides.html"
+        class="back-link"
+      >
+        ← Back to Guides
+      </a>
+
+      <header class="article-header">
+
+        <div class="article-category">
+          ${category}
+        </div>
+
+        <h1>
+          ${articleTitle}
+        </h1>
+
+        <p class="excerpt">
+          ${excerpt}
+        </p>
+
+        <div class="meta">
+          FigureNG${date ? ` · ${escapeHtml(date)}` : ""}
+        </div>
+
+      </header>
+
+      ${featuredImage}
+
+      <div class="article-content">
+        ${content}
+      </div>
+
+    </article>
+
+  </div>
+
+</main>
+
+<footer>
+
+  <div class="container">
+
+    <div class="brand">
+      <div class="mark">FG</div>
+      Figure<span>NG</span>
+    </div>
+
+    <p class="footer-description">
+      Practical calculators, tools and guides for everyday
+      decisions in Nigeria.
+    </p>
+
+    <div class="copyright">
+      © 2026 FigureNG. All rights reserved.
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>`,
+    {
+      status: 200,
+      headers: {
+        "Content-Type": "text/html; charset=UTF-8",
+        "Cache-Control": "no-store"
+      }
+    }
+  );
+}
+
+/* =========================================================
+   PUBLIC DYNAMIC GUIDE ROUTE
+   ========================================================= */
+
+async function handlePublicGuide(request, env) {
+  const url = new URL(request.url);
+
+  const match = url.pathname.match(
+    /^\/guides\/([^/]+)\/?$/
+  );
+
+  if (!match) {
+    return null;
+  }
+
+  const slug = decodeURIComponent(match[1]);
+
+  return renderArticlePage(slug, env);
+}
+
+/* =========================================================
+   API ROUTER
+   ========================================================= */
 
 async function handleApi(request, env) {
   const url = new URL(request.url);
@@ -559,16 +1138,12 @@ async function handleApi(request, env) {
     );
   }
 
-  /* PUBLIC ARTICLE LIST */
-
   if (
     path === "/api/articles" &&
     request.method === "GET"
   ) {
     return listArticles(request, env);
   }
-
-  /* PUBLIC ARTICLE BY SLUG */
 
   const publicSlugMatch = path.match(
     /^\/api\/articles\/slug\/([^/]+)$/
@@ -584,13 +1159,9 @@ async function handleApi(request, env) {
     );
   }
 
-  /* ADMIN AUTHENTICATION */
-
   if (!(await authenticate(request, env))) {
     return unauthorized();
   }
-
-  /* CREATE */
 
   if (
     path === "/api/articles" &&
@@ -598,8 +1169,6 @@ async function handleApi(request, env) {
   ) {
     return createArticle(request, env);
   }
-
-  /* ARTICLE BY ID */
 
   const idMatch = path.match(
     /^\/api\/articles\/(\d+)$/
@@ -638,14 +1207,17 @@ async function handleApi(request, env) {
   );
 }
 
-/* MAIN WORKER */
+/* =========================================================
+   MAIN WORKER
+   ========================================================= */
 
 export default {
   async fetch(request, env) {
+
     const url = new URL(request.url);
 
     /*
-     * API requests
+     * API routes
      */
 
     if (url.pathname.startsWith("/api/")) {
@@ -665,50 +1237,58 @@ export default {
     }
 
     /*
-     * Dynamic public article URLs.
-     *
-     * Example:
-     * /guides/how-nigerian-paye-tax-works-2026
-     *
-     * This loads the article template and passes
-     * the slug to it through the query string.
+     * Dynamic database-powered guide pages.
      */
 
-    if (
-      url.pathname.startsWith("/guides/") &&
-      url.pathname !== "/guides/" &&
-      !url.pathname.endsWith(".html")
-    ) {
-      const slug = url.pathname
-        .replace(/^\/guides\//, "")
-        .replace(/\/+$/, "");
+    if (url.pathname.startsWith("/guides/")) {
 
-      if (slug) {
-        const templateUrl = new URL(
-          "/guides/article.html",
-          request.url
-        );
+      try {
 
-        templateUrl.searchParams.set(
-          "slug",
-          slug
-        );
-
-        const templateRequest = new Request(
-          templateUrl.toString(),
-          request
-        );
-
-        if (env.ASSETS) {
-          return env.ASSETS.fetch(
-            templateRequest
+        if (!env.DB) {
+          return new Response(
+            "Database connection unavailable.",
+            {
+              status: 500,
+              headers: {
+                "Content-Type":
+                  "text/plain; charset=UTF-8"
+              }
+            }
           );
         }
+
+        const guideResponse =
+          await handlePublicGuide(
+            request,
+            env
+          );
+
+        if (guideResponse) {
+          return guideResponse;
+        }
+
+      } catch (error) {
+
+        console.error(
+          "FigureNG guide error:",
+          error
+        );
+
+        return new Response(
+          "Unable to load this guide.",
+          {
+            status: 500,
+            headers: {
+              "Content-Type":
+                "text/plain; charset=UTF-8"
+            }
+          }
+        );
       }
     }
 
     /*
-     * Existing FigureNG website.
+     * Existing static FigureNG website.
      */
 
     if (env.ASSETS) {
