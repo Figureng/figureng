@@ -8,7 +8,6 @@
 <title>Guides | FigureNG</title>
 
 <meta
-    id="metaDescription"
     name="description"
     content="Practical guides about salary, tax, loans, personal finance and everyday calculations in Nigeria."
 >
@@ -36,12 +35,17 @@
     --background: #f6f7f5;
     --white: #ffffff;
     --line: #dfe4e1;
+    --soft: #edf2ef;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -58,13 +62,14 @@ a {
 
 button,
 input {
-    font-family: inherit;
+    font: inherit;
 }
 
 .container {
     width: min(1120px, calc(100% - 30px));
     margin: auto;
 }
+
 
 /* HEADER */
 
@@ -78,6 +83,7 @@ header {
 
 .header {
     min-height: 68px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -87,6 +93,7 @@ header {
     display: flex;
     align-items: center;
     gap: 9px;
+
     font-size: 20px;
     font-weight: 900;
 }
@@ -94,12 +101,17 @@ header {
 .mark {
     width: 29px;
     height: 29px;
+
     display: grid;
     place-items: center;
+
     background: var(--green);
     color: white;
+
     border-radius: 5px;
+
     font-size: 11px;
+    letter-spacing: -.3px;
 }
 
 .brand span {
@@ -108,6 +120,7 @@ header {
 
 nav {
     display: flex;
+    align-items: center;
     gap: 24px;
 }
 
@@ -122,6 +135,7 @@ nav .active {
     color: var(--ink);
 }
 
+
 /* HERO */
 
 .hero {
@@ -135,26 +149,35 @@ nav .active {
 
 .kicker {
     color: var(--green2);
+
     font-size: 11px;
     font-weight: 900;
+
     letter-spacing: .12em;
     text-transform: uppercase;
+
     margin-bottom: 16px;
 }
 
 h1 {
     max-width: 760px;
+
     font-size: clamp(39px, 6vw, 60px);
     line-height: 1.03;
+
     letter-spacing: -2.5px;
+
     margin-bottom: 18px;
 }
 
 .hero p {
     max-width: 650px;
+
     color: var(--muted);
+
     font-size: 16px;
 }
+
 
 /* CONTENT */
 
@@ -162,11 +185,11 @@ main {
     padding: 55px 0 80px;
 }
 
+
 /* FEATURED */
 
 .featured {
-    display: none;
-
+    display: grid;
     grid-template-columns: 1.35fr .65fr;
 
     background: var(--green);
@@ -178,96 +201,129 @@ main {
     margin-bottom: 50px;
 }
 
-.featured.show {
-    display: grid;
-}
-
 .featured-main {
     padding: 38px;
 }
 
 .featured-label {
     color: #b8d8c8;
+
     font-size: 10px;
     font-weight: 900;
+
     letter-spacing: .12em;
     text-transform: uppercase;
+
     margin-bottom: 17px;
 }
 
 .featured h2 {
     font-size: 30px;
     line-height: 1.2;
+
     margin-bottom: 13px;
 }
 
 .featured p {
     color: #d2e2da;
+
     font-size: 14px;
+
     max-width: 600px;
+
     margin-bottom: 25px;
 }
 
 .read-button {
     display: inline-block;
+
     background: white;
     color: var(--green);
+
     padding: 11px 16px;
+
     border-radius: 4px;
+
     font-size: 12px;
     font-weight: 900;
 }
 
 .featured-side {
     background: rgba(255,255,255,.055);
+
     border-left: 1px solid rgba(255,255,255,.12);
+
     padding: 38px;
+
     display: flex;
     align-items: center;
 }
 
 .featured-side strong {
     display: block;
+
     font-size: 13px;
+
     margin-bottom: 7px;
 }
 
 .featured-side p {
     color: #bfd4c9;
+
     font-size: 12px;
+
+    margin-bottom: 16px;
 }
 
-.featured-side a {
+.featured-tool {
     color: white;
+
     font-size: 12px;
     font-weight: 800;
 }
+
 
 /* TOOLBAR */
 
 .toolbar {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
+
     gap: 20px;
+
     margin-bottom: 25px;
 }
 
 .categories {
     display: flex;
+
     gap: 7px;
+
     flex-wrap: wrap;
 }
 
 .category {
     border: 1px solid var(--line);
+
     background: white;
+
     color: var(--muted);
+
     padding: 8px 12px;
+
     border-radius: 4px;
+
     font-size: 11px;
     font-weight: 800;
+
     cursor: pointer;
+
+    transition:
+        background .15s ease,
+        color .15s ease,
+        border-color .15s ease;
 }
 
 .category:hover,
@@ -279,13 +335,20 @@ main {
 
 .search {
     width: 250px;
+
     height: 38px;
+
     border: 1px solid var(--line);
     border-radius: 4px;
+
     padding: 0 12px;
+
     outline: none;
+
     background: white;
+
     color: var(--ink);
+
     font-size: 12px;
 }
 
@@ -293,19 +356,27 @@ main {
     border-color: var(--green2);
 }
 
+
 /* ARTICLES */
 
 .article-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
     gap: 18px;
 }
 
 .article {
     background: white;
+
     border: 1px solid var(--line);
+
     border-radius: 5px;
+
     padding: 24px;
+
     transition:
         transform .15s ease,
         box-shadow .15s ease;
@@ -313,109 +384,153 @@ main {
 
 .article:hover {
     transform: translateY(-2px);
+
     box-shadow:
         0 8px 25px rgba(20,35,29,.07);
 }
 
 .article-category {
     color: var(--green2);
+
     font-size: 10px;
     font-weight: 900;
+
     letter-spacing: .1em;
     text-transform: uppercase;
+
     margin-bottom: 17px;
 }
 
 .article h2 {
     font-size: 19px;
     line-height: 1.3;
-    margin-bottom: 10px;
-}
 
-.article p {
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.65;
-    margin-bottom: 21px;
+    margin-bottom: 10px;
 }
 
 .article-meta {
     color: #8a948f;
+
     font-size: 10px;
+
     margin-bottom: 13px;
+}
+
+.article p {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.65;
+
+    margin-bottom: 21px;
 }
 
 .article-link {
     color: var(--green2);
+
     font-size: 12px;
     font-weight: 900;
 }
 
+
 /* LOADING */
 
 .loading {
+    grid-column: 1 / -1;
+
     background: white;
+
     border: 1px solid var(--line);
-    border-radius: 5px;
-    padding: 25px;
+
+    padding: 35px;
+
+    text-align: center;
+
     color: var(--muted);
+
     font-size: 13px;
-    margin-bottom: 20px;
 }
 
-.loading.hidden {
+
+/* EMPTY STATE */
+
+.empty {
+    grid-column: 1 / -1;
+
+    background: white;
+
+    border: 1px solid var(--line);
+
+    padding: 35px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
     display: none;
 }
+
+
+/* ERROR */
+
+.error-box {
+    grid-column: 1 / -1;
+
+    background: white;
+
+    border: 1px solid #e4c7c7;
+
+    padding: 25px;
+
+    color: #7b2929;
+
+    font-size: 13px;
+
+    display: none;
+}
+
 
 /* NO RESULTS */
 
 .no-results {
     display: none;
+
     background: white;
+
     border: 1px solid var(--line);
+
     padding: 25px;
+
     color: var(--muted);
+
     font-size: 13px;
 }
 
-.no-results.show {
-    display: block;
-}
-
-/* ERROR */
-
-.error-box {
-    display: none;
-    background: white;
-    border: 1px solid #e4caca;
-    border-radius: 5px;
-    padding: 25px;
-    color: #8b3333;
-    font-size: 13px;
-    margin-bottom: 20px;
-}
-
-.error-box.show {
-    display: block;
-}
 
 /* FOOTER */
 
 footer {
     background: var(--green);
     color: white;
+
     padding: 45px 0 22px;
 }
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
+
+    grid-template-columns:
+        1.5fr 1fr 1fr;
+
     gap: 50px;
+
     padding-bottom: 35px;
 }
 
 footer .brand {
     color: white;
+
     margin-bottom: 12px;
 }
 
@@ -425,21 +540,28 @@ footer .brand span {
 
 .footer-description {
     max-width: 340px;
+
     color: #c4d8ce;
+
     font-size: 12px;
 }
 
 footer h3 {
     font-size: 10px;
+
     letter-spacing: .1em;
     text-transform: uppercase;
+
     margin-bottom: 13px;
 }
 
 footer a {
     display: block;
+
     color: #c4d8ce;
+
     font-size: 12px;
+
     margin-bottom: 8px;
 }
 
@@ -449,10 +571,14 @@ footer a:hover {
 
 .copyright {
     border-top: 1px solid rgba(255,255,255,.15);
+
     padding-top: 18px;
+
     color: #a9c2b6;
+
     font-size: 10px;
 }
+
 
 /* MOBILE */
 
@@ -464,6 +590,7 @@ footer a:hover {
 
     .featured-side {
         border-left: 0;
+
         border-top: 1px solid rgba(255,255,255,.12);
     }
 
@@ -473,6 +600,7 @@ footer a:hover {
 
     .toolbar {
         align-items: flex-start;
+
         flex-direction: column;
     }
 
@@ -485,6 +613,7 @@ footer a:hover {
     }
 
 }
+
 
 @media(max-width:560px) {
 
@@ -524,6 +653,7 @@ footer a:hover {
 
     .footer-grid {
         grid-template-columns: 1fr;
+
         gap: 30px;
     }
 
@@ -533,7 +663,9 @@ footer a:hover {
 
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -548,6 +680,7 @@ FG
 Figure<span>NG</span>
 
 </a>
+
 
 <nav>
 
@@ -574,6 +707,7 @@ Contact
 </header>
 
 
+
 <section class="hero">
 
 <div class="container hero-inner">
@@ -597,19 +731,22 @@ personal finance and practical calculations in Nigeria.
 </section>
 
 
+
 <main>
 
 <div class="container">
 
+
 <section
     id="featured"
     class="featured"
+    style="display:none;"
 >
 
 <div class="featured-main">
 
 <div class="featured-label">
-Latest guide
+Featured guide
 </div>
 
 <h2 id="featuredTitle">
@@ -638,14 +775,14 @@ Related tool
 </strong>
 
 <p>
-Use a FigureNG calculator to apply
-the information from our guides to
-your own figures.
+Use FigureNG calculators to apply the
+information in our guides to your own figures.
 </p>
 
-<br>
-
-<a href="/tools.html">
+<a
+    href="/tools.html"
+    class="featured-tool"
+>
 Explore tools →
 </a>
 
@@ -654,6 +791,7 @@ Explore tools →
 </div>
 
 </section>
+
 
 
 <div class="toolbar">
@@ -669,21 +807,21 @@ All
 
 <button
     class="category"
-    data-category="salary"
+    data-category="Salary"
 >
 Salary & Tax
 </button>
 
 <button
     class="category"
-    data-category="loans"
+    data-category="Loans"
 >
 Loans
 </button>
 
 <button
     class="category"
-    data-category="finance"
+    data-category="Finance"
 >
 Personal Finance
 </button>
@@ -696,10 +834,17 @@ Personal Finance
     class="search"
     type="search"
     placeholder="Search guides..."
+    aria-label="Search guides"
 >
 
 </div>
 
+
+
+<div
+    id="articleGrid"
+    class="article-grid"
+>
 
 <div
     id="loading"
@@ -708,19 +853,20 @@ Personal Finance
 Loading guides...
 </div>
 
-
 <div
     id="errorBox"
     class="error-box"
 >
-We could not load the guides right now. Please try again later.
+Unable to load the guides right now. Please refresh the page and try again.
 </div>
 
-
 <div
-    id="articleGrid"
-    class="article-grid"
+    id="empty"
+    class="empty"
 >
+No published guides are available yet.
+</div>
+
 </div>
 
 
@@ -731,16 +877,20 @@ We could not load the guides right now. Please try again later.
 No guides match your search.
 </div>
 
+
 </div>
 
 </main>
+
 
 
 <footer>
 
 <div class="container">
 
+
 <div class="footer-grid">
+
 
 <div>
 
@@ -815,6 +965,7 @@ Disclaimer
 
 </div>
 
+
 </div>
 
 
@@ -822,14 +973,21 @@ Disclaimer
 © 2026 FigureNG. All rights reserved.
 </div>
 
+
 </div>
 
 </footer>
 
 
+
 <script>
 
-const API_URL = "/api/articles?status=published&limit=100";
+const API_URL = "/api/articles";
+
+const ARTICLE_PAGE = "/guides/article.html?slug=";
+
+const search =
+    document.getElementById("guideSearch");
 
 const articleGrid =
     document.getElementById("articleGrid");
@@ -840,16 +998,11 @@ const loading =
 const errorBox =
     document.getElementById("errorBox");
 
+const empty =
+    document.getElementById("empty");
+
 const noResults =
     document.getElementById("noResults");
-
-const search =
-    document.getElementById("guideSearch");
-
-const buttons =
-    Array.from(
-        document.querySelectorAll(".category")
-    );
 
 const featured =
     document.getElementById("featured");
@@ -863,11 +1016,20 @@ const featuredExcerpt =
 const featuredLink =
     document.getElementById("featuredLink");
 
+const buttons =
+    Array.from(
+        document.querySelectorAll(".category")
+    );
+
 
 let articles = [];
 
 let currentCategory = "all";
 
+
+/*
+Format publication date.
+*/
 
 function formatDate(value) {
 
@@ -885,14 +1047,17 @@ function formatDate(value) {
     return date.toLocaleDateString(
         "en-NG",
         {
-            year: "numeric",
             month: "long",
-            day: "numeric"
+            year: "numeric"
         }
     );
-
 }
 
+
+/*
+Escape HTML before inserting database
+content into the page.
+*/
 
 function escapeHTML(value) {
 
@@ -902,147 +1067,174 @@ function escapeHTML(value) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
-
 }
 
 
-function categoryKey(category) {
-
-    const value =
-        String(category || "")
-            .toLowerCase()
-            .trim();
-
-    if (
-        value.includes("salary") ||
-        value.includes("tax")
-    ) {
-        return "salary";
-    }
-
-    if (
-        value.includes("loan") ||
-        value.includes("credit")
-    ) {
-        return "loans";
-    }
-
-    if (
-        value.includes("finance") ||
-        value.includes("money")
-    ) {
-        return "finance";
-    }
-
-    return "finance";
-
-}
-
+/*
+Build the public article URL.
+*/
 
 function articleURL(slug) {
 
-    return (
-        "/guides/article.html?slug=" +
-        encodeURIComponent(slug)
-    );
+    return ARTICLE_PAGE +
+        encodeURIComponent(slug);
 
 }
 
 
+/*
+Create an article card.
+*/
+
 function createArticleCard(article) {
 
-    const category =
+    const card =
+        document.createElement("article");
+
+    card.className = "article";
+
+    card.dataset.category =
         article.category || "Guides";
+
+    const title =
+        escapeHTML(article.title);
+
+    const excerpt =
+        escapeHTML(
+            article.excerpt ||
+            "Read this practical FigureNG guide."
+        );
+
+    const category =
+        escapeHTML(
+            article.category ||
+            "Guides"
+        );
 
     const date =
         formatDate(article.published_at);
 
-    const searchText = [
-        article.title,
-        article.excerpt,
-        article.category
-    ]
-        .join(" ")
-        .toLowerCase();
+    card.innerHTML = `
 
-    return `
-        <article
-            class="article"
-            data-category="${escapeHTML(categoryKey(category))}"
-            data-search="${escapeHTML(searchText)}"
+        <div class="article-category">
+            ${category}
+        </div>
+
+        <h2>
+            ${title}
+        </h2>
+
+        <div class="article-meta">
+            FigureNG${date ? " · " + date : ""}
+        </div>
+
+        <p>
+            ${excerpt}
+        </p>
+
+        <a
+            href="${articleURL(article.slug)}"
+            class="article-link"
         >
+            Read guide →
+        </a>
 
-            <div class="article-category">
-                ${escapeHTML(category)}
-            </div>
-
-            <h2>
-                ${escapeHTML(article.title)}
-            </h2>
-
-            <div class="article-meta">
-                FigureNG${date ? " · " + escapeHTML(date) : ""}
-            </div>
-
-            <p>
-                ${escapeHTML(
-                    article.excerpt ||
-                    "Read this practical FigureNG guide."
-                )}
-            </p>
-
-            <a
-                href="${articleURL(article.slug)}"
-                class="article-link"
-            >
-                Read guide →
-            </a>
-
-        </article>
     `;
 
+    return card;
 }
 
 
+/*
+Render featured article.
+The newest published article is used.
+*/
+
+function renderFeatured() {
+
+    if (!articles.length) {
+        featured.style.display = "none";
+        return;
+    }
+
+    const article =
+        articles[0];
+
+    featuredTitle.textContent =
+        article.title || "Featured guide";
+
+    featuredExcerpt.textContent =
+        article.excerpt ||
+        "Read the latest practical guide from FigureNG.";
+
+    featuredLink.href =
+        articleURL(article.slug);
+
+    featured.style.display = "grid";
+}
+
+
+/*
+Render article cards.
+*/
+
 function renderArticles() {
+
+    articleGrid
+        .querySelectorAll(".article")
+        .forEach(function(article) {
+
+            article.remove();
+
+        });
+
 
     const query =
         search.value
             .trim()
             .toLowerCase();
 
+
     let visible = 0;
 
-    articleGrid.innerHTML = "";
 
     articles.forEach(function(article) {
 
         const category =
-            categoryKey(article.category);
+            String(
+                article.category ||
+                "Guides"
+            );
 
-        const searchable = [
-            article.title,
-            article.excerpt,
-            article.category
-        ]
-            .join(" ")
+
+        const searchable =
+            (
+                String(article.title || "") +
+                " " +
+                String(article.excerpt || "") +
+                " " +
+                String(article.category || "")
+            )
             .toLowerCase();
+
 
         const categoryMatch =
             currentCategory === "all" ||
-            category === currentCategory;
+            category.toLowerCase() ===
+            currentCategory.toLowerCase();
+
 
         const searchMatch =
             !query ||
             searchable.includes(query);
+
 
         if (
             categoryMatch &&
             searchMatch
         ) {
 
-            articleGrid.insertAdjacentHTML(
-                "beforeend",
+            articleGrid.appendChild(
                 createArticleCard(article)
             );
 
@@ -1052,98 +1244,118 @@ function renderArticles() {
 
     });
 
-    noResults.classList.toggle(
-        "show",
-        visible === 0
-    );
+
+    noResults.style.display =
+        visible === 0 &&
+        articles.length > 0
+            ? "block"
+            : "none";
 
 }
 
 
-function renderFeatured() {
+/*
+Load published articles from D1.
+*/
 
-    if (!articles.length) {
-        featured.classList.remove("show");
-        return;
-    }
+async function loadArticles() {
 
-    const latest =
-        articles[0];
+    loading.style.display = "block";
 
-    featuredTitle.textContent =
-        latest.title;
+    errorBox.style.display = "none";
 
-    featuredExcerpt.textContent =
-        latest.excerpt ||
-        "Read the latest practical guide from FigureNG.";
+    empty.style.display = "none";
 
-    featuredLink.href =
-        articleURL(latest.slug);
-
-    featured.classList.add("show");
-
-}
-
-
-async function loadGuides() {
-
-    loading.classList.remove("hidden");
-
-    errorBox.classList.remove("show");
 
     try {
 
         const response =
             await fetch(
-                API_URL,
+                API_URL +
+                "?status=published&limit=100",
                 {
                     method: "GET",
+                    headers: {
+                        "Accept":
+                            "application/json"
+                    },
                     cache: "no-store"
                 }
             );
 
+
         if (!response.ok) {
+
             throw new Error(
-                "Guide request failed."
+                "Failed to load articles."
             );
+
         }
+
 
         const data =
             await response.json();
+
 
         if (
             !data.success ||
             !Array.isArray(data.articles)
         ) {
+
             throw new Error(
-                "Invalid guide response."
+                "Invalid article response."
             );
+
         }
+
 
         articles =
             data.articles;
+
+
+        loading.style.display =
+            "none";
+
+
+        if (!articles.length) {
+
+            empty.style.display =
+                "block";
+
+            featured.style.display =
+                "none";
+
+            return;
+
+        }
+
 
         renderFeatured();
 
         renderArticles();
 
-        loading.classList.add("hidden");
-
     } catch (error) {
 
         console.error(
-            "FigureNG Guides error:",
+            "FigureNG guides error:",
             error
         );
 
-        loading.classList.add("hidden");
 
-        errorBox.classList.add("show");
+        loading.style.display =
+            "none";
+
+        errorBox.style.display =
+            "block";
 
     }
 
 }
 
+
+/*
+Category filters.
+*/
 
 buttons.forEach(function(button) {
 
@@ -1151,18 +1363,25 @@ buttons.forEach(function(button) {
         "click",
         function() {
 
-            buttons.forEach(function(item) {
+            buttons.forEach(
+                function(item) {
 
-                item.classList.remove(
-                    "active"
-                );
+                    item.classList.remove(
+                        "active"
+                    );
 
-            });
+                }
+            );
 
-            this.classList.add("active");
+
+            this.classList.add(
+                "active"
+            );
+
 
             currentCategory =
                 this.dataset.category;
+
 
             renderArticles();
 
@@ -1172,15 +1391,28 @@ buttons.forEach(function(button) {
 });
 
 
+/*
+Live search.
+*/
+
 search.addEventListener(
     "input",
-    renderArticles
+    function() {
+
+        renderArticles();
+
+    }
 );
 
 
-loadGuides();
+/*
+Start.
+*/
+
+loadArticles();
 
 </script>
+
 
 </body>
 </html>
