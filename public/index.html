@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -357,6 +358,78 @@ main {
   margin-bottom: 12px;
 }
 
+/* CALCULATOR DIRECTORY PREVIEW */
+
+.calculator-directory {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.tool-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 20px;
+  transition: .2s;
+}
+
+.tool-card:hover {
+  transform: translateY(-2px);
+  border-color: #86efac;
+  box-shadow: 0 8px 25px rgba(15,23,42,.07);
+}
+
+.tool-category {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  color: var(--green-dark);
+  background: var(--green-light);
+  padding: 5px 8px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.tool-card h3 {
+  color: var(--navy);
+  font-size: 19px;
+  margin-bottom: 7px;
+}
+
+.tool-card p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.tool-link {
+  color: var(--green-dark);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.directory-button-wrap {
+  text-align: center;
+  margin-top: 22px;
+}
+
+.directory-button {
+  display: inline-block;
+  background: var(--green);
+  color: white;
+  padding: 13px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.directory-button:hover {
+  background: var(--green-dark);
+}
+
 .steps {
   display: grid;
   grid-template-columns: repeat(3,1fr);
@@ -496,7 +569,7 @@ footer {
     font-size: 12px;
   }
 
-  .nav-links a:nth-child(n+3) {
+  .nav-links a:nth-child(n+4) {
     display: none;
   }
 
@@ -516,9 +589,33 @@ footer {
     padding: 20px;
   }
 
+  .calculator-directory {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/* VERY SMALL PHONES */
+
+@media(max-width:380px) {
+
+  .nav-links {
+    gap: 7px;
+    font-size: 11px;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+
+  .hero h1 {
+    font-size: 35px;
+  }
+
 }
 
 </style>
+
 </head>
 
 <body>
@@ -532,10 +629,27 @@ Figure<span>NG</span>
 </a>
 
 <nav class="nav-links">
-<a href="#calculator">Calculator</a>
-<a href="#how-it-works">How It Works</a>
-<a href="/about.html">About</a>
-<a href="/contact.html">Contact</a>
+
+<a href="#calculator">
+Calculator
+</a>
+
+<a href="/calculators.html">
+All Calculators
+</a>
+
+<a href="#how-it-works">
+How It Works
+</a>
+
+<a href="/about.html">
+About
+</a>
+
+<a href="/contact.html">
+Contact
+</a>
+
 </nav>
 
 </div>
@@ -856,6 +970,193 @@ Estimated monthly take-home pay
 <div class="container">
 
 
+<!-- CALCULATOR DIRECTORY -->
+
+<section class="section">
+
+<div class="section-heading">
+
+<h2>
+Free Nigerian Calculators
+</h2>
+
+<p>
+Explore FigureNG's growing collection of free calculators
+for money, taxes, household expenses and everyday needs.
+</p>
+
+</div>
+
+
+<div class="calculator-directory">
+
+
+<a
+href="/"
+class="tool-card"
+>
+
+<span class="tool-category">
+Money
+</span>
+
+<h3>
+Nigeria Salary Calculator
+</h3>
+
+<p>
+Estimate PAYE tax, deductions and your monthly
+take-home pay.
+</p>
+
+<span class="tool-link">
+Use calculator →
+</span>
+
+</a>
+
+
+<a
+href="/loan-calculator.html"
+class="tool-card"
+>
+
+<span class="tool-category">
+Money
+</span>
+
+<h3>
+Loan Calculator
+</h3>
+
+<p>
+Estimate monthly repayments, total interest and
+total loan repayment.
+</p>
+
+<span class="tool-link">
+Use calculator →
+</span>
+
+</a>
+
+
+<a
+href="/flat-vs-reducing.html"
+class="tool-card"
+>
+
+<span class="tool-category">
+Loans
+</span>
+
+<h3>
+Flat vs Reducing Loan Calculator
+</h3>
+
+<p>
+Compare flat-rate and reducing-balance loan costs.
+</p>
+
+<span class="tool-link">
+Compare loans →
+</span>
+
+</a>
+
+
+<a
+href="/vat-calculator.html"
+class="tool-card"
+>
+
+<span class="tool-category">
+Tax
+</span>
+
+<h3>
+Nigeria VAT Calculator
+</h3>
+
+<p>
+Calculate VAT and work out VAT-inclusive or
+VAT-exclusive prices.
+</p>
+
+<span class="tool-link">
+Use calculator →
+</span>
+
+</a>
+
+
+<a
+href="/electricity-bill-calculator.html"
+class="tool-card"
+>
+
+<span class="tool-category">
+Household
+</span>
+
+<h3>
+Nigeria Electricity Bill Calculator
+</h3>
+
+<p>
+Estimate your electricity bill from your estimated
+electricity consumption.
+</p>
+
+<span class="tool-link">
+Use calculator →
+</span>
+
+</a>
+
+
+<a
+href="/fuel-cost-calculator.html"
+class="tool-card"
+>
+
+<span class="tool-category">
+Transport
+</span>
+
+<h3>
+Nigeria Fuel Cost Calculator
+</h3>
+
+<p>
+Estimate petrol requirements and the cost of a trip.
+</p>
+
+<span class="tool-link">
+Use calculator →
+</span>
+
+</a>
+
+</div>
+
+
+<div class="directory-button-wrap">
+
+<a
+href="/calculators.html"
+class="directory-button"
+>
+Explore All FigureNG Calculators →
+</a>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT THE SALARY CALCULATOR -->
+
 <section class="section">
 
 <div class="section-heading">
@@ -889,6 +1190,8 @@ assessment.
 
 </section>
 
+
+<!-- HOW IT WORKS -->
 
 <section class="section" id="how-it-works">
 
@@ -959,6 +1262,8 @@ shows your estimated annual and monthly take-home pay.
 </section>
 
 
+<!-- DISCLAIMER -->
+
 <section class="section">
 
 <div class="notice">
@@ -978,6 +1283,8 @@ circumstances, documentation and applicable law.
 
 </section>
 
+
+<!-- SOURCES -->
 
 <section class="section">
 
@@ -1039,6 +1346,8 @@ View the JRB 2026 PIT Guidelines →
 </section>
 
 
+<!-- ABOUT FIGURENG -->
+
 <section class="section">
 
 <div class="card">
@@ -1096,17 +1405,33 @@ everyday needs.
 
 <div class="footer-links">
 
-<a href="/">Home</a>
+<a href="/">
+Home
+</a>
 
-<a href="/about.html">About</a>
+<a href="/calculators.html">
+All Calculators
+</a>
 
-<a href="/contact.html">Contact</a>
+<a href="/about.html">
+About
+</a>
 
-<a href="/privacy.html">Privacy Policy</a>
+<a href="/contact.html">
+Contact
+</a>
 
-<a href="/terms.html">Terms</a>
+<a href="/privacy.html">
+Privacy Policy
+</a>
 
-<a href="/disclaimer.html">Disclaimer</a>
+<a href="/terms.html">
+Terms
+</a>
+
+<a href="/disclaimer.html">
+Disclaimer
+</a>
 
 </div>
 
