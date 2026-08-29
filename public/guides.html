@@ -8,6 +8,7 @@
 <title>Guides | FigureNG</title>
 
 <meta
+    id="metaDescription"
     name="description"
     content="Practical guides about salary, tax, loans, personal finance and everyday calculations in Nigeria."
 >
@@ -53,6 +54,11 @@ body {
 a {
     color: inherit;
     text-decoration: none;
+}
+
+button,
+input {
+    font-family: inherit;
 }
 
 .container {
@@ -159,13 +165,21 @@ main {
 /* FEATURED */
 
 .featured {
-    display: grid;
+    display: none;
+
     grid-template-columns: 1.35fr .65fr;
+
     background: var(--green);
     color: white;
+
     border-radius: 6px;
     overflow: hidden;
+
     margin-bottom: 50px;
+}
+
+.featured.show {
+    display: grid;
 }
 
 .featured-main {
@@ -221,6 +235,12 @@ main {
 .featured-side p {
     color: #bfd4c9;
     font-size: 12px;
+}
+
+.featured-side a {
+    color: white;
+    font-size: 12px;
+    font-weight: 800;
 }
 
 /* TOOLBAR */
@@ -293,7 +313,8 @@ main {
 
 .article:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(20,35,29,.07);
+    box-shadow:
+        0 8px 25px rgba(20,35,29,.07);
 }
 
 .article-category {
@@ -335,20 +356,15 @@ main {
 .loading {
     background: white;
     border: 1px solid var(--line);
+    border-radius: 5px;
     padding: 25px;
     color: var(--muted);
     font-size: 13px;
+    margin-bottom: 20px;
 }
 
-/* ERROR */
-
-.error-message {
+.loading.hidden {
     display: none;
-    background: white;
-    border: 1px solid #e6caca;
-    padding: 25px;
-    color: #8b3333;
-    font-size: 13px;
 }
 
 /* NO RESULTS */
@@ -360,6 +376,27 @@ main {
     padding: 25px;
     color: var(--muted);
     font-size: 13px;
+}
+
+.no-results.show {
+    display: block;
+}
+
+/* ERROR */
+
+.error-box {
+    display: none;
+    background: white;
+    border: 1px solid #e4caca;
+    border-radius: 5px;
+    padding: 25px;
+    color: #8b3333;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.error-box.show {
+    display: block;
 }
 
 /* FOOTER */
@@ -565,22 +602,20 @@ personal finance and practical calculations in Nigeria.
 <div class="container">
 
 <section
+    id="featured"
     class="featured"
-    id="featuredArticle"
 >
 
 <div class="featured-main">
 
 <div class="featured-label">
-Featured guide
+Latest guide
 </div>
 
 <h2 id="featuredTitle">
-Loading guide...
 </h2>
 
 <p id="featuredExcerpt">
-Loading...
 </p>
 
 <a
@@ -603,17 +638,15 @@ Related tool
 </strong>
 
 <p>
-Use the FigureNG calculators to apply the
-information from our guides to your own figures.
+Use a FigureNG calculator to apply
+the information from our guides to
+your own figures.
 </p>
 
 <br>
 
-<a
-    href="/salary-calculator.html"
-    style="color:white;font-size:12px;font-weight:800;"
->
-Open salary calculator →
+<a href="/tools.html">
+Explore tools →
 </a>
 
 </div>
@@ -625,10 +658,7 @@ Open salary calculator →
 
 <div class="toolbar">
 
-<div
-    class="categories"
-    id="categories"
->
+<div class="categories">
 
 <button
     class="category active"
@@ -637,7 +667,29 @@ Open salary calculator →
 All
 </button>
 
+<button
+    class="category"
+    data-category="salary"
+>
+Salary & Tax
+</button>
+
+<button
+    class="category"
+    data-category="loans"
+>
+Loans
+</button>
+
+<button
+    class="category"
+    data-category="finance"
+>
+Personal Finance
+</button>
+
 </div>
+
 
 <input
     id="guideSearch"
@@ -658,11 +710,10 @@ Loading guides...
 
 
 <div
-    id="errorMessage"
-    class="error-message"
+    id="errorBox"
+    class="error-box"
 >
-We could not load the guides right now. Please refresh
-the page and try again.
+We could not load the guides right now. Please try again later.
 </div>
 
 
@@ -778,25 +829,30 @@ Disclaimer
 
 <script>
 
-const API_URL = "/api/articles";
-
-const searchInput =
-    document.getElementById("guideSearch");
+const API_URL = "/api/articles?status=published&limit=100";
 
 const articleGrid =
     document.getElementById("articleGrid");
 
-const categories =
-    document.getElementById("categories");
-
 const loading =
     document.getElementById("loading");
 
-const errorMessage =
-    document.getElementById("errorMessage");
+const errorBox =
+    document.getElementById("errorBox");
 
 const noResults =
     document.getElementById("noResults");
+
+const search =
+    document.getElementById("guideSearch");
+
+const buttons =
+    Array.from(
+        document.querySelectorAll(".category")
+    );
+
+const featured =
+    document.getElementById("featured");
 
 const featuredTitle =
     document.getElementById("featuredTitle");
@@ -813,25 +869,14 @@ let articles = [];
 let currentCategory = "all";
 
 
-function escapeHTML(value) {
+function formatDate(value) {
 
-    return String(value || "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-
-}
-
-
-function formatDate(dateValue) {
-
-    if (!dateValue) {
+    if (!value) {
         return "";
     }
 
-    const date = new Date(dateValue);
+    const date =
+        new Date(value);
 
     if (Number.isNaN(date.getTime())) {
         return "";
@@ -849,109 +894,112 @@ function formatDate(dateValue) {
 }
 
 
-function articleURL(article) {
+function escapeHTML(value) {
 
-    return "/guides/article.html?slug=" +
-        encodeURIComponent(article.slug);
-
-}
-
-
-function buildCategories() {
-
-    const categoryMap = {};
-
-    articles.forEach(function(article) {
-
-        const category =
-            (article.category || "Guides").trim();
-
-        if (category) {
-            categoryMap[category] = true;
-        }
-
-    });
-
-
-    Object.keys(categoryMap)
-        .sort()
-        .forEach(function(category) {
-
-            const button =
-                document.createElement("button");
-
-            button.className = "category";
-
-            button.dataset.category = category;
-
-            button.textContent = category;
-
-            categories.appendChild(button);
-
-        });
-
-
-    categories
-        .querySelectorAll(".category")
-        .forEach(function(button) {
-
-            button.addEventListener(
-                "click",
-                function() {
-
-                    categories
-                        .querySelectorAll(".category")
-                        .forEach(function(item) {
-
-                            item.classList.remove("active");
-
-                        });
-
-                    button.classList.add("active");
-
-                    currentCategory =
-                        button.dataset.category;
-
-                    renderArticles();
-
-                }
-            );
-
-        });
+    return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
 }
 
 
-function setupFeatured() {
+function categoryKey(category) {
 
-    if (!articles.length) {
-        featuredTitle.textContent =
-            "No guides published yet.";
+    const value =
+        String(category || "")
+            .toLowerCase()
+            .trim();
 
-        featuredExcerpt.textContent =
-            "New guides will appear here automatically.";
-
-        featuredLink.style.display = "none";
-
-        return;
+    if (
+        value.includes("salary") ||
+        value.includes("tax")
+    ) {
+        return "salary";
     }
 
+    if (
+        value.includes("loan") ||
+        value.includes("credit")
+    ) {
+        return "loans";
+    }
 
-    const featured =
-        articles[0];
+    if (
+        value.includes("finance") ||
+        value.includes("money")
+    ) {
+        return "finance";
+    }
+
+    return "finance";
+
+}
 
 
-    featuredTitle.textContent =
-        featured.title;
+function articleURL(slug) {
+
+    return (
+        "/guides/article.html?slug=" +
+        encodeURIComponent(slug)
+    );
+
+}
 
 
-    featuredExcerpt.textContent =
-        featured.excerpt ||
-        "Read this FigureNG guide to understand the topic clearly.";
+function createArticleCard(article) {
 
+    const category =
+        article.category || "Guides";
 
-    featuredLink.href =
-        articleURL(featured);
+    const date =
+        formatDate(article.published_at);
+
+    const searchText = [
+        article.title,
+        article.excerpt,
+        article.category
+    ]
+        .join(" ")
+        .toLowerCase();
+
+    return `
+        <article
+            class="article"
+            data-category="${escapeHTML(categoryKey(category))}"
+            data-search="${escapeHTML(searchText)}"
+        >
+
+            <div class="article-category">
+                ${escapeHTML(category)}
+            </div>
+
+            <h2>
+                ${escapeHTML(article.title)}
+            </h2>
+
+            <div class="article-meta">
+                FigureNG${date ? " · " + escapeHTML(date) : ""}
+            </div>
+
+            <p>
+                ${escapeHTML(
+                    article.excerpt ||
+                    "Read this practical FigureNG guide."
+                )}
+            </p>
+
+            <a
+                href="${articleURL(article.slug)}"
+                class="article-link"
+            >
+                Read guide →
+            </a>
+
+        </article>
+    `;
 
 }
 
@@ -959,144 +1007,89 @@ function setupFeatured() {
 function renderArticles() {
 
     const query =
-        searchInput.value
+        search.value
             .trim()
             .toLowerCase();
 
-
-    articleGrid.innerHTML = "";
-
-
     let visible = 0;
 
+    articleGrid.innerHTML = "";
 
     articles.forEach(function(article) {
 
         const category =
-            (article.category || "Guides").trim();
-
+            categoryKey(article.category);
 
         const searchable = [
-
             article.title,
-
             article.excerpt,
-
-            article.category,
-
-            article.slug
-
+            article.category
         ]
-        .join(" ")
-        .toLowerCase();
-
+            .join(" ")
+            .toLowerCase();
 
         const categoryMatch =
             currentCategory === "all" ||
             category === currentCategory;
 
-
         const searchMatch =
             !query ||
             searchable.includes(query);
 
+        if (
+            categoryMatch &&
+            searchMatch
+        ) {
 
-        if (!categoryMatch || !searchMatch) {
-            return;
+            articleGrid.insertAdjacentHTML(
+                "beforeend",
+                createArticleCard(article)
+            );
+
+            visible++;
+
         }
-
-
-        const card =
-            document.createElement("article");
-
-        card.className = "article";
-
-
-        const articleCategory =
-            document.createElement("div");
-
-        articleCategory.className =
-            "article-category";
-
-        articleCategory.textContent =
-            category;
-
-
-        const title =
-            document.createElement("h2");
-
-        title.textContent =
-            article.title;
-
-
-        const meta =
-            document.createElement("div");
-
-        meta.className =
-            "article-meta";
-
-        const date =
-            formatDate(article.published_at);
-
-
-        meta.textContent =
-            "FigureNG" +
-            (date ? " · " + date : "");
-
-
-        const excerpt =
-            document.createElement("p");
-
-        excerpt.textContent =
-            article.excerpt ||
-            "Read this guide from FigureNG.";
-
-
-        const link =
-            document.createElement("a");
-
-        link.className =
-            "article-link";
-
-        link.href =
-            articleURL(article);
-
-        link.textContent =
-            "Read guide →";
-
-
-        card.appendChild(articleCategory);
-
-        card.appendChild(title);
-
-        card.appendChild(meta);
-
-        card.appendChild(excerpt);
-
-        card.appendChild(link);
-
-
-        articleGrid.appendChild(card);
-
-        visible++;
 
     });
 
-
-    noResults.style.display =
+    noResults.classList.toggle(
+        "show",
         visible === 0
-            ? "block"
-            : "none";
+    );
 
 }
 
 
-async function loadArticles() {
+function renderFeatured() {
 
-    loading.style.display = "block";
+    if (!articles.length) {
+        featured.classList.remove("show");
+        return;
+    }
 
-    errorMessage.style.display = "none";
+    const latest =
+        articles[0];
 
+    featuredTitle.textContent =
+        latest.title;
+
+    featuredExcerpt.textContent =
+        latest.excerpt ||
+        "Read the latest practical guide from FigureNG.";
+
+    featuredLink.href =
+        articleURL(latest.slug);
+
+    featured.classList.add("show");
+
+}
+
+
+async function loadGuides() {
+
+    loading.classList.remove("hidden");
+
+    errorBox.classList.remove("show");
 
     try {
 
@@ -1109,78 +1102,85 @@ async function loadArticles() {
                 }
             );
 
-
         if (!response.ok) {
             throw new Error(
-                "Failed to load articles."
+                "Guide request failed."
             );
         }
 
-
         const data =
             await response.json();
-
 
         if (
             !data.success ||
             !Array.isArray(data.articles)
         ) {
-
             throw new Error(
-                "Invalid article response."
+                "Invalid guide response."
             );
-
         }
 
-
         articles =
-            data.articles.filter(
-                function(article) {
+            data.articles;
 
-                    return article.status ===
-                        "published";
-
-                }
-            );
-
-
-        loading.style.display = "none";
-
-
-        buildCategories();
-
-        setupFeatured();
+        renderFeatured();
 
         renderArticles();
 
+        loading.classList.add("hidden");
 
     } catch (error) {
 
         console.error(
-            "FigureNG guides error:",
+            "FigureNG Guides error:",
             error
         );
 
+        loading.classList.add("hidden");
 
-        loading.style.display = "none";
-
-        errorMessage.style.display = "block";
+        errorBox.classList.add("show");
 
     }
 
 }
 
 
-searchInput.addEventListener(
+buttons.forEach(function(button) {
+
+    button.addEventListener(
+        "click",
+        function() {
+
+            buttons.forEach(function(item) {
+
+                item.classList.remove(
+                    "active"
+                );
+
+            });
+
+            this.classList.add("active");
+
+            currentCategory =
+                this.dataset.category;
+
+            renderArticles();
+
+        }
+    );
+
+});
+
+
+search.addEventListener(
     "input",
     renderArticles
 );
 
 
-loadArticles();
+loadGuides();
 
 </script>
-
 
 </body>
 </html>
