@@ -60,6 +60,8 @@ a {
     margin: auto;
 }
 
+/* HEADER */
+
 header {
     background: white;
     border-bottom: 1px solid var(--line);
@@ -114,6 +116,8 @@ nav .active {
     color: var(--ink);
 }
 
+/* HERO */
+
 .hero {
     background: white;
     border-bottom: 1px solid var(--line);
@@ -146,9 +150,13 @@ h1 {
     font-size: 16px;
 }
 
+/* CONTENT */
+
 main {
     padding: 55px 0 80px;
 }
+
+/* FEATURED */
 
 .featured {
     display: none;
@@ -219,6 +227,8 @@ main {
     font-size: 12px;
 }
 
+/* TOOLBAR */
+
 .toolbar {
     display: flex;
     justify-content: space-between;
@@ -266,6 +276,8 @@ main {
 .search:focus {
     border-color: var(--green2);
 }
+
+/* ARTICLES */
 
 .article-grid {
     display: grid;
@@ -322,9 +334,37 @@ main {
     font-weight: 900;
 }
 
-.loading,
-.no-results,
-.load-error {
+/* LOADING */
+
+.loading {
+    background: white;
+    border: 1px solid var(--line);
+    padding: 30px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* ERROR */
+
+.error-message {
+    display: none;
+    background: white;
+    border: 1px solid var(--line);
+    padding: 30px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.error-message.show {
+    display: block;
+}
+
+/* NO RESULTS */
+
+.no-results {
+    display: none;
     background: white;
     border: 1px solid var(--line);
     padding: 25px;
@@ -332,10 +372,11 @@ main {
     font-size: 13px;
 }
 
-.no-results,
-.load-error {
-    display: none;
+.no-results.show {
+    display: block;
 }
+
+/* FOOTER */
 
 footer {
     background: var(--green);
@@ -389,6 +430,8 @@ footer a:hover {
     color: #a9c2b6;
     font-size: 10px;
 }
+
+/* MOBILE */
 
 @media(max-width:800px) {
 
@@ -472,13 +515,8 @@ footer a:hover {
 <div class="container header">
 
 <a href="/" class="brand">
-
-<div class="mark">
-FG
-</div>
-
+<div class="mark">FG</div>
 Figure<span>NG</span>
-
 </a>
 
 <nav>
@@ -542,12 +580,9 @@ personal finance and practical calculations in Nigeria.
 Featured guide
 </div>
 
-<h2 id="featuredTitle">
-Loading...
-</h2>
+<h2 id="featuredTitle"></h2>
 
-<p id="featuredExcerpt">
-</p>
+<p id="featuredExcerpt"></p>
 
 <a
     id="featuredLink"
@@ -568,8 +603,8 @@ Related tool
 </strong>
 
 <p>
-Use the FigureNG calculators to apply
-the information to your own figures.
+Use FigureNG calculators and tools to put
+the information into practice.
 </p>
 
 <br>
@@ -650,10 +685,10 @@ No guides match your search.
 </div>
 
 <div
-    id="loadError"
-    class="load-error"
+    id="errorMessage"
+    class="error-message"
 >
-We could not load the guides right now. Please try again.
+Unable to load guides right now. Please try again later.
 </div>
 
 </div>
@@ -749,72 +784,79 @@ Disclaimer
 
 <script>
 
-const search =
-document.getElementById("guideSearch");
+const API_URL = "/api/articles?status=published&limit=100";
 
-const grid =
-document.getElementById("articleGrid");
+const articleGrid =
+    document.getElementById("articleGrid");
 
 const loading =
-document.getElementById("loading");
+    document.getElementById("loading");
+
+const errorMessage =
+    document.getElementById("errorMessage");
 
 const noResults =
-document.getElementById("noResults");
+    document.getElementById("noResults");
 
-const loadError =
-document.getElementById("loadError");
+const search =
+    document.getElementById("guideSearch");
 
 const featured =
-document.getElementById("featured");
+    document.getElementById("featured");
 
 const featuredTitle =
-document.getElementById("featuredTitle");
+    document.getElementById("featuredTitle");
 
 const featuredExcerpt =
-document.getElementById("featuredExcerpt");
+    document.getElementById("featuredExcerpt");
 
 const featuredLink =
-document.getElementById("featuredLink");
+    document.getElementById("featuredLink");
 
-const buttons =
-Array.from(
-    document.querySelectorAll(".category")
-);
+const categoryButtons =
+    Array.from(
+        document.querySelectorAll(".category")
+    );
 
 let articles = [];
+
 let currentCategory = "all";
+
 
 function escapeHTML(value) {
 
-    return String(value || "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+    const div = document.createElement("div");
+
+    div.textContent =
+        value || "";
+
+    return div.innerHTML;
 }
+
 
 function formatDate(value) {
 
     if (!value) {
-        return "FigureNG";
+        return "";
     }
 
-    const date = new Date(value);
+    const date =
+        new Date(value);
 
     if (Number.isNaN(date.getTime())) {
-        return "FigureNG";
+        return "";
     }
 
-    return "FigureNG · " +
-        date.toLocaleDateString(
-            "en-NG",
-            {
-                month: "long",
-                year: "numeric"
-            }
-        );
+    return date.toLocaleDateString(
+        "en-NG",
+        {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        }
+    );
 }
+
 
 function categoryClass(category) {
 
@@ -846,6 +888,38 @@ function categoryClass(category) {
     return "finance";
 }
 
+
+function articleUrl(slug) {
+
+    return "/article.html?slug=" +
+        encodeURIComponent(slug);
+}
+
+
+function renderFeatured() {
+
+    if (!articles.length) {
+        featured.classList.remove("show");
+        return;
+    }
+
+    const item =
+        articles[0];
+
+    featuredTitle.textContent =
+        item.title || "";
+
+    featuredExcerpt.textContent =
+        item.excerpt ||
+        "Read this practical FigureNG guide.";
+
+    featuredLink.href =
+        articleUrl(item.slug);
+
+    featured.classList.add("show");
+}
+
+
 function renderArticles() {
 
     const query =
@@ -853,105 +927,108 @@ function renderArticles() {
             .trim()
             .toLowerCase();
 
-    const filtered =
-        articles.filter(function(article) {
+    articleGrid.innerHTML = "";
 
-            const category =
-                categoryClass(article.category);
+    let visible = 0;
 
-            const text = [
-                article.title,
-                article.excerpt,
-                article.category
-            ]
+    articles.forEach(function(article, index) {
+
+        const category =
+            categoryClass(article.category);
+
+        const searchable = [
+            article.title,
+            article.excerpt,
+            article.category
+        ]
             .join(" ")
             .toLowerCase();
 
-            const categoryMatch =
-                currentCategory === "all" ||
-                category === currentCategory;
+        const categoryMatch =
+            currentCategory === "all" ||
+            category === currentCategory;
 
-            const searchMatch =
-                !query ||
-                text.includes(query);
+        const searchMatch =
+            !query ||
+            searchable.includes(query);
 
-            return categoryMatch &&
-                   searchMatch;
-        });
+        if (
+            categoryMatch &&
+            searchMatch
+        ) {
 
-    grid.innerHTML =
-        filtered.map(function(article) {
+            /*
+             * The first article is already displayed
+             * as the featured guide.
+             *
+             * It remains in the database and can still
+             * appear in search results.
+             */
 
-            return `
-                <article class="article">
+            const card =
+                document.createElement("article");
 
-                    <div class="article-category">
-                        ${escapeHTML(article.category || "Guides")}
-                    </div>
+            card.className = "article";
 
-                    <h2>
-                        ${escapeHTML(article.title)}
-                    </h2>
+            card.innerHTML = `
 
-                    <div class="article-meta">
-                        ${escapeHTML(formatDate(article.published_at))}
-                    </div>
+                <div class="article-category">
+                    ${escapeHTML(article.category || "Guides")}
+                </div>
 
-                    <p>
-                        ${escapeHTML(article.excerpt || "")}
-                    </p>
+                <h2>
+                    ${escapeHTML(article.title)}
+                </h2>
 
-                    <a
-                        href="/guides/${encodeURIComponent(article.slug)}"
-                        class="article-link"
-                    >
-                        Read guide →
-                    </a>
+                <div class="article-meta">
+                    FigureNG ·
+                    ${escapeHTML(formatDate(article.published_at))}
+                </div>
 
-                </article>
+                <p>
+                    ${escapeHTML(
+                        article.excerpt ||
+                        "Read this practical FigureNG guide."
+                    )}
+                </p>
+
+                <a
+                    href="${articleUrl(article.slug)}"
+                    class="article-link"
+                >
+                    Read guide →
+                </a>
+
             `;
 
-        }).join("");
+            articleGrid.appendChild(card);
 
-    noResults.style.display =
-        filtered.length === 0
-            ? "block"
-            : "none";
+            visible++;
+        }
+    });
+
+    noResults.classList.toggle(
+        "show",
+        visible === 0
+    );
 }
 
-function renderFeatured() {
-
-    if (!articles.length) {
-        featured.style.display = "none";
-        return;
-    }
-
-    const article = articles[0];
-
-    featuredTitle.textContent =
-        article.title;
-
-    featuredExcerpt.textContent =
-        article.excerpt || "";
-
-    featuredLink.href =
-        "/guides/" +
-        encodeURIComponent(article.slug);
-
-    featured.classList.add("show");
-}
 
 async function loadArticles() {
+
+    loading.style.display = "block";
+
+    errorMessage.classList.remove("show");
 
     try {
 
         const response =
-            await fetch(
-                "/api/articles?limit=100",
-                {
-                    cache: "no-store"
-                }
-            );
+            await fetch(API_URL, {
+                headers: {
+                    "Accept": "application/json"
+                },
+                cache: "no-store"
+            });
 
         if (!response.ok) {
             throw new Error(
@@ -974,49 +1051,59 @@ async function loadArticles() {
         articles =
             data.articles;
 
-        loading.style.display = "none";
-
         renderFeatured();
+
         renderArticles();
 
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            "FigureNG guides error:",
+            error
+        );
+
+        errorMessage.classList.add("show");
+
+    } finally {
 
         loading.style.display = "none";
-        loadError.style.display = "block";
+
     }
 }
 
-buttons.forEach(function(button) {
+
+categoryButtons.forEach(function(button) {
 
     button.addEventListener(
         "click",
         function() {
 
-            buttons.forEach(function(item) {
+            categoryButtons.forEach(
+                function(item) {
+                    item.classList.remove(
+                        "active"
+                    );
+                }
+            );
 
-                item.classList.remove(
-                    "active"
-                );
-
-            });
-
-            this.classList.add("active");
+            button.classList.add("active");
 
             currentCategory =
-                this.dataset.category;
+                button.dataset.category;
 
             renderArticles();
+
         }
     );
 
 });
 
+
 search.addEventListener(
     "input",
     renderArticles
 );
+
 
 loadArticles();
 
