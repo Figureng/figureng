@@ -14,12 +14,5 @@
       "database_name": "figureng",
       "database_id": "644b0bbf-6f48-435d-b9c6-aebae24a5a47"
     }
-  ],
-
-  "r2_buckets": [
-    {
-      "binding": "MEDIA",
-      "bucket_name": "figureng-media"
-    }
   ]
 }
