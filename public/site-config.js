@@ -1,5 +1,7 @@
 /* FigureNG 2.0 global identity, navigation, content presentation, growth and monetization layer. */
 (function(){
+  var path=window.location.pathname||'';
+  if(path==='/admin.html'||path==='/analytics.html')return;
   var css=document.createElement('link');css.rel='stylesheet';css.href='/figureng-2.css?v=2';document.head.appendChild(css);
   var overrides=document.createElement('link');overrides.rel='stylesheet';overrides.href='/figureng-2-overrides.css?v=2';document.head.appendChild(overrides);
   var growth=document.createElement('script');growth.src='/figureng-growth.js?v=1';growth.defer=true;document.head.appendChild(growth);
