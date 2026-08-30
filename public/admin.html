@@ -17,15 +17,14 @@ html,body{margin:0;width:100%;height:100%;background:#f5f7f5}
   try{
     const response=await fetch('/admin-original.html',{cache:'no-store'});
     if(!response.ok) throw new Error('Unable to load the admin panel.');
-    let html=await response.text();
-    if(!html.toLowerCase().includes('admin-insights.js')){
-      html=html.replace(/<\/body>/i,'<script src="/admin-insights.js?v=2"><\\/script><script src="/admin-insights.js"></script></body>');
-    }
+    const html=await response.text();
+    const enhanced=html.replace(/<\/body>/i,'<script src="/admin-insights.js?v=2"></'+'script></body>');
     document.open();
-    document.write(html);
+    document.write(enhanced);
     document.close();
   }catch(error){
-    document.getElementById('loading').textContent=error.message||'Unable to load the admin panel.';
+    const loading=document.getElementById('loading');
+    if(loading) loading.textContent=error.message||'Unable to load the admin panel.';
   }
 })();
 </script>
