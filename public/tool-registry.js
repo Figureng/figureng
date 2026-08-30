@@ -7,14 +7,17 @@ window.FIGURENG_TOOLS=[
 {name:"Loan Calculator",slug:"loan-calculator",url:"/loan-calculator.html",category:"Loans & Debt",description:"Estimate monthly repayments, total interest and borrowing costs.",keywords:"loan repayment interest borrowing debt monthly payment",icon:"💳",featured:true,order:5},
 {name:"Flat vs Reducing Balance Calculator",slug:"flat-vs-reducing",url:"/flat-vs-reducing.html",category:"Loans & Debt",description:"Compare flat-rate and reducing-balance loan costs side by side.",keywords:"flat rate reducing balance loan interest comparison",icon:"⚖️",featured:false,order:6},
 {name:"Loan Affordability Calculator Nigeria 2026",slug:"loan-affordability-calculator",url:"/loan-affordability-calculator.html",category:"Loans & Debt",description:"Estimate an affordable loan amount from income, existing debt and repayment terms.",keywords:"loan affordability calculator Nigeria how much loan can I afford loan eligibility affordable loan amount",icon:"🎯",featured:true,order:7},
-{name:"VAT Calculator",slug:"vat-calculator",url:"/vat-calculator.html",category:"Tax",description:"Calculate VAT, pre-tax amounts and totals for Nigerian transactions.",keywords:"VAT tax value added tax price inclusive exclusive",icon:"🧾",featured:true,order:8},
-{name:"Fuel Cost Calculator",slug:"fuel-cost-calculator",url:"/fuel-cost-calculator.html",category:"Everyday Costs",description:"Estimate trip fuel costs from distance, fuel use and petrol price.",keywords:"fuel petrol transport trip cost distance consumption",icon:"⛽",featured:true,order:9},
-{name:"Electricity Bill Calculator",slug:"electricity-bill-calculator",url:"/electricity-bill-calculator.html",category:"Everyday Costs",description:"Estimate electricity usage and your expected household bill.",keywords:"electricity power bill energy units tariff NEPA AEDC EKEDC",icon:"⚡",featured:true,order:10}
+{name:"VAT Calculator",slug:"vat-calculator",url:"/vat-calculator.html",category:"Tax",description:"Calculate VAT, pre-tax amounts and totals for Nigerian transactions.",keywords:"VAT calculator Nigeria 7.5 percent VAT calculate VAT",icon:"🧾",featured:true,order:8},
+{name:"Profit Calculator Nigeria 2026",slug:"profit-calculator",url:"/profit-calculator.html",category:"VAT & Business",description:"Calculate product profit, profit margin, markup and revenue.",keywords:"profit calculator Nigeria business profit calculator gross profit calculator profit margin markup",icon:"📊",featured:true,order:9},
+{name:"Fuel Cost Calculator",slug:"fuel-cost-calculator",url:"/fuel-cost-calculator.html",category:"Everyday Costs",description:"Estimate trip fuel costs from distance, fuel use and petrol price.",keywords:"fuel petrol transport trip cost distance consumption",icon:"⛽",featured:true,order:10},
+{name:"Electricity Bill Calculator",slug:"electricity-bill-calculator",url:"/electricity-bill-calculator.html",category:"Everyday Costs",description:"Estimate electricity usage and your expected household bill.",keywords:"electricity power bill energy units tariff NEPA AEDC EKEDC",icon:"⚡",featured:true,order:11}
 ];
 window.FIGURENG_CATEGORIES=[
 {name:"Salary & PAYE",description:"Understand earnings, tax, pension and take-home pay.",icon:"💰",order:1},
 {name:"Tax",description:"Useful calculators for Nigerian taxes and charges.",icon:"🧾",order:2},
 {name:"Loans & Debt",description:"Compare borrowing costs and repayment options.",icon:"🏦",order:3},
-{name:"Everyday Costs",description:"Calculate everyday expenses before you spend.",icon:"🧮",order:4}
+{name:"VAT & Business",description:"Calculate tax, profit and useful business figures.",icon:"📊",order:4},
+{name:"Energy & Utilities",description:"Estimate electricity, fuel and other utility costs.",icon:"⚡",order:5},
+{name:"Everyday Costs",description:"Calculate everyday expenses before you spend.",icon:"🧮",order:6}
 ];
 window.FigureNGTools={all:function(){return window.FIGURENG_TOOLS.slice().sort((a,b)=>(a.order||999)-(b.order||999));},categories:function(){return window.FIGURENG_CATEGORIES.slice().sort((a,b)=>(a.order||999)-(b.order||999));},byCategory:function(c){return this.all().filter(t=>t.category===c);},find:function(s){return this.all().find(t=>t.slug===s)||null;}};
