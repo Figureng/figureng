@@ -30,6 +30,17 @@ window.FIGURENG_TOOLS = [
     order: 2
   },
   {
+    name: "Pension Calculator Nigeria",
+    slug: "pension-calculator",
+    url: "/pension-calculator.html",
+    category: "Salary & PAYE",
+    description: "Estimate employee, employer and total pension contributions in Nigeria.",
+    keywords: "pension calculator Nigeria pension contribution PENCOM employee employer retirement RSA",
+    icon: "🏦",
+    featured: true,
+    order: 3
+  },
+  {
     name: "Loan Calculator",
     slug: "loan-calculator",
     url: "/loan-calculator.html",
@@ -38,7 +49,7 @@ window.FIGURENG_TOOLS = [
     keywords: "loan repayment interest borrowing debt monthly payment",
     icon: "💳",
     featured: true,
-    order: 3
+    order: 4
   },
   {
     name: "Flat vs Reducing Balance Calculator",
@@ -49,7 +60,7 @@ window.FIGURENG_TOOLS = [
     keywords: "flat rate reducing balance loan interest comparison",
     icon: "⚖️",
     featured: false,
-    order: 4
+    order: 5
   },
   {
     name: "VAT Calculator",
@@ -60,7 +71,7 @@ window.FIGURENG_TOOLS = [
     keywords: "VAT tax value added tax price inclusive exclusive",
     icon: "🧾",
     featured: true,
-    order: 5
+    order: 6
   },
   {
     name: "Fuel Cost Calculator",
@@ -71,7 +82,7 @@ window.FIGURENG_TOOLS = [
     keywords: "fuel petrol transport trip cost distance consumption",
     icon: "⛽",
     featured: true,
-    order: 6
+    order: 7
   },
   {
     name: "Electricity Bill Calculator",
@@ -82,14 +93,14 @@ window.FIGURENG_TOOLS = [
     keywords: "electricity power bill energy units tariff NEPA AEDC EKEDC",
     icon: "⚡",
     featured: true,
-    order: 7
+    order: 8
   }
 ];
 
 window.FIGURENG_CATEGORIES = [
   {
     name: "Salary & PAYE",
-    description: "Understand earnings, deductions and take-home pay.",
+    description: "Understand earnings, deductions, pension and take-home pay.",
     icon: "💰",
     order: 1
   },
