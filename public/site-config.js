@@ -8,9 +8,10 @@
     var navs=document.querySelectorAll('nav.nav, nav#nav, .nav');
     if(Array.isArray(s.nav_items)) navs.forEach(function(nav){
       var items=s.nav_items.filter(function(x){return x&&x.enabled!==false&&x.label&&x.url});
-      if(items.length) nav.innerHTML=items.map(function(x){
-        var a=document.createElement('a');a.href=x.url;a.textContent=x.label;return a.outerHTML;
-      }).join('');
+      if(items.length) nav.innerHTML=items.map(function(x){var a=document.createElement('a');a.href=x.url;a.textContent=x.label;return a.outerHTML;}).join('');
+    });
+    document.querySelectorAll('.help').forEach(function(el){
+      if((el.textContent||'').toLowerCase().includes('cloudflare r2')) el.textContent='Uploaded images are stored in FigureNG free database storage. Images should be 700 KB or smaller.';
     });
   }).catch(function(){});
 })();
