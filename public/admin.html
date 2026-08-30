@@ -1,1 +1,75 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FigureNG Command Center</title><meta name="robots" content="noindex,nofollow"><link rel="stylesheet" href="/admin-god.css?v=1"></head><body><div id="login" class="login"><div class="login-card"><div class="logo">FIGURE<span>NG</span></div><div class="eyebrow">COMMAND CENTER 2.0</div><h1>Control everything from one place.</h1><p>Content, navigation, SEO, analytics, media and advertising.</p><form id="loginForm"><label>Admin password<input id="password" type="password" autocomplete="current-password" required></label><button>Enter Command Center</button><div id="loginError" class="error"></div></form></div></div><div id="app" hidden><aside class="side"><div class="logo">FIGURE<span>NG</span></div><div class="status"><i></i> SYSTEM ONLINE</div><nav id="nav"><button data-page="overview" class="active">Overview</button><button data-page="content">Content Studio</button><button data-page="navigation">Navigation</button><button data-page="seo">SEO Control</button><button data-page="analytics">Analytics</button><button data-page="ads">AdSense & Ads</button><button data-page="media">Media</button><button data-page="settings">Site Settings</button></nav><button id="logout" class="logout">Lock Command Center</button></aside><main class="main"><header><div><div class="eyebrow">FIGURENG 2.0</div><h1 id="pageTitle">Overview</h1></div><div class="header-actions"><a href="/" target="_blank">View site ↗</a><button id="refresh">Refresh</button></div></header><div id="toast"></div><section id="page-overview" class="page"></section><section id="page-content" class="page" hidden></section><section id="page-navigation" class="page" hidden></section><section id="page-seo" class="page" hidden></section><section id="page-analytics" class="page" hidden></section><section id="page-ads" class="page" hidden></section><section id="page-media" class="page" hidden></section><section id="page-settings" class="page" hidden></section></main></div><script src="/admin-god.js?v=2"></script><script src="/admin-insights.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>FigureNG Command Center</title>
+<link rel="stylesheet" href="/admin-god.css?v=3">
+</head>
+<body>
+<div id="login" class="login-screen">
+  <div class="login-card">
+    <div class="brand-mark">FIGURE<span>NG</span></div>
+    <div class="eyebrow">COMMAND CENTER 2.0</div>
+    <h1>Control everything from one place.</h1>
+    <p>Content, tools, navigation, SEO, analytics, media and advertising.</p>
+    <form id="loginForm" novalidate>
+      <label class="login-label" for="password">Admin password</label>
+      <input id="password" type="password" autocomplete="current-password" required>
+      <button class="primary login-submit" type="submit">Enter Command Center</button>
+      <div id="loginError" class="error" role="alert"></div>
+    </form>
+  </div>
+</div>
+
+<div id="app" class="app-shell" hidden>
+  <div id="mobileBackdrop" class="mobile-backdrop" hidden></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <div class="brand-mark">FIGURE<span>NG</span></div>
+      <div class="command-label">COMMAND CENTER <b>2.0</b></div>
+    </div>
+    <div class="system-status"><i></i><span>SYSTEM ONLINE</span></div>
+    <nav id="nav" aria-label="Command Center navigation">
+      <button data-page="overview" class="active"><span>Overview</span><small>Dashboard</small></button>
+      <button data-page="content"><span>Content Studio</span><small>Articles & SEO content</small></button>
+      <button data-page="navigation"><span>Navigation</span><small>Menus & links</small></button>
+      <button data-page="seo"><span>SEO Control</span><small>Search visibility</small></button>
+      <button data-page="analytics"><span>Analytics</span><small>Traffic & behaviour</small></button>
+      <button data-page="ads"><span>AdSense & Ads</span><small>Monetisation</small></button>
+      <button data-page="media"><span>Media</span><small>Images & assets</small></button>
+      <button data-page="settings"><span>Site Settings</span><small>Global configuration</small></button>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="/" target="_blank" rel="noopener">View live site <span>↗</span></a>
+      <button id="logout" class="logout">Lock Command Center</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="Open navigation">☰</button>
+      <div class="title-block">
+        <div class="eyebrow">FIGURENG 2.0</div>
+        <h1 id="pageTitle">Overview</h1>
+      </div>
+      <div class="header-actions">
+        <a href="/" target="_blank" rel="noopener">View site ↗</a>
+        <button id="refresh" type="button">Refresh</button>
+      </div>
+    </header>
+    <div id="toast" aria-live="polite"></div>
+    <section id="page-overview" class="page"></section>
+    <section id="page-content" class="page" hidden></section>
+    <section id="page-navigation" class="page" hidden></section>
+    <section id="page-seo" class="page" hidden></section>
+    <section id="page-analytics" class="page" hidden></section>
+    <section id="page-ads" class="page" hidden></section>
+    <section id="page-media" class="page" hidden></section>
+    <section id="page-settings" class="page" hidden></section>
+  </main>
+</div>
+<script src="/admin-god.js?v=3"></script>
+</body>
+</html>
