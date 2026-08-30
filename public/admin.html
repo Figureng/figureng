@@ -23,7 +23,7 @@ iframe{display:block;width:100%;height:100%;min-height:100vh;border:0;background
     // an inline JavaScript string. Escape it before parsing the HTML so the
     // browser cannot terminate that script element early.
     html=html.replace(/<\/script>/gi,'<\\/script>');
-    const marker='</body>';
+    const marker='<script src="/admin-insights.js"></script></body>';
     const closeScript='</'+'script>';
     const insights='<script src="/admin-insights.js?v=3">'+closeScript;
     html=html.replace(/<\/body>/i,insights+'</body>');
