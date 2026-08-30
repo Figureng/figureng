@@ -1,12 +1,15 @@
 (() => {
-  const KEY = 'figureng_analytics_v1';
-  const raw = localStorage.getItem(KEY);
-  const ids = raw ? JSON.parse(raw) : { visitor: crypto.randomUUID(), session: crypto.randomUUID() };
-  if (!raw) localStorage.setItem(KEY, JSON.stringify(ids));
-  let started = Date.now();
+  if (location.pathname === '/admin.html' || location.pathname === '/analytics.html') return;
+  const VISITOR_KEY = 'figureng_visitor_v1';
+  const SESSION_KEY = 'figureng_session_v1';
+  let visitor = localStorage.getItem(VISITOR_KEY);
+  if (!visitor) { visitor = crypto.randomUUID(); localStorage.setItem(VISITOR_KEY, visitor); }
+  let session = sessionStorage.getItem(SESSION_KEY);
+  if (!session) { session = crypto.randomUUID(); sessionStorage.setItem(SESSION_KEY, session); }
+  const started = Date.now();
   const page = location.pathname + location.search;
   const send = (event, extra = {}, keepalive = true) => {
-    const payload = { event, path: page, title: document.title.slice(0, 200), referrer: document.referrer.slice(0, 500), visitor_id: ids.visitor, session_id: ids.session, duration_ms: extra.duration_ms || 0, metadata: extra.metadata || '' };
+    const payload = { event, path: page, title: document.title.slice(0, 200), referrer: document.referrer.slice(0, 500), visitor_id: visitor, session_id: session, duration_ms: Math.min(Date.now() - started, 86400000), metadata: extra.metadata || '' };
     try {
       const body = JSON.stringify(payload);
       if (navigator.sendBeacon && keepalive) navigator.sendBeacon('/api/analytics', new Blob([body], { type: 'application/json' }));
@@ -24,8 +27,8 @@
     if (tool) send('tool_open', { metadata: JSON.stringify({ tool: tool.dataset.analyticsTool }) }, false);
   }, { passive: true });
   document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'hidden') send('engagement', { duration_ms: Date.now() - started });
+    if (document.visibilityState === 'hidden') send('engagement');
   });
-  window.addEventListener('pagehide', () => send('engagement', { duration_ms: Date.now() - started }));
+  window.addEventListener('pagehide', () => send('engagement'));
   window.FigureNGAnalytics = { track: (event, metadata = {}) => send(event, { metadata: JSON.stringify(metadata) }, false) };
 })();
